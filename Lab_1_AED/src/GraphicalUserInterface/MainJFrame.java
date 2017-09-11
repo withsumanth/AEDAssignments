@@ -5,6 +5,7 @@
  */
 package GraphicalUserInterface;
 
+import Business.Product;
 /**
  *
  * @author Home
@@ -14,8 +15,10 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    private Product product;
     public MainJFrame() {
         initComponents();
+        product = new Product();
     }
 
     /**
@@ -86,9 +89,16 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
-        // TODO add your handling code here:
+        
+        CreateJPanelForm createJPanelForm = new CreateJPanelForm(product);
+        splitJPane.setRightComponent(createJPanelForm);
     }//GEN-LAST:event_createButtonActionPerformed
 
+    private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        
+        ViewJpanelForm viewJPanelForm = new ViewJpanelForm(product);
+        splitJPane.setRightComponent(viewJPanelForm);
+    }
     /**
      * @param args the command line arguments
      */
