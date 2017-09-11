@@ -18,6 +18,18 @@ public class ViewJpanelForm extends javax.swing.JPanel {
      */
     public ViewJpanelForm(Product product) {
         initComponents();
+        displayProduct(product);
+    }
+    
+    private void displayProduct(Product product){
+        String nameOfProduct = product.getNameOfProduct();
+        String priceOfProduct = product.getPriceOfProduct();
+        String availablityNum = product.getAvailablityNum();
+        String descOfProduct = product.getDescOfProduct();
+        nameTxtField.setText(nameOfProduct);
+        priceTxtField.setText(priceOfProduct);
+        availablityNumTxtField.setText(availablityNum);
+        descTxtField.setText(descOfProduct);
     }
 
     /**
