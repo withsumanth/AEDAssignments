@@ -6,6 +6,7 @@
 package GraphicalUserInterface;
 
 import Business.Product;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -61,6 +62,11 @@ public class CreateJPanelForm extends javax.swing.JPanel {
         });
 
         createButton.setText("Create");
+        createButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -119,6 +125,17 @@ public class CreateJPanelForm extends javax.swing.JPanel {
     private void nameTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTxtFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nameTxtFieldActionPerformed
+
+    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
+        // Binding the input to Product Object
+        product.setNameOfProduct(nameTxtField.getText());
+        product.setPriceOfProduct(priceTxtField.getText());
+        product.setAvailablityNum(availablityNumTxtField.getText());
+        product.setDescOfProduct(descTxtField.getText());
+        
+        //Prompt user that product entered was successfully saved
+        JOptionPane.showMessageDialog(null,"Product creation is Successful");
+    }//GEN-LAST:event_createButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

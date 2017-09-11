@@ -46,6 +46,11 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         viewButton.setText("View");
+        viewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout controlJPanelLayout = new javax.swing.GroupLayout(controlJPanel);
         controlJPanel.setLayout(controlJPanelLayout);
@@ -94,11 +99,11 @@ public class MainJFrame extends javax.swing.JFrame {
         splitJPane.setRightComponent(createJPanelForm);
     }//GEN-LAST:event_createButtonActionPerformed
 
-    private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        
+    private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
         ViewJpanelForm viewJPanelForm = new ViewJpanelForm(product);
         splitJPane.setRightComponent(viewJPanelForm);
-    }
+    }//GEN-LAST:event_viewButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */

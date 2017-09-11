@@ -16,10 +16,8 @@ public class ViewJpanelForm extends javax.swing.JPanel {
     /**
      * Creates new form ViewJpanelForm
      */
-    private Product product;
     public ViewJpanelForm(Product product) {
         initComponents();
-        this.product = product;
     }
 
     /**
