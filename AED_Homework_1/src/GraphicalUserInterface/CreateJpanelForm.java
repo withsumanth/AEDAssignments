@@ -27,19 +27,464 @@ public class CreateJpanelForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
+        jTextField11 = new javax.swing.JTextField();
+        jTextField12 = new javax.swing.JTextField();
+        jTextField13 = new javax.swing.JTextField();
+        jTextField14 = new javax.swing.JTextField();
+        jTextField15 = new javax.swing.JTextField();
+        jTextField16 = new javax.swing.JTextField();
+        jTextField17 = new javax.swing.JTextField();
+        jTextField18 = new javax.swing.JTextField();
+        jTextField19 = new javax.swing.JTextField();
+        jTextField20 = new javax.swing.JTextField();
+        jTextField21 = new javax.swing.JTextField();
+        jTextField22 = new javax.swing.JTextField();
+        jTextField23 = new javax.swing.JTextField();
+        jTextField24 = new javax.swing.JTextField();
+        jTextField25 = new javax.swing.JTextField();
+        jTextField26 = new javax.swing.JTextField();
+        jTextField27 = new javax.swing.JTextField();
+        jTextField28 = new javax.swing.JTextField();
+        jTextField29 = new javax.swing.JTextField();
+        jTextField30 = new javax.swing.JTextField();
+        jTextField33 = new javax.swing.JTextField();
+        jTextField34 = new javax.swing.JTextField();
+        jTextField35 = new javax.swing.JTextField();
+        checkbox1 = new java.awt.Checkbox();
+        checkbox2 = new java.awt.Checkbox();
+
+        setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel1.setText("Create");
+        add(jLabel1);
+        jLabel1.setBounds(351, 0, 42, 17);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel2.setText("Personnel Details");
+        add(jLabel2);
+        jLabel2.setBounds(37, 35, 131, 17);
+
+        jLabel3.setText("First Name");
+        add(jLabel3);
+        jLabel3.setBounds(0, 148, 51, 14);
+
+        jLabel4.setText("Last Name");
+        add(jLabel4);
+        jLabel4.setBounds(0, 190, 50, 14);
+
+        jLabel5.setText("Date Of Birth");
+        add(jLabel5);
+        jLabel5.setBounds(0, 113, 63, 14);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel6.setText("Address");
+        add(jLabel6);
+        jLabel6.setBounds(60, 270, 90, 17);
+
+        jLabel7.setText("Street Line 1");
+        add(jLabel7);
+        jLabel7.setBounds(10, 320, 61, 14);
+
+        jLabel8.setText("Picture");
+        add(jLabel8);
+        jLabel8.setBounds(0, 70, 33, 14);
+
+        jLabel9.setText("Street Line 2");
+        add(jLabel9);
+        jLabel9.setBounds(10, 360, 61, 14);
+
+        jLabel10.setText("City");
+        add(jLabel10);
+        jLabel10.setBounds(10, 400, 19, 14);
+
+        jLabel11.setText("State");
+        add(jLabel11);
+        jLabel11.setBounds(10, 440, 26, 14);
+
+        jLabel12.setText("Country");
+        add(jLabel12);
+        jLabel12.setBounds(10, 480, 39, 14);
+
+        jLabel13.setText("Zip Code");
+        add(jLabel13);
+        jLabel13.setBounds(10, 549, 42, 14);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel14.setText("License Details");
+        add(jLabel14);
+        jLabel14.setBounds(290, 30, 120, 17);
+
+        jLabel15.setText("Number");
+        add(jLabel15);
+        jLabel15.setBounds(250, 70, 37, 14);
+
+        jLabel17.setText("Date Of Issue");
+        add(jLabel17);
+        jLabel17.setBounds(250, 150, 67, 14);
+
+        jLabel18.setText("Date of Expiry");
+        add(jLabel18);
+        jLabel18.setBounds(250, 190, 69, 14);
+
+        jLabel19.setText("Class");
+        add(jLabel19);
+        jLabel19.setBounds(250, 110, 25, 14);
+
+        jLabel23.setText("Issued City");
+        add(jLabel23);
+        jLabel23.setBounds(250, 230, 54, 14);
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel16.setText("Credit Card Details");
+        add(jLabel16);
+        jLabel16.setBounds(290, 270, 140, 17);
+
+        jLabel20.setText("Credit Card Number");
+        add(jLabel20);
+        jLabel20.setBounds(230, 320, 95, 14);
+
+        jLabel21.setText("Date of Issue");
+        add(jLabel21);
+        jLabel21.setBounds(230, 360, 65, 14);
+
+        jLabel22.setText("Dateof Expiry");
+        add(jLabel22);
+        jLabel22.setBounds(230, 400, 66, 14);
+
+        jLabel24.setText("Credit Card Type");
+        add(jLabel24);
+        jLabel24.setBounds(230, 440, 82, 14);
+
+        jLabel25.setText("Credit Card Bank");
+        add(jLabel25);
+        jLabel25.setBounds(230, 480, 81, 14);
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel26.setText("Spouse Dtails");
+        add(jLabel26);
+        jLabel26.setBounds(580, 30, 110, 17);
+
+        jLabel27.setText("First Name");
+        add(jLabel27);
+        jLabel27.setBounds(530, 80, 51, 14);
+
+        jLabel28.setText("Last Name");
+        add(jLabel28);
+        jLabel28.setBounds(530, 110, 50, 14);
+
+        jLabel29.setText("Date Of Birth");
+        add(jLabel29);
+        jLabel29.setBounds(530, 200, 63, 14);
+
+        jLabel30.setText("Ph No");
+        add(jLabel30);
+        jLabel30.setBounds(530, 140, 28, 14);
+
+        jLabel31.setText("Email");
+        add(jLabel31);
+        jLabel31.setBounds(530, 170, 24, 14);
+
+        jLabel32.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel32.setText("Financial Account Details");
+        add(jLabel32);
+        jLabel32.setBounds(570, 270, 180, 17);
+
+        jLabel33.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel33.setText("Checking Account");
+        add(jLabel33);
+        jLabel33.setBounds(480, 290, 100, 14);
+
+        jLabel34.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel34.setText("Savings Account");
+        add(jLabel34);
+        jLabel34.setBounds(690, 290, 93, 14);
+
+        jLabel35.setText("Created Date");
+        add(jLabel35);
+        jLabel35.setBounds(480, 320, 65, 14);
+
+        jLabel36.setText("Created Date");
+        add(jLabel36);
+        jLabel36.setBounds(680, 320, 65, 14);
+
+        jLabel37.setText("Debited Amount");
+        add(jLabel37);
+        jLabel37.setBounds(480, 360, 77, 14);
+
+        jLabel38.setText("Credited Amount");
+        add(jLabel38);
+        jLabel38.setBounds(480, 400, 81, 14);
+
+        jLabel39.setText("Is Active?");
+        add(jLabel39);
+        jLabel39.setBounds(480, 440, 47, 14);
+
+        jLabel40.setText("Debited Amount");
+        add(jLabel40);
+        jLabel40.setBounds(680, 360, 77, 14);
+
+        jLabel41.setText("Credited Amount");
+        add(jLabel41);
+        jLabel41.setBounds(680, 400, 81, 14);
+
+        jLabel42.setText("Is Active?");
+        add(jLabel42);
+        jLabel42.setBounds(680, 440, 47, 10);
+
+        jTextField2.setText("jTextField2");
+        add(jTextField2);
+        jTextField2.setBounds(81, 110, 133, 20);
+
+        jTextField3.setText("jTextField2");
+        add(jTextField3);
+        jTextField3.setBounds(79, 314, 133, 20);
+
+        jTextField5.setText("jTextField2");
+        add(jTextField5);
+        jTextField5.setBounds(80, 360, 133, 20);
+
+        jTextField6.setText("jTextField2");
+        add(jTextField6);
+        jTextField6.setBounds(81, 148, 133, 20);
+
+        jTextField7.setText("jTextField2");
+        add(jTextField7);
+        jTextField7.setBounds(80, 400, 133, 20);
+
+        jTextField8.setText("jTextField2");
+        add(jTextField8);
+        jTextField8.setBounds(80, 440, 133, 20);
+
+        jTextField9.setText("jTextField2");
+        add(jTextField9);
+        jTextField9.setBounds(80, 480, 133, 20);
+
+        jTextField11.setText("jTextField2");
+        add(jTextField11);
+        jTextField11.setBounds(340, 70, 133, 20);
+
+        jTextField12.setText("jTextField2");
+        add(jTextField12);
+        jTextField12.setBounds(340, 110, 133, 20);
+
+        jTextField13.setText("jTextField2");
+        add(jTextField13);
+        jTextField13.setBounds(80, 190, 133, 20);
+
+        jTextField14.setText("jTextField2");
+        add(jTextField14);
+        jTextField14.setBounds(75, 546, 133, 20);
+
+        jTextField15.setText("jTextField2");
+        add(jTextField15);
+        jTextField15.setBounds(330, 320, 133, 20);
+
+        jTextField16.setText("jTextField2");
+        add(jTextField16);
+        jTextField16.setBounds(330, 360, 133, 20);
+
+        jTextField17.setText("jTextField2");
+        add(jTextField17);
+        jTextField17.setBounds(330, 400, 133, 20);
+
+        jTextField18.setText("jTextField2");
+        add(jTextField18);
+        jTextField18.setBounds(330, 440, 133, 20);
+
+        jTextField19.setText("jTextField2");
+        add(jTextField19);
+        jTextField19.setBounds(330, 480, 133, 20);
+
+        jTextField20.setText("jTextField2");
+        add(jTextField20);
+        jTextField20.setBounds(340, 150, 133, 20);
+
+        jTextField21.setText("jTextField2");
+        add(jTextField21);
+        jTextField21.setBounds(340, 190, 133, 20);
+
+        jTextField22.setText("jTextField2");
+        add(jTextField22);
+        jTextField22.setBounds(340, 230, 133, 20);
+
+        jTextField23.setText("jTextField2");
+        add(jTextField23);
+        jTextField23.setBounds(620, 110, 133, 20);
+
+        jTextField24.setText("jTextField2");
+        add(jTextField24);
+        jTextField24.setBounds(620, 140, 133, 20);
+
+        jTextField25.setText("jTextField2");
+        add(jTextField25);
+        jTextField25.setBounds(620, 170, 133, 20);
+
+        jTextField26.setText("jTextField2");
+        add(jTextField26);
+        jTextField26.setBounds(620, 200, 133, 20);
+
+        jTextField27.setText("jTextField2");
+        add(jTextField27);
+        jTextField27.setBounds(620, 70, 133, 20);
+
+        jTextField28.setText("jTextField2");
+        add(jTextField28);
+        jTextField28.setBounds(570, 320, 100, 20);
+
+        jTextField29.setText("jTextField2");
+        add(jTextField29);
+        jTextField29.setBounds(570, 360, 100, 20);
+
+        jTextField30.setText("jTextField2");
+        add(jTextField30);
+        jTextField30.setBounds(570, 400, 100, 20);
+
+        jTextField33.setText("jTextField2");
+        add(jTextField33);
+        jTextField33.setBounds(770, 320, 100, 20);
+
+        jTextField34.setText("jTextField2");
+        add(jTextField34);
+        jTextField34.setBounds(770, 360, 100, 20);
+
+        jTextField35.setText("jTextField2");
+        add(jTextField35);
+        jTextField35.setBounds(770, 400, 100, 20);
+
+        checkbox1.setLabel("checkbox1");
+        add(checkbox1);
+        checkbox1.setBounds(770, 440, 84, 20);
+
+        checkbox2.setLabel("checkbox2");
+        add(checkbox2);
+        checkbox2.setBounds(570, 440, 84, 20);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Checkbox checkbox1;
+    private java.awt.Checkbox checkbox2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField18;
+    private javax.swing.JTextField jTextField19;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField20;
+    private javax.swing.JTextField jTextField21;
+    private javax.swing.JTextField jTextField22;
+    private javax.swing.JTextField jTextField23;
+    private javax.swing.JTextField jTextField24;
+    private javax.swing.JTextField jTextField25;
+    private javax.swing.JTextField jTextField26;
+    private javax.swing.JTextField jTextField27;
+    private javax.swing.JTextField jTextField28;
+    private javax.swing.JTextField jTextField29;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField30;
+    private javax.swing.JTextField jTextField33;
+    private javax.swing.JTextField jTextField34;
+    private javax.swing.JTextField jTextField35;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
