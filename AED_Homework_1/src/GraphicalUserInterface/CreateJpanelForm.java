@@ -5,17 +5,21 @@
  */
 package GraphicalUserInterface;
 
+import Business.Person;
+
 /**
  *
- * @author Home
+ * @author Sumanth
  */
 public class CreateJpanelForm extends javax.swing.JPanel {
 
     /**
      * Creates new form CreateJpanelForm
      */
-    public CreateJpanelForm() {
+    private Person person;
+    public CreateJpanelForm(Person person) {
         initComponents();
+        this.person = person;
     }
 
     /**
@@ -95,19 +99,20 @@ public class CreateJpanelForm extends javax.swing.JPanel {
         spoFirNameTxt = new javax.swing.JTextField();
         chkAccCreaDateTxt = new javax.swing.JTextField();
         chkAccDebtAmtTxt = new javax.swing.JTextField();
-        chkAccCreAmtTxt = new javax.swing.JTextField();
+        svgAccActiveTxt = new javax.swing.JTextField();
         svgAccCreaDateTxt = new javax.swing.JTextField();
         svgAccDebtAmtTxt = new javax.swing.JTextField();
         svgAccCreAmtTxt = new javax.swing.JTextField();
-        svgAccActive = new java.awt.Checkbox();
-        chkAccActiveTxt = new java.awt.Checkbox();
+        createButton = new javax.swing.JButton();
+        chkAccCreAmtTxt1 = new javax.swing.JTextField();
+        chkAccActiveTxt = new javax.swing.JTextField();
 
         setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setText("Create");
+        jLabel1.setText("Create the details");
         add(jLabel1);
-        jLabel1.setBounds(380, 0, 80, 28);
+        jLabel1.setBounds(380, 0, 210, 28);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel2.setText("Personnel Details");
@@ -116,15 +121,15 @@ public class CreateJpanelForm extends javax.swing.JPanel {
 
         jLabel3.setText("First Name");
         add(jLabel3);
-        jLabel3.setBounds(10, 130, 51, 14);
+        jLabel3.setBounds(10, 130, 80, 14);
 
         jLabel4.setText("Last Name");
         add(jLabel4);
-        jLabel4.setBounds(10, 180, 50, 14);
+        jLabel4.setBounds(10, 180, 80, 14);
 
         jLabel5.setText("Date Of Birth");
         add(jLabel5);
-        jLabel5.setBounds(10, 230, 63, 14);
+        jLabel5.setBounds(10, 230, 80, 14);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel6.setText("Address");
@@ -133,31 +138,31 @@ public class CreateJpanelForm extends javax.swing.JPanel {
 
         jLabel7.setText("Street Line 1");
         add(jLabel7);
-        jLabel7.setBounds(10, 320, 61, 14);
+        jLabel7.setBounds(10, 320, 80, 14);
 
         jLabel8.setText("Picture");
         add(jLabel8);
-        jLabel8.setBounds(10, 80, 33, 14);
+        jLabel8.setBounds(10, 80, 80, 14);
 
         jLabel9.setText("Street Line 2");
         add(jLabel9);
-        jLabel9.setBounds(10, 360, 61, 14);
+        jLabel9.setBounds(10, 360, 80, 14);
 
         jLabel10.setText("City");
         add(jLabel10);
-        jLabel10.setBounds(10, 400, 19, 14);
+        jLabel10.setBounds(10, 400, 80, 14);
 
         jLabel11.setText("State");
         add(jLabel11);
-        jLabel11.setBounds(10, 440, 26, 14);
+        jLabel11.setBounds(10, 440, 80, 14);
 
         jLabel12.setText("Country");
         add(jLabel12);
-        jLabel12.setBounds(10, 480, 39, 14);
+        jLabel12.setBounds(10, 480, 80, 14);
 
         jLabel13.setText("Zip Code");
         add(jLabel13);
-        jLabel13.setBounds(10, 520, 42, 14);
+        jLabel13.setBounds(10, 520, 80, 14);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel14.setText("License Details");
@@ -166,23 +171,23 @@ public class CreateJpanelForm extends javax.swing.JPanel {
 
         jLabel15.setText("Number");
         add(jLabel15);
-        jLabel15.setBounds(250, 70, 37, 14);
+        jLabel15.setBounds(250, 70, 80, 14);
 
         jLabel17.setText("Date Of Issue");
         add(jLabel17);
-        jLabel17.setBounds(250, 150, 67, 14);
+        jLabel17.setBounds(250, 150, 80, 14);
 
         jLabel18.setText("Date of Expiry");
         add(jLabel18);
-        jLabel18.setBounds(250, 190, 69, 14);
+        jLabel18.setBounds(250, 190, 80, 14);
 
         jLabel19.setText("Class");
         add(jLabel19);
-        jLabel19.setBounds(250, 110, 25, 14);
+        jLabel19.setBounds(250, 110, 80, 14);
 
         jLabel23.setText("Issued City");
         add(jLabel23);
-        jLabel23.setBounds(250, 230, 54, 14);
+        jLabel23.setBounds(250, 230, 80, 14);
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel16.setText("Credit Card Details");
@@ -191,23 +196,23 @@ public class CreateJpanelForm extends javax.swing.JPanel {
 
         jLabel20.setText("Credit Card Number");
         add(jLabel20);
-        jLabel20.setBounds(230, 320, 95, 14);
+        jLabel20.setBounds(220, 320, 140, 14);
 
         jLabel21.setText("Date of Issue");
         add(jLabel21);
-        jLabel21.setBounds(230, 370, 65, 14);
+        jLabel21.setBounds(220, 370, 80, 14);
 
         jLabel22.setText("Dateof Expiry");
         add(jLabel22);
-        jLabel22.setBounds(230, 420, 66, 14);
+        jLabel22.setBounds(220, 420, 80, 14);
 
         jLabel24.setText("Credit Card Type");
         add(jLabel24);
-        jLabel24.setBounds(230, 470, 82, 14);
+        jLabel24.setBounds(220, 470, 100, 14);
 
         jLabel25.setText("Credit Card Bank");
         add(jLabel25);
-        jLabel25.setBounds(230, 520, 81, 14);
+        jLabel25.setBounds(220, 520, 100, 14);
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel26.setText("Spouse Details");
@@ -216,23 +221,23 @@ public class CreateJpanelForm extends javax.swing.JPanel {
 
         jLabel27.setText("First Name");
         add(jLabel27);
-        jLabel27.setBounds(530, 70, 51, 14);
+        jLabel27.setBounds(530, 70, 80, 14);
 
         jLabel28.setText("Last Name");
         add(jLabel28);
-        jLabel28.setBounds(530, 110, 50, 14);
+        jLabel28.setBounds(530, 110, 80, 14);
 
         jLabel29.setText("Date Of Birth");
         add(jLabel29);
-        jLabel29.setBounds(530, 230, 63, 14);
+        jLabel29.setBounds(530, 230, 80, 14);
 
         jLabel30.setText("Ph No");
         add(jLabel30);
-        jLabel30.setBounds(530, 150, 28, 14);
+        jLabel30.setBounds(530, 150, 80, 14);
 
         jLabel31.setText("Email");
         add(jLabel31);
-        jLabel31.setBounds(530, 190, 24, 14);
+        jLabel31.setBounds(530, 190, 80, 14);
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel32.setText("Financial Account Details");
@@ -251,35 +256,35 @@ public class CreateJpanelForm extends javax.swing.JPanel {
 
         jLabel35.setText("Created Date");
         add(jLabel35);
-        jLabel35.setBounds(480, 350, 65, 14);
+        jLabel35.setBounds(470, 350, 80, 14);
 
         jLabel36.setText("Created Date");
         add(jLabel36);
-        jLabel36.setBounds(680, 350, 65, 14);
+        jLabel36.setBounds(680, 350, 80, 14);
 
         jLabel37.setText("Debited Amount");
         add(jLabel37);
-        jLabel37.setBounds(480, 410, 77, 14);
+        jLabel37.setBounds(470, 410, 100, 14);
 
         jLabel38.setText("Credited Amount");
         add(jLabel38);
-        jLabel38.setBounds(480, 460, 81, 14);
+        jLabel38.setBounds(470, 460, 110, 14);
 
         jLabel39.setText("Is Active?");
         add(jLabel39);
-        jLabel39.setBounds(480, 520, 47, 14);
+        jLabel39.setBounds(470, 520, 80, 14);
 
         jLabel40.setText("Debited Amount");
         add(jLabel40);
-        jLabel40.setBounds(680, 410, 77, 14);
+        jLabel40.setBounds(680, 410, 100, 14);
 
         jLabel41.setText("Credited Amount");
         add(jLabel41);
-        jLabel41.setBounds(680, 460, 81, 14);
+        jLabel41.setBounds(680, 460, 100, 14);
 
         jLabel42.setText("Is Active?");
         add(jLabel42);
-        jLabel42.setBounds(690, 520, 47, 10);
+        jLabel42.setBounds(690, 520, 70, 10);
 
         fnameTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -287,23 +292,23 @@ public class CreateJpanelForm extends javax.swing.JPanel {
             }
         });
         add(fnameTxt);
-        fnameTxt.setBounds(80, 130, 133, 20);
+        fnameTxt.setBounds(80, 130, 133, 25);
         add(strLine1Txt);
-        strLine1Txt.setBounds(79, 314, 133, 20);
+        strLine1Txt.setBounds(79, 314, 133, 25);
         add(strLine2Txt);
-        strLine2Txt.setBounds(80, 360, 133, 20);
+        strLine2Txt.setBounds(80, 360, 133, 25);
         add(lNameTxt);
-        lNameTxt.setBounds(80, 180, 133, 20);
+        lNameTxt.setBounds(80, 180, 133, 25);
         add(cityTxt);
-        cityTxt.setBounds(80, 400, 133, 20);
+        cityTxt.setBounds(80, 400, 133, 25);
         add(stateTxt);
-        stateTxt.setBounds(80, 440, 133, 20);
+        stateTxt.setBounds(80, 440, 133, 25);
         add(countryTxt);
-        countryTxt.setBounds(80, 480, 133, 20);
+        countryTxt.setBounds(80, 480, 133, 25);
         add(licNotxt);
-        licNotxt.setBounds(340, 70, 133, 20);
+        licNotxt.setBounds(340, 70, 133, 25);
         add(licClassTxt);
-        licClassTxt.setBounds(340, 110, 133, 20);
+        licClassTxt.setBounds(340, 110, 133, 25);
 
         dobTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,7 +316,7 @@ public class CreateJpanelForm extends javax.swing.JPanel {
             }
         });
         add(dobTxt);
-        dobTxt.setBounds(80, 230, 133, 20);
+        dobTxt.setBounds(80, 230, 133, 25);
 
         zipCodeTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -319,25 +324,25 @@ public class CreateJpanelForm extends javax.swing.JPanel {
             }
         });
         add(zipCodeTxt);
-        zipCodeTxt.setBounds(80, 520, 133, 20);
+        zipCodeTxt.setBounds(80, 520, 133, 25);
         add(creCrdNoTxt);
-        creCrdNoTxt.setBounds(330, 320, 133, 20);
+        creCrdNoTxt.setBounds(330, 320, 133, 25);
         add(creCrdDateOfIssueTxt);
-        creCrdDateOfIssueTxt.setBounds(330, 370, 133, 20);
+        creCrdDateOfIssueTxt.setBounds(330, 370, 133, 25);
         add(creCrdDateOfExpiryTxt);
-        creCrdDateOfExpiryTxt.setBounds(330, 420, 133, 20);
+        creCrdDateOfExpiryTxt.setBounds(330, 420, 133, 25);
         add(creCrdTypeTxt);
-        creCrdTypeTxt.setBounds(330, 470, 133, 20);
+        creCrdTypeTxt.setBounds(330, 470, 133, 25);
         add(creCrdBankTxt);
-        creCrdBankTxt.setBounds(330, 520, 133, 20);
+        creCrdBankTxt.setBounds(330, 520, 133, 25);
         add(licDateOfIssueTxt);
-        licDateOfIssueTxt.setBounds(340, 150, 133, 20);
+        licDateOfIssueTxt.setBounds(340, 150, 133, 25);
         add(licDateOfExpiryTxt);
-        licDateOfExpiryTxt.setBounds(340, 190, 133, 20);
+        licDateOfExpiryTxt.setBounds(340, 190, 133, 25);
         add(licIssueCityTxt);
-        licIssueCityTxt.setBounds(340, 230, 133, 20);
+        licIssueCityTxt.setBounds(340, 230, 133, 25);
         add(spoLasNameTxt);
-        spoLasNameTxt.setBounds(620, 110, 133, 20);
+        spoLasNameTxt.setBounds(620, 110, 133, 25);
 
         spoNumTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,33 +350,33 @@ public class CreateJpanelForm extends javax.swing.JPanel {
             }
         });
         add(spoNumTxt);
-        spoNumTxt.setBounds(620, 150, 133, 20);
+        spoNumTxt.setBounds(620, 150, 133, 25);
         add(spoEmailTxt);
-        spoEmailTxt.setBounds(620, 190, 133, 20);
+        spoEmailTxt.setBounds(620, 190, 133, 25);
         add(spoDobTxt);
-        spoDobTxt.setBounds(620, 230, 133, 20);
+        spoDobTxt.setBounds(620, 230, 133, 25);
         add(spoFirNameTxt);
-        spoFirNameTxt.setBounds(620, 70, 133, 20);
+        spoFirNameTxt.setBounds(620, 70, 133, 25);
         add(chkAccCreaDateTxt);
-        chkAccCreaDateTxt.setBounds(570, 350, 100, 20);
+        chkAccCreaDateTxt.setBounds(570, 350, 100, 25);
         add(chkAccDebtAmtTxt);
-        chkAccDebtAmtTxt.setBounds(570, 410, 100, 20);
-        add(chkAccCreAmtTxt);
-        chkAccCreAmtTxt.setBounds(570, 460, 100, 20);
+        chkAccDebtAmtTxt.setBounds(570, 410, 100, 25);
+        add(svgAccActiveTxt);
+        svgAccActiveTxt.setBounds(770, 510, 100, 25);
         add(svgAccCreaDateTxt);
-        svgAccCreaDateTxt.setBounds(770, 350, 100, 20);
+        svgAccCreaDateTxt.setBounds(770, 350, 100, 25);
         add(svgAccDebtAmtTxt);
-        svgAccDebtAmtTxt.setBounds(770, 410, 100, 20);
+        svgAccDebtAmtTxt.setBounds(770, 410, 100, 25);
         add(svgAccCreAmtTxt);
-        svgAccCreAmtTxt.setBounds(770, 460, 100, 20);
+        svgAccCreAmtTxt.setBounds(770, 460, 100, 25);
 
-        svgAccActive.setLabel("checkbox1");
-        add(svgAccActive);
-        svgAccActive.setBounds(780, 520, 84, 20);
-
-        chkAccActiveTxt.setLabel("checkbox2");
+        createButton.setText("Create");
+        add(createButton);
+        createButton.setBounds(410, 580, 160, 23);
+        add(chkAccCreAmtTxt1);
+        chkAccCreAmtTxt1.setBounds(570, 460, 100, 25);
         add(chkAccActiveTxt);
-        chkAccActiveTxt.setBounds(570, 520, 84, 20);
+        chkAccActiveTxt.setBounds(570, 510, 100, 25);
     }// </editor-fold>//GEN-END:initComponents
 
     private void fnameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameTxtActionPerformed
@@ -392,8 +397,8 @@ public class CreateJpanelForm extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Checkbox chkAccActiveTxt;
-    private javax.swing.JTextField chkAccCreAmtTxt;
+    private javax.swing.JTextField chkAccActiveTxt;
+    private javax.swing.JTextField chkAccCreAmtTxt1;
     private javax.swing.JTextField chkAccCreaDateTxt;
     private javax.swing.JTextField chkAccDebtAmtTxt;
     private javax.swing.JTextField cityTxt;
@@ -403,6 +408,7 @@ public class CreateJpanelForm extends javax.swing.JPanel {
     private javax.swing.JTextField creCrdDateOfIssueTxt;
     private javax.swing.JTextField creCrdNoTxt;
     private javax.swing.JTextField creCrdTypeTxt;
+    private javax.swing.JButton createButton;
     private javax.swing.JTextField dobTxt;
     private javax.swing.JTextField fnameTxt;
     private javax.swing.JLabel jLabel1;
@@ -461,7 +467,7 @@ public class CreateJpanelForm extends javax.swing.JPanel {
     private javax.swing.JTextField stateTxt;
     private javax.swing.JTextField strLine1Txt;
     private javax.swing.JTextField strLine2Txt;
-    private java.awt.Checkbox svgAccActive;
+    private javax.swing.JTextField svgAccActiveTxt;
     private javax.swing.JTextField svgAccCreAmtTxt;
     private javax.swing.JTextField svgAccCreaDateTxt;
     private javax.swing.JTextField svgAccDebtAmtTxt;

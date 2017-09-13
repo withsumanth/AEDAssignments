@@ -9,7 +9,7 @@ import Business.Product;
 
 /**
  *
- * @author Home
+ * @author Sumanth
  */
 public class ViewJpanelForm extends javax.swing.JPanel {
 

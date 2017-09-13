@@ -4,18 +4,20 @@
  * and open the template in the editor.
  */
 package GraphicalUserInterface;
-
+import Business.Person;
 /**
  *
- * @author Home
+ * @author Sumanth
  */
 public class MainJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form MainJFrame
      */
+    private Person person;
     public MainJFrame() {
         initComponents();
+        person = new Person();
     }
 
     /**
@@ -55,19 +57,19 @@ public class MainJFrame extends javax.swing.JFrame {
             controlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlJPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(controlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(createButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(viewButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(controlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(createButton))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         controlJPanelLayout.setVerticalGroup(
             controlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlJPanelLayout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addGap(118, 118, 118)
                 .addComponent(createButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(viewButton)
-                .addGap(92, 92, 92))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
 
         splitJPane.setLeftComponent(controlJPanel);
@@ -91,11 +93,13 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
-        // TODO add your handling code here:
+        CreateJpanelForm createJpanelForm = new CreateJpanelForm(person);
+        splitJPane.setRightComponent(createJpanelForm);
     }//GEN-LAST:event_createButtonActionPerformed
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
-        // TODO add your handling code here:
+        ViewJpanelForm viewJpanelForm = new ViewJpanelForm(person);
+        splitJPane.setRightComponent(viewJpanelForm);
     }//GEN-LAST:event_viewButtonActionPerformed
 
     /**

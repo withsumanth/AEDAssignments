@@ -8,7 +8,7 @@ package GraphicalUserInterface;
 import Business.Product;
 /**
  *
- * @author Home
+ * @author Sumanth
  */
 public class MainJFrame extends javax.swing.JFrame {
 
