@@ -44,10 +44,27 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         
         //Set License details on View
         licNotxt.setText(person.getLicInfo().getLicNo());
-        licDateOfIssueTxt.setText(person.getLicInfo().getLicNo());
-        licDateOfExpiryTxt.setText(person.getLicInfo().getLicNo());
-        licClassTxt.setText(person.getLicInfo().getLicNo());
-        licIssueCityTxt.setText(person.getLicInfo().getLicNo());
+        licDateOfIssueTxt.setText(person.getLicInfo().getLicDateOfIssue());
+        licDateOfExpiryTxt.setText(person.getLicInfo().getLicDateOfExpiry());
+        licClassTxt.setText(person.getLicInfo().getLicClass());
+        licIssueCityTxt.setText(person.getLicInfo().getLicIssueCity());
+        
+        //Set Spouse Details on View
+        spoFirNameTxt.setText(person.getSpoInfo().getSpoFirName());
+        spoLasNameTxt.setText(person.getSpoInfo().getSpoLasName());
+        spoDobTxt.setText(person.getSpoInfo().getSpoDob());
+        spoEmailTxt.setText(person.getSpoInfo().getSpoEmail());
+        spoNumTxt.setText(person.getSpoInfo().getSpoNum());
+        
+        //Set Financial Details on View
+        chkAccCreAmtTxt.setText(person.getFinAccInfo().getChkAccCreAmt());
+        chkAccCreaDateTxt.setText(person.getFinAccInfo().getChkAccCreaDate());
+        chkAccDebtAmtTxt.setText(person.getFinAccInfo().getChkAccDebtAmt());
+        chkAccActiveTxt.setText(person.getFinAccInfo().getChkAccActive());
+        svgAccCreAmtTxt.setText(person.getFinAccInfo().getSvgAccCreAmt());
+        svgAccCreaDateTxt.setText(person.getFinAccInfo().getSvgAccCreaDate());
+        svgAccDebtAmtTxt.setText(person.getFinAccInfo().getSvgAccDebtAmt());
+        svgAccActiveTxt.setText(person.getFinAccInfo().getSvgAccActive());
     }
 
     /**
@@ -168,7 +185,7 @@ public class ViewJpanelForm extends javax.swing.JPanel {
             }
         });
         add(fnameTxt);
-        fnameTxt.setBounds(80, 130, 133, 25);
+        fnameTxt.setBounds(80, 130, 133, 27);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel14.setText("License Details");
@@ -179,7 +196,7 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         add(jLabel15);
         jLabel15.setBounds(250, 70, 80, 14);
         add(lNameTxt);
-        lNameTxt.setBounds(80, 180, 133, 25);
+        lNameTxt.setBounds(80, 180, 133, 27);
 
         dobTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,7 +204,7 @@ public class ViewJpanelForm extends javax.swing.JPanel {
             }
         });
         add(dobTxt);
-        dobTxt.setBounds(80, 230, 133, 25);
+        dobTxt.setBounds(80, 230, 133, 27);
 
         jLabel19.setText("Class");
         add(jLabel19);
@@ -205,15 +222,15 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         add(jLabel23);
         jLabel23.setBounds(250, 230, 80, 14);
         add(licNotxt);
-        licNotxt.setBounds(340, 70, 133, 25);
+        licNotxt.setBounds(340, 70, 133, 27);
         add(licClassTxt);
-        licClassTxt.setBounds(340, 110, 133, 25);
+        licClassTxt.setBounds(340, 110, 133, 27);
         add(licDateOfIssueTxt);
-        licDateOfIssueTxt.setBounds(340, 150, 133, 25);
+        licDateOfIssueTxt.setBounds(340, 150, 133, 27);
         add(licDateOfExpiryTxt);
-        licDateOfExpiryTxt.setBounds(340, 190, 133, 25);
+        licDateOfExpiryTxt.setBounds(340, 190, 133, 27);
         add(licIssueCityTxt);
-        licIssueCityTxt.setBounds(340, 230, 133, 25);
+        licIssueCityTxt.setBounds(340, 230, 133, 27);
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel26.setText("Spouse Details");
@@ -240,9 +257,9 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         add(jLabel29);
         jLabel29.setBounds(530, 230, 80, 14);
         add(spoFirNameTxt);
-        spoFirNameTxt.setBounds(620, 70, 133, 25);
+        spoFirNameTxt.setBounds(620, 70, 133, 27);
         add(spoLasNameTxt);
-        spoLasNameTxt.setBounds(620, 110, 133, 25);
+        spoLasNameTxt.setBounds(620, 110, 133, 27);
 
         spoNumTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,11 +267,11 @@ public class ViewJpanelForm extends javax.swing.JPanel {
             }
         });
         add(spoNumTxt);
-        spoNumTxt.setBounds(620, 150, 133, 25);
+        spoNumTxt.setBounds(620, 150, 133, 27);
         add(spoEmailTxt);
-        spoEmailTxt.setBounds(620, 190, 133, 25);
+        spoEmailTxt.setBounds(620, 190, 133, 27);
         add(spoDobTxt);
-        spoDobTxt.setBounds(620, 230, 133, 25);
+        spoDobTxt.setBounds(620, 230, 133, 27);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel6.setText("Address");
@@ -273,11 +290,11 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         add(jLabel10);
         jLabel10.setBounds(10, 400, 80, 14);
         add(strLine1Txt);
-        strLine1Txt.setBounds(79, 314, 133, 25);
+        strLine1Txt.setBounds(79, 314, 133, 27);
         add(strLine2Txt);
-        strLine2Txt.setBounds(80, 360, 133, 25);
+        strLine2Txt.setBounds(80, 360, 133, 27);
         add(cityTxt);
-        cityTxt.setBounds(80, 400, 133, 25);
+        cityTxt.setBounds(80, 400, 133, 27);
 
         jLabel11.setText("State");
         add(jLabel11);
@@ -291,7 +308,7 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         add(jLabel13);
         jLabel13.setBounds(10, 520, 80, 14);
         add(countryTxt);
-        countryTxt.setBounds(80, 480, 133, 25);
+        countryTxt.setBounds(80, 480, 133, 27);
 
         zipCodeTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -299,7 +316,7 @@ public class ViewJpanelForm extends javax.swing.JPanel {
             }
         });
         add(zipCodeTxt);
-        zipCodeTxt.setBounds(80, 520, 133, 25);
+        zipCodeTxt.setBounds(80, 520, 133, 27);
 
         jLabel20.setText("Credit Card Number");
         add(jLabel20);
@@ -314,15 +331,15 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         add(jLabel21);
         jLabel21.setBounds(220, 370, 80, 14);
         add(creCrdNoTxt);
-        creCrdNoTxt.setBounds(330, 320, 133, 25);
+        creCrdNoTxt.setBounds(330, 320, 133, 27);
         add(creCrdDateOfIssueTxt);
-        creCrdDateOfIssueTxt.setBounds(330, 370, 133, 25);
+        creCrdDateOfIssueTxt.setBounds(330, 370, 133, 27);
 
         jLabel22.setText("Dateof Expiry");
         add(jLabel22);
         jLabel22.setBounds(220, 420, 80, 14);
         add(creCrdDateOfExpiryTxt);
-        creCrdDateOfExpiryTxt.setBounds(330, 420, 133, 25);
+        creCrdDateOfExpiryTxt.setBounds(330, 420, 133, 27);
 
         jLabel24.setText("Credit Card Type");
         add(jLabel24);
@@ -332,9 +349,9 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         add(jLabel25);
         jLabel25.setBounds(220, 520, 100, 14);
         add(creCrdTypeTxt);
-        creCrdTypeTxt.setBounds(330, 470, 133, 25);
+        creCrdTypeTxt.setBounds(330, 470, 133, 27);
         add(creCrdBankTxt);
-        creCrdBankTxt.setBounds(330, 520, 133, 25);
+        creCrdBankTxt.setBounds(330, 520, 133, 27);
 
         jLabel33.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel33.setText("Checking Account");
@@ -362,11 +379,11 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         add(jLabel39);
         jLabel39.setBounds(480, 520, 80, 14);
         add(chkAccCreaDateTxt);
-        chkAccCreaDateTxt.setBounds(570, 350, 100, 25);
+        chkAccCreaDateTxt.setBounds(570, 350, 100, 27);
         add(chkAccDebtAmtTxt);
-        chkAccDebtAmtTxt.setBounds(570, 410, 100, 25);
+        chkAccDebtAmtTxt.setBounds(570, 410, 100, 27);
         add(svgAccActiveTxt);
-        svgAccActiveTxt.setBounds(770, 510, 100, 25);
+        svgAccActiveTxt.setBounds(770, 510, 100, 27);
 
         jLabel36.setText("Created Date");
         add(jLabel36);
@@ -377,9 +394,9 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         add(jLabel34);
         jLabel34.setBounds(740, 310, 93, 14);
         add(svgAccCreaDateTxt);
-        svgAccCreaDateTxt.setBounds(770, 350, 100, 25);
+        svgAccCreaDateTxt.setBounds(770, 350, 100, 27);
         add(svgAccDebtAmtTxt);
-        svgAccDebtAmtTxt.setBounds(770, 410, 100, 25);
+        svgAccDebtAmtTxt.setBounds(770, 410, 100, 27);
 
         jLabel40.setText("Debited Amount");
         add(jLabel40);
@@ -389,17 +406,17 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         add(jLabel41);
         jLabel41.setBounds(680, 460, 100, 14);
         add(svgAccCreAmtTxt);
-        svgAccCreAmtTxt.setBounds(770, 460, 100, 25);
+        svgAccCreAmtTxt.setBounds(770, 460, 100, 27);
 
         jLabel42.setText("Is Active?");
         add(jLabel42);
         jLabel42.setBounds(690, 520, 70, 10);
         add(stateTxt);
-        stateTxt.setBounds(80, 440, 133, 25);
+        stateTxt.setBounds(80, 440, 133, 27);
         add(chkAccCreAmtTxt);
-        chkAccCreAmtTxt.setBounds(570, 460, 100, 25);
+        chkAccCreAmtTxt.setBounds(570, 460, 100, 27);
         add(chkAccActiveTxt);
-        chkAccActiveTxt.setBounds(570, 510, 100, 25);
+        chkAccActiveTxt.setBounds(570, 510, 100, 27);
     }// </editor-fold>//GEN-END:initComponents
 
     private void fnameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameTxtActionPerformed

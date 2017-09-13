@@ -298,23 +298,23 @@ public class CreateJpanelForm extends javax.swing.JPanel {
             }
         });
         add(fnameTxt);
-        fnameTxt.setBounds(80, 130, 133, 25);
+        fnameTxt.setBounds(80, 130, 133, 27);
         add(strLine1Txt);
-        strLine1Txt.setBounds(79, 314, 133, 25);
+        strLine1Txt.setBounds(79, 314, 133, 27);
         add(strLine2Txt);
-        strLine2Txt.setBounds(80, 360, 133, 25);
+        strLine2Txt.setBounds(80, 360, 133, 27);
         add(lNameTxt);
-        lNameTxt.setBounds(80, 180, 133, 25);
+        lNameTxt.setBounds(80, 180, 133, 27);
         add(cityTxt);
-        cityTxt.setBounds(80, 400, 133, 25);
+        cityTxt.setBounds(80, 400, 133, 27);
         add(stateTxt);
-        stateTxt.setBounds(80, 440, 133, 25);
+        stateTxt.setBounds(80, 440, 133, 27);
         add(countryTxt);
-        countryTxt.setBounds(80, 480, 133, 25);
+        countryTxt.setBounds(80, 480, 133, 27);
         add(licNotxt);
-        licNotxt.setBounds(340, 70, 133, 25);
+        licNotxt.setBounds(340, 70, 133, 27);
         add(licClassTxt);
-        licClassTxt.setBounds(340, 110, 133, 25);
+        licClassTxt.setBounds(340, 110, 133, 27);
 
         dobTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -322,7 +322,7 @@ public class CreateJpanelForm extends javax.swing.JPanel {
             }
         });
         add(dobTxt);
-        dobTxt.setBounds(80, 230, 133, 25);
+        dobTxt.setBounds(80, 230, 133, 27);
 
         zipCodeTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,25 +330,25 @@ public class CreateJpanelForm extends javax.swing.JPanel {
             }
         });
         add(zipCodeTxt);
-        zipCodeTxt.setBounds(80, 520, 133, 25);
+        zipCodeTxt.setBounds(80, 520, 133, 27);
         add(creCrdNoTxt);
-        creCrdNoTxt.setBounds(330, 320, 133, 25);
+        creCrdNoTxt.setBounds(330, 320, 133, 27);
         add(creCrdDateOfIssueTxt);
-        creCrdDateOfIssueTxt.setBounds(330, 370, 133, 25);
+        creCrdDateOfIssueTxt.setBounds(330, 370, 133, 27);
         add(creCrdDateOfExpiryTxt);
-        creCrdDateOfExpiryTxt.setBounds(330, 420, 133, 25);
+        creCrdDateOfExpiryTxt.setBounds(330, 420, 133, 27);
         add(creCrdTypeTxt);
-        creCrdTypeTxt.setBounds(330, 470, 133, 25);
+        creCrdTypeTxt.setBounds(330, 470, 133, 27);
         add(creCrdBankTxt);
-        creCrdBankTxt.setBounds(330, 520, 133, 25);
+        creCrdBankTxt.setBounds(330, 520, 133, 27);
         add(licDateOfIssueTxt);
-        licDateOfIssueTxt.setBounds(340, 150, 133, 25);
+        licDateOfIssueTxt.setBounds(340, 150, 133, 27);
         add(licDateOfExpiryTxt);
-        licDateOfExpiryTxt.setBounds(340, 190, 133, 25);
+        licDateOfExpiryTxt.setBounds(340, 190, 133, 27);
         add(licIssueCityTxt);
-        licIssueCityTxt.setBounds(340, 230, 133, 25);
+        licIssueCityTxt.setBounds(340, 230, 133, 27);
         add(spoLasNameTxt);
-        spoLasNameTxt.setBounds(620, 110, 133, 25);
+        spoLasNameTxt.setBounds(620, 110, 133, 27);
 
         spoNumTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -356,25 +356,25 @@ public class CreateJpanelForm extends javax.swing.JPanel {
             }
         });
         add(spoNumTxt);
-        spoNumTxt.setBounds(620, 150, 133, 25);
+        spoNumTxt.setBounds(620, 150, 133, 27);
         add(spoEmailTxt);
-        spoEmailTxt.setBounds(620, 190, 133, 25);
+        spoEmailTxt.setBounds(620, 190, 133, 27);
         add(spoDobTxt);
-        spoDobTxt.setBounds(620, 230, 133, 25);
+        spoDobTxt.setBounds(620, 230, 133, 27);
         add(spoFirNameTxt);
-        spoFirNameTxt.setBounds(620, 70, 133, 25);
+        spoFirNameTxt.setBounds(620, 70, 133, 27);
         add(chkAccCreaDateTxt);
-        chkAccCreaDateTxt.setBounds(570, 350, 100, 25);
+        chkAccCreaDateTxt.setBounds(570, 350, 100, 27);
         add(chkAccDebtAmtTxt);
-        chkAccDebtAmtTxt.setBounds(570, 410, 100, 25);
+        chkAccDebtAmtTxt.setBounds(570, 410, 100, 27);
         add(svgAccActiveTxt);
-        svgAccActiveTxt.setBounds(770, 510, 100, 25);
+        svgAccActiveTxt.setBounds(770, 510, 100, 27);
         add(svgAccCreaDateTxt);
-        svgAccCreaDateTxt.setBounds(770, 350, 100, 25);
+        svgAccCreaDateTxt.setBounds(770, 350, 100, 27);
         add(svgAccDebtAmtTxt);
-        svgAccDebtAmtTxt.setBounds(770, 410, 100, 25);
+        svgAccDebtAmtTxt.setBounds(770, 410, 100, 27);
         add(svgAccCreAmtTxt);
-        svgAccCreAmtTxt.setBounds(770, 460, 100, 25);
+        svgAccCreAmtTxt.setBounds(770, 460, 100, 27);
 
         createButton.setText("Create");
         createButton.addActionListener(new java.awt.event.ActionListener() {
@@ -385,9 +385,9 @@ public class CreateJpanelForm extends javax.swing.JPanel {
         add(createButton);
         createButton.setBounds(410, 580, 160, 23);
         add(chkAccCreAmtTxt);
-        chkAccCreAmtTxt.setBounds(570, 460, 100, 25);
+        chkAccCreAmtTxt.setBounds(570, 460, 100, 27);
         add(chkAccActiveTxt);
-        chkAccActiveTxt.setBounds(570, 510, 100, 25);
+        chkAccActiveTxt.setBounds(570, 510, 100, 27);
     }// </editor-fold>//GEN-END:initComponents
 
     private void fnameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameTxtActionPerformed
