@@ -27,19 +27,467 @@ public class ViewJpanelForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        fnameTxt = new javax.swing.JTextField();
+        strLine1Txt = new javax.swing.JTextField();
+        strLine2Txt = new javax.swing.JTextField();
+        lNameTxt = new javax.swing.JTextField();
+        cityTxt = new javax.swing.JTextField();
+        stateTxt = new javax.swing.JTextField();
+        countryTxt = new javax.swing.JTextField();
+        licNotxt = new javax.swing.JTextField();
+        licClassTxt = new javax.swing.JTextField();
+        dobTxt = new javax.swing.JTextField();
+        zipCodeTxt = new javax.swing.JTextField();
+        creCrdNoTxt = new javax.swing.JTextField();
+        creCrdDateOfIssueTxt = new javax.swing.JTextField();
+        creCrdDateOfExpiryTxt = new javax.swing.JTextField();
+        creCrdTypeTxt = new javax.swing.JTextField();
+        creCrdBankTxt = new javax.swing.JTextField();
+        licDateOfIssueTxt = new javax.swing.JTextField();
+        licDateOfExpiryTxt = new javax.swing.JTextField();
+        licIssueCityTxt = new javax.swing.JTextField();
+        spoLasNameTxt = new javax.swing.JTextField();
+        spoNumTxt = new javax.swing.JTextField();
+        spoEmailTxt = new javax.swing.JTextField();
+        spoDobTxt = new javax.swing.JTextField();
+        spoFirNameTxt = new javax.swing.JTextField();
+        chkAccCreaDateTxt = new javax.swing.JTextField();
+        chkAccDebtAmtTxt = new javax.swing.JTextField();
+        chkAccCreAmtTxt = new javax.swing.JTextField();
+        svgAccCreaDateTxt = new javax.swing.JTextField();
+        svgAccDebtAmtTxt = new javax.swing.JTextField();
+        svgAccCreAmtTxt = new javax.swing.JTextField();
+        svgAccActive = new java.awt.Checkbox();
+        chkAccActiveTxt = new java.awt.Checkbox();
+
+        jPanel1.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setText("View");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(410, 0, 80, 28);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel2.setText("Personnel Details");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(37, 35, 131, 17);
+
+        jLabel3.setText("First Name");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(10, 130, 51, 14);
+
+        jLabel4.setText("Last Name");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(10, 180, 50, 14);
+
+        jLabel5.setText("Date Of Birth");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(10, 230, 63, 14);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel6.setText("Address");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(60, 270, 90, 17);
+
+        jLabel7.setText("Street Line 1");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(10, 320, 61, 14);
+
+        jLabel8.setText("Picture");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(10, 80, 33, 14);
+
+        jLabel9.setText("Street Line 2");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(10, 360, 61, 14);
+
+        jLabel10.setText("City");
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(10, 400, 19, 14);
+
+        jLabel11.setText("State");
+        jPanel1.add(jLabel11);
+        jLabel11.setBounds(10, 440, 26, 14);
+
+        jLabel12.setText("Country");
+        jPanel1.add(jLabel12);
+        jLabel12.setBounds(10, 480, 39, 14);
+
+        jLabel13.setText("Zip Code");
+        jPanel1.add(jLabel13);
+        jLabel13.setBounds(10, 520, 42, 14);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel14.setText("License Details");
+        jPanel1.add(jLabel14);
+        jLabel14.setBounds(300, 30, 120, 17);
+
+        jLabel15.setText("Number");
+        jPanel1.add(jLabel15);
+        jLabel15.setBounds(250, 70, 37, 14);
+
+        jLabel17.setText("Date Of Issue");
+        jPanel1.add(jLabel17);
+        jLabel17.setBounds(250, 150, 67, 14);
+
+        jLabel18.setText("Date of Expiry");
+        jPanel1.add(jLabel18);
+        jLabel18.setBounds(250, 190, 69, 14);
+
+        jLabel19.setText("Class");
+        jPanel1.add(jLabel19);
+        jLabel19.setBounds(250, 110, 25, 14);
+
+        jLabel23.setText("Issued City");
+        jPanel1.add(jLabel23);
+        jLabel23.setBounds(250, 230, 54, 14);
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel16.setText("Credit Card Details");
+        jPanel1.add(jLabel16);
+        jLabel16.setBounds(290, 270, 140, 17);
+
+        jLabel20.setText("Credit Card Number");
+        jPanel1.add(jLabel20);
+        jLabel20.setBounds(230, 320, 95, 14);
+
+        jLabel21.setText("Date of Issue");
+        jPanel1.add(jLabel21);
+        jLabel21.setBounds(230, 370, 65, 14);
+
+        jLabel22.setText("Dateof Expiry");
+        jPanel1.add(jLabel22);
+        jLabel22.setBounds(230, 420, 66, 14);
+
+        jLabel24.setText("Credit Card Type");
+        jPanel1.add(jLabel24);
+        jLabel24.setBounds(230, 470, 82, 14);
+
+        jLabel25.setText("Credit Card Bank");
+        jPanel1.add(jLabel25);
+        jLabel25.setBounds(230, 520, 81, 14);
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel26.setText("Spouse Details");
+        jPanel1.add(jLabel26);
+        jLabel26.setBounds(580, 30, 130, 17);
+
+        jLabel27.setText("First Name");
+        jPanel1.add(jLabel27);
+        jLabel27.setBounds(530, 70, 51, 14);
+
+        jLabel28.setText("Last Name");
+        jPanel1.add(jLabel28);
+        jLabel28.setBounds(530, 110, 50, 14);
+
+        jLabel29.setText("Date Of Birth");
+        jPanel1.add(jLabel29);
+        jLabel29.setBounds(530, 230, 63, 14);
+
+        jLabel30.setText("Ph No");
+        jPanel1.add(jLabel30);
+        jLabel30.setBounds(530, 150, 28, 14);
+
+        jLabel31.setText("Email");
+        jPanel1.add(jLabel31);
+        jLabel31.setBounds(530, 190, 24, 14);
+
+        jLabel32.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel32.setText("Financial Account Details");
+        jPanel1.add(jLabel32);
+        jLabel32.setBounds(600, 270, 180, 17);
+
+        jLabel33.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel33.setText("Checking Account");
+        jPanel1.add(jLabel33);
+        jLabel33.setBounds(520, 310, 100, 14);
+
+        jLabel34.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel34.setText("Savings Account");
+        jPanel1.add(jLabel34);
+        jLabel34.setBounds(740, 310, 93, 14);
+
+        jLabel35.setText("Created Date");
+        jPanel1.add(jLabel35);
+        jLabel35.setBounds(480, 350, 65, 14);
+
+        jLabel36.setText("Created Date");
+        jPanel1.add(jLabel36);
+        jLabel36.setBounds(680, 350, 65, 14);
+
+        jLabel37.setText("Debited Amount");
+        jPanel1.add(jLabel37);
+        jLabel37.setBounds(480, 410, 77, 14);
+
+        jLabel38.setText("Credited Amount");
+        jPanel1.add(jLabel38);
+        jLabel38.setBounds(480, 460, 81, 14);
+
+        jLabel39.setText("Is Active?");
+        jPanel1.add(jLabel39);
+        jLabel39.setBounds(480, 520, 47, 14);
+
+        jLabel40.setText("Debited Amount");
+        jPanel1.add(jLabel40);
+        jLabel40.setBounds(680, 410, 77, 14);
+
+        jLabel41.setText("Credited Amount");
+        jPanel1.add(jLabel41);
+        jLabel41.setBounds(680, 460, 81, 14);
+
+        jLabel42.setText("Is Active?");
+        jPanel1.add(jLabel42);
+        jLabel42.setBounds(690, 520, 47, 10);
+
+        fnameTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fnameTxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(fnameTxt);
+        fnameTxt.setBounds(80, 130, 133, 20);
+        jPanel1.add(strLine1Txt);
+        strLine1Txt.setBounds(79, 314, 133, 20);
+        jPanel1.add(strLine2Txt);
+        strLine2Txt.setBounds(80, 360, 133, 20);
+        jPanel1.add(lNameTxt);
+        lNameTxt.setBounds(80, 180, 133, 20);
+        jPanel1.add(cityTxt);
+        cityTxt.setBounds(80, 400, 133, 20);
+        jPanel1.add(stateTxt);
+        stateTxt.setBounds(80, 440, 133, 20);
+        jPanel1.add(countryTxt);
+        countryTxt.setBounds(80, 480, 133, 20);
+        jPanel1.add(licNotxt);
+        licNotxt.setBounds(340, 70, 133, 20);
+        jPanel1.add(licClassTxt);
+        licClassTxt.setBounds(340, 110, 133, 20);
+
+        dobTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dobTxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(dobTxt);
+        dobTxt.setBounds(80, 230, 133, 20);
+
+        zipCodeTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zipCodeTxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(zipCodeTxt);
+        zipCodeTxt.setBounds(80, 520, 133, 20);
+        jPanel1.add(creCrdNoTxt);
+        creCrdNoTxt.setBounds(330, 320, 133, 20);
+        jPanel1.add(creCrdDateOfIssueTxt);
+        creCrdDateOfIssueTxt.setBounds(330, 370, 133, 20);
+        jPanel1.add(creCrdDateOfExpiryTxt);
+        creCrdDateOfExpiryTxt.setBounds(330, 420, 133, 20);
+        jPanel1.add(creCrdTypeTxt);
+        creCrdTypeTxt.setBounds(330, 470, 133, 20);
+        jPanel1.add(creCrdBankTxt);
+        creCrdBankTxt.setBounds(330, 520, 133, 20);
+        jPanel1.add(licDateOfIssueTxt);
+        licDateOfIssueTxt.setBounds(340, 150, 133, 20);
+        jPanel1.add(licDateOfExpiryTxt);
+        licDateOfExpiryTxt.setBounds(340, 190, 133, 20);
+        jPanel1.add(licIssueCityTxt);
+        licIssueCityTxt.setBounds(340, 230, 133, 20);
+        jPanel1.add(spoLasNameTxt);
+        spoLasNameTxt.setBounds(620, 110, 133, 20);
+
+        spoNumTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                spoNumTxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(spoNumTxt);
+        spoNumTxt.setBounds(620, 150, 133, 20);
+        jPanel1.add(spoEmailTxt);
+        spoEmailTxt.setBounds(620, 190, 133, 20);
+        jPanel1.add(spoDobTxt);
+        spoDobTxt.setBounds(620, 230, 133, 20);
+        jPanel1.add(spoFirNameTxt);
+        spoFirNameTxt.setBounds(620, 70, 133, 20);
+        jPanel1.add(chkAccCreaDateTxt);
+        chkAccCreaDateTxt.setBounds(570, 350, 100, 20);
+        jPanel1.add(chkAccDebtAmtTxt);
+        chkAccDebtAmtTxt.setBounds(570, 410, 100, 20);
+        jPanel1.add(chkAccCreAmtTxt);
+        chkAccCreAmtTxt.setBounds(570, 460, 100, 20);
+        jPanel1.add(svgAccCreaDateTxt);
+        svgAccCreaDateTxt.setBounds(770, 350, 100, 20);
+        jPanel1.add(svgAccDebtAmtTxt);
+        svgAccDebtAmtTxt.setBounds(770, 410, 100, 20);
+        jPanel1.add(svgAccCreAmtTxt);
+        svgAccCreAmtTxt.setBounds(770, 460, 100, 20);
+
+        svgAccActive.setLabel("checkbox1");
+        jPanel1.add(svgAccActive);
+        svgAccActive.setBounds(780, 520, 84, 20);
+
+        chkAccActiveTxt.setLabel("checkbox2");
+        jPanel1.add(chkAccActiveTxt);
+        chkAccActiveTxt.setBounds(570, 520, 84, 20);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 872, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 872, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 562, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fnameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fnameTxtActionPerformed
+
+    private void dobTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dobTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dobTxtActionPerformed
+
+    private void zipCodeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipCodeTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_zipCodeTxtActionPerformed
+
+    private void spoNumTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spoNumTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_spoNumTxtActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Checkbox chkAccActiveTxt;
+    private javax.swing.JTextField chkAccCreAmtTxt;
+    private javax.swing.JTextField chkAccCreaDateTxt;
+    private javax.swing.JTextField chkAccDebtAmtTxt;
+    private javax.swing.JTextField cityTxt;
+    private javax.swing.JTextField countryTxt;
+    private javax.swing.JTextField creCrdBankTxt;
+    private javax.swing.JTextField creCrdDateOfExpiryTxt;
+    private javax.swing.JTextField creCrdDateOfIssueTxt;
+    private javax.swing.JTextField creCrdNoTxt;
+    private javax.swing.JTextField creCrdTypeTxt;
+    private javax.swing.JTextField dobTxt;
+    private javax.swing.JTextField fnameTxt;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField lNameTxt;
+    private javax.swing.JTextField licClassTxt;
+    private javax.swing.JTextField licDateOfExpiryTxt;
+    private javax.swing.JTextField licDateOfIssueTxt;
+    private javax.swing.JTextField licIssueCityTxt;
+    private javax.swing.JTextField licNotxt;
+    private javax.swing.JTextField spoDobTxt;
+    private javax.swing.JTextField spoEmailTxt;
+    private javax.swing.JTextField spoFirNameTxt;
+    private javax.swing.JTextField spoLasNameTxt;
+    private javax.swing.JTextField spoNumTxt;
+    private javax.swing.JTextField stateTxt;
+    private javax.swing.JTextField strLine1Txt;
+    private javax.swing.JTextField strLine2Txt;
+    private java.awt.Checkbox svgAccActive;
+    private javax.swing.JTextField svgAccCreAmtTxt;
+    private javax.swing.JTextField svgAccCreaDateTxt;
+    private javax.swing.JTextField svgAccDebtAmtTxt;
+    private javax.swing.JTextField zipCodeTxt;
     // End of variables declaration//GEN-END:variables
 }
