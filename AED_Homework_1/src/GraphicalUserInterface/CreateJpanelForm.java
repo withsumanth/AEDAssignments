@@ -5,7 +5,13 @@
  */
 package GraphicalUserInterface;
 
+import Business.Address;
+import Business.CreditCard;
+import Business.FinancialAccounts;
+import Business.License;
 import Business.Person;
+import Business.Spouse;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -104,7 +110,7 @@ public class CreateJpanelForm extends javax.swing.JPanel {
         svgAccDebtAmtTxt = new javax.swing.JTextField();
         svgAccCreAmtTxt = new javax.swing.JTextField();
         createButton = new javax.swing.JButton();
-        chkAccCreAmtTxt1 = new javax.swing.JTextField();
+        chkAccCreAmtTxt = new javax.swing.JTextField();
         chkAccActiveTxt = new javax.swing.JTextField();
 
         setLayout(null);
@@ -371,10 +377,15 @@ public class CreateJpanelForm extends javax.swing.JPanel {
         svgAccCreAmtTxt.setBounds(770, 460, 100, 25);
 
         createButton.setText("Create");
+        createButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createButtonActionPerformed(evt);
+            }
+        });
         add(createButton);
         createButton.setBounds(410, 580, 160, 23);
-        add(chkAccCreAmtTxt1);
-        chkAccCreAmtTxt1.setBounds(570, 460, 100, 25);
+        add(chkAccCreAmtTxt);
+        chkAccCreAmtTxt.setBounds(570, 460, 100, 25);
         add(chkAccActiveTxt);
         chkAccActiveTxt.setBounds(570, 510, 100, 25);
     }// </editor-fold>//GEN-END:initComponents
@@ -395,10 +406,70 @@ public class CreateJpanelForm extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_zipCodeTxtActionPerformed
 
+    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
+        Address address = new Address();
+        CreditCard creditCard = new CreditCard();
+        License license = new License();
+        FinancialAccounts financialAccounts = new FinancialAccounts();
+        Spouse spouse = new Spouse();
+        
+        //Set Person Details on Create
+        person.setfName(fnameTxt.getText());
+        person.setlName(lNameTxt.getText());
+        person.setDob(dobTxt.getText());
+        
+        //Set Address Details on Create
+        address.setStrLine1(strLine1Txt.getText());
+        address.setStrLine2(strLine2Txt.getText());
+        address.setCity(cityTxt.getText());
+        address.setState(stateTxt.getText());
+        address.setCountry(countryTxt.getText());
+        address.setZipCode(zipCodeTxt.getText());
+        person.setAddress(address);
+        
+        //Set Credit Card Details on Create
+        creditCard.setCreCrdNo(creCrdNoTxt.getText());
+        creditCard.setCreCrdType(creCrdTypeTxt.getText());
+        creditCard.setCreCrdDateOfIssue(creCrdDateOfIssueTxt.getText());
+        creditCard.setCreCrdDateOfExpiry(creCrdDateOfExpiryTxt.getText());
+        creditCard.setCreCrdBank(creCrdBankTxt.getText());
+        person.setCredCrdInfo(creditCard);
+        
+        //Set License details on Create
+        license.setLicNo(licNotxt.getText());
+        license.setLicDateOfIssue(licDateOfIssueTxt.getText());
+        license.setLicDateOfExpiry(licDateOfExpiryTxt.getText());
+        license.setLicClass(licClassTxt.getText());
+        license.setLicIssueCity(licIssueCityTxt.getText());
+        person.setLicInfo(license);
+        
+        //Set Spouse details on Create
+        spouse.setSpoFirName(spoFirNameTxt.getText());
+        spouse.setSpoLasName(spoLasNameTxt.getText());
+        spouse.setSpoDob(spoDobTxt.getText());
+        spouse.setSpoEmail(spoEmailTxt.getText());
+        spouse.setSpoNum(spoNumTxt.getText());
+        person.setSpoInfo(spouse);
+        
+        //Set Financial Accounts Details on create
+        financialAccounts.setChkAccCreAmt(chkAccCreAmtTxt.getText());
+        financialAccounts.setChkAccCreaDate(chkAccCreaDateTxt.getText());
+        financialAccounts.setChkAccDebtAmt(chkAccDebtAmtTxt.getText());
+        financialAccounts.setChkAccActive(chkAccActiveTxt.getText());
+        financialAccounts.setSvgAccCreAmt(svgAccCreAmtTxt.getText());
+        financialAccounts.setSvgAccCreaDate(svgAccCreaDateTxt.getText());
+        financialAccounts.setSvgAccDebtAmt(svgAccDebtAmtTxt.getText());
+        financialAccounts.setSvgAccActive(svgAccActiveTxt.getText());
+        person.setFinAccInfo(financialAccounts);
+        
+        //To Display message on click of create button
+        JOptionPane.showMessageDialog(null, "Created Person Details Successfully");
+    }//GEN-LAST:event_createButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField chkAccActiveTxt;
-    private javax.swing.JTextField chkAccCreAmtTxt1;
+    private javax.swing.JTextField chkAccCreAmtTxt;
     private javax.swing.JTextField chkAccCreaDateTxt;
     private javax.swing.JTextField chkAccDebtAmtTxt;
     private javax.swing.JTextField cityTxt;

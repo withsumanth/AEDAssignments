@@ -18,6 +18,36 @@ public class ViewJpanelForm extends javax.swing.JPanel {
      */
     public ViewJpanelForm(Person person) {
         initComponents();
+        dispayPersonDetails(person);
+    }
+    
+    private void dispayPersonDetails(Person person){
+        //Set Person Details on View
+        fnameTxt.setText(person.getfName());
+        lNameTxt.setText(person.getlName());
+        dobTxt.setText(person.getDob());
+        
+        //Set Address on View
+        strLine1Txt.setText(person.getAddress().getStrLine1());
+        strLine2Txt.setText(person.getAddress().getStrLine2());
+        cityTxt.setText(person.getAddress().getCity());
+        stateTxt.setText(person.getAddress().getState());
+        zipCodeTxt.setText(person.getAddress().getZipCode());
+        countryTxt.setText(person.getAddress().getCountry());
+        
+        //Set Credit Card details on View
+        creCrdNoTxt.setText(person.getCredCrdInfo().getCreCrdNo());
+        creCrdTypeTxt.setText(person.getCredCrdInfo().getCreCrdType());
+        creCrdDateOfIssueTxt.setText(person.getCredCrdInfo().getCreCrdDateOfIssue());
+        creCrdDateOfExpiryTxt.setText(person.getCredCrdInfo().getCreCrdDateOfExpiry());
+        creCrdBankTxt.setText(person.getCredCrdInfo().getCreCrdBank());
+        
+        //Set License details on View
+        licNotxt.setText(person.getLicInfo().getLicNo());
+        licDateOfIssueTxt.setText(person.getLicInfo().getLicNo());
+        licDateOfExpiryTxt.setText(person.getLicInfo().getLicNo());
+        licClassTxt.setText(person.getLicInfo().getLicNo());
+        licIssueCityTxt.setText(person.getLicInfo().getLicNo());
     }
 
     /**
@@ -101,7 +131,7 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         svgAccCreAmtTxt = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
         stateTxt = new javax.swing.JTextField();
-        chkAccCreAmtTxt1 = new javax.swing.JTextField();
+        chkAccCreAmtTxt = new javax.swing.JTextField();
         chkAccActiveTxt = new javax.swing.JTextField();
 
         setLayout(null);
@@ -366,8 +396,8 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         jLabel42.setBounds(690, 520, 70, 10);
         add(stateTxt);
         stateTxt.setBounds(80, 440, 133, 25);
-        add(chkAccCreAmtTxt1);
-        chkAccCreAmtTxt1.setBounds(570, 460, 100, 25);
+        add(chkAccCreAmtTxt);
+        chkAccCreAmtTxt.setBounds(570, 460, 100, 25);
         add(chkAccActiveTxt);
         chkAccActiveTxt.setBounds(570, 510, 100, 25);
     }// </editor-fold>//GEN-END:initComponents
@@ -391,7 +421,7 @@ public class ViewJpanelForm extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField chkAccActiveTxt;
-    private javax.swing.JTextField chkAccCreAmtTxt1;
+    private javax.swing.JTextField chkAccCreAmtTxt;
     private javax.swing.JTextField chkAccCreaDateTxt;
     private javax.swing.JTextField chkAccDebtAmtTxt;
     private javax.swing.JTextField cityTxt;
