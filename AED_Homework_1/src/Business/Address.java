@@ -10,6 +10,7 @@ package Business;
  * @author Sumanth
  */
 public class Address {
+    String fName;
     String strLine1;
     String strLine2;
     String city;
@@ -19,6 +20,14 @@ public class Address {
 
     public String getStrLine1() {
         return strLine1;
+    }
+
+    public String getfName() {
+        return fName;
+    }
+
+    public void setfName(String fName) {
+        this.fName = fName;
     }
 
     public void setStrLine1(String strLine1) {

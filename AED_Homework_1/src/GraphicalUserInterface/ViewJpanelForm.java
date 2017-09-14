@@ -23,9 +23,11 @@ public class ViewJpanelForm extends javax.swing.JPanel {
     
     private void dispayPersonDetails(Person person){
         //Set Person Details on View
-        fnameTxt.setText(person.getfName());
-        lNameTxt.setText(person.getlName());
-        dobTxt.setText(person.getDob());
+        fnameTxt.setText(person.getAddress().getfName());
+        spoFirNameTxt.setText(person.getAddress1().getfName());
+        /*lNameTxt.setText(person.getlName());
+        dobTxt.setText(person.getDob());*/
+        pictureLabel.setIcon(person.getPersonPicture());
         
         //Set Address on View
         strLine1Txt.setText(person.getAddress().getStrLine1());
@@ -49,12 +51,12 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         licClassTxt.setText(person.getLicInfo().getLicClass());
         licIssueCityTxt.setText(person.getLicInfo().getLicIssueCity());
         
-        //Set Spouse Details on View
+        /*//Set Spouse Details on View
         spoFirNameTxt.setText(person.getSpoInfo().getSpoFirName());
         spoLasNameTxt.setText(person.getSpoInfo().getSpoLasName());
         spoDobTxt.setText(person.getSpoInfo().getSpoDob());
         spoEmailTxt.setText(person.getSpoInfo().getSpoEmail());
-        spoNumTxt.setText(person.getSpoInfo().getSpoNum());
+        spoNumTxt.setText(person.getSpoInfo().getSpoNum());*/
         
         //Set Financial Details on View
         chkAccCreAmtTxt.setText(person.getFinAccInfo().getChkAccCreAmt());
@@ -78,7 +80,6 @@ public class ViewJpanelForm extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -150,6 +151,7 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         stateTxt = new javax.swing.JTextField();
         chkAccCreAmtTxt = new javax.swing.JTextField();
         chkAccActiveTxt = new javax.swing.JTextField();
+        pictureLabel = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -162,10 +164,6 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         jLabel2.setText("Personnel Details");
         add(jLabel2);
         jLabel2.setBounds(37, 35, 131, 17);
-
-        jLabel8.setText("Picture");
-        add(jLabel8);
-        jLabel8.setBounds(10, 80, 80, 14);
 
         jLabel3.setText("First Name");
         add(jLabel3);
@@ -417,6 +415,8 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         chkAccCreAmtTxt.setBounds(570, 460, 100, 27);
         add(chkAccActiveTxt);
         chkAccActiveTxt.setBounds(570, 510, 100, 27);
+        add(pictureLabel);
+        pictureLabel.setBounds(790, 24, 230, 260);
     }// </editor-fold>//GEN-END:initComponents
 
     private void fnameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameTxtActionPerformed
@@ -490,7 +490,6 @@ public class ViewJpanelForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField lNameTxt;
     private javax.swing.JTextField licClassTxt;
@@ -498,6 +497,7 @@ public class ViewJpanelForm extends javax.swing.JPanel {
     private javax.swing.JTextField licDateOfIssueTxt;
     private javax.swing.JTextField licIssueCityTxt;
     private javax.swing.JTextField licNotxt;
+    private javax.swing.JLabel pictureLabel;
     private javax.swing.JTextField spoDobTxt;
     private javax.swing.JTextField spoEmailTxt;
     private javax.swing.JTextField spoFirNameTxt;

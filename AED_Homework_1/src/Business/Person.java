@@ -5,6 +5,8 @@
  */
 package Business;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Sumanth
@@ -13,11 +15,55 @@ public class Person {
     String fName;
     String lName;
     String dob;
+    Address address1;
+    Person details;
+    Person spouse  = null;
+    ImageIcon personPicture;
     Address address;
     CreditCard credCrdInfo;
     License licInfo;
     Spouse spoInfo;
     FinancialAccounts finAccInfo;
+
+    public Person() {
+       address = new Address();
+       address1 = new Address();
+       credCrdInfo = new CreditCard();
+       licInfo = new License();
+       finAccInfo = new FinancialAccounts();
+    }
+
+    public Address getAddress1() {
+        return address1;
+    }
+
+    public void setAddress1(Address address1) {
+        this.address1 = address1;
+    }
+
+    public ImageIcon getPersonPicture() {
+        return personPicture;
+    }
+
+    public Person getDetails() {
+        return details;
+    }
+
+    public void setDetails(Person details) {
+        this.details = details;
+    }
+
+    public Person getSpouse() {
+        return spouse;
+    }
+
+    public void setSpouse(Person spouse) {
+        this.spouse = spouse;
+    }
+
+    public void setPersonPicture(ImageIcon personPicture) {
+        this.personPicture = personPicture;
+    }
 
     public String getfName() {
         return fName;

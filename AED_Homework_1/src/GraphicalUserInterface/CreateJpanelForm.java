@@ -5,12 +5,14 @@
  */
 package GraphicalUserInterface;
 
-import Business.Address;
-import Business.CreditCard;
-import Business.FinancialAccounts;
-import Business.License;
 import Business.Person;
-import Business.Spouse;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,9 +25,14 @@ public class CreateJpanelForm extends javax.swing.JPanel {
      * Creates new form CreateJpanelForm
      */
     private Person person;
+    ImageIcon imageOfPerson;
     public CreateJpanelForm(Person person) {
         initComponents();
         this.person = person;
+    }
+
+    private CreateJpanelForm() {
+        
     }
 
     /**
@@ -112,6 +119,8 @@ public class CreateJpanelForm extends javax.swing.JPanel {
         createButton = new javax.swing.JButton();
         chkAccCreAmtTxt = new javax.swing.JTextField();
         chkAccActiveTxt = new javax.swing.JTextField();
+        pictureBtn = new javax.swing.JButton();
+        pictureLabel = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -388,6 +397,17 @@ public class CreateJpanelForm extends javax.swing.JPanel {
         chkAccCreAmtTxt.setBounds(570, 460, 100, 27);
         add(chkAccActiveTxt);
         chkAccActiveTxt.setBounds(570, 510, 100, 27);
+
+        pictureBtn.setText("Browse");
+        pictureBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pictureBtnActionPerformed(evt);
+            }
+        });
+        add(pictureBtn);
+        pictureBtn.setBounds(90, 80, 90, 23);
+        add(pictureLabel);
+        pictureLabel.setBounds(790, 50, 250, 240);
     }// </editor-fold>//GEN-END:initComponents
 
     private void fnameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameTxtActionPerformed
@@ -407,64 +427,83 @@ public class CreateJpanelForm extends javax.swing.JPanel {
     }//GEN-LAST:event_zipCodeTxtActionPerformed
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
-        Address address = new Address();
-        CreditCard creditCard = new CreditCard();
-        License license = new License();
-        FinancialAccounts financialAccounts = new FinancialAccounts();
-        Spouse spouse = new Spouse();
         
         //Set Person Details on Create
-        person.setfName(fnameTxt.getText());
-        person.setlName(lNameTxt.getText());
-        person.setDob(dobTxt.getText());
+        //person.setfName(fnameTxt.getText());
+        //person.setlName(lNameTxt.getText());
+        //person.setDob(dobTxt.getText());
+        
+        person.getAddress().setfName(fnameTxt.getText());
+        person.getAddress1().setfName(spoFirNameTxt.getText());
+        person.setPersonPicture(imageOfPerson);
         
         //Set Address Details on Create
-        address.setStrLine1(strLine1Txt.getText());
-        address.setStrLine2(strLine2Txt.getText());
-        address.setCity(cityTxt.getText());
-        address.setState(stateTxt.getText());
-        address.setCountry(countryTxt.getText());
-        address.setZipCode(zipCodeTxt.getText());
-        person.setAddress(address);
+        person.getAddress().setStrLine1(strLine1Txt.getText());
+        person.getAddress().setStrLine2(strLine2Txt.getText());
+        person.getAddress().setCity(cityTxt.getText());
+        person.getAddress().setState(stateTxt.getText());
+        person.getAddress().setCountry(countryTxt.getText());
+        person.getAddress().setZipCode(zipCodeTxt.getText());
         
         //Set Credit Card Details on Create
-        creditCard.setCreCrdNo(creCrdNoTxt.getText());
-        creditCard.setCreCrdType(creCrdTypeTxt.getText());
-        creditCard.setCreCrdDateOfIssue(creCrdDateOfIssueTxt.getText());
-        creditCard.setCreCrdDateOfExpiry(creCrdDateOfExpiryTxt.getText());
-        creditCard.setCreCrdBank(creCrdBankTxt.getText());
-        person.setCredCrdInfo(creditCard);
+        person.getCredCrdInfo().setCreCrdNo(creCrdNoTxt.getText());
+        person.getCredCrdInfo().setCreCrdType(creCrdTypeTxt.getText());
+        person.getCredCrdInfo().setCreCrdDateOfIssue(creCrdDateOfIssueTxt.getText());
+        person.getCredCrdInfo().setCreCrdDateOfExpiry(creCrdDateOfExpiryTxt.getText());
+        person.getCredCrdInfo().setCreCrdBank(creCrdBankTxt.getText());
         
         //Set License details on Create
-        license.setLicNo(licNotxt.getText());
-        license.setLicDateOfIssue(licDateOfIssueTxt.getText());
-        license.setLicDateOfExpiry(licDateOfExpiryTxt.getText());
-        license.setLicClass(licClassTxt.getText());
-        license.setLicIssueCity(licIssueCityTxt.getText());
-        person.setLicInfo(license);
+        person.getLicInfo().setLicNo(licNotxt.getText());
+        person.getLicInfo().setLicDateOfIssue(licDateOfIssueTxt.getText());
+        person.getLicInfo().setLicDateOfExpiry(licDateOfExpiryTxt.getText());
+        person.getLicInfo().setLicClass(licClassTxt.getText());
+        person.getLicInfo().setLicIssueCity(licIssueCityTxt.getText());
         
-        //Set Spouse details on Create
+        /*//Set Spouse details on Create
         spouse.setSpoFirName(spoFirNameTxt.getText());
         spouse.setSpoLasName(spoLasNameTxt.getText());
         spouse.setSpoDob(spoDobTxt.getText());
         spouse.setSpoEmail(spoEmailTxt.getText());
         spouse.setSpoNum(spoNumTxt.getText());
-        person.setSpoInfo(spouse);
+        person.setSpoInfo(spouse);*/
         
         //Set Financial Accounts Details on create
-        financialAccounts.setChkAccCreAmt(chkAccCreAmtTxt.getText());
-        financialAccounts.setChkAccCreaDate(chkAccCreaDateTxt.getText());
-        financialAccounts.setChkAccDebtAmt(chkAccDebtAmtTxt.getText());
-        financialAccounts.setChkAccActive(chkAccActiveTxt.getText());
-        financialAccounts.setSvgAccCreAmt(svgAccCreAmtTxt.getText());
-        financialAccounts.setSvgAccCreaDate(svgAccCreaDateTxt.getText());
-        financialAccounts.setSvgAccDebtAmt(svgAccDebtAmtTxt.getText());
-        financialAccounts.setSvgAccActive(svgAccActiveTxt.getText());
-        person.setFinAccInfo(financialAccounts);
+        person.getFinAccInfo().setChkAccCreAmt(chkAccCreAmtTxt.getText());
+        person.getFinAccInfo().setChkAccCreaDate(chkAccCreaDateTxt.getText());
+        person.getFinAccInfo().setChkAccDebtAmt(chkAccDebtAmtTxt.getText());
+        person.getFinAccInfo().setChkAccActive(chkAccActiveTxt.getText());
+        person.getFinAccInfo().setSvgAccCreAmt(svgAccCreAmtTxt.getText());
+        person.getFinAccInfo().setSvgAccCreaDate(svgAccCreaDateTxt.getText());
+        person.getFinAccInfo().setSvgAccDebtAmt(svgAccDebtAmtTxt.getText());
+        person.getFinAccInfo().setSvgAccActive(svgAccActiveTxt.getText());
         
         //To Display message on click of create button
         JOptionPane.showMessageDialog(null, "Created Person Details Successfully");
     }//GEN-LAST:event_createButtonActionPerformed
+
+    private void pictureBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pictureBtnActionPerformed
+        BufferedImage image = null;
+    try 
+    {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.showOpenDialog(null);
+        File fileBrowsed=fileChooser.getSelectedFile();
+        image = ImageIO.read(fileBrowsed);
+        int labelWidth = pictureLabel.getWidth();
+	int labelHeight = pictureLabel.getHeight();
+	BufferedImage resizedImage = new BufferedImage(labelWidth,labelHeight,BufferedImage.TYPE_INT_RGB);
+	Graphics2D grapgics2D = resizedImage.createGraphics();
+	grapgics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+	grapgics2D.drawImage(image, 0, 0,labelWidth,labelHeight,null);
+	grapgics2D.dispose();
+        imageOfPerson = new ImageIcon(resizedImage);
+	pictureLabel.setIcon(imageOfPerson);
+    } catch (Exception e) 
+    {
+        e.printStackTrace();
+    }
+	
+    }//GEN-LAST:event_pictureBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -530,6 +569,8 @@ public class CreateJpanelForm extends javax.swing.JPanel {
     private javax.swing.JTextField licDateOfIssueTxt;
     private javax.swing.JTextField licIssueCityTxt;
     private javax.swing.JTextField licNotxt;
+    private javax.swing.JButton pictureBtn;
+    private javax.swing.JLabel pictureLabel;
     private javax.swing.JTextField spoDobTxt;
     private javax.swing.JTextField spoEmailTxt;
     private javax.swing.JTextField spoFirNameTxt;
