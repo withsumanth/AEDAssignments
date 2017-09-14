@@ -22,11 +22,12 @@ public class ViewJpanelForm extends javax.swing.JPanel {
     }
     
     private void dispayPersonDetails(Person person){
+        
         //Set Person Details on View
         fnameTxt.setText(person.getAddress().getfName());
-        spoFirNameTxt.setText(person.getAddress1().getfName());
-        /*lNameTxt.setText(person.getlName());
-        dobTxt.setText(person.getDob());*/
+        lNameTxt.setText(person.getAddress().getlName());
+        dobTxt.setText(person.getAddress().getDob());
+        phNoTxt.setText(person.getAddress().getPhNo());
         pictureLabel.setIcon(person.getPersonPicture());
         
         //Set Address on View
@@ -51,12 +52,11 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         licClassTxt.setText(person.getLicInfo().getLicClass());
         licIssueCityTxt.setText(person.getLicInfo().getLicIssueCity());
         
-        /*//Set Spouse Details on View
-        spoFirNameTxt.setText(person.getSpoInfo().getSpoFirName());
-        spoLasNameTxt.setText(person.getSpoInfo().getSpoLasName());
-        spoDobTxt.setText(person.getSpoInfo().getSpoDob());
-        spoEmailTxt.setText(person.getSpoInfo().getSpoEmail());
-        spoNumTxt.setText(person.getSpoInfo().getSpoNum());*/
+        //Set Spouse Details on View
+        spoFirNameTxt.setText(person.getSpouseDetails().getfName());
+        spoLasNameTxt.setText(person.getSpouseDetails().getlName());
+        spoDobTxt.setText(person.getSpouseDetails().getDob());
+        spoPhNoTxt.setText(person.getSpouseDetails().getPhNo());
         
         //Set Financial Details on View
         chkAccCreAmtTxt.setText(person.getFinAccInfo().getChkAccCreAmt());
@@ -100,13 +100,9 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         spoFirNameTxt = new javax.swing.JTextField();
         spoLasNameTxt = new javax.swing.JTextField();
-        spoNumTxt = new javax.swing.JTextField();
-        spoEmailTxt = new javax.swing.JTextField();
         spoDobTxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -152,6 +148,10 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         chkAccCreAmtTxt = new javax.swing.JTextField();
         chkAccActiveTxt = new javax.swing.JTextField();
         pictureLabel = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        spoPhNoTxt = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        phNoTxt = new javax.swing.JTextField();
 
         setLayout(null);
 
@@ -167,15 +167,15 @@ public class ViewJpanelForm extends javax.swing.JPanel {
 
         jLabel3.setText("First Name");
         add(jLabel3);
-        jLabel3.setBounds(10, 130, 80, 14);
+        jLabel3.setBounds(10, 80, 80, 14);
 
         jLabel4.setText("Last Name");
         add(jLabel4);
-        jLabel4.setBounds(10, 180, 80, 14);
+        jLabel4.setBounds(10, 140, 80, 14);
 
         jLabel5.setText("Date Of Birth");
         add(jLabel5);
-        jLabel5.setBounds(10, 230, 80, 14);
+        jLabel5.setBounds(10, 230, 80, 20);
 
         fnameTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,7 +183,7 @@ public class ViewJpanelForm extends javax.swing.JPanel {
             }
         });
         add(fnameTxt);
-        fnameTxt.setBounds(80, 130, 133, 27);
+        fnameTxt.setBounds(80, 70, 133, 27);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel14.setText("License Details");
@@ -194,7 +194,7 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         add(jLabel15);
         jLabel15.setBounds(250, 70, 80, 14);
         add(lNameTxt);
-        lNameTxt.setBounds(80, 180, 133, 27);
+        lNameTxt.setBounds(80, 130, 133, 27);
 
         dobTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,15 +241,7 @@ public class ViewJpanelForm extends javax.swing.JPanel {
 
         jLabel28.setText("Last Name");
         add(jLabel28);
-        jLabel28.setBounds(530, 110, 80, 14);
-
-        jLabel30.setText("Ph No");
-        add(jLabel30);
-        jLabel30.setBounds(530, 150, 80, 14);
-
-        jLabel31.setText("Email");
-        add(jLabel31);
-        jLabel31.setBounds(530, 190, 80, 14);
+        jLabel28.setBounds(530, 124, 80, 20);
 
         jLabel29.setText("Date Of Birth");
         add(jLabel29);
@@ -257,17 +249,7 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         add(spoFirNameTxt);
         spoFirNameTxt.setBounds(620, 70, 133, 27);
         add(spoLasNameTxt);
-        spoLasNameTxt.setBounds(620, 110, 133, 27);
-
-        spoNumTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                spoNumTxtActionPerformed(evt);
-            }
-        });
-        add(spoNumTxt);
-        spoNumTxt.setBounds(620, 150, 133, 27);
-        add(spoEmailTxt);
-        spoEmailTxt.setBounds(620, 190, 133, 27);
+        spoLasNameTxt.setBounds(620, 120, 133, 27);
         add(spoDobTxt);
         spoDobTxt.setBounds(620, 230, 133, 27);
 
@@ -417,6 +399,18 @@ public class ViewJpanelForm extends javax.swing.JPanel {
         chkAccActiveTxt.setBounds(570, 510, 100, 27);
         add(pictureLabel);
         pictureLabel.setBounds(790, 24, 230, 260);
+
+        jLabel31.setText("Phone No");
+        add(jLabel31);
+        jLabel31.setBounds(530, 180, 80, 14);
+        add(spoPhNoTxt);
+        spoPhNoTxt.setBounds(620, 170, 133, 27);
+
+        jLabel8.setText("Phone No");
+        add(jLabel8);
+        jLabel8.setBounds(10, 184, 80, 20);
+        add(phNoTxt);
+        phNoTxt.setBounds(80, 180, 133, 27);
     }// </editor-fold>//GEN-END:initComponents
 
     private void fnameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameTxtActionPerformed
@@ -426,10 +420,6 @@ public class ViewJpanelForm extends javax.swing.JPanel {
     private void dobTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dobTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dobTxtActionPerformed
-
-    private void spoNumTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spoNumTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_spoNumTxtActionPerformed
 
     private void zipCodeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipCodeTxtActionPerformed
         // TODO add your handling code here:
@@ -473,7 +463,6 @@ public class ViewJpanelForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -490,6 +479,7 @@ public class ViewJpanelForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField lNameTxt;
     private javax.swing.JTextField licClassTxt;
@@ -497,12 +487,12 @@ public class ViewJpanelForm extends javax.swing.JPanel {
     private javax.swing.JTextField licDateOfIssueTxt;
     private javax.swing.JTextField licIssueCityTxt;
     private javax.swing.JTextField licNotxt;
+    private javax.swing.JTextField phNoTxt;
     private javax.swing.JLabel pictureLabel;
     private javax.swing.JTextField spoDobTxt;
-    private javax.swing.JTextField spoEmailTxt;
     private javax.swing.JTextField spoFirNameTxt;
     private javax.swing.JTextField spoLasNameTxt;
-    private javax.swing.JTextField spoNumTxt;
+    private javax.swing.JTextField spoPhNoTxt;
     private javax.swing.JTextField stateTxt;
     private javax.swing.JTextField strLine1Txt;
     private javax.swing.JTextField strLine2Txt;

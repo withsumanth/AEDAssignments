@@ -73,8 +73,6 @@ public class CreateJpanelForm extends javax.swing.JPanel {
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
@@ -89,7 +87,7 @@ public class CreateJpanelForm extends javax.swing.JPanel {
         fnameTxt = new javax.swing.JTextField();
         strLine1Txt = new javax.swing.JTextField();
         strLine2Txt = new javax.swing.JTextField();
-        lNameTxt = new javax.swing.JTextField();
+        phNoTxt = new javax.swing.JTextField();
         cityTxt = new javax.swing.JTextField();
         stateTxt = new javax.swing.JTextField();
         countryTxt = new javax.swing.JTextField();
@@ -106,8 +104,6 @@ public class CreateJpanelForm extends javax.swing.JPanel {
         licDateOfExpiryTxt = new javax.swing.JTextField();
         licIssueCityTxt = new javax.swing.JTextField();
         spoLasNameTxt = new javax.swing.JTextField();
-        spoNumTxt = new javax.swing.JTextField();
-        spoEmailTxt = new javax.swing.JTextField();
         spoDobTxt = new javax.swing.JTextField();
         spoFirNameTxt = new javax.swing.JTextField();
         chkAccCreaDateTxt = new javax.swing.JTextField();
@@ -121,6 +117,10 @@ public class CreateJpanelForm extends javax.swing.JPanel {
         chkAccActiveTxt = new javax.swing.JTextField();
         pictureBtn = new javax.swing.JButton();
         pictureLabel = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        lNameTxt = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
+        spoPhNoTxt = new javax.swing.JTextField();
 
         setLayout(null);
 
@@ -136,15 +136,15 @@ public class CreateJpanelForm extends javax.swing.JPanel {
 
         jLabel3.setText("First Name");
         add(jLabel3);
-        jLabel3.setBounds(10, 130, 80, 14);
+        jLabel3.setBounds(10, 110, 80, 14);
 
-        jLabel4.setText("Last Name");
+        jLabel4.setText("Phone No");
         add(jLabel4);
-        jLabel4.setBounds(10, 180, 80, 14);
+        jLabel4.setBounds(10, 190, 80, 14);
 
         jLabel5.setText("Date Of Birth");
         add(jLabel5);
-        jLabel5.setBounds(10, 230, 80, 14);
+        jLabel5.setBounds(10, 230, 80, 20);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel6.setText("Address");
@@ -157,7 +157,7 @@ public class CreateJpanelForm extends javax.swing.JPanel {
 
         jLabel8.setText("Picture");
         add(jLabel8);
-        jLabel8.setBounds(10, 80, 80, 14);
+        jLabel8.setBounds(10, 70, 80, 14);
 
         jLabel9.setText("Street Line 2");
         add(jLabel9);
@@ -236,23 +236,15 @@ public class CreateJpanelForm extends javax.swing.JPanel {
 
         jLabel27.setText("First Name");
         add(jLabel27);
-        jLabel27.setBounds(530, 70, 80, 14);
+        jLabel27.setBounds(530, 74, 80, 20);
 
         jLabel28.setText("Last Name");
         add(jLabel28);
-        jLabel28.setBounds(530, 110, 80, 14);
+        jLabel28.setBounds(530, 120, 80, 20);
 
         jLabel29.setText("Date Of Birth");
         add(jLabel29);
-        jLabel29.setBounds(530, 230, 80, 14);
-
-        jLabel30.setText("Ph No");
-        add(jLabel30);
-        jLabel30.setBounds(530, 150, 80, 14);
-
-        jLabel31.setText("Email");
-        add(jLabel31);
-        jLabel31.setBounds(530, 190, 80, 14);
+        jLabel29.setBounds(530, 234, 80, 20);
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel32.setText("Financial Account Details");
@@ -307,13 +299,13 @@ public class CreateJpanelForm extends javax.swing.JPanel {
             }
         });
         add(fnameTxt);
-        fnameTxt.setBounds(80, 130, 133, 27);
+        fnameTxt.setBounds(80, 110, 133, 27);
         add(strLine1Txt);
         strLine1Txt.setBounds(79, 314, 133, 27);
         add(strLine2Txt);
         strLine2Txt.setBounds(80, 360, 133, 27);
-        add(lNameTxt);
-        lNameTxt.setBounds(80, 180, 133, 27);
+        add(phNoTxt);
+        phNoTxt.setBounds(80, 190, 133, 27);
         add(cityTxt);
         cityTxt.setBounds(80, 400, 133, 27);
         add(stateTxt);
@@ -357,17 +349,7 @@ public class CreateJpanelForm extends javax.swing.JPanel {
         add(licIssueCityTxt);
         licIssueCityTxt.setBounds(340, 230, 133, 27);
         add(spoLasNameTxt);
-        spoLasNameTxt.setBounds(620, 110, 133, 27);
-
-        spoNumTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                spoNumTxtActionPerformed(evt);
-            }
-        });
-        add(spoNumTxt);
-        spoNumTxt.setBounds(620, 150, 133, 27);
-        add(spoEmailTxt);
-        spoEmailTxt.setBounds(620, 190, 133, 27);
+        spoLasNameTxt.setBounds(620, 120, 133, 27);
         add(spoDobTxt);
         spoDobTxt.setBounds(620, 230, 133, 27);
         add(spoFirNameTxt);
@@ -405,9 +387,21 @@ public class CreateJpanelForm extends javax.swing.JPanel {
             }
         });
         add(pictureBtn);
-        pictureBtn.setBounds(90, 80, 90, 23);
+        pictureBtn.setBounds(90, 70, 90, 23);
         add(pictureLabel);
         pictureLabel.setBounds(790, 50, 250, 240);
+
+        jLabel30.setText("Last Name");
+        add(jLabel30);
+        jLabel30.setBounds(10, 150, 80, 14);
+        add(lNameTxt);
+        lNameTxt.setBounds(80, 150, 133, 27);
+
+        jLabel31.setText("Phone No");
+        add(jLabel31);
+        jLabel31.setBounds(530, 180, 80, 20);
+        add(spoPhNoTxt);
+        spoPhNoTxt.setBounds(620, 180, 133, 27);
     }// </editor-fold>//GEN-END:initComponents
 
     private void fnameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameTxtActionPerformed
@@ -418,10 +412,6 @@ public class CreateJpanelForm extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_dobTxtActionPerformed
 
-    private void spoNumTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spoNumTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_spoNumTxtActionPerformed
-
     private void zipCodeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipCodeTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_zipCodeTxtActionPerformed
@@ -429,13 +419,17 @@ public class CreateJpanelForm extends javax.swing.JPanel {
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         
         //Set Person Details on Create
-        //person.setfName(fnameTxt.getText());
-        //person.setlName(lNameTxt.getText());
-        //person.setDob(dobTxt.getText());
-        
         person.getAddress().setfName(fnameTxt.getText());
-        person.getAddress1().setfName(spoFirNameTxt.getText());
+        person.getAddress().setlName(lNameTxt.getText());
+        person.getAddress().setDob(dobTxt.getText());
+        person.getAddress().setPhNo(phNoTxt.getText());
         person.setPersonPicture(imageOfPerson);
+        
+        //Set Spouse details on Create
+        person.getSpouseDetails().setfName(spoFirNameTxt.getText());
+        person.getSpouseDetails().setlName(spoLasNameTxt.getText());
+        person.getSpouseDetails().setDob(spoDobTxt.getText());
+        person.getSpouseDetails().setPhNo(spoPhNoTxt.getText());
         
         //Set Address Details on Create
         person.getAddress().setStrLine1(strLine1Txt.getText());
@@ -458,14 +452,6 @@ public class CreateJpanelForm extends javax.swing.JPanel {
         person.getLicInfo().setLicDateOfExpiry(licDateOfExpiryTxt.getText());
         person.getLicInfo().setLicClass(licClassTxt.getText());
         person.getLicInfo().setLicIssueCity(licIssueCityTxt.getText());
-        
-        /*//Set Spouse details on Create
-        spouse.setSpoFirName(spoFirNameTxt.getText());
-        spouse.setSpoLasName(spoLasNameTxt.getText());
-        spouse.setSpoDob(spoDobTxt.getText());
-        spouse.setSpoEmail(spoEmailTxt.getText());
-        spouse.setSpoNum(spoNumTxt.getText());
-        person.setSpoInfo(spouse);*/
         
         //Set Financial Accounts Details on create
         person.getFinAccInfo().setChkAccCreAmt(chkAccCreAmtTxt.getText());
@@ -569,13 +555,13 @@ public class CreateJpanelForm extends javax.swing.JPanel {
     private javax.swing.JTextField licDateOfIssueTxt;
     private javax.swing.JTextField licIssueCityTxt;
     private javax.swing.JTextField licNotxt;
+    private javax.swing.JTextField phNoTxt;
     private javax.swing.JButton pictureBtn;
     private javax.swing.JLabel pictureLabel;
     private javax.swing.JTextField spoDobTxt;
-    private javax.swing.JTextField spoEmailTxt;
     private javax.swing.JTextField spoFirNameTxt;
     private javax.swing.JTextField spoLasNameTxt;
-    private javax.swing.JTextField spoNumTxt;
+    private javax.swing.JTextField spoPhNoTxt;
     private javax.swing.JTextField stateTxt;
     private javax.swing.JTextField strLine1Txt;
     private javax.swing.JTextField strLine2Txt;

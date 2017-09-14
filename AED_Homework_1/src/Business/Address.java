@@ -11,12 +11,39 @@ package Business;
  */
 public class Address {
     String fName;
+    String lName;
+    String dob;
+    String phNo;
     String strLine1;
     String strLine2;
     String city;
     String state;
     String zipCode;
     String country;
+
+    public String getPhNo() {
+        return phNo;
+    }
+
+    public void setPhNo(String phNo) {
+        this.phNo = phNo;
+    }
+
+    public String getlName() {
+        return lName;
+    }
+
+    public void setlName(String lName) {
+        this.lName = lName;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
 
     public String getStrLine1() {
         return strLine1;
