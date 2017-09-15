@@ -14,7 +14,7 @@ public class Product {
     private String nameOfProduct;
     private String priceOfProduct;
     private String availablityNum;
-    private String descOfProduct;
+    private String descOfProduct; 
 
     public String getNameOfProduct() {
         return nameOfProduct;
