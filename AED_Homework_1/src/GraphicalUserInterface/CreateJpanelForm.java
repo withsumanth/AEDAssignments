@@ -463,6 +463,7 @@ public class CreateJpanelForm extends javax.swing.JPanel {
         person.getFinAccInfo().setSvgAccDebtAmt(svgAccDebtAmtTxt.getText());
         person.getFinAccInfo().setSvgAccActive(svgAccActiveTxt.getText());
         
+        
         //To Display message on click of create button
         JOptionPane.showMessageDialog(null, "Created Person Details Successfully");
     }//GEN-LAST:event_createButtonActionPerformed
