@@ -5,6 +5,10 @@
  */
 package Interface;
 
+import Business.VitalSignHistory;
+import Business.VitalSigns;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Sumanth
@@ -14,8 +18,10 @@ public class CreateJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateJPanel
      */
-    public CreateJPanel() {
+    private VitalSignHistory vitSignHist;
+    public CreateJPanel(VitalSignHistory vitSignHist) {
         initComponents();
+        this.vitSignHist = vitSignHist; 
     }
 
     /**
@@ -74,6 +80,11 @@ public class CreateJPanel extends javax.swing.JPanel {
         jLabel5.setText("Create Vital Signs");
 
         saveJBtn.setText("Save");
+        saveJBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveJBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -149,6 +160,24 @@ public class CreateJPanel extends javax.swing.JPanel {
     private void dateTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dateTxtActionPerformed
+
+    private void saveJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveJBtnActionPerformed
+        // TODO add your handling code here:
+        double temp = Double.parseDouble(tempTxt.getText());
+        double bloodPre = Double.parseDouble(bloodPreTxt.getText());
+        int pulse = Integer.parseInt(pulseTxt.getText());
+        String date = dateTxt.getText();
+        VitalSigns vs = vitSignHist.addVitalSigns();
+        vs.setBloodPre(bloodPre);
+        vs.setPulse(pulse);
+        vs.setTemp(temp);
+        vs.setDate(date);
+        JOptionPane.showMessageDialog(null, "Vital Signs added Succussfully");
+        tempTxt.setText("");
+        bloodPreTxt.setText("");
+        pulseTxt.setText("");
+        dateTxt.setText("");
+    }//GEN-LAST:event_saveJBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

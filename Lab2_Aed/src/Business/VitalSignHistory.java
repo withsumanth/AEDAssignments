@@ -25,4 +25,10 @@ public class VitalSignHistory {
     public void setVitSignHist(ArrayList<VitalSigns> vitSignHist) {
         this.vitSignHist = vitSignHist;
     }
+    
+    public VitalSigns addVitalSigns(){
+        VitalSigns vitalSigns = new VitalSigns();
+        vitSignHist.add(vitalSigns);
+        return vitalSigns;
+    }
 }

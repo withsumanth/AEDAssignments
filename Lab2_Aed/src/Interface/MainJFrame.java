@@ -40,6 +40,11 @@ public class MainJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         createJBtn.setText("Create Vital Signs");
+        createJBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createJBtnActionPerformed(evt);
+            }
+        });
 
         viewJBtn.setText("View Vital Signs");
 
@@ -92,6 +97,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void createJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createJBtnActionPerformed
+            CreateJPanel createjPanel = new CreateJPanel(vitSignHist);
+            jSplitPane.setRightComponent(createjPanel);
+    }//GEN-LAST:event_createJBtnActionPerformed
 
     /**
      * @param args the command line arguments
