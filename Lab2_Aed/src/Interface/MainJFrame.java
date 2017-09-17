@@ -47,6 +47,11 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         viewJBtn.setText("View Vital Signs");
+        viewJBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewJBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout leftJPanelLayout = new javax.swing.GroupLayout(leftJPanel);
         leftJPanel.setLayout(leftJPanelLayout);
@@ -102,6 +107,12 @@ public class MainJFrame extends javax.swing.JFrame {
             CreateJPanel createjPanel = new CreateJPanel(vitSignHist);
             jSplitPane.setRightComponent(createjPanel);
     }//GEN-LAST:event_createJBtnActionPerformed
+
+    private void viewJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewJBtnActionPerformed
+        // TODO add your handling code here:
+        ViewJPanel viewJPanel = new  ViewJPanel(vitSignHist);
+        jSplitPane.setRightComponent(viewJPanel);
+    }//GEN-LAST:event_viewJBtnActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,10 @@
  */
 package Interface;
 
+import Business.VitalSignHistory;
+import Business.VitalSigns;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Sumanth
@@ -14,8 +18,22 @@ public class ViewJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewJPanel
      */
-    public ViewJPanel() {
+    private VitalSignHistory vitSignHist;
+    public ViewJPanel(VitalSignHistory vitSignHist) {
         initComponents();
+        this.vitSignHist = vitSignHist;
+        populateJTable();
+    }
+    
+    public void populateJTable(){
+        DefaultTableModel defTabModel = (DefaultTableModel) tableVitSign.getModel();
+        defTabModel.setRowCount(0);
+        for(VitalSigns vs : vitSignHist.getVitSignHist() ){
+            Object row[] = new Object[2];
+            row[0] = vs;
+            row[1] = vs.getBloodPre();
+            defTabModel.addRow(row);
+        }
     }
 
     /**
