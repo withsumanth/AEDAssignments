@@ -173,12 +173,15 @@ public class CreateJPanel extends javax.swing.JPanel {
         vs.setTemp(temp);
         vs.setDate(date);
         JOptionPane.showMessageDialog(null, "Vital Signs added Succussfully");
+        emptyTextBox();
+    }//GEN-LAST:event_saveJBtnActionPerformed
+        
+    public void emptyTextBox(){
         tempTxt.setText("");
         bloodPreTxt.setText("");
         pulseTxt.setText("");
         dateTxt.setText("");
-    }//GEN-LAST:event_saveJBtnActionPerformed
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bloodPreTxt;

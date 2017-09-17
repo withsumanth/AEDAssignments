@@ -205,10 +205,17 @@ public class ViewJPanel extends javax.swing.JPanel {
             vitSignHist.deleteVitalSigns(vitalSigns);
             JOptionPane.showMessageDialog(null, "Vital Sign deleted Successfully");
             populateJTable();
+            emptyTextBox();
         }else{
             JOptionPane.showMessageDialog(null, "Please select any row");
         }
+    }
         
+    public void emptyTextBox(){
+        tempTxt.setText("");
+        bloodPreTxt.setText("");
+        pulseTxt.setText("");
+        dateTxt.setText("");
     }//GEN-LAST:event_delVitJBtnActionPerformed
 
     private void tempTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempTxtActionPerformed
