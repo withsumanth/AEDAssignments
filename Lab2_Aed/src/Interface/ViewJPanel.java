@@ -199,6 +199,16 @@ public class ViewJPanel extends javax.swing.JPanel {
 
     private void delVitJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delVitJBtnActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tableVitSign.getSelectedRow();
+        if(selectedRow>=0){
+            VitalSigns vitalSigns = (VitalSigns) tableVitSign.getValueAt(selectedRow, 0);
+            vitSignHist.deleteVitalSigns(vitalSigns);
+            JOptionPane.showMessageDialog(null, "Vital Sign deleted Successfully");
+            populateJTable();
+        }else{
+            JOptionPane.showMessageDialog(null, "Please select any row");
+        }
+        
     }//GEN-LAST:event_delVitJBtnActionPerformed
 
     private void tempTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempTxtActionPerformed

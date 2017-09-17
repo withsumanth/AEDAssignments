@@ -31,4 +31,8 @@ public class VitalSignHistory {
         vitSignHist.add(vitalSigns);
         return vitalSigns;
     }
+    
+    public void deleteVitalSigns(VitalSigns v){
+        vitSignHist.remove(v);
+    }
 }
