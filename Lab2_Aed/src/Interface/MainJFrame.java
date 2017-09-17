@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import Business.VitalSignHistory;
+
 /**
  *
  * @author Sumanth
@@ -14,8 +16,10 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    private VitalSignHistory vitSignHist;
     public MainJFrame() {
         initComponents();
+        vitSignHist = new VitalSignHistory();
     }
 
     /**
@@ -27,47 +31,63 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jSplitPane = new javax.swing.JSplitPane();
+        leftJPanel = new javax.swing.JPanel();
+        createJBtn = new javax.swing.JButton();
+        viewJBtn = new javax.swing.JButton();
+        rightJPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        createJBtn.setText("Create Vital Signs");
+
+        viewJBtn.setText("View Vital Signs");
+
+        javax.swing.GroupLayout leftJPanelLayout = new javax.swing.GroupLayout(leftJPanel);
+        leftJPanel.setLayout(leftJPanelLayout);
+        leftJPanelLayout.setHorizontalGroup(
+            leftJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(leftJPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(leftJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(createJBtn)
+                    .addComponent(viewJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 511, Short.MAX_VALUE)
+        leftJPanelLayout.setVerticalGroup(
+            leftJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(leftJPanelLayout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(createJBtn)
+                .addGap(73, 73, 73)
+                .addComponent(viewJBtn)
+                .addContainerGap(256, Short.MAX_VALUE))
         );
 
-        jSplitPane1.setLeftComponent(jPanel1);
+        jSplitPane.setLeftComponent(leftJPanel);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout rightJPanelLayout = new javax.swing.GroupLayout(rightJPanel);
+        rightJPanel.setLayout(rightJPanelLayout);
+        rightJPanelLayout.setHorizontalGroup(
+            rightJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 547, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        rightJPanelLayout.setVerticalGroup(
+            rightJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 511, Short.MAX_VALUE)
         );
 
-        jSplitPane1.setRightComponent(jPanel2);
+        jSplitPane.setRightComponent(rightJPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
+            .addComponent(jSplitPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane)
         );
 
         pack();
@@ -109,8 +129,10 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JButton createJBtn;
+    private javax.swing.JSplitPane jSplitPane;
+    private javax.swing.JPanel leftJPanel;
+    private javax.swing.JPanel rightJPanel;
+    private javax.swing.JButton viewJBtn;
     // End of variables declaration//GEN-END:variables
 }
