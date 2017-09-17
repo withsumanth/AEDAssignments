@@ -7,6 +7,7 @@ package Interface;
 
 import Business.VitalSignHistory;
 import Business.VitalSigns;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -81,6 +82,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tableVitSign);
 
         viewVitJBtn.setText("View Details");
+        viewVitJBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewVitJBtnActionPerformed(evt);
+            }
+        });
 
         delVitJBtn.setText("Delete Details");
         delVitJBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -210,6 +216,20 @@ public class ViewJPanel extends javax.swing.JPanel {
     private void dateTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dateTxtActionPerformed
+
+    private void viewVitJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewVitJBtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tableVitSign.getSelectedRow();
+        if(selectedRow>=0){
+            VitalSigns vitalSigns = (VitalSigns) tableVitSign.getValueAt(selectedRow, 0);
+            bloodPreTxt.setText(String.valueOf(vitalSigns.getBloodPre()));
+            dateTxt.setText(vitalSigns.getDate());
+            tempTxt.setText(String.valueOf(vitalSigns.getTemp()));
+            pulseTxt.setText(String.valueOf(vitalSigns.getPulse()));
+        }else{
+            JOptionPane.showMessageDialog(null, "Please select any row");
+        }
+    }//GEN-LAST:event_viewVitJBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
