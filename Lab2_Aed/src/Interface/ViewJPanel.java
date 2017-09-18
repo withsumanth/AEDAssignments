@@ -33,7 +33,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             Object row[] = new Object[2];
             row[0] = vs;
             row[1] = vs.getBloodPre();
-            defTabModel.addRow(row);
+            defTabModel.addRow(row); 
         }
     }
 
