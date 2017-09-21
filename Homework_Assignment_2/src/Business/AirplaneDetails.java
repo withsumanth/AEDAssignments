@@ -18,11 +18,19 @@ public class AirplaneDetails {
     private int numOfSeats;
     private double serNo;
     private double modelNo;
-    private String timeOfFleetCat;
+    private Date timeOfFleetCat;
     private String maintCertExp;
     private String availablity;
     private String airportName;
     private String manuName;
+
+    public Date getTimeOfFleetCat() {
+        return timeOfFleetCat;
+    }
+
+    public void setTimeOfFleetCat(Date timeOfFleetCat) {
+        this.timeOfFleetCat = timeOfFleetCat;
+    }
 
     public Date getDateOfFly() {
         return dateOfFly;
@@ -78,14 +86,6 @@ public class AirplaneDetails {
 
     public void setModelNo(double modelNo) {
         this.modelNo = modelNo;
-    }
-
-    public String getTimeOfFleetCat() {
-        return timeOfFleetCat;
-    }
-
-    public void setTimeOfFleetCat(String timeOfFleetCat) {
-        this.timeOfFleetCat = timeOfFleetCat;
     }
 
     public String getMaintCertExp() {

@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextField;
@@ -252,11 +253,11 @@ public class CreateJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(jPanelFromData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(536, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(102, 102, 102)
                 .addComponent(jPanelFromFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(415, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(271, 271, 271)
                 .addComponent(saveJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -304,20 +305,42 @@ public class CreateJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_airplaneNameTxtActionPerformed
 
     private void saveJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveJBtnActionPerformed
-       if(createPlaneDet.getSelectedItem().equals("From File")){
+       AirplaneDetails airDet = airplaneDetailsHist.addDetails();
+       SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        if(createPlaneDet.getSelectedItem().equals("From File")){
+           String[] pp1= {"setAirplaneName","setDateOfFly"};
+           String[] pp2= {"airplaneNameTxt.getText()","formatter.parse(dateOfFlyTxt.getText())"};
            String csvFile = "AirplaneDetails.csv";
 	        BufferedReader bufferedReader = null;
 	        String line = "";
 	        String cvsSplitBy = ",";
 	        try {
 	            bufferedReader = new BufferedReader(new FileReader(csvFile));
+                    ArrayList<String[]> dataCsvArr = new ArrayList();
+                    int count = 0;
 	            while ((line = bufferedReader.readLine()) != null) {
 	                String[] dataFromCsv = line.split(cvsSplitBy);
-                        System.out.println(dataFromCsv);
-	                /*for(int i=0;i<dataFromCsv.length;i++) {
-	                	System.out.println(dataFromCsv[i]);
-	                }*/
+                        dataCsvArr.add(count,dataFromCsv);
+                        count++;
 	            }
+                    for(int i=1;i<dataCsvArr.size();i++){
+                        String valuesOfArray[] = dataCsvArr.get(i);
+                        airDet.setAirplaneName(valuesOfArray[0]);
+                        try {
+                            airDet.setDateOfFly(formatter.parse(valuesOfArray[1]));
+                            airDet.setTimeOfFleetCat(formatter.parse(valuesOfArray[6]));
+                        } catch (ParseException ex) {
+                             Logger.getLogger(CreateJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                         }
+                        airDet.setYearOfMan(Integer.parseInt(valuesOfArray[2]));
+                        airDet.setNumOfSeats(Integer.parseInt(valuesOfArray[3]));
+                        airDet.setSerNo(Double.parseDouble(valuesOfArray[4]));
+                        airDet.setModelNo(Double.parseDouble(valuesOfArray[5]));
+                        airDet.setMaintCertExp(valuesOfArray[7]); 
+                        airDet.setAvailablity(valuesOfArray[8]);
+                        airDet.setAirportName(valuesOfArray[9]);
+                        airDet.setManuName(valuesOfArray[10]);
+                    }
 	            bufferedReader.close();
 	        } catch (FileNotFoundException e) {
 	            e.printStackTrace();
@@ -325,11 +348,10 @@ public class CreateJPanel extends javax.swing.JPanel {
                Logger.getLogger(CreateJPanel.class.getName()).log(Level.SEVERE, null, ex);
            }
        }else if(createPlaneDet.getSelectedItem().equals("From List of Data")){
-           AirplaneDetails airDet = airplaneDetailsHist.addDetails();
-           SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
            airDet.setAirplaneName(airplaneNameTxt.getText());
            try {
                airDet.setDateOfFly(formatter.parse(dateOfFlyTxt.getText()));
+               airDet.setTimeOfFleetCat(formatter.parse(timeOfFleetCatTxt.getText()));
            } catch (ParseException ex) {
                Logger.getLogger(CreateJPanel.class.getName()).log(Level.SEVERE, null, ex);
            }
@@ -337,7 +359,6 @@ public class CreateJPanel extends javax.swing.JPanel {
            airDet.setNumOfSeats(Integer.parseInt(numOfSeatsTxt.getText()));
            airDet.setSerNo(Double.parseDouble(serNoTxt.getText()));
            airDet.setModelNo(Double.parseDouble(modelNoTxt.getText()));
-           airDet.setTimeOfFleetCat(timeOfFleetCatTxt.getText());
            if(maintCertExpChkBox.isSelected()){
               airDet.setMaintCertExp("Yes"); 
            }else{
