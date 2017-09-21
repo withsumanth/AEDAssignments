@@ -17,7 +17,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="768" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="223" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -31,17 +31,17 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
               <Component id="jPanelFromData" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="270" max="-2" attributes="0"/>
-              <Component id="saveJBtn" min="-2" pref="140" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="536" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
               <Component id="jPanelFromFile" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="418" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
+              <Component id="saveJBtn" min="-2" pref="140" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,9 +59,9 @@
               <Component id="jPanelFromFile" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanelFromData" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="saveJBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="348" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="326" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -100,13 +100,16 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveJBtnActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanelFromData">
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="airplaneNameLabel" min="-2" pref="107" max="-2" attributes="0"/>
@@ -114,7 +117,6 @@
                       <Component id="numOfSeatsLabel" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
                       <Component id="serNoLabel" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
                       <Component id="modelNoLabel" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
-                      <Component id="manufacturerLabel" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
                       <Component id="airportNameLabel" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -124,17 +126,20 @@
                           <Component id="timeOfFleetCatLabel" alignment="1" max="32767" attributes="0"/>
                           <Component id="maintCertExpLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="airportNameLabel2" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
+                      <Component id="airportNameLabel1" min="-2" pref="107" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="dateOfFlyTxt" max="32767" attributes="0"/>
+                      <Component id="manuNameTxt" alignment="0" max="32767" attributes="0"/>
                       <Component id="serNoTxt" alignment="1" max="32767" attributes="0"/>
                       <Component id="modelNoTxt" alignment="0" max="32767" attributes="0"/>
-                      <Component id="manufacturerTxt" alignment="1" max="32767" attributes="0"/>
                       <Component id="timeOfFleetCatTxt" alignment="0" max="32767" attributes="0"/>
                       <Component id="airportNameTxt" alignment="0" max="32767" attributes="0"/>
                       <Component id="yearOfManTxt" alignment="0" max="32767" attributes="0"/>
                       <Component id="numOfSeatsTxt" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="maintCertExpChkBox" min="-2" max="-2" attributes="0"/>
                               <Component id="availablityChkBox" min="-2" max="-2" attributes="0"/>
@@ -176,11 +181,6 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="manufacturerLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="manufacturerTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="timeOfFleetCatLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="timeOfFleetCatTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
@@ -199,7 +199,17 @@
                       <Component id="airportNameLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="airportNameTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="manuNameTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="airportNameLabel1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="dateOfFlyTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="airportNameLabel2" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="0" pref="49" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -223,11 +233,6 @@
         <Component class="javax.swing.JLabel" name="modelNoLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Model Number:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="manufacturerLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Manufacturer:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="timeOfFleetCatLabel">
@@ -268,8 +273,6 @@
             <Property name="text" type="java.lang.String" value="Airplane Name:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="manufacturerTxt">
-        </Component>
         <Component class="javax.swing.JTextField" name="timeOfFleetCatTxt">
         </Component>
         <Component class="javax.swing.JTextField" name="airportNameTxt">
@@ -280,6 +283,20 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="availablityChkBoxActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="airportNameLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Manufacturer Name:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="manuNameTxt">
+        </Component>
+        <Component class="javax.swing.JLabel" name="airportNameLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Date of Departure:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="dateOfFlyTxt">
         </Component>
       </SubComponents>
     </Container>
@@ -297,7 +314,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="csvLabel" alignment="1" pref="29" max="32767" attributes="0"/>
+              <Component id="csvLabel" alignment="1" pref="36" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

@@ -25,4 +25,10 @@ public class AirplaneDetailsHistory {
     public void setAirDetHist(ArrayList<AirplaneDetails> airDetHist) {
         this.airDetHist = airDetHist;
     }
+    
+    public AirplaneDetails addDetails(){
+        AirplaneDetails details = new AirplaneDetails();
+        airDetHist.add(details);
+        return details;
+    }
 }

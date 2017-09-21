@@ -5,21 +5,40 @@
  */
 package Business;
 
+import java.util.Date;
+
 /**
  *
  * @author Sumanth
  */
 public class AirplaneDetails {
     private String airplaneName;
+    private Date dateOfFly; 
     private int yearOfMan;
     private int numOfSeats;
     private double serNo;
     private double modelNo;
-    private int manufacturer;
     private String timeOfFleetCat;
     private String maintCertExp;
     private String availablity;
     private String airportName;
+    private String manuName;
+
+    public Date getDateOfFly() {
+        return dateOfFly;
+    }
+
+    public void setDateOfFly(Date dateOfFly) {
+        this.dateOfFly = dateOfFly;
+    }
+
+    public String getManuName() {
+        return manuName;
+    }
+
+    public void setManuName(String manuName) {
+        this.manuName = manuName;
+    }
 
     public String getAirplaneName() {
         return airplaneName;
@@ -59,14 +78,6 @@ public class AirplaneDetails {
 
     public void setModelNo(double modelNo) {
         this.modelNo = modelNo;
-    }
-
-    public int getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(int manufacturer) {
-        this.manufacturer = manufacturer;
     }
 
     public String getTimeOfFleetCat() {
