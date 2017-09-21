@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import Business.AirplaneDetailsHistory;
+
 /**
  *
  * @author Sumanth
@@ -14,8 +16,10 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    private AirplaneDetailsHistory airplaneDetailsHist;
     public MainJFrame() {
         initComponents();
+        airplaneDetailsHist = new AirplaneDetailsHistory();
     }
 
     /**
@@ -37,6 +41,11 @@ public class MainJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         createJBtn.setText("Create");
+        createJBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createJBtnActionPerformed(evt);
+            }
+        });
 
         updJBtn.setText("Update");
 
@@ -96,6 +105,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void createJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createJBtnActionPerformed
+        CreateJPanel createJPanel = new CreateJPanel(airplaneDetailsHist);
+        jSplitPane.setRightComponent(createJPanel);
+    }//GEN-LAST:event_createJBtnActionPerformed
 
     /**
      * @param args the command line arguments
