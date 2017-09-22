@@ -98,7 +98,7 @@ public class CreateJPanel extends javax.swing.JPanel {
             }
         });
 
-        yearOfManLabel.setText("Year of Manufacture: ");
+        yearOfManLabel.setText("  Year of Manufacture: ");
 
         numOfSeatsLabel.setText("Number of Seats:");
 
@@ -140,7 +140,6 @@ public class CreateJPanel extends javax.swing.JPanel {
                 .addGap(53, 53, 53)
                 .addGroup(jPanelFromDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(airplaneNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(yearOfManLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numOfSeatsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(serNoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(modelNoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,7 +151,8 @@ public class CreateJPanel extends javax.swing.JPanel {
                         .addComponent(timeOfFleetCatLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(maintCertExpLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addComponent(airportNameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(airportNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(yearOfManLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(airportNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanelFromDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(dateOfFlyTxt)
@@ -372,6 +372,7 @@ public class CreateJPanel extends javax.swing.JPanel {
            airDet.setAirportName(airportNameTxt.getText());
            airDet.setManuName(manuNameTxt.getText());
        }
+        System.out.println(airDet.getDateOfFly());
     }//GEN-LAST:event_saveJBtnActionPerformed
 
     private void availablityChkBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availablityChkBoxActionPerformed

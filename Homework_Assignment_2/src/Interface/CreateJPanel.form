@@ -113,7 +113,6 @@
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="airplaneNameLabel" min="-2" pref="107" max="-2" attributes="0"/>
-                      <Component id="yearOfManLabel" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
                       <Component id="numOfSeatsLabel" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
                       <Component id="serNoLabel" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
                       <Component id="modelNoLabel" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
@@ -127,7 +126,8 @@
                           <Component id="maintCertExpLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="airportNameLabel2" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
-                      <Component id="airportNameLabel1" min="-2" pref="107" max="-2" attributes="0"/>
+                      <Component id="yearOfManLabel" alignment="1" min="-2" pref="139" max="-2" attributes="0"/>
+                      <Component id="airportNameLabel1" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
@@ -217,7 +217,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="yearOfManLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Year of Manufacture: "/>
+            <Property name="text" type="java.lang.String" value="  Year of Manufacture: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="numOfSeatsLabel">
