@@ -5,6 +5,17 @@
  */
 package Interface;
 
+import Business.AirplaneDetails;
+import Business.AirplaneDetailsHistory;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Sumanth
@@ -14,8 +25,23 @@ public class ViewJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewJPanel
      */
-    public ViewJPanel() {
+    private AirplaneDetailsHistory airplaneDetailsHist;
+    public ViewJPanel(AirplaneDetailsHistory airplaneDetailsHist) {
         initComponents();
+        this.airplaneDetailsHist = airplaneDetailsHist;
+        populateJTable();
+    }
+    
+    public void populateJTable(){
+        DefaultTableModel tabMod = (DefaultTableModel) airDetTable.getModel();
+        tabMod.setRowCount(0);
+        for(AirplaneDetails ad:  airplaneDetailsHist.getAirDetHist()){
+            Object row[] = new Object[3];
+            row[0] = ad;
+            row[1] = ad.getYearOfMan();
+            row[2] = ad.getSerNo();
+            tabMod.addRow(row);
+        }
     }
 
     /**
@@ -54,6 +80,16 @@ public class ViewJPanel extends javax.swing.JPanel {
         manuNameTxt3 = new javax.swing.JTextField();
         airportNameLabel11 = new javax.swing.JLabel();
         dateOfFlyTxt3 = new javax.swing.JTextField();
+        searchListBox = new javax.swing.JComboBox<>();
+        serachBtn = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        searchJTable = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        searchPanel = new javax.swing.JPanel();
+        searchLabel = new javax.swing.JLabel();
+        searchTxtField = new javax.swing.JTextField();
+
+        setPreferredSize(new java.awt.Dimension(1000, 1000));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("View Airplane Details");
@@ -63,11 +99,11 @@ public class ViewJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Airplane Name", "Date of Departure", "Serial Number"
+                "Airplane Name", "Year of Manufacture", "Serial Number"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -77,6 +113,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(airDetTable);
 
         viewAirDetJBtn.setText("View");
+        viewAirDetJBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewAirDetJBtnActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Update");
 
@@ -114,60 +155,134 @@ public class ViewJPanel extends javax.swing.JPanel {
 
         airportNameLabel11.setText("Date of Departure:");
 
+        searchListBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "First Available Airplane", "Currently Available Airplanes", "Airplanes made of Boeing", "Manufactured year", "Number of seats Available", "Serial Number", "Model Number", "Manufacturer Name", "Fleet Catalog updated date", "Airport Name", "Maintainance Cerificate Expired" }));
+        searchListBox.setToolTipText("");
+
+        serachBtn.setText("Search");
+        serachBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                serachBtnActionPerformed(evt);
+            }
+        });
+
+        searchJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Airplane Name", "Date of Departure", "Serial Number", "Year of Manufacture", "Number of Seats", "Model Number", "Fleet Catalog updated Date", "Maintainance Certificate Expired", "Availablity of Airplane", "Airport Name", "Manufacturer Name"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(searchJTable);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Search Based on Criteria ");
+
+        searchTxtField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchTxtFieldActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
+        searchPanel.setLayout(searchPanelLayout);
+        searchPanelLayout.setHorizontalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(searchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(searchTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        searchPanelLayout.setVerticalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(searchTxtField, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(searchLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(viewAirDetJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(240, 240, 240)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(128, 128, 128)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(138, 138, 138)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(airplaneNameLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(numOfSeatsLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(serNoLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(modelNoLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(yearOfManLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(modelNoTxt3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                                    .addComponent(serNoTxt3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(numOfSeatsTxt3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(yearOfManTxt3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(airplaneNameTxt3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dateOfFlyTxt3))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(airportNameLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(10, 10, 10)
+                                            .addComponent(availablityLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(timeOfFleetCatLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(maintCertExpLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(airportNameLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(maintCertExpChkBox3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(availablityChkBox3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(manuNameTxt3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(airportNameTxt3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(timeOfFleetCatTxt3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(viewAirDetJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(240, 240, 240)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(128, 128, 128)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(airportNameLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(440, 440, 440)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(airplaneNameLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numOfSeatsLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(serNoLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(modelNoLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(yearOfManLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(modelNoTxt3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                            .addComponent(serNoTxt3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(numOfSeatsTxt3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(yearOfManTxt3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(airplaneNameTxt3, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(airportNameLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(availablityLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(timeOfFleetCatLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(maintCertExpLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(airportNameLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(airportNameLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(maintCertExpChkBox3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(availablityChkBox3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(manuNameTxt3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(airportNameTxt3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateOfFlyTxt3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(timeOfFleetCatTxt3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(searchListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(serachBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 310, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,10 +292,8 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewAirDetJBtn)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewAirDetJBtn)
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -201,7 +314,11 @@ public class ViewJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(modelNoLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(modelNoTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(modelNoTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dateOfFlyTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(airportNameLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(timeOfFleetCatLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,13 +339,55 @@ public class ViewJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(manuNameTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(airportNameLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addComponent(jButton2)))
+                .addGap(16, 16, 16)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dateOfFlyTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(airportNameLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(191, Short.MAX_VALUE))
+                        .addComponent(serachBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(28, 28, 28)
+                            .addComponent(searchListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(77, 77, 77)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(281, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void viewAirDetJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAirDetJBtnActionPerformed
+        int selectedRow  = airDetTable.getSelectedRow();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        if(selectedRow>=0){
+            AirplaneDetails airDet = (AirplaneDetails) airDetTable.getValueAt(selectedRow, 0);
+             airplaneNameTxt3.setText(airDet.getAirplaneName());
+           try {
+               dateOfFlyTxt3.setText(formatter.format(airDet.getDateOfFly()));
+               timeOfFleetCatTxt3.setText(formatter.format(airDet.getTimeOfFleetCat()));
+           } catch (Exception ex) {
+               Logger.getLogger(CreateJPanel.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           yearOfManTxt3.setText(String.valueOf(airDet.getYearOfMan()));
+           numOfSeatsTxt3.setText(String.valueOf(airDet.getNumOfSeats()));
+           serNoTxt3.setText(String.valueOf(airDet.getSerNo()));
+           modelNoTxt3.setText(String.valueOf(airDet.getModelNo()));
+           if(airDet.getMaintCertExp().equals("Yes")){
+               maintCertExpChkBox3.setSelected(true);
+           }
+           if(airDet.getAvailablity().equals("Yes")){
+               availablityChkBox3.setSelected(true);
+           }
+           airportNameTxt3.setText(airDet.getAirportName());
+           manuNameTxt3.setText(airDet.getManuName());
+        }else{
+            JOptionPane.showMessageDialog(null, "Please Select any Row");
+        }
+    }//GEN-LAST:event_viewAirDetJBtnActionPerformed
 
     private void airplaneNameTxt3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airplaneNameTxt3ActionPerformed
         // TODO add your handling code here:
@@ -238,7 +397,38 @@ public class ViewJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_availablityChkBox3ActionPerformed
 
+    private void serachBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serachBtnActionPerformed
+        ArrayList<AirplaneDetails> modArrList= new ArrayList();
+        if(searchListBox.getSelectedItem().equals("First Available Airplane")){
+            ArrayList<AirplaneDetails> airDet2 = airplaneDetailsHist.getAirDetHist();
+            
+            //List<String> listOfString = new ArrayList<String>();
+            for(AirplaneDetails aa: airDet2){
+               if(aa.getAirplaneName().equals("Boeing1")){
+                   System.out.println("In");
+                   modArrList.add(0, aa);
+               }
+            }
+            System.out.println(modArrList);
+        }
+        populateJTable1(modArrList);
+    }//GEN-LAST:event_serachBtnActionPerformed
 
+    private void searchTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTxtFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTxtFieldActionPerformed
+
+    public void populateJTable1(ArrayList<AirplaneDetails> modArrList){
+        DefaultTableModel tabMod = (DefaultTableModel) searchJTable.getModel();
+        tabMod.setRowCount(0);
+        for(AirplaneDetails ad:  modArrList){
+            Object row[] = new Object[3];
+            row[0] = ad;
+            row[1] = ad.getYearOfMan();
+            row[2] = ad.getSerNo();
+            tabMod.addRow(row);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable airDetTable;
     private javax.swing.JLabel airplaneNameLabel;
@@ -279,10 +469,12 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField dateOfFlyTxt3;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanelFromData;
     private javax.swing.JPanel jPanelFromData1;
     private javax.swing.JPanel jPanelFromData2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JCheckBox maintCertExpChkBox;
     private javax.swing.JCheckBox maintCertExpChkBox1;
     private javax.swing.JCheckBox maintCertExpChkBox2;
@@ -311,6 +503,11 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField numOfSeatsTxt1;
     private javax.swing.JTextField numOfSeatsTxt2;
     private javax.swing.JTextField numOfSeatsTxt3;
+    private javax.swing.JTable searchJTable;
+    private javax.swing.JLabel searchLabel;
+    private javax.swing.JComboBox<String> searchListBox;
+    private javax.swing.JPanel searchPanel;
+    private javax.swing.JTextField searchTxtField;
     private javax.swing.JLabel serNoLabel;
     private javax.swing.JLabel serNoLabel1;
     private javax.swing.JLabel serNoLabel2;
@@ -319,6 +516,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField serNoTxt1;
     private javax.swing.JTextField serNoTxt2;
     private javax.swing.JTextField serNoTxt3;
+    private javax.swing.JButton serachBtn;
     private javax.swing.JLabel timeOfFleetCatLabel;
     private javax.swing.JLabel timeOfFleetCatLabel1;
     private javax.swing.JLabel timeOfFleetCatLabel2;

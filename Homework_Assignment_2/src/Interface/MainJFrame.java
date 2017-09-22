@@ -50,6 +50,11 @@ public class MainJFrame extends javax.swing.JFrame {
         updJBtn.setText("Update");
 
         viewJBtn.setText("View");
+        viewJBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewJBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,6 +115,11 @@ public class MainJFrame extends javax.swing.JFrame {
         CreateJPanel createJPanel = new CreateJPanel(airplaneDetailsHist);
         jSplitPane.setRightComponent(createJPanel);
     }//GEN-LAST:event_createJBtnActionPerformed
+
+    private void viewJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewJBtnActionPerformed
+        ViewJPanel viewJPanel = new ViewJPanel(airplaneDetailsHist);
+        jSplitPane.setRightComponent(viewJPanel);
+    }//GEN-LAST:event_viewJBtnActionPerformed
 
     /**
      * @param args the command line arguments

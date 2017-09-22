@@ -305,7 +305,6 @@ public class CreateJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_airplaneNameTxtActionPerformed
 
     private void saveJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveJBtnActionPerformed
-       AirplaneDetails airDet = airplaneDetailsHist.addDetails();
        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         if(createPlaneDet.getSelectedItem().equals("From File")){
            String[] pp1= {"setAirplaneName","setDateOfFly"};
@@ -324,6 +323,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                         count++;
 	            }
                     for(int i=1;i<dataCsvArr.size();i++){
+                        AirplaneDetails airDet = airplaneDetailsHist.addDetails();
                         String valuesOfArray[] = dataCsvArr.get(i);
                         airDet.setAirplaneName(valuesOfArray[0]);
                         try {
@@ -348,6 +348,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                Logger.getLogger(CreateJPanel.class.getName()).log(Level.SEVERE, null, ex);
            }
        }else if(createPlaneDet.getSelectedItem().equals("From List of Data")){
+           AirplaneDetails airDet = airplaneDetailsHist.addDetails();
            airDet.setAirplaneName(airplaneNameTxt.getText());
            try {
                airDet.setDateOfFly(formatter.parse(dateOfFlyTxt.getText()));
@@ -372,7 +373,6 @@ public class CreateJPanel extends javax.swing.JPanel {
            airDet.setAirportName(airportNameTxt.getText());
            airDet.setManuName(manuNameTxt.getText());
        }
-        System.out.println(airDet.getDateOfFly());
     }//GEN-LAST:event_saveJBtnActionPerformed
 
     private void availablityChkBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availablityChkBoxActionPerformed
@@ -382,33 +382,56 @@ public class CreateJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel airplaneNameLabel;
+    private javax.swing.JLabel airplaneNameLabel2;
     private javax.swing.JTextField airplaneNameTxt;
+    private javax.swing.JTextField airplaneNameTxt2;
     private javax.swing.JLabel airportNameLabel;
     private javax.swing.JLabel airportNameLabel1;
     private javax.swing.JLabel airportNameLabel2;
+    private javax.swing.JLabel airportNameLabel6;
+    private javax.swing.JLabel airportNameLabel7;
+    private javax.swing.JLabel airportNameLabel8;
     private javax.swing.JTextField airportNameTxt;
+    private javax.swing.JTextField airportNameTxt2;
     private javax.swing.JCheckBox availablityChkBox;
+    private javax.swing.JCheckBox availablityChkBox2;
     private javax.swing.JLabel availablityLabel;
+    private javax.swing.JLabel availablityLabel2;
     private javax.swing.JComboBox<String> createPlaneDet;
     private javax.swing.JLabel csvLabel;
     private javax.swing.JTextField dateOfFlyTxt;
+    private javax.swing.JTextField dateOfFlyTxt2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanelFromData;
+    private javax.swing.JPanel jPanelFromData2;
     private javax.swing.JPanel jPanelFromFile;
     private javax.swing.JCheckBox maintCertExpChkBox;
+    private javax.swing.JCheckBox maintCertExpChkBox2;
     private javax.swing.JLabel maintCertExpLabel;
+    private javax.swing.JLabel maintCertExpLabel2;
     private javax.swing.JTextField manuNameTxt;
+    private javax.swing.JTextField manuNameTxt2;
     private javax.swing.JLabel modelNoLabel;
+    private javax.swing.JLabel modelNoLabel2;
     private javax.swing.JTextField modelNoTxt;
+    private javax.swing.JTextField modelNoTxt2;
     private javax.swing.JLabel numOfSeatsLabel;
+    private javax.swing.JLabel numOfSeatsLabel2;
     private javax.swing.JTextField numOfSeatsTxt;
+    private javax.swing.JTextField numOfSeatsTxt2;
     private javax.swing.JButton saveJBtn;
     private javax.swing.JLabel serNoLabel;
+    private javax.swing.JLabel serNoLabel2;
     private javax.swing.JTextField serNoTxt;
+    private javax.swing.JTextField serNoTxt2;
     private javax.swing.JLabel timeOfFleetCatLabel;
+    private javax.swing.JLabel timeOfFleetCatLabel2;
     private javax.swing.JTextField timeOfFleetCatTxt;
+    private javax.swing.JTextField timeOfFleetCatTxt2;
     private javax.swing.JLabel yearOfManLabel;
+    private javax.swing.JLabel yearOfManLabel2;
     private javax.swing.JTextField yearOfManTxt;
+    private javax.swing.JTextField yearOfManTxt2;
     // End of variables declaration//GEN-END:variables
 }

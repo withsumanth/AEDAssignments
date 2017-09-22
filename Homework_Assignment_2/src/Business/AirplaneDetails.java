@@ -112,4 +112,9 @@ public class AirplaneDetails {
         this.airportName = airportName;
     }
     
+    @Override
+    public String toString(){
+        return this.airplaneName;
+    }
+    
 }
