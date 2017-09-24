@@ -35,10 +35,8 @@ public class ViewJPanel extends javax.swing.JPanel {
         initComponents();
         this.airplaneDetailsHist = airplaneDetailsHist;
         populateJTable();
-        searchPanel.setVisible(true);
-        searchLabel.setText("");
         searchTxtField.setText("");
-        searchChkBox.setVisible(false);
+        searchChkBox2.setVisible(false);
         JScrollPane sp = new JScrollPane();
         this.add(sp);
     }
@@ -99,10 +97,8 @@ public class ViewJPanel extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         searchJTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        searchPanel = new javax.swing.JPanel();
         searchLabel = new javax.swing.JLabel();
         searchTxtField = new javax.swing.JTextField();
-        searchChkBox = new javax.swing.JCheckBox();
         searchLabDest = new javax.swing.JLabel();
         searchTxtDest = new javax.swing.JTextField();
         airportNameLabel13 = new javax.swing.JLabel();
@@ -110,6 +106,10 @@ public class ViewJPanel extends javax.swing.JPanel {
         originTxt1 = new javax.swing.JTextField();
         airportNameLabel14 = new javax.swing.JLabel();
         destinationTxt = new javax.swing.JTextField();
+        searchChkBox = new javax.swing.JPanel();
+        chkBxLabel = new javax.swing.JLabel();
+        searchChkBox1 = new javax.swing.JPanel();
+        searchChkBox2 = new javax.swing.JCheckBox();
 
         setPreferredSize(new java.awt.Dimension(1000, 1000));
 
@@ -175,7 +175,7 @@ public class ViewJPanel extends javax.swing.JPanel {
 
         airportNameLabel11.setText("Date of Departure:");
 
-        searchListBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "First Available Airplane", "Currently Available Airplanes", "Airplanes made of Boeing", "Manufactured year", "Number of seats Available", "Serial Number", "Model Number", "Manufacturer Name", "Fleet Catalog updated date", "Airport Name", "Maintainance Cerificate Expired" }));
+        searchListBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "First Available Airplane", "Currently Available Airplanes", "Airplanes made of Boeing", "Manufactured year", "Number of seats Available", "Serial Number", "Model Number", "Manufacturer Name", "Last Fleet Catalog updated date", "Airport Name for available Planes", "Maintainance Cerificate Expired" }));
         searchListBox.setToolTipText("");
         searchListBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,17 +229,15 @@ public class ViewJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Search Based on Criteria ");
 
+        searchLabel.setText("Origin City");
+
         searchTxtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchTxtFieldActionPerformed(evt);
             }
         });
 
-        searchChkBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchChkBoxActionPerformed(evt);
-            }
-        });
+        searchLabDest.setText("Destination City");
 
         searchTxtDest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,43 +245,48 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
-        searchPanel.setLayout(searchPanelLayout);
-        searchPanelLayout.setHorizontalGroup(
-            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(searchLabDest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchChkBox)
-                .addGap(12, 12, 12)
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchTxtDest)
-                    .addComponent(searchTxtField, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        searchPanelLayout.setVerticalGroup(
-            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchChkBox)
-                    .addComponent(searchTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchLabDest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(searchPanelLayout.createSequentialGroup()
-                        .addComponent(searchTxtDest, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 2, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-
         airportNameLabel13.setText("             Origin");
 
         airportNameLabel14.setText("          Destination");
+
+        javax.swing.GroupLayout searchChkBoxLayout = new javax.swing.GroupLayout(searchChkBox);
+        searchChkBox.setLayout(searchChkBoxLayout);
+        searchChkBoxLayout.setHorizontalGroup(
+            searchChkBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchChkBoxLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(chkBxLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        searchChkBoxLayout.setVerticalGroup(
+            searchChkBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchChkBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(chkBxLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        searchChkBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchChkBox2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout searchChkBox1Layout = new javax.swing.GroupLayout(searchChkBox1);
+        searchChkBox1.setLayout(searchChkBox1Layout);
+        searchChkBox1Layout.setHorizontalGroup(
+            searchChkBox1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchChkBox1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(searchChkBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+        searchChkBox1Layout.setVerticalGroup(
+            searchChkBox1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchChkBox1Layout.createSequentialGroup()
+                .addComponent(searchChkBox2)
+                .addGap(0, 15, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -292,77 +295,87 @@ public class ViewJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(searchListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(serachBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(174, 174, 174))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(airportNameLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(destinationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(viewAirDetJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(viewAirDetJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(230, 230, 230)
-                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(118, 118, 118)
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(128, 128, 128)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(airplaneNameLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(numOfSeatsLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(serNoLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(modelNoLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(yearOfManLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(32, 32, 32))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(airportNameLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(modelNoTxt3, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(serNoTxt3, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(numOfSeatsTxt3, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(yearOfManTxt3, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(airplaneNameTxt3, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(dateOfFlyTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addGap(10, 10, 10)
-                                                    .addComponent(availablityLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                .addComponent(timeOfFleetCatLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(maintCertExpLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(airportNameLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(airportNameLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(airportNameLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                                .addGap(32, 32, 32)
+                                        .addGap(230, 230, 230)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(118, 118, 118)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(maintCertExpChkBox3, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(availablityChkBox3, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(airportNameTxt3, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(timeOfFleetCatTxt3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                                        .addComponent(manuNameTxt3, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(originTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 206, Short.MAX_VALUE)))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(searchListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(searchLabel)
+                                        .addGap(104, 104, 104)
+                                        .addComponent(searchLabDest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(searchTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(searchTxtDest, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(20, 20, 20)
+                                .addComponent(serachBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(airportNameLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(128, 128, 128)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(airportNameLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(airplaneNameLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(numOfSeatsLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(serNoLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(modelNoLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(yearOfManLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(32, 32, 32)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(modelNoTxt3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(serNoTxt3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(numOfSeatsTxt3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(yearOfManTxt3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(airplaneNameTxt3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dateOfFlyTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(destinationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(45, 45, 45)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGap(10, 10, 10)
+                                            .addComponent(availablityLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(timeOfFleetCatLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(maintCertExpLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(airportNameLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(airportNameLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(airportNameLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(maintCertExpChkBox3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(availablityChkBox3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(airportNameTxt3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(timeOfFleetCatTxt3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                                .addComponent(manuNameTxt3, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(originTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 258, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(searchChkBox, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchChkBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -377,73 +390,82 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(airplaneNameLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(airplaneNameTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(yearOfManLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(yearOfManTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(numOfSeatsLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numOfSeatsTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(serNoLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(serNoTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(modelNoLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(modelNoTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dateOfFlyTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(airportNameLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(airportNameLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(timeOfFleetCatLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(timeOfFleetCatTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(13, 13, 13)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(maintCertExpLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(maintCertExpChkBox3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(availablityLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(availablityChkBox3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(airportNameLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(airportNameTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(manuNameTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(airportNameLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(originTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(airportNameLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(destinationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(serachBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(28, 28, 28)
-                            .addComponent(searchListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(1, 1, 1)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(airplaneNameLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(airplaneNameTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(yearOfManLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(yearOfManTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(numOfSeatsLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(numOfSeatsTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(serNoLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(serNoTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(modelNoLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(modelNoTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(dateOfFlyTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(airportNameLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(175, 175, 175)
+                                    .addComponent(airportNameLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(timeOfFleetCatLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(13, 13, 13)
+                                    .addComponent(maintCertExpLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(availablityLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(airportNameLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(airportNameLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(39, 39, 39))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(airportNameLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(destinationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)
+                                .addComponent(searchListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(searchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(searchLabDest, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(searchTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(serachBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(searchTxtDest, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(timeOfFleetCatTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(maintCertExpChkBox3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(availablityChkBox3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(airportNameTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(manuNameTxt3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(originTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchChkBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchChkBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -465,135 +487,134 @@ public class ViewJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void viewAirDetJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAirDetJBtnActionPerformed
-        int selectedRow  = airDetTable.getSelectedRow();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        if(selectedRow>=0){
-            AirplaneDetails airDet = (AirplaneDetails) airDetTable.getValueAt(selectedRow, 0);
-             airplaneNameTxt3.setText(airDet.getAirplaneName());
-           try {
-               dateOfFlyTxt3.setText(formatter.format(airDet.getDateOfFly()));
-               timeOfFleetCatTxt3.setText(formatter.format(airDet.getTimeOfFleetCat()));
-           } catch (Exception ex) {
-               Logger.getLogger(CreateJPanel.class.getName()).log(Level.SEVERE, null, ex);
-           }
-           yearOfManTxt3.setText(String.valueOf(airDet.getYearOfMan()));
-           numOfSeatsTxt3.setText(String.valueOf(airDet.getNumOfSeats()));
-           serNoTxt3.setText(String.valueOf(airDet.getSerNo()));
-           modelNoTxt3.setText(String.valueOf(airDet.getModelNo()));
-           if(airDet.getMaintCertExp().equals("Yes")){
-               maintCertExpChkBox3.setSelected(true);
-           }
-           if(airDet.getAvailablity().equals("Yes")){
-               availablityChkBox3.setSelected(true);
-           }
-           airportNameTxt3.setText(airDet.getAirportName());
-           manuNameTxt3.setText(airDet.getManuName());
-           originTxt.setText(airDet.getOrigin());
-           destinationTxt.setText(airDet.getDestination());
-        }else{
-            JOptionPane.showMessageDialog(null, "Please Select any Row");
-        }
-    }//GEN-LAST:event_viewAirDetJBtnActionPerformed
-
-    private void airplaneNameTxt3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airplaneNameTxt3ActionPerformed
+    private void searchChkBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchChkBox2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_airplaneNameTxt3ActionPerformed
+    }//GEN-LAST:event_searchChkBox2ActionPerformed
 
-    private void availablityChkBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availablityChkBox3ActionPerformed
+    private void searchTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTxtFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_availablityChkBox3ActionPerformed
+    }//GEN-LAST:event_searchTxtFieldActionPerformed
 
     private void serachBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serachBtnActionPerformed
         ArrayList<AirplaneDetails> modArrList= new ArrayList();
         ArrayList<AirplaneDetails> airDetForSearch = airplaneDetailsHist.getAirDetHist();
         int count = 0;
+        String originValue = searchTxtField.getText();
+        String destinationValue = searchTxtDest.getText();
         if(searchListBox.getSelectedItem().equals("First Available Airplane")){
             List<Date> dateValues = new ArrayList();
-            String originValue = searchTxtField.getText();
-            String destinationValue = searchTxtDest.getText();
-           for(AirplaneDetails eachSearchValue: airDetForSearch){
-               if(eachSearchValue.getOrigin().equals(originValue) && eachSearchValue.getDestination().equals(destinationValue)){
-                   dateValues.add(eachSearchValue.getDateOfFly());
-               }
-           }
-           Collections.sort(dateValues);
-           for(AirplaneDetails eachSearchValue: airDetForSearch){
-               if(eachSearchValue.getDateOfFly()== dateValues.get(0)){
-                  modArrList.add(count, eachSearchValue);
-                  break;
-               }
-           }
+            for(AirplaneDetails eachSearchValue: airDetForSearch){
+                if(eachSearchValue.getOrigin().equals(originValue) && eachSearchValue.getDestination().equals(destinationValue)&& eachSearchValue.getAvailablity().equals("Yes")){
+                    dateValues.add(eachSearchValue.getDateOfFly());
+                }
+            }
+            Collections.sort(dateValues);
+            for(AirplaneDetails eachSearchValue: airDetForSearch){
+                if(!dateValues.isEmpty() && eachSearchValue.getDateOfFly()== dateValues.get(0)){
+                    modArrList.add(count, eachSearchValue);
+                    break;
+                }
+            }
         }else if(searchListBox.getSelectedItem().equals("Currently Available Airplanes")){
             for(AirplaneDetails eachSearchValue: airDetForSearch){
-               if(eachSearchValue.getAvailablity().equals("Yes")){
-                   modArrList.add(count, eachSearchValue);
-                   count++;
-               }
+                if(searchChkBox2.isSelected()){
+                    if(eachSearchValue.getAvailablity().equals("Yes") && eachSearchValue.getOrigin().equals(originValue) && eachSearchValue.getDestination().equals(destinationValue)){
+                    modArrList.add(count, eachSearchValue);
+                    count++;
+                    }
+                }else{
+                    if(eachSearchValue.getAvailablity().equals("No") && eachSearchValue.getOrigin().equals(originValue) && eachSearchValue.getDestination().equals(destinationValue)){
+                    modArrList.add(count, eachSearchValue);
+                    count++;
+                    }
+                }
             }
         }else if(searchListBox.getSelectedItem().equals("Manufactured year")){
             String yearValue = searchTxtField.getText();
             for(AirplaneDetails eachSearchValue: airDetForSearch){
-               if(eachSearchValue.getYearOfMan() == (Integer.parseInt(yearValue))){
-                   modArrList.add(count, eachSearchValue);
-                   count++;
-               }
+                if(eachSearchValue.getYearOfMan() == (Integer.parseInt(yearValue))){
+                    modArrList.add(count, eachSearchValue);
+                    count++;
+                }
             }
         }else if(searchListBox.getSelectedItem().equals("Number of seats Available")){
-            
+            for(AirplaneDetails eachSearchValue: airDetForSearch){
+                if(searchChkBox2.isSelected()){
+                    if(eachSearchValue.getAvailablity().equals("Yes") && (eachSearchValue.getNumOfSeats()>Integer.parseInt(originValue) && eachSearchValue.getNumOfSeats()<Integer.parseInt(destinationValue))){                    modArrList.add(count, eachSearchValue);
+                    count++;
+                    }
+                }else{
+                    if(eachSearchValue.getAvailablity().equals("No") && (eachSearchValue.getNumOfSeats()>Integer.parseInt(originValue) && eachSearchValue.getNumOfSeats()<Integer.parseInt(destinationValue))){
+                    modArrList.add(count, eachSearchValue);
+                    count++;
+                    }
+                }
+            }
         }else if(searchListBox.getSelectedItem().equals("Serial Number")){
             String serNoValue = searchTxtField.getText();
             for(AirplaneDetails eachSearchValue: airDetForSearch){
-               if(eachSearchValue.getSerNo().equals(serNoValue)){
-                   modArrList.add(count, eachSearchValue);
-                   count++;
-               }
+                if(eachSearchValue.getSerNo().equals(serNoValue)){
+                    modArrList.add(count, eachSearchValue);
+                    count++;
+                }
             }
         }else if(searchListBox.getSelectedItem().equals("Model Number")){
             String modelNoValue = searchTxtField.getText();
             for(AirplaneDetails eachSearchValue: airDetForSearch){
-               if(eachSearchValue.getModelNo().equals(modelNoValue)){
-                   modArrList.add(count, eachSearchValue);
-                   count++;
-               }
+                if(eachSearchValue.getModelNo().equals(modelNoValue)){
+                    modArrList.add(count, eachSearchValue);
+                    count++;
+                }
             }
         }else if(searchListBox.getSelectedItem().equals("Manufacturer Name")){
             String manuNamValue = searchTxtField.getText();
             for(AirplaneDetails eachSearchValue: airDetForSearch){
-               if(eachSearchValue.getManuName().equals(manuNamValue)){
-                   modArrList.add(count, eachSearchValue);
-                   count++;
-               }
+                if(eachSearchValue.getManuName().equals(manuNamValue)){
+                    modArrList.add(count, eachSearchValue);
+                    count++;
+                }
             }
-        }else if(searchListBox.getSelectedItem().equals("Fleet Catalog updated date")){
-            
-        }else if(searchListBox.getSelectedItem().equals("Airport Name")){
+        }else if(searchListBox.getSelectedItem().equals("Last Fleet Catalog updated date")){
+            List<Date> dateValues = new ArrayList();
+            for(AirplaneDetails eachSearchValue: airDetForSearch){
+                if(eachSearchValue.getAirplaneName().equals(originValue)){
+                    dateValues.add(eachSearchValue.getDateOfFly());
+                }
+            }
+            Collections.sort(dateValues);
+            for(AirplaneDetails eachSearchValue: airDetForSearch){
+                if(!dateValues.isEmpty() && eachSearchValue.getDateOfFly()== dateValues.get((dateValues.size())-1)){
+                    modArrList.add(count, eachSearchValue);
+                    break;
+                }
+            }
+        }else if(searchListBox.getSelectedItem().equals("Airport Name for available Planes")){
             String airNamValue = searchTxtField.getText();
             for(AirplaneDetails eachSearchValue: airDetForSearch){
-               if(eachSearchValue.getAirportName().equals(airNamValue)){
-                   modArrList.add(count, eachSearchValue);
-                   count++;
-               }
+                if(eachSearchValue.getAirportName().equals(airNamValue) && eachSearchValue.getAvailablity().equals("Yes")){
+                    modArrList.add(count, eachSearchValue);
+                    count++;
+                }
             }
         }else if(searchListBox.getSelectedItem().equals("Maintainance Cerificate Expired")){
             String maintCertValue ;
-            if(searchChkBox.isSelected()){
+            if(searchChkBox2.isSelected()){
                 maintCertValue = "Yes";
             }else{
                 maintCertValue = "No";
             }
             for(AirplaneDetails eachSearchValue: airDetForSearch){
-               if(eachSearchValue.getMaintCertExp().equals(maintCertValue)){
-                   modArrList.add(count, eachSearchValue);
-                   count++;
-               }
+                if(eachSearchValue.getMaintCertExp().equals(maintCertValue)){
+                    modArrList.add(count, eachSearchValue);
+                    count++;
+                }
             }
         }else if(searchListBox.getSelectedItem().equals("Airplanes made of Boeing")){
             for(AirplaneDetails eachSearchValue: airDetForSearch){
-               if(eachSearchValue.getAirplaneName().equals("Boeing")){
-                   modArrList.add(count, eachSearchValue);
-                   count++;
-               }
+                if(eachSearchValue.getAirplaneName().equals("Boeing")){
+                    modArrList.add(count, eachSearchValue);
+                    count++;
+                }
             }
         }
         populateJTable1(modArrList);
@@ -601,71 +622,161 @@ public class ViewJPanel extends javax.swing.JPanel {
 
     private void searchListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchListBoxActionPerformed
         if(searchListBox.getSelectedItem().equals("First Available Airplane")){
-            searchPanel.setVisible(false);
-            searchLabel.setText("");
+            searchLabel.setText("Origin City");
+            searchLabDest.setText("Destination City");
             searchTxtField.setText("");
+            searchTxtDest.setText("");
+            searchLabel.setVisible(true);
+            searchLabDest.setVisible(true);
+            searchTxtField.setVisible(true);
+            searchTxtDest.setVisible(true);
+            searchChkBox.setVisible(false);
+            searchChkBox1.setVisible(false);
+            searchChkBox2.setVisible(false);
         }else if(searchListBox.getSelectedItem().equals("Currently Available Airplanes")){
-            searchPanel.setVisible(false);
-            searchLabel.setText("");
+            searchLabel.setVisible(true);
+            searchLabDest.setVisible(true);
+            searchTxtField.setVisible(true);
+            searchTxtDest.setVisible(true);
+            searchLabel.setText("Origin City");
+            searchLabDest.setText("Destination City");
             searchTxtField.setText("");
+            searchTxtDest.setText("");
+            chkBxLabel.setText("Available Planes");
+            searchChkBox.setVisible(true);
+            searchChkBox2.setVisible(true);
+            searchChkBox1.setVisible(true);
         }else if(searchListBox.getSelectedItem().equals("Manufactured year")){
-            searchPanel.setVisible(true);
             searchLabel.setVisible(true);
             searchTxtField.setVisible(true);
             searchLabel.setText("Year");
             searchTxtField.setText("");
+            searchLabDest.setVisible(false);
             searchChkBox.setVisible(false);
+            searchChkBox1.setVisible(false);
+            searchChkBox2.setVisible(false);
+            searchTxtDest.setVisible(false);
         }else if(searchListBox.getSelectedItem().equals("Number of seats Available")){
-            
+            searchLabel.setVisible(true);
+            searchLabDest.setVisible(true);
+            searchTxtField.setVisible(true);
+            searchTxtDest.setVisible(true);
+            searchLabel.setText("Minimum No. of Seats ");
+            searchLabDest.setText("Maximum No. of Seats");
+            searchTxtField.setText("");
+            searchTxtDest.setText("");
+            chkBxLabel.setText("Available Planes");
+            searchChkBox.setVisible(true);
+            searchChkBox2.setVisible(true);
+            searchChkBox1.setVisible(true);
         }else if(searchListBox.getSelectedItem().equals("Serial Number")){
-            searchPanel.setVisible(true);
-            searchLabel.setVisible(true);
-            searchTxtField.setVisible(true);
             searchLabel.setText("Enter Number");
             searchTxtField.setText("");
+            searchLabel.setVisible(true);
+            searchTxtField.setVisible(true);
             searchChkBox.setVisible(false);
+            searchChkBox1.setVisible(false);
+            searchChkBox2.setVisible(false);
+            searchLabDest.setVisible(false);
+            searchTxtDest.setVisible(false);
         }else if(searchListBox.getSelectedItem().equals("Model Number")){
-            searchPanel.setVisible(true);
             searchLabel.setVisible(true);
             searchTxtField.setVisible(true);
             searchLabel.setText("Enter Number");
             searchTxtField.setText("");
+            searchLabDest.setVisible(false);
             searchChkBox.setVisible(false);
+            searchChkBox1.setVisible(false);
+            searchChkBox2.setVisible(false);
+            searchTxtDest.setVisible(false);
         }else if(searchListBox.getSelectedItem().equals("Manufacturer Name")){
-            searchPanel.setVisible(true);
+            searchLabel.setVisible(true);
+            searchTxtField.setVisible(true);
+            searchLabel.setText("Enter Name");
+            searchTxtField.setText("");
+            searchLabDest.setVisible(false);
+            searchChkBox.setVisible(false);
+            searchChkBox1.setVisible(false);
+            searchChkBox2.setVisible(false);
+            searchTxtDest.setVisible(false);
+        }else if(searchListBox.getSelectedItem().equals("Last Fleet Catalog updated date")){
+            searchLabel.setVisible(true);
+            searchTxtField.setVisible(true);
+            searchLabel.setText("Airplane Name");
+            searchTxtField.setText("");
+            searchLabDest.setVisible(false);
+            searchChkBox.setVisible(false);
+            searchChkBox1.setVisible(false);
+            searchChkBox2.setVisible(false);
+            searchTxtDest.setVisible(false);
+        }else if(searchListBox.getSelectedItem().equals("Airport Name for available Planes")){
             searchLabel.setVisible(true);
             searchTxtField.setVisible(true);
             searchLabel.setText("Enter Name");
             searchTxtField.setText("");
             searchChkBox.setVisible(false);
-        }else if(searchListBox.getSelectedItem().equals("Fleet Catalog updated date")){
-            
-        }else if(searchListBox.getSelectedItem().equals("Airport Name")){
-            searchPanel.setVisible(true);
-            searchLabel.setVisible(true);
-            searchTxtField.setVisible(true);
-            searchLabel.setText("Enter Name");
-            searchTxtField.setText("");
-            searchChkBox.setVisible(false);
+            searchChkBox1.setVisible(false);
+            searchChkBox2.setVisible(false);
+            searchLabDest.setVisible(false);
+            searchTxtDest.setVisible(false);
         }else if(searchListBox.getSelectedItem().equals("Maintainance Cerificate Expired")){
-            searchPanel.setVisible(true);
             searchLabel.setVisible(false);
             searchTxtField.setVisible(false);
             searchChkBox.setVisible(true);
+            searchChkBox1.setVisible(true);
+            searchChkBox2.setVisible(true);
+            searchLabDest.setVisible(false);
+            searchTxtDest.setVisible(false);
+            chkBxLabel.setText("Expired");
         }else if(searchListBox.getSelectedItem().equals("Airplanes made of Boeing")){
-            searchPanel.setVisible(false);
-            searchLabel.setText("");
-            searchTxtField.setText("");
+            searchLabel.setVisible(false);
+            searchTxtField.setVisible(false);
+            searchLabDest.setVisible(false);
+            searchTxtDest.setVisible(false);
+            searchChkBox.setVisible(false);
+            searchChkBox1.setVisible(false);
+            searchChkBox2.setVisible(false);
         }
     }//GEN-LAST:event_searchListBoxActionPerformed
 
-    private void searchChkBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchChkBoxActionPerformed
+    private void availablityChkBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availablityChkBox3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchChkBoxActionPerformed
+    }//GEN-LAST:event_availablityChkBox3ActionPerformed
 
-    private void searchTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTxtFieldActionPerformed
+    private void airplaneNameTxt3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airplaneNameTxt3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchTxtFieldActionPerformed
+    }//GEN-LAST:event_airplaneNameTxt3ActionPerformed
+
+    private void viewAirDetJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAirDetJBtnActionPerformed
+        int selectedRow  = airDetTable.getSelectedRow();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        if(selectedRow>=0){
+            AirplaneDetails airDet = (AirplaneDetails) airDetTable.getValueAt(selectedRow, 0);
+            airplaneNameTxt3.setText(airDet.getAirplaneName());
+            try {
+                dateOfFlyTxt3.setText(formatter.format(airDet.getDateOfFly()));
+                timeOfFleetCatTxt3.setText(formatter.format(airDet.getTimeOfFleetCat()));
+            } catch (Exception ex) {
+                Logger.getLogger(CreateJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            yearOfManTxt3.setText(String.valueOf(airDet.getYearOfMan()));
+            numOfSeatsTxt3.setText(String.valueOf(airDet.getNumOfSeats()));
+            serNoTxt3.setText(String.valueOf(airDet.getSerNo()));
+            modelNoTxt3.setText(String.valueOf(airDet.getModelNo()));
+            if(airDet.getMaintCertExp().equals("Yes")){
+                maintCertExpChkBox3.setSelected(true);
+            }
+            if(airDet.getAvailablity().equals("Yes")){
+                availablityChkBox3.setSelected(true);
+            }
+            airportNameTxt3.setText(airDet.getAirportName());
+            manuNameTxt3.setText(airDet.getManuName());
+            originTxt.setText(airDet.getOrigin());
+            destinationTxt.setText(airDet.getDestination());
+        }else{
+            JOptionPane.showMessageDialog(null, "Please Select any Row");
+        }
+    }//GEN-LAST:event_viewAirDetJBtnActionPerformed
 
     private void searchTxtDestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTxtDestActionPerformed
         // TODO add your handling code here:
@@ -676,7 +787,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         tabMod.setRowCount(0);
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         for(AirplaneDetails ad:  modArrList){
-            Object row[] = new Object[11];
+            Object row[] = new Object[13];
             row[0] = ad;
             row[1] = formatter.format(ad.getDateOfFly());
             row[2] = ad.getSerNo();
@@ -688,6 +799,8 @@ public class ViewJPanel extends javax.swing.JPanel {
             row[8] = ad.getAvailablity();
             row[9] = ad.getAirportName();
             row[10] = ad.getManuName();
+            row[11] = ad.getOrigin();
+            row[12] = ad.getDestination();
             tabMod.addRow(row);
         }
     }
@@ -703,6 +816,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField airportNameTxt3;
     private javax.swing.JCheckBox availablityChkBox3;
     private javax.swing.JLabel availablityLabel3;
+    private javax.swing.JLabel chkBxLabel;
     private javax.swing.JTextField dateOfFlyTxt3;
     private javax.swing.JTextField destinationTxt;
     private javax.swing.JLabel jLabel1;
@@ -721,13 +835,14 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField numOfSeatsTxt3;
     private javax.swing.JTextField originTxt;
     private javax.swing.JTextField originTxt1;
-    private javax.swing.JCheckBox searchChkBox;
+    private javax.swing.JPanel searchChkBox;
+    private javax.swing.JPanel searchChkBox1;
+    private javax.swing.JCheckBox searchChkBox2;
     private javax.swing.JTable searchJTable;
     private javax.swing.JTable searchJTable1;
     private javax.swing.JLabel searchLabDest;
     private javax.swing.JLabel searchLabel;
     private javax.swing.JComboBox<String> searchListBox;
-    private javax.swing.JPanel searchPanel;
     private javax.swing.JTextField searchTxtDest;
     private javax.swing.JTextField searchTxtField;
     private javax.swing.JLabel serNoLabel3;
