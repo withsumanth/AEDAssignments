@@ -76,6 +76,10 @@ public class CreateJPanel extends javax.swing.JPanel {
         manuNameTxt = new javax.swing.JTextField();
         airportNameLabel2 = new javax.swing.JLabel();
         dateOfFlyTxt = new javax.swing.JTextField();
+        airportNameLabel3 = new javax.swing.JLabel();
+        originTxt = new javax.swing.JTextField();
+        airportNameLabel4 = new javax.swing.JLabel();
+        destinationTxt = new javax.swing.JTextField();
         jPanelFromFile = new javax.swing.JPanel();
         csvLabel = new javax.swing.JLabel();
 
@@ -132,6 +136,10 @@ public class CreateJPanel extends javax.swing.JPanel {
 
         airportNameLabel2.setText("Date of Departure:");
 
+        airportNameLabel3.setText("Origin:");
+
+        airportNameLabel4.setText("Destination:");
+
         javax.swing.GroupLayout jPanelFromDataLayout = new javax.swing.GroupLayout(jPanelFromData);
         jPanelFromData.setLayout(jPanelFromDataLayout);
         jPanelFromDataLayout.setHorizontalGroup(
@@ -152,9 +160,13 @@ public class CreateJPanel extends javax.swing.JPanel {
                         .addComponent(maintCertExpLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addComponent(airportNameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(yearOfManLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(airportNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(airportNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(airportNameLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(airportNameLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanelFromDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(destinationTxt)
+                    .addComponent(originTxt)
                     .addComponent(dateOfFlyTxt)
                     .addComponent(manuNameTxt, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(serNoTxt)
@@ -217,7 +229,15 @@ public class CreateJPanel extends javax.swing.JPanel {
                 .addGroup(jPanelFromDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dateOfFlyTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(airportNameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 49, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelFromDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(originTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(airportNameLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelFromDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(destinationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(airportNameLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
         csvLabel.setText("Please select save inorder to create data from csv file");
@@ -259,7 +279,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                 .addComponent(jPanelFromFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(415, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(271, 271, 271)
+                .addGap(276, 276, 276)
                 .addComponent(saveJBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -276,9 +296,9 @@ public class CreateJPanel extends javax.swing.JPanel {
                 .addComponent(jPanelFromFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanelFromData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(saveJBtn)
-                .addGap(326, 326, 326))
+                .addGap(286, 286, 286))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -307,8 +327,6 @@ public class CreateJPanel extends javax.swing.JPanel {
     private void saveJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveJBtnActionPerformed
        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         if(createPlaneDet.getSelectedItem().equals("From File")){
-           String[] pp1= {"setAirplaneName","setDateOfFly"};
-           String[] pp2= {"airplaneNameTxt.getText()","formatter.parse(dateOfFlyTxt.getText())"};
            String csvFile = "AirplaneDetails.csv";
 	        BufferedReader bufferedReader = null;
 	        String line = "";
@@ -334,12 +352,14 @@ public class CreateJPanel extends javax.swing.JPanel {
                          }
                         airDet.setYearOfMan(Integer.parseInt(valuesOfArray[2]));
                         airDet.setNumOfSeats(Integer.parseInt(valuesOfArray[3]));
-                        airDet.setSerNo(Double.parseDouble(valuesOfArray[4]));
-                        airDet.setModelNo(Double.parseDouble(valuesOfArray[5]));
+                        airDet.setSerNo(valuesOfArray[4]);
+                        airDet.setModelNo(valuesOfArray[5]);
                         airDet.setMaintCertExp(valuesOfArray[7]); 
                         airDet.setAvailablity(valuesOfArray[8]);
                         airDet.setAirportName(valuesOfArray[9]);
                         airDet.setManuName(valuesOfArray[10]);
+                        airDet.setOrigin(valuesOfArray[11]);
+                        airDet.setDestination(valuesOfArray[12]);
                     }
 	            bufferedReader.close();
 	        } catch (FileNotFoundException e) {
@@ -358,8 +378,8 @@ public class CreateJPanel extends javax.swing.JPanel {
            }
            airDet.setYearOfMan(Integer.parseInt(yearOfManTxt.getText()));
            airDet.setNumOfSeats(Integer.parseInt(numOfSeatsTxt.getText()));
-           airDet.setSerNo(Double.parseDouble(serNoTxt.getText()));
-           airDet.setModelNo(Double.parseDouble(modelNoTxt.getText()));
+           airDet.setSerNo(serNoTxt.getText());
+           airDet.setModelNo(modelNoTxt.getText());
            if(maintCertExpChkBox.isSelected()){
               airDet.setMaintCertExp("Yes"); 
            }else{
@@ -372,6 +392,8 @@ public class CreateJPanel extends javax.swing.JPanel {
            }
            airDet.setAirportName(airportNameTxt.getText());
            airDet.setManuName(manuNameTxt.getText());
+           airDet.setOrigin(originTxt.getText());
+           airDet.setDestination(destinationTxt.getText());
        }
     }//GEN-LAST:event_saveJBtnActionPerformed
 
@@ -382,56 +404,37 @@ public class CreateJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel airplaneNameLabel;
-    private javax.swing.JLabel airplaneNameLabel2;
     private javax.swing.JTextField airplaneNameTxt;
-    private javax.swing.JTextField airplaneNameTxt2;
     private javax.swing.JLabel airportNameLabel;
     private javax.swing.JLabel airportNameLabel1;
     private javax.swing.JLabel airportNameLabel2;
-    private javax.swing.JLabel airportNameLabel6;
-    private javax.swing.JLabel airportNameLabel7;
-    private javax.swing.JLabel airportNameLabel8;
+    private javax.swing.JLabel airportNameLabel3;
+    private javax.swing.JLabel airportNameLabel4;
     private javax.swing.JTextField airportNameTxt;
-    private javax.swing.JTextField airportNameTxt2;
     private javax.swing.JCheckBox availablityChkBox;
-    private javax.swing.JCheckBox availablityChkBox2;
     private javax.swing.JLabel availablityLabel;
-    private javax.swing.JLabel availablityLabel2;
     private javax.swing.JComboBox<String> createPlaneDet;
     private javax.swing.JLabel csvLabel;
     private javax.swing.JTextField dateOfFlyTxt;
-    private javax.swing.JTextField dateOfFlyTxt2;
+    private javax.swing.JTextField destinationTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanelFromData;
-    private javax.swing.JPanel jPanelFromData2;
     private javax.swing.JPanel jPanelFromFile;
     private javax.swing.JCheckBox maintCertExpChkBox;
-    private javax.swing.JCheckBox maintCertExpChkBox2;
     private javax.swing.JLabel maintCertExpLabel;
-    private javax.swing.JLabel maintCertExpLabel2;
     private javax.swing.JTextField manuNameTxt;
-    private javax.swing.JTextField manuNameTxt2;
     private javax.swing.JLabel modelNoLabel;
-    private javax.swing.JLabel modelNoLabel2;
     private javax.swing.JTextField modelNoTxt;
-    private javax.swing.JTextField modelNoTxt2;
     private javax.swing.JLabel numOfSeatsLabel;
-    private javax.swing.JLabel numOfSeatsLabel2;
     private javax.swing.JTextField numOfSeatsTxt;
-    private javax.swing.JTextField numOfSeatsTxt2;
+    private javax.swing.JTextField originTxt;
     private javax.swing.JButton saveJBtn;
     private javax.swing.JLabel serNoLabel;
-    private javax.swing.JLabel serNoLabel2;
     private javax.swing.JTextField serNoTxt;
-    private javax.swing.JTextField serNoTxt2;
     private javax.swing.JLabel timeOfFleetCatLabel;
-    private javax.swing.JLabel timeOfFleetCatLabel2;
     private javax.swing.JTextField timeOfFleetCatTxt;
-    private javax.swing.JTextField timeOfFleetCatTxt2;
     private javax.swing.JLabel yearOfManLabel;
-    private javax.swing.JLabel yearOfManLabel2;
     private javax.swing.JTextField yearOfManTxt;
-    private javax.swing.JTextField yearOfManTxt2;
     // End of variables declaration//GEN-END:variables
 }

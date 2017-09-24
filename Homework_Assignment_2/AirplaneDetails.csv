@@ -1,3 +1,7 @@
-Airplane Name,Date of Departure:,Year of Manufacture,Number of Seats:,Serail Number:,Model Number:,Fleet Catalog updated Date:,Maintainance Certficate Expired:,Availablity of Airplane:,Airport Name:,Manufacturer Name:
-Boeing,12-02-2016,1992,80,1234,5678,11-01-2017,Yes,Yes,Boston,Manu Name
-Boeing1,12-02-2016,1993,82,1235,5676,11-01-2017,No,No,Boston1,Manu Name
+Airplane Name,Date of Departure:,Year of Manufacture,Number of Seats:,Serail Number:,Model Number:,Fleet Catalog updated Date:,Maintainance Certficate Expired:,Availablity of Airplane:,Airport Name:,Manufacturer Name:,Origin,Destination,,,
+Boeing,02-12-2016,1992,80,1234,5678,11-01-2017,Yes,Yes,Boston,Manu Name,Boston,New York,,,
+Boeing1,13-02-2017,1993,82,1235,5676,11-01-2017,No,No,Boston1,Manu Name,Boston,Chicago,,,
+Boeing2,13-01-2017,1993,82,1235,5676,11-01-2017,No,No,Boston1,Manu Name,Boston,New York,,,
+Boeing3,13-01-2015,1993,82,1235,5676,11-01-2017,No,No,Boston1,Manu Name,Boston,Chicago,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,

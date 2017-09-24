@@ -16,13 +16,48 @@ public class AirplaneDetails {
     private Date dateOfFly; 
     private int yearOfMan;
     private int numOfSeats;
-    private double serNo;
-    private double modelNo;
+    private String serNo;
+    private String modelNo;
     private Date timeOfFleetCat;
     private String maintCertExp;
     private String availablity;
     private String airportName;
     private String manuName;
+    private String origin;
+    private String destination;
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+    
+
+    public String getSerNo() {
+        return serNo;
+    }
+
+    public void setSerNo(String serNo) {
+        this.serNo = serNo;
+    }
+
+    public String getModelNo() {
+        return modelNo;
+    }
+
+    public void setModelNo(String modelNo) {
+        this.modelNo = modelNo;
+    }
 
     public Date getTimeOfFleetCat() {
         return timeOfFleetCat;
@@ -70,22 +105,6 @@ public class AirplaneDetails {
 
     public void setNumOfSeats(int numOfSeats) {
         this.numOfSeats = numOfSeats;
-    }
-
-    public double getSerNo() {
-        return serNo;
-    }
-
-    public void setSerNo(double serNo) {
-        this.serNo = serNo;
-    }
-
-    public double getModelNo() {
-        return modelNo;
-    }
-
-    public void setModelNo(double modelNo) {
-        this.modelNo = modelNo;
     }
 
     public String getMaintCertExp() {

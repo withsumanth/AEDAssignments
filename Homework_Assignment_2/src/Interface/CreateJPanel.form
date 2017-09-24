@@ -39,7 +39,7 @@
               <EmptySpace pref="415" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="276" max="-2" attributes="0"/>
               <Component id="saveJBtn" min="-2" pref="140" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -59,9 +59,9 @@
               <Component id="jPanelFromFile" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanelFromData" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="saveJBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="326" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="286" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -128,9 +128,13 @@
                       <Component id="airportNameLabel2" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
                       <Component id="yearOfManLabel" alignment="1" min="-2" pref="139" max="-2" attributes="0"/>
                       <Component id="airportNameLabel1" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
+                      <Component id="airportNameLabel3" min="-2" pref="107" max="-2" attributes="0"/>
+                      <Component id="airportNameLabel4" min="-2" pref="107" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="destinationTxt" max="32767" attributes="0"/>
+                      <Component id="originTxt" max="32767" attributes="0"/>
                       <Component id="dateOfFlyTxt" max="32767" attributes="0"/>
                       <Component id="manuNameTxt" alignment="0" max="32767" attributes="0"/>
                       <Component id="serNoTxt" alignment="1" max="32767" attributes="0"/>
@@ -209,7 +213,17 @@
                       <Component id="dateOfFlyTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="airportNameLabel2" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="49" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="originTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="airportNameLabel3" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="destinationTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="airportNameLabel4" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -297,6 +311,20 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="dateOfFlyTxt">
+        </Component>
+        <Component class="javax.swing.JLabel" name="airportNameLabel3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Origin:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="originTxt">
+        </Component>
+        <Component class="javax.swing.JLabel" name="airportNameLabel4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Destination:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="destinationTxt">
         </Component>
       </SubComponents>
     </Container>
