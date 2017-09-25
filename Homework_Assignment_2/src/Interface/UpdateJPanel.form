@@ -149,11 +149,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="airportNameLabel11">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Date of Departure:"/>
+        <Property name="text" type="java.lang.String" value="Date of Departure (dd-mm-yyyy):"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="40" y="460" width="129" height="25"/>
+          <AbsoluteConstraints x="9" y="460" width="190" height="25"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -166,7 +166,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="airportNameLabel14">
       <Properties>
-        <Property name="text" type="java.lang.String" value="          Destination"/>
+        <Property name="text" type="java.lang.String" value="          Destination:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -183,11 +183,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="timeOfFleetCatLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Fleet Catalog updated Date:"/>
+        <Property name="text" type="java.lang.String" value="Fleet Catalog updated Date (dd-mm-yyyy):"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="370" y="290" width="157" height="25"/>
+          <AbsoluteConstraints x="337" y="290" width="240" height="25"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -238,7 +238,7 @@
     <Component class="javax.swing.JTextField" name="airportNameTxt3">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="570" y="380" width="132" height="40"/>
+          <AbsoluteConstraints x="570" y="380" width="132" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -265,24 +265,27 @@
     <Component class="javax.swing.JTextField" name="manuNameTxt3">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="570" y="420" width="132" height="40"/>
+          <AbsoluteConstraints x="570" y="420" width="132" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="airportNameLabel13">
       <Properties>
-        <Property name="text" type="java.lang.String" value="             Origin"/>
+        <Property name="text" type="java.lang.String" value="             Origin:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="390" y="460" width="135" height="25"/>
+          <AbsoluteConstraints x="430" y="460" width="120" height="25"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="originTxt">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="originTxtActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="570" y="470" width="132" height="40"/>
+          <AbsoluteConstraints x="570" y="460" width="132" height="30"/>
         </Constraint>
       </Constraints>
     </Component>

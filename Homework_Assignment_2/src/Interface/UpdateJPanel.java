@@ -7,6 +7,7 @@ package Interface;
 
 import Business.AirplaneDetails;
 import Business.AirplaneDetailsHistory;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -152,21 +153,21 @@ public class UpdateJPanel extends javax.swing.JPanel {
         add(modelNoTxt3);
         modelNoTxt3.setBounds(190, 430, 132, 30);
 
-        airportNameLabel11.setText("Date of Departure:");
+        airportNameLabel11.setText("Date of Departure (dd-mm-yyyy):");
         add(airportNameLabel11);
-        airportNameLabel11.setBounds(40, 460, 129, 25);
+        airportNameLabel11.setBounds(9, 460, 190, 25);
         add(dateOfFlyTxt3);
         dateOfFlyTxt3.setBounds(190, 460, 132, 30);
 
-        airportNameLabel14.setText("          Destination");
+        airportNameLabel14.setText("          Destination:");
         add(airportNameLabel14);
         airportNameLabel14.setBounds(20, 490, 128, 20);
         add(destinationTxt);
         destinationTxt.setBounds(190, 490, 132, 30);
 
-        timeOfFleetCatLabel3.setText("Fleet Catalog updated Date:");
+        timeOfFleetCatLabel3.setText("Fleet Catalog updated Date (dd-mm-yyyy):");
         add(timeOfFleetCatLabel3);
-        timeOfFleetCatLabel3.setBounds(370, 290, 157, 25);
+        timeOfFleetCatLabel3.setBounds(337, 290, 240, 25);
         add(timeOfFleetCatTxt3);
         timeOfFleetCatTxt3.setBounds(570, 290, 132, 30);
 
@@ -184,7 +185,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
         add(airportNameLabel9);
         airportNameLabel9.setBounds(420, 390, 107, 25);
         add(airportNameTxt3);
-        airportNameTxt3.setBounds(570, 380, 132, 40);
+        airportNameTxt3.setBounds(570, 380, 132, 30);
 
         availablityChkBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,13 +199,19 @@ public class UpdateJPanel extends javax.swing.JPanel {
         add(airportNameLabel10);
         airportNameLabel10.setBounds(390, 420, 135, 25);
         add(manuNameTxt3);
-        manuNameTxt3.setBounds(570, 420, 132, 40);
+        manuNameTxt3.setBounds(570, 420, 132, 30);
 
-        airportNameLabel13.setText("             Origin");
+        airportNameLabel13.setText("             Origin:");
         add(airportNameLabel13);
-        airportNameLabel13.setBounds(390, 460, 135, 25);
+        airportNameLabel13.setBounds(430, 460, 120, 25);
+
+        originTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                originTxtActionPerformed(evt);
+            }
+        });
         add(originTxt);
-        originTxt.setBounds(570, 470, 132, 40);
+        originTxt.setBounds(570, 460, 132, 30);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Update Airplane Details");
@@ -264,22 +271,105 @@ public class UpdateJPanel extends javax.swing.JPanel {
         int selectedRow  = airDetTable.getSelectedRow();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         Boolean checkAnyChange = false;
+        Boolean checkAnyDateExc = false;
+        String availablityValue;
+        String maintCertValue;
         if(selectedRow>=0){
             AirplaneDetails airDet = (AirplaneDetails) airDetTable.getValueAt(selectedRow, 0);
-            if(!airDet.getAirplaneName().equals("") && !airDet.getAirplaneName().equals(airplaneNameTxt3.getText())){
+            if(!airDet.getAirplaneName().equals(airplaneNameTxt3.getText()) && airplaneNameTxt3.getText().trim().length()!=0){
               airDet.setAirplaneName(airplaneNameTxt3.getText()); 
               checkAnyChange = true;
-              populateJTable();
             }
-            if(!airDet.getAirplaneName().equals("") && !airDet.getAirplaneName().equals(airplaneNameTxt3.getText())){
-              airDet.setAirplaneName(airplaneNameTxt3.getText()); 
+            if(!airDet.getSerNo().equals(serNoTxt3.getText()) && serNoTxt3.getText().trim().length()!=0){
+              airDet.setSerNo(serNoTxt3.getText()); 
               checkAnyChange = true;
-              populateJTable(); 
+            }
+            if(!airDet.getModelNo().equals(modelNoTxt3.getText()) && modelNoTxt3.getText().trim().length()!=0){
+              airDet.setModelNo(modelNoTxt3.getText()); 
+              checkAnyChange = true;
+            }
+            if(!airDet.getModelNo().equals(modelNoTxt3.getText()) && modelNoTxt3.getText().trim().length()!=0){
+              airDet.setModelNo(modelNoTxt3.getText()); 
+              checkAnyChange = true;
+            }
+            if(!airDet.getAirportName().equals(airportNameTxt3.getText()) && airportNameTxt3.getText().trim().length()!=0){
+              airDet.setAirportName(airportNameTxt3.getText()); 
+              checkAnyChange = true;
+            }
+            if(!airDet.getManuName().equals(manuNameTxt3.getText()) && manuNameTxt3.getText().trim().length()!=0){
+              airDet.setManuName(manuNameTxt3.getText()); 
+              checkAnyChange = true;
+            }
+            if(!airDet.getOrigin().equals(originTxt.getText()) && originTxt.getText().trim().length()!=0){
+              airDet.setOrigin(originTxt.getText()); 
+              checkAnyChange = true;
+            }
+            if(!airDet.getDestination().equals(destinationTxt.getText()) && destinationTxt.getText().trim().length()!=0){
+              airDet.setDestination(destinationTxt.getText()); 
+              checkAnyChange = true;
+            }
+            if(availablityChkBox3.isSelected()){
+                availablityValue="Yes";
+            }else{
+                availablityValue="No";
+            }
+            if(maintCertExpChkBox3.isSelected()){
+                maintCertValue="Yes";
+            }else{
+                maintCertValue="No";
+            }
+            if(!airDet.getAvailablity().equals(availablityValue)){
+                airDet.setAvailablity(availablityValue);
+                checkAnyChange = true;
+            }
+            if(!airDet.getMaintCertExp().equals(maintCertValue)){
+                airDet.setMaintCertExp(maintCertValue);
+                checkAnyChange = true;
+            }
+            if(!formatter.format(airDet.getDateOfFly()).equals(dateOfFlyTxt3.getText()) && dateOfFlyTxt3.getText().trim().length()!=0){
+                try {
+                    airDet.setDateOfFly(formatter.parse(dateOfFlyTxt3.getText()));
+                    checkAnyChange = true;
+                } catch (ParseException ex) {
+                    checkAnyChange = false;
+                    checkAnyDateExc = true;
+                    JOptionPane.showMessageDialog(null, "Please enter date format in dd-mm-yyyy");
+                    Logger.getLogger(UpdateJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if(!formatter.format(airDet.getTimeOfFleetCat()).equals(timeOfFleetCatTxt3.getText()) && timeOfFleetCatTxt3.getText().trim().length()!=0){
+                try {
+                    airDet.setTimeOfFleetCat(formatter.parse(timeOfFleetCatTxt3.getText()));
+                    checkAnyChange = true;
+                } catch (ParseException ex) {
+                    checkAnyChange = false;
+                    checkAnyDateExc = true;
+                    JOptionPane.showMessageDialog(null, "Please enter date format in dd-mm-yyyy");
+                    Logger.getLogger(UpdateJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if(yearOfManTxt3.getText().trim().length()!=0 && airDet.getYearOfMan() != (Integer.parseInt(yearOfManTxt3.getText()))){
+               airDet.setYearOfMan(Integer.parseInt(yearOfManTxt3.getText()));
+               checkAnyChange = true;
+            }
+            if(numOfSeatsTxt3.getText().trim().length()!=0 && airDet.getNumOfSeats()!= (Integer.parseInt(numOfSeatsTxt3.getText()))){
+               airDet.setNumOfSeats(Integer.parseInt(numOfSeatsTxt3.getText()));
+               checkAnyChange = true;
+            }
+            if(checkAnyChange){
+                JOptionPane.showMessageDialog(null, "Changes updated Successfully");
+                populateJTable(); 
+            }else if(!checkAnyDateExc){
+                JOptionPane.showMessageDialog(null, "None of the fields were changed to update");
             }
         }else{
             JOptionPane.showMessageDialog(null, "Please Select any Row");
         }
     }//GEN-LAST:event_updateJPanelActionPerformed
+
+    private void originTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_originTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_originTxtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
