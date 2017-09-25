@@ -31,6 +31,7 @@ public class ViewJPanel extends javax.swing.JPanel {
      * Creates new form ViewJPanel
      */
     private AirplaneDetailsHistory airplaneDetailsHist;
+
     public ViewJPanel(AirplaneDetailsHistory airplaneDetailsHist) {
         initComponents();
         this.airplaneDetailsHist = airplaneDetailsHist;
@@ -38,11 +39,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         searchTxtField.setText("");
         searchChkBox2.setVisible(false);
     }
-    
-    public void populateJTable(){
+
+    public void populateJTable() {
         DefaultTableModel tabMod = (DefaultTableModel) airDetTable.getModel();
         tabMod.setRowCount(0);
-        for(AirplaneDetails ad:  airplaneDetailsHist.getAirDetHist()){
+        for (AirplaneDetails ad : airplaneDetailsHist.getAirDetHist()) {
             Object row[] = new Object[3];
             row[0] = ad;
             row[1] = ad.getYearOfMan();
@@ -379,7 +380,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                                     .addComponent(airportNameLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(airportNameLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(airportNameLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(maintCertExpChkBox3, javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,13 +389,13 @@ public class ViewJPanel extends javax.swing.JPanel {
                                 .addComponent(timeOfFleetCatTxt3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
                                 .addComponent(manuNameTxt3, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(originTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(268, Short.MAX_VALUE))
+                        .addContainerGap(274, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(searchChkBox, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(searchChkBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addComponent(jScrollPane2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,9 +480,9 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addComponent(searchChkBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchChkBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         jScrollPane3.setViewportView(jPanel1);
@@ -492,8 +493,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
-                .addGap(102, 102, 102))
+                .addComponent(jScrollPane3))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -510,132 +510,180 @@ public class ViewJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_searchTxtFieldActionPerformed
 
     private void serachBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serachBtnActionPerformed
-        ArrayList<AirplaneDetails> modArrList= new ArrayList();
+        ArrayList<AirplaneDetails> modArrList = new ArrayList();
         ArrayList<AirplaneDetails> airDetForSearch = airplaneDetailsHist.getAirDetHist();
         int count = 0;
         String originValue = searchTxtField.getText();
         String destinationValue = searchTxtDest.getText();
-        if(searchListBox.getSelectedItem().equals("First Available Airplane")){
-            if(originValue.trim().length()!=0 && destinationValue.trim().length()!=0){
-               List<Date> dateValues = new ArrayList();
-            for(AirplaneDetails eachSearchValue: airDetForSearch){
-                if(eachSearchValue.getOrigin().equals(originValue) && eachSearchValue.getDestination().equals(destinationValue)&& eachSearchValue.getAvailablity().equals("Yes")){
-                    dateValues.add(eachSearchValue.getDateOfFly());
+        if (searchListBox.getSelectedItem().equals("First Available Airplane")) {
+            if (originValue.trim().length() != 0 && destinationValue.trim().length() != 0) {
+                List<Date> dateValues = new ArrayList();
+                for (AirplaneDetails eachSearchValue : airDetForSearch) {
+                    if (eachSearchValue.getOrigin().equals(originValue) && eachSearchValue.getDestination().equals(destinationValue) && eachSearchValue.getAvailablity().equals("Yes")) {
+                        dateValues.add(eachSearchValue.getDateOfFly());
+                    }
                 }
-            }
-            Collections.sort(dateValues);
-            for(AirplaneDetails eachSearchValue: airDetForSearch){
-                if(!dateValues.isEmpty() && eachSearchValue.getDateOfFly()== dateValues.get(0)){
-                    modArrList.add(count, eachSearchValue);
-                    break;
+                Collections.sort(dateValues);
+                for (AirplaneDetails eachSearchValue : airDetForSearch) {
+                    if (!dateValues.isEmpty() && eachSearchValue.getDateOfFly() == dateValues.get(0)) {
+                        modArrList.add(count, eachSearchValue);
+                        break;
+                    }
                 }
-            } 
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Please enter Origin and Destination Values");
                 return;
             }
-        }else if(searchListBox.getSelectedItem().equals("Currently Available Airplanes")){
-            if(originValue.trim().length()!=0 && destinationValue.trim().length()!=0){
-                for(AirplaneDetails eachSearchValue: airDetForSearch){
-                if(searchChkBox2.isSelected()){
-                    if(eachSearchValue.getAvailablity().equals("Yes") && eachSearchValue.getOrigin().equals(originValue) && eachSearchValue.getDestination().equals(destinationValue)){
-                    modArrList.add(count, eachSearchValue);
-                    count++;
-                    }
-                }else{
-                    if(eachSearchValue.getAvailablity().equals("No") && eachSearchValue.getOrigin().equals(originValue) && eachSearchValue.getDestination().equals(destinationValue)){
-                    modArrList.add(count, eachSearchValue);
-                    count++;
+        } else if (searchListBox.getSelectedItem().equals("Currently Available Airplanes")) {
+            if (originValue.trim().length() != 0 && destinationValue.trim().length() != 0) {
+                for (AirplaneDetails eachSearchValue : airDetForSearch) {
+                    if (searchChkBox2.isSelected()) {
+                        if (eachSearchValue.getAvailablity().equals("Yes") && eachSearchValue.getOrigin().equals(originValue) && eachSearchValue.getDestination().equals(destinationValue)) {
+                            modArrList.add(count, eachSearchValue);
+                            count++;
+                        }
+                    } else {
+                        if (eachSearchValue.getAvailablity().equals("No") && eachSearchValue.getOrigin().equals(originValue) && eachSearchValue.getDestination().equals(destinationValue)) {
+                            modArrList.add(count, eachSearchValue);
+                            count++;
+                        }
                     }
                 }
-                }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Please enter Origin and Destination Values");
                 return;
             }
-        }else if(searchListBox.getSelectedItem().equals("Manufactured year")){
-            String yearValue = searchTxtField.getText();
-            for(AirplaneDetails eachSearchValue: airDetForSearch){
-                if(eachSearchValue.getYearOfMan() == (Integer.parseInt(yearValue))){
-                    modArrList.add(count, eachSearchValue);
-                    count++;
-                }
-            }
-        }else if(searchListBox.getSelectedItem().equals("Number of seats Available")){
-            for(AirplaneDetails eachSearchValue: airDetForSearch){
-                if(searchChkBox2.isSelected()){
-                    if(eachSearchValue.getAvailablity().equals("Yes") && (eachSearchValue.getNumOfSeats()>Integer.parseInt(originValue) && eachSearchValue.getNumOfSeats()<Integer.parseInt(destinationValue))){                    modArrList.add(count, eachSearchValue);
-                    count++;
+        } else if (searchListBox.getSelectedItem().equals("Manufactured year")) {
+            if (originValue.trim().length() != 0) {
+                try {
+                    int yearValue = Integer.parseInt(searchTxtField.getText());
+                    for (AirplaneDetails eachSearchValue : airDetForSearch) {
+                        if (eachSearchValue.getYearOfMan() == yearValue) {
+                            modArrList.add(count, eachSearchValue);
+                            count++;
+                        }
                     }
-                }else{
-                    if(eachSearchValue.getAvailablity().equals("No") && (eachSearchValue.getNumOfSeats()>Integer.parseInt(originValue) && eachSearchValue.getNumOfSeats()<Integer.parseInt(destinationValue))){
-                    modArrList.add(count, eachSearchValue);
-                    count++;
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Please enter Integer values for Year");
+                    return;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter Manufactured Year");
+                return;
+            }
+        } else if (searchListBox.getSelectedItem().equals("Number of seats Available")) {
+            if (originValue.trim().length() != 0 && destinationValue.trim().length() != 0) {
+                try {
+                    int minNoOfSeats = Integer.parseInt(originValue);
+                    int maxNoOfSeats = Integer.parseInt(destinationValue);
+                    for (AirplaneDetails eachSearchValue : airDetForSearch) {
+                        if (searchChkBox2.isSelected()) {
+                            if (eachSearchValue.getAvailablity().equals("Yes") && (eachSearchValue.getNumOfSeats() > minNoOfSeats && eachSearchValue.getNumOfSeats() < maxNoOfSeats)) {
+                                modArrList.add(count, eachSearchValue);
+                                count++;
+                            }
+                        } else {
+                            if (eachSearchValue.getAvailablity().equals("No") && (eachSearchValue.getNumOfSeats() > Integer.parseInt(originValue) && eachSearchValue.getNumOfSeats() < Integer.parseInt(destinationValue))) {
+                                modArrList.add(count, eachSearchValue);
+                                count++;
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Please enter Integer values for Number of seats");
+                    return;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter Number of seats");
+                return;
+            }
+        } else if (searchListBox.getSelectedItem().equals("Serial Number")) {
+            if (originValue.trim().length() != 0) {
+                String serNoValue = searchTxtField.getText();
+                for (AirplaneDetails eachSearchValue : airDetForSearch) {
+                    if (eachSearchValue.getSerNo().equals(serNoValue)) {
+                        modArrList.add(count, eachSearchValue);
+                        count++;
                     }
                 }
+            }else{
+                JOptionPane.showMessageDialog(null, "Please enter Serial Number");
+                return;
             }
-        }else if(searchListBox.getSelectedItem().equals("Serial Number")){
-            String serNoValue = searchTxtField.getText();
-            for(AirplaneDetails eachSearchValue: airDetForSearch){
-                if(eachSearchValue.getSerNo().equals(serNoValue)){
-                    modArrList.add(count, eachSearchValue);
-                    count++;
+        } else if (searchListBox.getSelectedItem().equals("Model Number")) {
+            if (originValue.trim().length() != 0) {
+                String modelNoValue = searchTxtField.getText();
+                for (AirplaneDetails eachSearchValue : airDetForSearch) {
+                    if (eachSearchValue.getModelNo().equals(modelNoValue)) {
+                        modArrList.add(count, eachSearchValue);
+                        count++;
+                    }
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter Model Number");
+                return;
             }
-        }else if(searchListBox.getSelectedItem().equals("Model Number")){
-            String modelNoValue = searchTxtField.getText();
-            for(AirplaneDetails eachSearchValue: airDetForSearch){
-                if(eachSearchValue.getModelNo().equals(modelNoValue)){
-                    modArrList.add(count, eachSearchValue);
-                    count++;
+        } else if (searchListBox.getSelectedItem().equals("Manufacturer Name")) {
+            if (originValue.trim().length() != 0) {
+                String manuNamValue = searchTxtField.getText();
+                for (AirplaneDetails eachSearchValue : airDetForSearch) {
+                    if (eachSearchValue.getManuName().equals(manuNamValue)) {
+                        modArrList.add(count, eachSearchValue);
+                        count++;
+                    }
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter Manufacturer Name");
+                return;
             }
-        }else if(searchListBox.getSelectedItem().equals("Manufacturer Name")){
-            String manuNamValue = searchTxtField.getText();
-            for(AirplaneDetails eachSearchValue: airDetForSearch){
-                if(eachSearchValue.getManuName().equals(manuNamValue)){
-                    modArrList.add(count, eachSearchValue);
-                    count++;
+        } else if (searchListBox.getSelectedItem().equals("Last Fleet Catalog updated date")) {
+            if (originValue.trim().length() != 0) {
+                List<Date> dateValues = new ArrayList();
+                for (AirplaneDetails eachSearchValue : airDetForSearch) {
+                    if (eachSearchValue.getAirplaneName().equals(originValue)) {
+                        dateValues.add(eachSearchValue.getDateOfFly());
+                    }
                 }
-            }
-        }else if(searchListBox.getSelectedItem().equals("Last Fleet Catalog updated date")){
-            List<Date> dateValues = new ArrayList();
-            for(AirplaneDetails eachSearchValue: airDetForSearch){
-                if(eachSearchValue.getAirplaneName().equals(originValue)){
-                    dateValues.add(eachSearchValue.getDateOfFly());
+                Collections.sort(dateValues);
+                for (AirplaneDetails eachSearchValue : airDetForSearch) {
+                    if (!dateValues.isEmpty() && eachSearchValue.getDateOfFly() == dateValues.get((dateValues.size()) - 1)) {
+                        modArrList.add(count, eachSearchValue);
+                        break;
+                    }
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter Airplane Name");
+                return;
             }
-            Collections.sort(dateValues);
-            for(AirplaneDetails eachSearchValue: airDetForSearch){
-                if(!dateValues.isEmpty() && eachSearchValue.getDateOfFly()== dateValues.get((dateValues.size())-1)){
-                    modArrList.add(count, eachSearchValue);
-                    break;
+        } else if (searchListBox.getSelectedItem().equals("Airport Name for available Planes")) {
+            if (originValue.trim().length() != 0) {
+                String airNamValue = searchTxtField.getText();
+                for (AirplaneDetails eachSearchValue : airDetForSearch) {
+                    if (eachSearchValue.getAirportName().equals(airNamValue) && eachSearchValue.getAvailablity().equals("Yes")) {
+                        modArrList.add(count, eachSearchValue);
+                        count++;
+                    }
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter Airport Name");
+                return;
             }
-        }else if(searchListBox.getSelectedItem().equals("Airport Name for available Planes")){
-            String airNamValue = searchTxtField.getText();
-            for(AirplaneDetails eachSearchValue: airDetForSearch){
-                if(eachSearchValue.getAirportName().equals(airNamValue) && eachSearchValue.getAvailablity().equals("Yes")){
-                    modArrList.add(count, eachSearchValue);
-                    count++;
-                }
-            }
-        }else if(searchListBox.getSelectedItem().equals("Maintainance Cerificate Expired")){
-            String maintCertValue ;
-            if(searchChkBox2.isSelected()){
+        } else if (searchListBox.getSelectedItem().equals("Maintainance Cerificate Expired")) {
+            String maintCertValue;
+            if (searchChkBox2.isSelected()) {
                 maintCertValue = "Yes";
-            }else{
+            } else {
                 maintCertValue = "No";
             }
-            for(AirplaneDetails eachSearchValue: airDetForSearch){
-                if(eachSearchValue.getMaintCertExp().equals(maintCertValue)){
+            for (AirplaneDetails eachSearchValue : airDetForSearch) {
+                if (eachSearchValue.getMaintCertExp().equals(maintCertValue)) {
                     modArrList.add(count, eachSearchValue);
                     count++;
                 }
             }
-        }else if(searchListBox.getSelectedItem().equals("Airplanes made of Boeing")){
-            for(AirplaneDetails eachSearchValue: airDetForSearch){
-                if(eachSearchValue.getManuName().equals("Boeing")){
+        } else if (searchListBox.getSelectedItem().equals("Airplanes made of Boeing")) {
+            for (AirplaneDetails eachSearchValue : airDetForSearch) {
+                if (eachSearchValue.getManuName().equals("Boeing")) {
                     modArrList.add(count, eachSearchValue);
                     count++;
                 }
@@ -646,7 +694,7 @@ public class ViewJPanel extends javax.swing.JPanel {
 
     private void searchListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchListBoxActionPerformed
         DefaultTableModel tabMod = (DefaultTableModel) searchJTable.getModel();
-        if(searchListBox.getSelectedItem().equals("First Available Airplane")){
+        if (searchListBox.getSelectedItem().equals("First Available Airplane")) {
             tabMod.setRowCount(0);
             searchLabel.setText("Origin City");
             searchLabDest.setText("Destination City");
@@ -659,7 +707,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox.setVisible(false);
             searchChkBox1.setVisible(false);
             searchChkBox2.setVisible(false);
-        }else if(searchListBox.getSelectedItem().equals("Currently Available Airplanes")){
+        } else if (searchListBox.getSelectedItem().equals("Currently Available Airplanes")) {
             tabMod.setRowCount(0);
             searchLabel.setVisible(true);
             searchLabDest.setVisible(true);
@@ -673,7 +721,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox.setVisible(true);
             searchChkBox2.setVisible(true);
             searchChkBox1.setVisible(true);
-        }else if(searchListBox.getSelectedItem().equals("Manufactured year")){
+        } else if (searchListBox.getSelectedItem().equals("Manufactured year")) {
             tabMod.setRowCount(0);
             searchLabel.setVisible(true);
             searchTxtField.setVisible(true);
@@ -684,7 +732,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox1.setVisible(false);
             searchChkBox2.setVisible(false);
             searchTxtDest.setVisible(false);
-        }else if(searchListBox.getSelectedItem().equals("Number of seats Available")){
+        } else if (searchListBox.getSelectedItem().equals("Number of seats Available")) {
             tabMod.setRowCount(0);
             searchLabel.setVisible(true);
             searchLabDest.setVisible(true);
@@ -698,7 +746,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox.setVisible(true);
             searchChkBox2.setVisible(true);
             searchChkBox1.setVisible(true);
-        }else if(searchListBox.getSelectedItem().equals("Serial Number")){
+        } else if (searchListBox.getSelectedItem().equals("Serial Number")) {
             tabMod.setRowCount(0);
             searchLabel.setText("Enter Number");
             searchTxtField.setText("");
@@ -709,7 +757,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox2.setVisible(false);
             searchLabDest.setVisible(false);
             searchTxtDest.setVisible(false);
-        }else if(searchListBox.getSelectedItem().equals("Model Number")){
+        } else if (searchListBox.getSelectedItem().equals("Model Number")) {
             tabMod.setRowCount(0);
             searchLabel.setVisible(true);
             searchTxtField.setVisible(true);
@@ -720,7 +768,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox1.setVisible(false);
             searchChkBox2.setVisible(false);
             searchTxtDest.setVisible(false);
-        }else if(searchListBox.getSelectedItem().equals("Manufacturer Name")){
+        } else if (searchListBox.getSelectedItem().equals("Manufacturer Name")) {
             tabMod.setRowCount(0);
             searchLabel.setVisible(true);
             searchTxtField.setVisible(true);
@@ -731,7 +779,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox1.setVisible(false);
             searchChkBox2.setVisible(false);
             searchTxtDest.setVisible(false);
-        }else if(searchListBox.getSelectedItem().equals("Last Fleet Catalog updated date")){
+        } else if (searchListBox.getSelectedItem().equals("Last Fleet Catalog updated date")) {
             tabMod.setRowCount(0);
             searchLabel.setVisible(true);
             searchTxtField.setVisible(true);
@@ -742,7 +790,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox1.setVisible(false);
             searchChkBox2.setVisible(false);
             searchTxtDest.setVisible(false);
-        }else if(searchListBox.getSelectedItem().equals("Airport Name for available Planes")){
+        } else if (searchListBox.getSelectedItem().equals("Airport Name for available Planes")) {
             tabMod.setRowCount(0);
             searchLabel.setVisible(true);
             searchTxtField.setVisible(true);
@@ -753,7 +801,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox2.setVisible(false);
             searchLabDest.setVisible(false);
             searchTxtDest.setVisible(false);
-        }else if(searchListBox.getSelectedItem().equals("Maintainance Cerificate Expired")){
+        } else if (searchListBox.getSelectedItem().equals("Maintainance Cerificate Expired")) {
             tabMod.setRowCount(0);
             searchLabel.setVisible(false);
             searchTxtField.setVisible(false);
@@ -763,7 +811,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchLabDest.setVisible(false);
             searchTxtDest.setVisible(false);
             chkBxLabel.setText("Expired");
-        }else if(searchListBox.getSelectedItem().equals("Airplanes made of Boeing")){
+        } else if (searchListBox.getSelectedItem().equals("Airplanes made of Boeing")) {
             tabMod.setRowCount(0);
             searchLabel.setVisible(false);
             searchTxtField.setVisible(false);
@@ -784,9 +832,9 @@ public class ViewJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_airplaneNameTxt3ActionPerformed
 
     private void viewAirDetJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAirDetJBtnActionPerformed
-        int selectedRow  = airDetTable.getSelectedRow();
+        int selectedRow = airDetTable.getSelectedRow();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        if(selectedRow>=0){
+        if (selectedRow >= 0) {
             AirplaneDetails airDet = (AirplaneDetails) airDetTable.getValueAt(selectedRow, 0);
             airplaneNameTxt3.setText(airDet.getAirplaneName());
             try {
@@ -799,21 +847,21 @@ public class ViewJPanel extends javax.swing.JPanel {
             numOfSeatsTxt3.setText(String.valueOf(airDet.getNumOfSeats()));
             serNoTxt3.setText(String.valueOf(airDet.getSerNo()));
             modelNoTxt3.setText(String.valueOf(airDet.getModelNo()));
-            if(airDet.getMaintCertExp().equals("Yes")){
+            if (airDet.getMaintCertExp().equals("Yes")) {
                 maintCertExpChkBox3.setSelected(true);
-            }else{
+            } else {
                 maintCertExpChkBox3.setSelected(false);
             }
-            if(airDet.getAvailablity().equals("Yes")){
+            if (airDet.getAvailablity().equals("Yes")) {
                 availablityChkBox3.setSelected(true);
-            }else{
+            } else {
                 availablityChkBox3.setSelected(false);
             }
             airportNameTxt3.setText(airDet.getAirportName());
             manuNameTxt3.setText(airDet.getManuName());
             originTxt.setText(airDet.getOrigin());
             destinationTxt.setText(airDet.getDestination());
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Please Select any Row");
         }
     }//GEN-LAST:event_viewAirDetJBtnActionPerformed
@@ -822,11 +870,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchTxtDestActionPerformed
 
-    public void populateJTable1(ArrayList<AirplaneDetails> modArrList){
+    public void populateJTable1(ArrayList<AirplaneDetails> modArrList) {
         DefaultTableModel tabMod = (DefaultTableModel) searchJTable.getModel();
         tabMod.setRowCount(0);
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        for(AirplaneDetails ad:  modArrList){
+        for (AirplaneDetails ad : modArrList) {
             Object row[] = new Object[13];
             row[0] = ad;
             row[1] = formatter.format(ad.getDateOfFly());
