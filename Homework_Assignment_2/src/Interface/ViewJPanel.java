@@ -31,6 +31,7 @@ public class ViewJPanel extends javax.swing.JPanel {
      * Creates new form ViewJPanel
      */
     private AirplaneDetailsHistory airplaneDetailsHist;
+    private ArrayList<AirplaneDetails> modArrList;
 
     public ViewJPanel(AirplaneDetailsHistory airplaneDetailsHist) {
         initComponents();
@@ -109,8 +110,15 @@ public class ViewJPanel extends javax.swing.JPanel {
         chkBxLabel = new javax.swing.JLabel();
         searchChkBox1 = new javax.swing.JPanel();
         searchChkBox2 = new javax.swing.JCheckBox();
+        jLabel3 = new javax.swing.JLabel();
+        secSearchListBox = new javax.swing.JComboBox<>();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        secSearchJTab = new javax.swing.JTable();
+        secTxtField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        secSearchBtn = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(1000, 1000));
+        setPreferredSize(new java.awt.Dimension(3000, 3000));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("View Airplane Details");
@@ -225,6 +233,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        searchJTable.setMaximumSize(new java.awt.Dimension(200, 0));
         jScrollPane2.setViewportView(searchJTable);
 
         searchJTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -311,6 +320,44 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addGap(0, 15, Short.MAX_VALUE))
         );
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Secondary Search");
+
+        secSearchListBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Airplane Name", "Airport Name" }));
+        secSearchListBox.setToolTipText("");
+        secSearchListBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                secSearchListBoxActionPerformed(evt);
+            }
+        });
+
+        secSearchJTab.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Airplane Name", "Date of Departure", "Serial Number", "Year of Manufacture", "Number of Seats", "Model Number", "Fleet Catalog updated Date", "Maintainance Certificate Expired", "Availablity of Airplane", "Airport Name", "Manufacturer Name", "Origin", "Destination"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(secSearchJTab);
+
+        jLabel4.setText("Name");
+
+        secSearchBtn.setText("Search");
+        secSearchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                secSearchBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -380,7 +427,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                                     .addComponent(airportNameLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(airportNameLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(airportNameLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(maintCertExpChkBox3, javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,13 +436,27 @@ public class ViewJPanel extends javax.swing.JPanel {
                                 .addComponent(timeOfFleetCatTxt3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
                                 .addComponent(manuNameTxt3, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(originTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(274, Short.MAX_VALUE))
+                        .addContainerGap(383, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(searchChkBox, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(searchChkBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 924, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(secSearchListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(secTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(secSearchBtn))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 902, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,9 +541,19 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addComponent(searchChkBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchChkBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(secTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(secSearchBtn)
+                    .addComponent(secSearchListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(611, Short.MAX_VALUE))
         );
 
         jScrollPane3.setViewportView(jPanel1);
@@ -491,13 +562,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1018, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -510,7 +579,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_searchTxtFieldActionPerformed
 
     private void serachBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serachBtnActionPerformed
-        ArrayList<AirplaneDetails> modArrList = new ArrayList();
+        modArrList = new ArrayList();
         ArrayList<AirplaneDetails> airDetForSearch = airplaneDetailsHist.getAirDetHist();
         int count = 0;
         String originValue = searchTxtField.getText();
@@ -689,7 +758,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                 }
             }
         }
-        populateJTable1(modArrList);
+        populateJTable1(modArrList,searchJTable);
     }//GEN-LAST:event_serachBtnActionPerformed
 
     private void searchListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchListBoxActionPerformed
@@ -870,11 +939,47 @@ public class ViewJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchTxtDestActionPerformed
 
-    public void populateJTable1(ArrayList<AirplaneDetails> modArrList) {
-        DefaultTableModel tabMod = (DefaultTableModel) searchJTable.getModel();
+    private void secSearchListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_secSearchListBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_secSearchListBoxActionPerformed
+
+    private void secSearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_secSearchBtnActionPerformed
+        ArrayList<AirplaneDetails> secArrList = new ArrayList();
+        int count = 0;
+        String secTextValue = secTxtField.getText();
+        if(secSearchListBox.getSelectedItem().equals("Airplane Name")){
+           if (secTextValue.trim().length() != 0) {
+               for (AirplaneDetails eachSearchValue : modArrList) {
+                   if (eachSearchValue.getAirplaneName().equals(secTextValue)) {
+                        secArrList.add(count, eachSearchValue);
+                        count++;
+                    }
+               }
+           }else{
+               JOptionPane.showMessageDialog(null, "Please enter Airplane Name");
+               return;
+           }
+        }else if(secSearchListBox.getSelectedItem().equals("Airport Name")){
+            if (secTextValue.trim().length() != 0) {
+               for (AirplaneDetails eachSearchValue : modArrList) {
+                   if (eachSearchValue.getAirportName().equals(secTextValue)) {
+                        secArrList.add(count, eachSearchValue);
+                        count++;
+                    }
+               }
+           }else{
+               JOptionPane.showMessageDialog(null, "Please enter Airport Name");
+               return;
+           }
+        }
+        populateJTable1(secArrList,secSearchJTab);
+    }//GEN-LAST:event_secSearchBtnActionPerformed
+
+    public void populateJTable1(ArrayList<AirplaneDetails> populateArrayList,javax.swing.JTable tableName) {
+        DefaultTableModel tabMod = (DefaultTableModel) tableName.getModel();
         tabMod.setRowCount(0);
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        for (AirplaneDetails ad : modArrList) {
+        for (AirplaneDetails ad : populateArrayList) {
             Object row[] = new Object[13];
             row[0] = ad;
             row[1] = formatter.format(ad.getDateOfFly());
@@ -909,11 +1014,14 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField destinationTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JCheckBox maintCertExpChkBox3;
     private javax.swing.JLabel maintCertExpLabel3;
     private javax.swing.JTextField manuNameTxt3;
@@ -933,6 +1041,10 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> searchListBox;
     private javax.swing.JTextField searchTxtDest;
     private javax.swing.JTextField searchTxtField;
+    private javax.swing.JButton secSearchBtn;
+    private javax.swing.JTable secSearchJTab;
+    private javax.swing.JComboBox<String> secSearchListBox;
+    private javax.swing.JTextField secTxtField;
     private javax.swing.JLabel serNoLabel3;
     private javax.swing.JTextField serNoTxt3;
     private javax.swing.JButton serachBtn;

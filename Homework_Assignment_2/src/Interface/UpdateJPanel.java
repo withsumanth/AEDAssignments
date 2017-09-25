@@ -382,6 +382,10 @@ public class UpdateJPanel extends javax.swing.JPanel {
             if(checkAnyChange){
                 JOptionPane.showMessageDialog(null, "Changes updated Successfully");
                 populateJTable(); 
+                JTextField[] textDet ={airplaneNameTxt3,yearOfManTxt3,numOfSeatsTxt3,serNoTxt3,modelNoTxt3,timeOfFleetCatTxt3,airportNameTxt3,manuNameTxt3,dateOfFlyTxt3,originTxt,destinationTxt};
+        clearTextValues(textDet);
+        availablityChkBox3.setSelected(false);
+        maintCertExpChkBox3.setSelected(false);
             }else if(!checkAnyDateExc){
                 JOptionPane.showMessageDialog(null, "None of the fields were changed to update");
             }
@@ -390,6 +394,12 @@ public class UpdateJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_updateJPanelActionPerformed
 
+    public void clearTextValues(JTextField[] textDet){
+        for(JTextField td:textDet){
+                td.setText("");
+            }
+    }
+    
     private void originTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_originTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_originTxtActionPerformed
