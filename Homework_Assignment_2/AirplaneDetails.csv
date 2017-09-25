@@ -1,5 +1,5 @@
 Airplane Name,Date of Departure:,Year of Manufacture,Number of Seats:,Serail Number:,Model Number:,Fleet Catalog updated Date:,Maintainance Certficate Expired:,Availablity of Airplane:,Airport Name:,Manufacturer Name:,Origin,Destination
 Boeing,02-12-2016',1992,10,1234,5678,02-12-2016',Yes,Yes,Boston,Manu Name,Boston,New York
 Boeing,13-02-2017',1993,20,1235,5676,13-02-2017',No,Yes,Boston1,Manu Name,Boston,Chicago
-Boeing,13-01-2017',1993,30,1235,5676,13-01-2017',No,Yes,Boston1,Manu Name,Boston,New York
+Boeing,13-01-2017',1993,30,1235,5676,13-01-2017',No,Yes,Boston1,Boeing,Boston,New York
 Boeing,13-01-2015',1993,30,1235,5676,13-01-2015',No,No,Boston1,Manu Name,Boston,Chicago

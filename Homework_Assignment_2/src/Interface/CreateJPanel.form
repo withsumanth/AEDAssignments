@@ -29,17 +29,17 @@
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+              <Component id="jPanelFromFile" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="427" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
               <Component id="jPanelFromData" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-              <Component id="jPanelFromFile" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="415" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="276" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="267" max="-2" attributes="0"/>
               <Component id="saveJBtn" min="-2" pref="140" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -55,13 +55,13 @@
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="createPlaneDet" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-              <Component id="jPanelFromFile" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jPanelFromFile" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Component id="jPanelFromData" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="saveJBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="286" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="500" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -110,120 +110,130 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="airplaneNameLabel" min="-2" pref="107" max="-2" attributes="0"/>
                       <Component id="numOfSeatsLabel" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
                       <Component id="serNoLabel" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
                       <Component id="modelNoLabel" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
-                      <Component id="airportNameLabel" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Component id="availablityLabel" max="32767" attributes="0"/>
-                          </Group>
                           <Component id="timeOfFleetCatLabel" alignment="1" max="32767" attributes="0"/>
                           <Component id="maintCertExpLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="airportNameLabel2" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
                       <Component id="yearOfManLabel" alignment="1" min="-2" pref="139" max="-2" attributes="0"/>
-                      <Component id="airportNameLabel1" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
-                      <Component id="airportNameLabel3" min="-2" pref="107" max="-2" attributes="0"/>
-                      <Component id="airportNameLabel4" min="-2" pref="107" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="destinationTxt" max="32767" attributes="0"/>
-                      <Component id="originTxt" max="32767" attributes="0"/>
-                      <Component id="dateOfFlyTxt" max="32767" attributes="0"/>
-                      <Component id="manuNameTxt" alignment="0" max="32767" attributes="0"/>
-                      <Component id="serNoTxt" alignment="1" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="timeOfFleetCatTxt" alignment="0" pref="132" max="32767" attributes="0"/>
                       <Component id="modelNoTxt" alignment="0" max="32767" attributes="0"/>
-                      <Component id="timeOfFleetCatTxt" alignment="0" max="32767" attributes="0"/>
-                      <Component id="airportNameTxt" alignment="0" max="32767" attributes="0"/>
-                      <Component id="yearOfManTxt" alignment="0" max="32767" attributes="0"/>
+                      <Component id="serNoTxt" alignment="0" max="32767" attributes="0"/>
                       <Component id="numOfSeatsTxt" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="maintCertExpChkBox" min="-2" max="-2" attributes="0"/>
-                              <Component id="availablityChkBox" min="-2" max="-2" attributes="0"/>
-                              <Component id="airplaneNameTxt" min="-2" pref="132" max="-2" attributes="0"/>
+                      <Component id="yearOfManTxt" alignment="0" max="32767" attributes="0"/>
+                      <Component id="maintCertExpChkBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="airplaneNameTxt" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="airportNameLabel" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
+                              <Component id="availablityLabel" alignment="1" max="32767" attributes="0"/>
+                              <Component id="airportNameLabel2" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
+                              <Component id="airportNameLabel1" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
+                              <Component id="airportNameLabel3" min="-2" pref="107" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="airportNameLabel4" min="-2" pref="107" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="originTxt" alignment="0" pref="132" max="32767" attributes="0"/>
+                      <Component id="dateOfFlyTxt" alignment="0" max="32767" attributes="0"/>
+                      <Component id="manuNameTxt" alignment="0" max="32767" attributes="0"/>
+                      <Component id="airportNameTxt" alignment="0" max="32767" attributes="0"/>
+                      <Component id="availablityChkBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="destinationTxt" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="airplaneNameLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="airplaneNameTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="airplaneNameLabel" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="airplaneNameTxt" pref="30" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="yearOfManLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="yearOfManTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="numOfSeatsLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="numOfSeatsTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="serNoLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="serNoTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="modelNoLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="modelNoTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="timeOfFleetCatLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="timeOfFleetCatTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="maintCertExpLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="maintCertExpChkBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="availablityLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="availablityChkBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="airportNameLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="airportNameTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="manuNameTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="airportNameLabel1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="dateOfFlyTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="airportNameLabel2" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="originTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="airportNameLabel3" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="destinationTxt" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="airportNameLabel4" min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="yearOfManLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="yearOfManTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="numOfSeatsLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="numOfSeatsTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="serNoLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="serNoTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="modelNoLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="modelNoTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="timeOfFleetCatLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="timeOfFleetCatTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="maintCertExpLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="maintCertExpChkBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="availablityLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="availablityChkBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="airportNameLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="airportNameTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="manuNameTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="airportNameLabel1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="dateOfFlyTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="airportNameLabel2" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="originTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="airportNameLabel3" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="destinationTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="airportNameLabel4" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -275,8 +285,14 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="yearOfManTxt">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="yearOfManTxtKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="numOfSeatsTxt">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="numOfSeatsTxtKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="serNoTxt">
         </Component>

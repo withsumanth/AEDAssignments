@@ -13,8 +13,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
+import com.sun.glass.events.KeyEvent;
+import java.util.Date;
 /**
  *
  * @author Sumanth
@@ -132,12 +134,24 @@ public class UpdateJPanel extends javax.swing.JPanel {
         yearOfManLabel3.setText("  Year of Manufacture: ");
         add(yearOfManLabel3);
         yearOfManLabel3.setBounds(20, 320, 139, 25);
+
+        yearOfManTxt3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                yearOfManTxt3KeyPressed(evt);
+            }
+        });
         add(yearOfManTxt3);
         yearOfManTxt3.setBounds(190, 320, 132, 30);
 
         numOfSeatsLabel3.setText("Number of Seats:");
         add(numOfSeatsLabel3);
         numOfSeatsLabel3.setBounds(50, 360, 107, 25);
+
+        numOfSeatsTxt3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                numOfSeatsTxt3KeyPressed(evt);
+            }
+        });
         add(numOfSeatsTxt3);
         numOfSeatsTxt3.setBounds(190, 360, 132, 30);
 
@@ -254,9 +268,13 @@ public class UpdateJPanel extends javax.swing.JPanel {
             modelNoTxt3.setText(String.valueOf(airDet.getModelNo()));
             if(airDet.getMaintCertExp().equals("Yes")){
                 maintCertExpChkBox3.setSelected(true);
+            }else{
+                 maintCertExpChkBox3.setSelected(false);
             }
             if(airDet.getAvailablity().equals("Yes")){
                 availablityChkBox3.setSelected(true);
+            }else{
+                 availablityChkBox3.setSelected(false);
             }
             airportNameTxt3.setText(airDet.getAirportName());
             manuNameTxt3.setText(airDet.getManuName());
@@ -274,8 +292,35 @@ public class UpdateJPanel extends javax.swing.JPanel {
         Boolean checkAnyDateExc = false;
         String availablityValue;
         String maintCertValue;
+        Date dateOfFlyValue;
+        Date timeOfFleetCatValue;
+        int yearOfManValue;
+        int numOfSeats;
         if(selectedRow>=0){
             AirplaneDetails airDet = (AirplaneDetails) airDetTable.getValueAt(selectedRow, 0);
+            try{
+               dateOfFlyValue = formatter.parse(dateOfFlyTxt3.getText());
+               timeOfFleetCatValue = formatter.parse(timeOfFleetCatTxt3.getText());
+           }catch(ParseException ex){
+               JOptionPane.showMessageDialog(null, "Please enter date format in dd-mm-yyyy");
+               Logger.getLogger(UpdateJPanel.class.getName()).log(Level.SEVERE, null, ex);
+               return;
+           }
+           try{
+               yearOfManValue = Integer.parseInt(yearOfManTxt3.getText());
+               numOfSeats = Integer.parseInt(numOfSeatsTxt3.getText());
+           }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Please enter Integer values");
+               return;
+           }
+            if(!formatter.format(airDet.getDateOfFly()).equals(dateOfFlyTxt3.getText()) && dateOfFlyTxt3.getText().trim().length()!=0){
+                    airDet.setDateOfFly(dateOfFlyValue);
+                    checkAnyChange = true;
+            }
+            if(!formatter.format(airDet.getTimeOfFleetCat()).equals(timeOfFleetCatTxt3.getText()) && timeOfFleetCatTxt3.getText().trim().length()!=0){
+                    airDet.setTimeOfFleetCat(timeOfFleetCatValue);
+                    checkAnyChange = true;
+            }
             if(!airDet.getAirplaneName().equals(airplaneNameTxt3.getText()) && airplaneNameTxt3.getText().trim().length()!=0){
               airDet.setAirplaneName(airplaneNameTxt3.getText()); 
               checkAnyChange = true;
@@ -326,34 +371,12 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 airDet.setMaintCertExp(maintCertValue);
                 checkAnyChange = true;
             }
-            if(!formatter.format(airDet.getDateOfFly()).equals(dateOfFlyTxt3.getText()) && dateOfFlyTxt3.getText().trim().length()!=0){
-                try {
-                    airDet.setDateOfFly(formatter.parse(dateOfFlyTxt3.getText()));
-                    checkAnyChange = true;
-                } catch (ParseException ex) {
-                    checkAnyChange = false;
-                    checkAnyDateExc = true;
-                    JOptionPane.showMessageDialog(null, "Please enter date format in dd-mm-yyyy");
-                    Logger.getLogger(UpdateJPanel.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            if(!formatter.format(airDet.getTimeOfFleetCat()).equals(timeOfFleetCatTxt3.getText()) && timeOfFleetCatTxt3.getText().trim().length()!=0){
-                try {
-                    airDet.setTimeOfFleetCat(formatter.parse(timeOfFleetCatTxt3.getText()));
-                    checkAnyChange = true;
-                } catch (ParseException ex) {
-                    checkAnyChange = false;
-                    checkAnyDateExc = true;
-                    JOptionPane.showMessageDialog(null, "Please enter date format in dd-mm-yyyy");
-                    Logger.getLogger(UpdateJPanel.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            if(yearOfManTxt3.getText().trim().length()!=0 && airDet.getYearOfMan() != (Integer.parseInt(yearOfManTxt3.getText()))){
-               airDet.setYearOfMan(Integer.parseInt(yearOfManTxt3.getText()));
+            if(yearOfManTxt3.getText().trim().length()!=0 && airDet.getYearOfMan() != (yearOfManValue)){
+               airDet.setYearOfMan(yearOfManValue);
                checkAnyChange = true;
             }
-            if(numOfSeatsTxt3.getText().trim().length()!=0 && airDet.getNumOfSeats()!= (Integer.parseInt(numOfSeatsTxt3.getText()))){
-               airDet.setNumOfSeats(Integer.parseInt(numOfSeatsTxt3.getText()));
+            if(numOfSeatsTxt3.getText().trim().length()!=0 && airDet.getNumOfSeats()!= (numOfSeats)){
+               airDet.setNumOfSeats(numOfSeats);
                checkAnyChange = true;
             }
             if(checkAnyChange){
@@ -371,6 +394,22 @@ public class UpdateJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_originTxtActionPerformed
 
+    private void yearOfManTxt3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_yearOfManTxt3KeyPressed
+        textToInteger(evt,yearOfManTxt3);
+    }//GEN-LAST:event_yearOfManTxt3KeyPressed
+
+    private void numOfSeatsTxt3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numOfSeatsTxt3KeyPressed
+        textToInteger(evt,numOfSeatsTxt3);
+    }//GEN-LAST:event_numOfSeatsTxt3KeyPressed
+    
+    public void textToInteger(java.awt.event.KeyEvent evt,JTextField txtField){
+        int key = evt.getKeyCode();
+        if((key>=evt.VK_0 && key<=evt.VK_9) ||(key>=evt.VK_NUMPAD0 && key<=evt.VK_NUMPAD9)|| key==KeyEvent.VK_BACKSPACE ||  (key == KeyEvent.VK_DELETE) || (key == KeyEvent.VK_SLASH)){
+            txtField.setEditable(true);
+        }else{
+            txtField.setEditable(false);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable airDetTable;

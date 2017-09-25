@@ -516,7 +516,8 @@ public class ViewJPanel extends javax.swing.JPanel {
         String originValue = searchTxtField.getText();
         String destinationValue = searchTxtDest.getText();
         if(searchListBox.getSelectedItem().equals("First Available Airplane")){
-            List<Date> dateValues = new ArrayList();
+            if(originValue.trim().length()!=0 && destinationValue.trim().length()!=0){
+               List<Date> dateValues = new ArrayList();
             for(AirplaneDetails eachSearchValue: airDetForSearch){
                 if(eachSearchValue.getOrigin().equals(originValue) && eachSearchValue.getDestination().equals(destinationValue)&& eachSearchValue.getAvailablity().equals("Yes")){
                     dateValues.add(eachSearchValue.getDateOfFly());
@@ -528,9 +529,14 @@ public class ViewJPanel extends javax.swing.JPanel {
                     modArrList.add(count, eachSearchValue);
                     break;
                 }
+            } 
+            }else{
+                JOptionPane.showMessageDialog(null, "Please enter Origin and Destination Values");
+                return;
             }
         }else if(searchListBox.getSelectedItem().equals("Currently Available Airplanes")){
-            for(AirplaneDetails eachSearchValue: airDetForSearch){
+            if(originValue.trim().length()!=0 && destinationValue.trim().length()!=0){
+                for(AirplaneDetails eachSearchValue: airDetForSearch){
                 if(searchChkBox2.isSelected()){
                     if(eachSearchValue.getAvailablity().equals("Yes") && eachSearchValue.getOrigin().equals(originValue) && eachSearchValue.getDestination().equals(destinationValue)){
                     modArrList.add(count, eachSearchValue);
@@ -542,6 +548,10 @@ public class ViewJPanel extends javax.swing.JPanel {
                     count++;
                     }
                 }
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Please enter Origin and Destination Values");
+                return;
             }
         }else if(searchListBox.getSelectedItem().equals("Manufactured year")){
             String yearValue = searchTxtField.getText();
@@ -625,7 +635,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         }else if(searchListBox.getSelectedItem().equals("Airplanes made of Boeing")){
             for(AirplaneDetails eachSearchValue: airDetForSearch){
-                if(eachSearchValue.getAirplaneName().equals("Boeing")){
+                if(eachSearchValue.getManuName().equals("Boeing")){
                     modArrList.add(count, eachSearchValue);
                     count++;
                 }
@@ -635,7 +645,9 @@ public class ViewJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_serachBtnActionPerformed
 
     private void searchListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchListBoxActionPerformed
+        DefaultTableModel tabMod = (DefaultTableModel) searchJTable.getModel();
         if(searchListBox.getSelectedItem().equals("First Available Airplane")){
+            tabMod.setRowCount(0);
             searchLabel.setText("Origin City");
             searchLabDest.setText("Destination City");
             searchTxtField.setText("");
@@ -648,6 +660,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox1.setVisible(false);
             searchChkBox2.setVisible(false);
         }else if(searchListBox.getSelectedItem().equals("Currently Available Airplanes")){
+            tabMod.setRowCount(0);
             searchLabel.setVisible(true);
             searchLabDest.setVisible(true);
             searchTxtField.setVisible(true);
@@ -661,6 +674,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox2.setVisible(true);
             searchChkBox1.setVisible(true);
         }else if(searchListBox.getSelectedItem().equals("Manufactured year")){
+            tabMod.setRowCount(0);
             searchLabel.setVisible(true);
             searchTxtField.setVisible(true);
             searchLabel.setText("Year");
@@ -671,6 +685,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox2.setVisible(false);
             searchTxtDest.setVisible(false);
         }else if(searchListBox.getSelectedItem().equals("Number of seats Available")){
+            tabMod.setRowCount(0);
             searchLabel.setVisible(true);
             searchLabDest.setVisible(true);
             searchTxtField.setVisible(true);
@@ -684,6 +699,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox2.setVisible(true);
             searchChkBox1.setVisible(true);
         }else if(searchListBox.getSelectedItem().equals("Serial Number")){
+            tabMod.setRowCount(0);
             searchLabel.setText("Enter Number");
             searchTxtField.setText("");
             searchLabel.setVisible(true);
@@ -694,6 +710,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchLabDest.setVisible(false);
             searchTxtDest.setVisible(false);
         }else if(searchListBox.getSelectedItem().equals("Model Number")){
+            tabMod.setRowCount(0);
             searchLabel.setVisible(true);
             searchTxtField.setVisible(true);
             searchLabel.setText("Enter Number");
@@ -704,6 +721,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox2.setVisible(false);
             searchTxtDest.setVisible(false);
         }else if(searchListBox.getSelectedItem().equals("Manufacturer Name")){
+            tabMod.setRowCount(0);
             searchLabel.setVisible(true);
             searchTxtField.setVisible(true);
             searchLabel.setText("Enter Name");
@@ -714,6 +732,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox2.setVisible(false);
             searchTxtDest.setVisible(false);
         }else if(searchListBox.getSelectedItem().equals("Last Fleet Catalog updated date")){
+            tabMod.setRowCount(0);
             searchLabel.setVisible(true);
             searchTxtField.setVisible(true);
             searchLabel.setText("Airplane Name");
@@ -724,6 +743,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox2.setVisible(false);
             searchTxtDest.setVisible(false);
         }else if(searchListBox.getSelectedItem().equals("Airport Name for available Planes")){
+            tabMod.setRowCount(0);
             searchLabel.setVisible(true);
             searchTxtField.setVisible(true);
             searchLabel.setText("Enter Name");
@@ -734,6 +754,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchLabDest.setVisible(false);
             searchTxtDest.setVisible(false);
         }else if(searchListBox.getSelectedItem().equals("Maintainance Cerificate Expired")){
+            tabMod.setRowCount(0);
             searchLabel.setVisible(false);
             searchTxtField.setVisible(false);
             searchChkBox.setVisible(true);
@@ -743,6 +764,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchTxtDest.setVisible(false);
             chkBxLabel.setText("Expired");
         }else if(searchListBox.getSelectedItem().equals("Airplanes made of Boeing")){
+            tabMod.setRowCount(0);
             searchLabel.setVisible(false);
             searchTxtField.setVisible(false);
             searchLabDest.setVisible(false);
@@ -779,9 +801,13 @@ public class ViewJPanel extends javax.swing.JPanel {
             modelNoTxt3.setText(String.valueOf(airDet.getModelNo()));
             if(airDet.getMaintCertExp().equals("Yes")){
                 maintCertExpChkBox3.setSelected(true);
+            }else{
+                maintCertExpChkBox3.setSelected(false);
             }
             if(airDet.getAvailablity().equals("Yes")){
                 availablityChkBox3.setSelected(true);
+            }else{
+                availablityChkBox3.setSelected(false);
             }
             airportNameTxt3.setText(airDet.getAirportName());
             manuNameTxt3.setText(airDet.getManuName());
