@@ -447,6 +447,10 @@ public class CreateJPanel extends javax.swing.JPanel {
            airDet.setManuName(manuNameTxt.getText());
            airDet.setOrigin(originTxt.getText());
            airDet.setDestination(destinationTxt.getText());
+           JOptionPane.showMessageDialog(null, "Data created successfully");
+            clearTextValues(textDet);
+            availablityChkBox.setSelected(false);
+            maintCertExpChkBox.setSelected(false);
        }
     }//GEN-LAST:event_saveJBtnActionPerformed
 

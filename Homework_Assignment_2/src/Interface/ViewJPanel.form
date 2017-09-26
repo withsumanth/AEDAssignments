@@ -455,7 +455,7 @@
             <Component class="javax.swing.JComboBox" name="searchListBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="11">
+                  <StringArray count="12">
                     <StringItem index="0" value="First Available Airplane"/>
                     <StringItem index="1" value="Currently Available Airplanes"/>
                     <StringItem index="2" value="Airplanes made of Boeing"/>
@@ -467,6 +467,7 @@
                     <StringItem index="8" value="Last Fleet Catalog updated date"/>
                     <StringItem index="9" value="Airport Name for available Planes"/>
                     <StringItem index="10" value="Maintainance Cerificate Expired"/>
+                    <StringItem index="11" value="Manufacturer List for the Airplane"/>
                   </StringArray>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>

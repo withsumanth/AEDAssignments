@@ -202,7 +202,7 @@ public class ViewJPanel extends javax.swing.JPanel {
 
         dateOfFlyTxt3.setEditable(false);
 
-        searchListBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "First Available Airplane", "Currently Available Airplanes", "Airplanes made of Boeing", "Manufactured year", "Number of seats Available", "Serial Number", "Model Number", "Manufacturer Name", "Last Fleet Catalog updated date", "Airport Name for available Planes", "Maintainance Cerificate Expired" }));
+        searchListBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "First Available Airplane", "Currently Available Airplanes", "Airplanes made of Boeing", "Manufactured year", "Number of seats Available", "Serial Number", "Model Number", "Manufacturer Name", "Last Fleet Catalog updated date", "Airport Name for available Planes", "Maintainance Cerificate Expired", "Manufacturer List for the Airplane" }));
         searchListBox.setToolTipText("");
         searchListBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -755,6 +755,19 @@ public class ViewJPanel extends javax.swing.JPanel {
                     count++;
                 }
             }
+        }else if (searchListBox.getSelectedItem().equals("Manufacturer List for the Airplane")) {
+            if (originValue.trim().length() != 0) {
+                String airPlaneValue = searchTxtField.getText();
+                for (AirplaneDetails eachSearchValue : airDetForSearch) {
+                    if (eachSearchValue.getAirplaneName().equals(airPlaneValue)) {
+                        modArrList.add(count, eachSearchValue);
+                        count++;
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter Airplane Name");
+                return;
+            }
         }
         populateJTable1(modArrList,searchJTable);
     }//GEN-LAST:event_serachBtnActionPerformed
@@ -880,6 +893,16 @@ public class ViewJPanel extends javax.swing.JPanel {
             searchChkBox.setVisible(false);
             searchChkBox1.setVisible(false);
             searchChkBox2.setVisible(false);
+        }else if (searchListBox.getSelectedItem().equals("Manufacturer List for the Airplane")) {
+            searchLabel.setVisible(true);
+            searchTxtField.setVisible(true);
+            searchLabel.setText("Enter Airplane Name");
+            searchTxtField.setText("");
+            searchLabDest.setVisible(false);
+            searchChkBox.setVisible(false);
+            searchChkBox1.setVisible(false);
+            searchChkBox2.setVisible(false);
+            searchTxtDest.setVisible(false);
         }
     }//GEN-LAST:event_searchListBoxActionPerformed
 
