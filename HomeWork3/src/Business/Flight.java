@@ -9,7 +9,7 @@ package Business;
  *
  * @author Sumanth
  */
-public class Airlines {
+public class Flight {
     private String airPlaneName;
     private String seatNo;
     private String costOfSeat;

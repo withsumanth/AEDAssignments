@@ -11,15 +11,24 @@ import java.util.ArrayList;
  *
  * @author Sumanth
  */
-public class CustomerDet extends Airlines{
-    private ArrayList<Customer> Customer;
+public class CustomerDet {
+    private ArrayList<Customer> customerDet;
 
-    public ArrayList<Customer> getCustomer() {
-        return Customer;
+    public CustomerDet() {
+        customerDet = new ArrayList<Customer>();
     }
 
-    public void setCustomer(ArrayList<Customer> Customer) {
-        this.Customer = Customer;
+    public ArrayList<Customer> getCustomerDet() {
+        return customerDet;
     }
-    
+
+    public void setCustomerDet(ArrayList<Customer> customerDet) {
+        this.customerDet = customerDet;
+    }
+
+    public Customer addDetails(){
+        Customer details = new Customer();
+        customerDet.add(details);
+        return details;
+    }
 }

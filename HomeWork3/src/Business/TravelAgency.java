@@ -12,27 +12,27 @@ import java.util.ArrayList;
  * @author Sumanth
  */
 public class TravelAgency {
-    private ArrayList<CustomerDet> customerDet; 
-    private ArrayList<Airlines> airlines; 
+    CustomerDet customerDet; 
+    AirlinesDet airlinesDet; 
 
-    public ArrayList<CustomerDet> getCustomerDet() {
+    public TravelAgency() {
+        customerDet = new CustomerDet();
+        airlinesDet = new AirlinesDet();
+    }
+
+    public CustomerDet getCustomerDet() {
         return customerDet;
     }
 
-    public void setCustomerDet(ArrayList<CustomerDet> customerDet) {
+    public void setCustomerDet(CustomerDet customerDet) {
         this.customerDet = customerDet;
     }
 
-    public ArrayList<Airlines> getAirlines() {
-        return airlines;
+    public AirlinesDet getAirlinesDet() {
+        return airlinesDet;
     }
 
-    public void setAirlines(ArrayList<Airlines> airlines) {
-        this.airlines = airlines;
-    }
-    
-    public static void main(String[] args) {
-        
-        
+    public void setAirlinesDet(AirlinesDet airlinesDet) {
+        this.airlinesDet = airlinesDet;
     }
 }

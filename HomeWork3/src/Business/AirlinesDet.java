@@ -12,13 +12,23 @@ import java.util.ArrayList;
  * @author Sumanth
  */
 public class AirlinesDet {
-    private ArrayList<Airlines> airLinesDet;
+    private ArrayList<Flight> airLinesDet;
 
-    public ArrayList<Airlines> getAirLinesDet() {
+    public AirlinesDet() {
+        airLinesDet = new ArrayList<Flight>();
+    }
+
+    public ArrayList<Flight> getAirLinesDet() {
         return airLinesDet;
     }
 
-    public void setAirLinesDet(ArrayList<Airlines> airLinesDet) {
+    public void setAirLinesDet(ArrayList<Flight> airLinesDet) {
         this.airLinesDet = airLinesDet;
+    }
+    
+    public Flight addDetails(){
+        Flight details = new Flight();
+        airLinesDet.add(details);
+        return details;
     }
 }
