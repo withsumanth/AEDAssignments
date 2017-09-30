@@ -12,8 +12,7 @@ package Business;
 public class Flight {
     private String airPlaneName;
     private String seatNo;
-    private String costOfSeat;
-    private String dateOfDep;
+    private int costOfSeat;
 
     public String getAirPlaneName() {
         return airPlaneName;
@@ -31,20 +30,12 @@ public class Flight {
         this.seatNo = seatNo;
     }
 
-    public String getCostOfSeat() {
+    public int getCostOfSeat() {
         return costOfSeat;
     }
 
-    public void setCostOfSeat(String costOfSeat) {
+    public void setCostOfSeat(int costOfSeat) {
         this.costOfSeat = costOfSeat;
     }
 
-    public String getDateOfDep() {
-        return dateOfDep;
-    }
-
-    public void setDateOfDep(String dateOfDep) {
-        this.dateOfDep = dateOfDep;
-    }
-    
 }

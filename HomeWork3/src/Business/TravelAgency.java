@@ -13,11 +13,23 @@ import java.util.ArrayList;
  */
 public class TravelAgency {
     CustomerDet customerDet; 
-    AirlinesDet airlinesDet; 
+    AirlinesDet airlinesDet;
+    Seat seatType;
+    MasterSchedule masterSch;
 
     public TravelAgency() {
         customerDet = new CustomerDet();
         airlinesDet = new AirlinesDet();
+        seatType = new Seat();
+        masterSch = new MasterSchedule(); 
+    }
+
+    public MasterSchedule getMasterSch() {
+        return masterSch;
+    }
+
+    public void setMasterSch(MasterSchedule masterSch) {
+        this.masterSch = masterSch;
     }
 
     public CustomerDet getCustomerDet() {

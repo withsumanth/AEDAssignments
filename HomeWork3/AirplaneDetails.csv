@@ -1,3 +1,2 @@
-Airplane Name,Date of Departure:,Year of Manufacture,Number of Seats:
-Emirates,02-12-2017',1992,200
-British Airways,13-02-2018',2000,200
+Customer Name,Customer Age,Airplane Name,Date of Departure:,Seat Type,Number of Seats:
+aa,12,Emirates,30-10-2017',window,200
