@@ -57,11 +57,15 @@ public class MainClass {
 	        } catch (FileNotFoundException e) {
 	            e.printStackTrace();
                 }
+                //To get details of sorted individual flight
                 ArrayList<Flight> flightDetails=  travelAgency.getAirlinesDet().getAirLinesDet();
                 flightDetails.sort(Comparator.comparing((Flight p)->p.getAirPlaneName()).thenComparing(p->p.getSerNo()));
+                //To get flight details which have common serial number and name
                 List serialNo = new ArrayList();
+                int totalRevenue = 0;
                 for(int i=0;i<flightDetails.size();i++){
                     serialNo.add(i, flightDetails.get(i).getSerNo());
+                    totalRevenue+=flightDetails.get(i).getCostOfSeat();
                 }
                 ArrayList<Integer> getFrequencyDetailsForSerNo = new ArrayList<Integer>();
                 int freqCountForSer = 0;
@@ -82,6 +86,8 @@ public class MainClass {
                     }
                     eachDetailsForSer.put(i, flightDetailsNew);
                 } 
+                
+                //To get common Airliners
                 List airLine = new ArrayList();
                 for(int i=0;i<flightDetails.size();i++){
                     airLine.add(i, flightDetails.get(i).getAirPlaneName());
@@ -105,6 +111,8 @@ public class MainClass {
                     }
                     eachDetailsForAirline.put(i, flightDetailsNew);
                 } 
+                
+                //To calculate revenue of each Airplane
                 for(int i=0;i<eachDetailsForSer.size();i++){
                    ArrayList<Flight> revenueOfSingleFlight =  (ArrayList<Flight>) eachDetailsForSer.get(i);
                    int costOfSingleFlight = 0;
@@ -117,5 +125,20 @@ public class MainClass {
                    }
                     System.out.println("Revenue of " + flightName +" with Serial Number "+serialNumber+" = "+ costOfSingleFlight);
                 }
+                
+                //To calculate Revenue of each Airliner
+                for(int i=0;i<eachDetailsForAirline.size();i++){
+                   ArrayList<Flight> revenueOfSingleFlight =  (ArrayList<Flight>) eachDetailsForAirline.get(i);
+                   int costOfSingleFlight = 0;
+                   String flightName;
+                   flightName = revenueOfSingleFlight.get(0).getAirPlaneName();
+                   for(int j=0;j<revenueOfSingleFlight.size();j++){
+                       costOfSingleFlight = costOfSingleFlight + revenueOfSingleFlight.get(j).getCostOfSeat();
+                   }
+                    System.out.println("Revenue of Airliner " + flightName +" = "+ costOfSingleFlight);
+                }
+                
+                //To calculate revenue of Travel Agency
+                System.out.println("Total Revenue of Travel Agency = "+totalRevenue);
     }
 }

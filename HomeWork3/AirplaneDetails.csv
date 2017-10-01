@@ -1,6 +1,51 @@
 Customer Name,Customer Age,Airplane Name,Serial Number,Date of Departure:,Seat Type,Number of Seats:
-aa,12,Emirates,a123,30-10-2017',Aisle,200
-bb,13,Air India,b234,30-10-2017',window,300
-cc,30,Emirates,a123,30-10-2017',window,200
-dd,34,Air India,b234,30-10-2017',middle,200
-ee,12,Emirates,b123,30-10-2017',middle,200
+Customer1,12,Emirates,a123,30-10-2017',Aisle,200
+Customer2,13,Air India,b234,30-10-2017',window,300
+Customer3,30,Emirates,a123,30-10-2017',window,200
+Customer4,34,Air India,b234,30-10-2017',middle,200
+Customer5,12,Emirates,b123,30-10-2017',middle,200
+Customer6,44,,,,,
+Customer7,44,,,,,
+Customer8,34,,,,,
+Customer9,55,,,,,
+Customer10,55,,,,,
+Customer11,48,,,,,
+Customer12,48,,,,,
+Customer13,34,,,,,
+Customer14,48,,,,,
+Customer15,44,,,,,
+Customer16,34,,,,,
+Customer17,41,,,,,
+Customer18,55,,,,,
+Customer19,41,,,,,
+Customer20,34,,,,,
+Customer21,48,,,,,
+Customer22,41,,,,,
+Customer23,34,,,,,
+Customer24,44,,,,,
+Customer25,55,,,,,
+Customer26,34,,,,,
+Customer27,44,,,,,
+Customer28,48,,,,,
+Customer29,34,,,,,
+Customer30,41,,,,,
+Customer31,55,,,,,
+Customer32,44,,,,,
+Customer33,48,,,,,
+Customer34,55,,,,,
+Customer35,34,,,,,
+Customer36,48,,,,,
+Customer37,44,,,,,
+Customer38,55,,,,,
+Customer39,48,,,,,
+Customer40,55,,,,,
+Customer41,55,,,,,
+Customer42,48,,,,,
+Customer43,34,,,,,
+Customer44,48,,,,,
+Customer45,44,,,,,
+Customer46,44,,,,,
+Customer47,48,,,,,
+Customer48,55,,,,,
+Customer49,34,,,,,
+Customer50,44,,,,,
