@@ -1,6 +1,6 @@
 Customer Name,Customer Age,Airplane Name,Serial Number,Date of Departure:,Seat Type,Number of Seats:
-aa,12,Emirates,a123,30-10-2017',window,200
+aa,12,Emirates,a123,30-10-2017',Aisle,200
 bb,13,Air India,b234,30-10-2017',window,300
 cc,30,Emirates,a123,30-10-2017',window,200
-dd,34,Air India,b234,30-10-2017',window,200
-ee,12,Emirates,b123,30-10-2017',window,200
+dd,34,Air India,b234,30-10-2017',middle,200
+ee,12,Emirates,b123,30-10-2017',middle,200
