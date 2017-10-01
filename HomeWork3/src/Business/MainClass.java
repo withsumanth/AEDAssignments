@@ -70,7 +70,9 @@ public class MainClass {
                 ArrayList<Integer> getFrequencyDetailsForSerNo = new ArrayList<Integer>();
                 int freqCountForSer = 0;
                 Set<String> mySetForSer = new HashSet<String>(serialNo);
-	        for(String s: mySetForSer){
+                List sortedList = new ArrayList(mySetForSer);
+                Collections.sort(sortedList);
+	        for(Object s: sortedList){
                     getFrequencyDetailsForSerNo.add(freqCountForSer, Collections.frequency(serialNo,s)) ;
                     freqCountForSer++;
 	        }
@@ -95,7 +97,9 @@ public class MainClass {
                 ArrayList<Integer> getFrequencyDetailsForAirline = new ArrayList<Integer>();
                 int freqCountForAirline = 0;
                 Set<String> mySetForAirline = new HashSet<String>(airLine);
-	        for(String s: mySetForAirline){
+                List sortedListAirline = new ArrayList(mySetForAirline);
+                Collections.sort(sortedListAirline);
+	        for(Object s: sortedListAirline){
                     getFrequencyDetailsForAirline.add(freqCountForAirline, Collections.frequency(airLine,s)) ;
                     freqCountForAirline++;
 	        }
@@ -138,7 +142,7 @@ public class MainClass {
                     System.out.println("Revenue of Airliner " + flightName +" = "+ costOfSingleFlight);
                 }
                 
-                //To calculate revenue of Travel Agency
+                //To display revenue of Travel Agency
                 System.out.println("Total Revenue of Travel Agency = "+totalRevenue);
     }
 }

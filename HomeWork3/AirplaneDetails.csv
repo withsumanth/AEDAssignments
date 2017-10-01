@@ -1,51 +1,51 @@
 Customer Name,Customer Age,Airplane Name,Serial Number,Date of Departure:,Seat Type,Number of Seats:
-Customer1,12,Emirates,a123,30-10-2017',Aisle,200
-Customer2,13,Air India,b234,30-10-2017',window,300
-Customer3,30,Emirates,a123,30-10-2017',window,200
-Customer4,34,Air India,b234,30-10-2017',middle,200
-Customer5,12,Emirates,b123,30-10-2017',middle,200
-Customer6,44,,,,,
-Customer7,44,,,,,
-Customer8,34,,,,,
-Customer9,55,,,,,
-Customer10,55,,,,,
-Customer11,48,,,,,
-Customer12,48,,,,,
-Customer13,34,,,,,
-Customer14,48,,,,,
-Customer15,44,,,,,
-Customer16,34,,,,,
-Customer17,41,,,,,
-Customer18,55,,,,,
-Customer19,41,,,,,
-Customer20,34,,,,,
-Customer21,48,,,,,
-Customer22,41,,,,,
-Customer23,34,,,,,
-Customer24,44,,,,,
-Customer25,55,,,,,
-Customer26,34,,,,,
-Customer27,44,,,,,
-Customer28,48,,,,,
-Customer29,34,,,,,
-Customer30,41,,,,,
-Customer31,55,,,,,
-Customer32,44,,,,,
-Customer33,48,,,,,
-Customer34,55,,,,,
-Customer35,34,,,,,
-Customer36,48,,,,,
-Customer37,44,,,,,
-Customer38,55,,,,,
-Customer39,48,,,,,
-Customer40,55,,,,,
-Customer41,55,,,,,
-Customer42,48,,,,,
-Customer43,34,,,,,
-Customer44,48,,,,,
-Customer45,44,,,,,
-Customer46,44,,,,,
-Customer47,48,,,,,
-Customer48,55,,,,,
-Customer49,34,,,,,
-Customer50,44,,,,,
+Customer1,12,Emirates,E123,10-10-2017',Aisle,200
+Customer2,13,Air India,A123,10-10-2017',window,200
+Customer3,30,Emirates,E334,11-10-2017',window,400
+Customer4,34,Air India,A234,11-10-2017',middle,300
+Customer5,12,Emirates,E234,30-10-2017',middle,300
+Customer6,44,Emirates,E234,13-10-2017',Aisle,300
+Customer7,44,Air India,A234,11-10-2017',Aisle,300
+Customer8,34,British Airways,B123,10-10-2017',window,200
+Customer9,55,Emirates,E123,10-10-2017',Aisle,200
+Customer10,55,British Airways,B234,11-10-2017',Aisle,300
+Customer11,48,Qatar Airways,Q123,10-10-2017',window,200
+Customer12,48,Emirates,E234,13-10-2017',window,300
+Customer13,34,British Airways,B123,10-10-2017',middle,200
+Customer14,48,Air India,A123,10-10-2017',window,200
+Customer15,44,Emirates,E334,11-10-2017',middle,400
+Customer16,34,British Airways,B234,11-10-2017',Aisle,300
+Customer17,41,Emirates,E123,10-10-2017',window,200
+Customer18,55,Qatar Airways,Q123,10-10-2017',middle,200
+Customer19,41,Air India,A234,11-10-2017',Aisle,300
+Customer20,34,Emirates,E334,11-10-2017',Aisle,400
+Customer21,48,British Airways,B234,11-10-2017',window,300
+Customer22,41,British Airways,B123,10-10-2017',middle,200
+Customer23,34,Qatar Airways,Q223,10-10-2017',Aisle,300
+Customer24,44,Emirates,E234,13-10-2017',middle,300
+Customer25,55,British Airways,B334,12-10-2017',Aisle,400
+Customer26,34,British Airways,B334,12-10-2017',window,400
+Customer27,44,Emirates,E334,11-10-2017',Aisle,400
+Customer28,48,Qatar Airways,Q123,10-10-2017',window,200
+Customer29,34,Air India,A123,10-10-2017',window,200
+Customer30,41,British Airways,B123,10-10-2017',window,200
+Customer31,55,British Airways,B334,12-10-2017',middle,400
+Customer32,44,Emirates,E123,10-10-2017',Aisle,200
+Customer33,48,British Airways,B123,10-10-2017',middle,200
+Customer34,55,Qatar Airways,Q223,10-10-2017',Aisle,300
+Customer35,34,Air India,A234,11-10-2017',middle,300
+Customer36,48,British Airways,B234,11-10-2017',Aisle,300
+Customer37,44,British Airways,B334,12-10-2017',middle,400
+Customer38,55,Qatar Airways,Q123,10-10-2017',window,200
+Customer39,48,Emirates,E234,13-10-2017',window,300
+Customer40,55,Qatar Airways,Q123,10-10-2017',Aisle,200
+Customer41,55,British Airways,B123,10-10-2017',window,200
+Customer42,48,Air India,A234,11-10-2017',window,300
+Customer43,34,Air India,A123,10-10-2017',Aisle,200
+Customer44,48,British Airways,B334,12-10-2017',Aisle,400
+Customer45,44,Emirates,E334,11-10-2017',window,400
+Customer46,44,Qatar Airways,Q223,10-10-2017',window,300
+Customer47,48,Qatar Airways,Q123,10-10-2017',window,200
+Customer48,55,Air India,A123,10-10-2017',window,200
+Customer49,34,British Airways,B234,11-10-2017',window,300
+Customer50,44,Emirates,E123,10-10-2017',Aisle,200
