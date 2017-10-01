@@ -13,6 +13,15 @@ public class Flight {
     private String airPlaneName;
     private String seatNo;
     private int costOfSeat;
+    private String serNo;
+
+    public String getSerNo() {
+        return serNo;
+    }
+
+    public void setSerNo(String serNo) {
+        this.serNo = serNo;
+    }
 
     public String getAirPlaneName() {
         return airPlaneName;
