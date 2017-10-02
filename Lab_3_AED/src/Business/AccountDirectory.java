@@ -5,11 +5,44 @@
  */
 package Business;
 
+import java.util.ArrayList;
+
 
 /**
  *
  * @author Sumanth
  */
 public class AccountDirectory {
+    private ArrayList<Account> accountList;
+
+    public AccountDirectory() {
+        this.accountList = new ArrayList<Account>();
+    }
+
+    public ArrayList<Account> getAccountList() {
+        return accountList;
+    }
+
+    public void setAccountList(ArrayList<Account> accountList) {
+        this.accountList = accountList;
+    }
     
+    public Account addAccount(){
+        Account account = new Account();
+        accountList.add(account);
+        return account;
+    }
+    
+    public void deleteAccount(Account account){
+        accountList.remove(account);
+    }
+    
+    public Account searchAccount(String accountNum){
+        for(Account account: accountList){
+            if(account.getAccNo().equals(accountNum)){
+                return account;
+            }
+        }
+        return null;
+    }
 }

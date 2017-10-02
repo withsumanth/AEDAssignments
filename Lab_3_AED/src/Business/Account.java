@@ -18,6 +18,10 @@ public class Account {
     private int balance;
     private Date createdOn;
 
+    public Account() {
+        this.createdOn = new Date();
+    }
+
     public String getRoutNo() {
         return routNo;
     }
@@ -48,5 +52,9 @@ public class Account {
 
     public void setBalance(int balance) {
         this.balance = balance;
+    }
+
+    public Date getCreatedOn() {
+        return createdOn;
     }
 }
