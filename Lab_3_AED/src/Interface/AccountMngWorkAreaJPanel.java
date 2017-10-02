@@ -43,6 +43,11 @@ public class AccountMngWorkAreaJPanel extends javax.swing.JPanel {
         btnCreateAccount.setText("Manage Account");
 
         btnManageAccount.setText("Create Account");
+        btnManageAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageAccountActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -71,6 +76,11 @@ public class AccountMngWorkAreaJPanel extends javax.swing.JPanel {
                     .addContainerGap(514, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnManageAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAccountActionPerformed
+        CreateAccountJPanel createAccJPanel = new CreateAccountJPanel(userProcessContainer,accountDirectory);
+        
+    }//GEN-LAST:event_btnManageAccountActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

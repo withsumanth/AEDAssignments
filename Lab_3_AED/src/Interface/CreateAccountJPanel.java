@@ -5,6 +5,11 @@
  */
 package Interface;
 
+import Business.Account;
+import Business.AccountDirectory;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Sumanth
@@ -14,8 +19,13 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateAccountJPanel
      */
-    public CreateAccountJPanel() {
-        initComponents();
+    private JPanel userProcessContainer;
+    private AccountDirectory accountDirectory;
+    
+    CreateAccountJPanel(JPanel userProcessContainer, AccountDirectory accountDirectory) {
+       initComponents();
+       this.userProcessContainer = userProcessContainer;
+       this.accountDirectory = accountDirectory;
     }
 
     /**
@@ -138,7 +148,13 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtRoutingNumberActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        // TODO add your handling code here:
+        Account account =  accountDirectory.addAccount();
+        account.setAccNo(txtAccountNumber.getText());
+        account.setRoutNo(txtRoutingNumber.getText());
+        account.setBankName(txtBankName.getText());
+        account.setBalance(Integer.parseInt(txtBalance.getText()));
+        account.setAccNo(txtAccountNumber.getText());
+        JOptionPane.showMessageDialog(null, "Account created Successfully");
     }//GEN-LAST:event_btnCreateActionPerformed
 
 
