@@ -11,10 +11,10 @@ import java.util.ArrayList;
  *
  * @author Sumanth
  */
-public class AirlinesDet {
+public class Airlines {
     private ArrayList<Flight> airLinesDet;
 
-    public AirlinesDet() {
+    public Airlines() {
         airLinesDet = new ArrayList<Flight>();
     }
 

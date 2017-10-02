@@ -41,9 +41,9 @@ public class MainClass {
                         count++;
 	            }
                     for(int i=1;i<dataCsvArr.size();i++){
-                        Flight flight = travelAgency.airlinesDet.addDetails();
-                        Customer customer = travelAgency.customerDet.addDetails();
-                        FlightSchedule flightSchedule = travelAgency.masterSch.addDetails();
+                        Flight flight = travelAgency.getAirlinesDet().addDetails();
+                        Customer customer = travelAgency.getCustomerDet().addDetails();
+                        FlightSchedule flightSchedule = travelAgency.getMasterSch().addDetails();
                         String valuesOfArray[] = dataCsvArr.get(i);
                         customer.setName(valuesOfArray[0]);
                         customer.setAge(Integer.parseInt(valuesOfArray[1])) ;
@@ -127,9 +127,9 @@ public class MainClass {
                    for(int j=0;j<revenueOfSingleFlight.size();j++){
                        costOfSingleFlight = costOfSingleFlight + revenueOfSingleFlight.get(j).getCostOfSeat();
                    }
-                    System.out.println("Revenue of " + flightName +" with Serial Number "+serialNumber+" = "+ costOfSingleFlight);
+                    System.out.println("Revenue of " + flightName +" with Serial Number "+serialNumber+" = $"+ costOfSingleFlight);
                 }
-                
+                System.out.println("____________________________________________________________________");
                 //To calculate Revenue of each Airliner
                 for(int i=0;i<eachDetailsForAirline.size();i++){
                    ArrayList<Flight> revenueOfSingleFlight =  (ArrayList<Flight>) eachDetailsForAirline.get(i);
@@ -139,10 +139,11 @@ public class MainClass {
                    for(int j=0;j<revenueOfSingleFlight.size();j++){
                        costOfSingleFlight = costOfSingleFlight + revenueOfSingleFlight.get(j).getCostOfSeat();
                    }
-                    System.out.println("Revenue of Airliner " + flightName +" = "+ costOfSingleFlight);
+                    System.out.println("Revenue of Airliner " + flightName +" = $"+ costOfSingleFlight);
                 }
-                
+                System.out.println("____________________________________________________________________");
                 //To display revenue of Travel Agency
-                System.out.println("Total Revenue of Travel Agency = "+totalRevenue);
+                System.out.println("Total Revenue of Travel Agency = $"+totalRevenue);
+                System.out.println("____________________________________________________________________");
     }
 }

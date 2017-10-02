@@ -13,13 +13,13 @@ import java.util.ArrayList;
  */
 public class TravelAgency {
     CustomerDet customerDet; 
-    AirlinesDet airlinesDet;
+    Airlines airlinesDet;
     Seat seatType;
     MasterSchedule masterSch;
 
     public TravelAgency() {
         customerDet = new CustomerDet();
-        airlinesDet = new AirlinesDet();
+        airlinesDet = new Airlines();
         seatType = new Seat();
         masterSch = new MasterSchedule(); 
     }
@@ -40,11 +40,11 @@ public class TravelAgency {
         this.customerDet = customerDet;
     }
 
-    public AirlinesDet getAirlinesDet() {
+    public Airlines getAirlinesDet() {
         return airlinesDet;
     }
 
-    public void setAirlinesDet(AirlinesDet airlinesDet) {
+    public void setAirlinesDet(Airlines airlinesDet) {
         this.airlinesDet = airlinesDet;
     }
 }
