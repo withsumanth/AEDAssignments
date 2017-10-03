@@ -8,6 +8,7 @@ package Interface;
 import Business.Account;
 import java.awt.CardLayout;
 import java.awt.Panel;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -186,6 +187,10 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter all the details");
             return ;
         }
+        if (!(Pattern.matches("[a-zA-Z]+(\\s+[a-zA-Z]+)*", txtBankName.getText()))) {
+    JOptionPane.showMessageDialog(null, "Please enter a valid Bank Name");
+    return;
+}
         account.setRoutNo(txtRoutingNumber.getText());
         account.setAccNo(txtAccountNumber.getText());
         account.setBankName(txtBankName.getText());
