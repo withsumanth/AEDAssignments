@@ -7,6 +7,7 @@ package Interface;
 
 import Business.Account;
 import java.awt.CardLayout;
+import java.awt.Panel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -63,16 +64,16 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
             }
         });
 
-        txtRoutingNumber.setEditable(false);
+        txtRoutingNumber.setEnabled(false);
         txtRoutingNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRoutingNumberActionPerformed(evt);
             }
         });
 
-        txtAccountNumber.setEditable(false);
+        txtAccountNumber.setEnabled(false);
 
-        txtBankName.setEditable(false);
+        txtBankName.setEnabled(false);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Bank Name");
@@ -178,6 +179,13 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        String accNo = txtAccountNumber.getText();
+        String routNo = txtRoutingNumber.getText();
+        String bankNam = txtBankName.getText();
+        if(accNo.trim().length()==0 || routNo.trim().length()==0 || bankNam.trim().length()==0 ){
+            JOptionPane.showMessageDialog(null, "Please enter all the details");
+            return ;
+        }
         account.setRoutNo(txtRoutingNumber.getText());
         account.setAccNo(txtAccountNumber.getText());
         account.setBankName(txtBankName.getText());

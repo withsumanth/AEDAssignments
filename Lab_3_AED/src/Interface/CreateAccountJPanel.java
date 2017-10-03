@@ -154,13 +154,28 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtRoutingNumberActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        Account account =  accountDirectory.addAccount();
-        account.setAccNo(txtAccountNumber.getText());
-        account.setRoutNo(txtRoutingNumber.getText());
-        account.setBankName(txtBankName.getText());
-        account.setBalance(Integer.parseInt(txtBalance.getText()));
-        account.setAccNo(txtAccountNumber.getText());
-        JOptionPane.showMessageDialog(null, "Account created Successfully");
+        String accNo = txtAccountNumber.getText();
+        String routNo = txtRoutingNumber.getText();
+        String bankNam = txtBankName.getText();
+        String bal = txtBalance.getText();
+        if(accNo.trim().length()==0 || routNo.trim().length()==0 || bankNam.trim().length()==0 || bal.trim().length()==0){
+            JOptionPane.showMessageDialog(null, "Please enter all the details");
+            return ;
+        }else{
+            int balValue;
+            try{
+                balValue = Integer.parseInt(bal);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Please give integer value for Balance");
+                return;
+            }
+            Account account =  accountDirectory.addAccount();
+            account.setAccNo(accNo);
+            account.setRoutNo(routNo);
+            account.setBankName(bankNam);
+            account.setBalance(balValue);
+            JOptionPane.showMessageDialog(null, "Account created Successfully");
+        }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

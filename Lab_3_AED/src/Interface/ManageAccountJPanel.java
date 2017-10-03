@@ -179,6 +179,10 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnViewDetailsActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        if(txtAccountNumber.getText().trim().length()==0){
+            JOptionPane.showMessageDialog(null, "Please Enter valid account number");  
+            return;
+        }
         Account result = accountDirectory.searchAccount(txtAccountNumber.getText());
         if(result == null){
            JOptionPane.showMessageDialog(null, "Account Number entered is Invalid","Information",JOptionPane.INFORMATION_MESSAGE);  
