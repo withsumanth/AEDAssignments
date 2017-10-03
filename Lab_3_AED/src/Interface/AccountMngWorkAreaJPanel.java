@@ -6,6 +6,7 @@
 package Interface;
 
 import Business.AccountDirectory;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -41,6 +42,11 @@ public class AccountMngWorkAreaJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(900, 600));
 
         btnCreateAccount.setText("Manage Account");
+        btnCreateAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateAccountActionPerformed(evt);
+            }
+        });
 
         btnManageAccount.setText("Create Account");
         btnManageAccount.addActionListener(new java.awt.event.ActionListener() {
@@ -78,9 +84,15 @@ public class AccountMngWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAccountActionPerformed
-        CreateAccountJPanel createAccJPanel = new CreateAccountJPanel(userProcessContainer,accountDirectory);
         
     }//GEN-LAST:event_btnManageAccountActionPerformed
+
+    private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
+        CreateAccountJPanel createAccJPanel = new CreateAccountJPanel(userProcessContainer,accountDirectory);
+        userProcessContainer.add("CreateAccountJPanel",createAccJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnCreateAccountActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
