@@ -8,6 +8,8 @@ package Interface.ManageAirlines;
 import Business.Airline;
 import Business.TravelAgency;
 import java.awt.CardLayout;
+import java.awt.List;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -24,23 +26,24 @@ public class ManageAirlinersWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private TravelAgency travelAgency;
 
-    public ManageAirlinersWorkAreaJPanel(JPanel userProcessContainer,TravelAgency travelAgency) {
+    public ManageAirlinersWorkAreaJPanel(JPanel userProcessContainer, TravelAgency travelAgency) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.travelAgency = travelAgency;
         populateJTableForAirline();
     }
+
     public void populateJTableForAirline() {
         DefaultTableModel dtm = (DefaultTableModel) airlineJTable.getModel();
-         dtm.setRowCount(0);
-         for(Airline ta:travelAgency.getAirLineDir().getAirlineDir()){
-             Object[] row = new Object[4];
-             row[0] = ta;
-             row[1] = ta.getAirlinerId();
-             row[2] = ta.getAirLineAddr();
-             row[3] = ta.getTotalFlightperDay();
-             dtm.addRow(row);
-         }
+        dtm.setRowCount(0);
+        for (Airline ta : travelAgency.getAirLineDir().getAirlineDir()) {
+            Object[] row = new Object[4];
+            row[0] = ta;
+            row[1] = ta.getAirlinerId();
+            row[2] = ta.getAirLineAddr();
+            row[3] = ta.getTotalFlightperDay();
+            dtm.addRow(row);
+        }
     }
 
     /**
@@ -217,40 +220,75 @@ public class ManageAirlinersWorkAreaJPanel extends javax.swing.JPanel {
 
     private void createJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createJBtnActionPerformed
         // TODO add your handling code here:
-        CreateNewAirlinersJPanel panel = new CreateNewAirlinersJPanel(userProcessContainer,travelAgency);
+        CreateNewAirlinersJPanel panel = new CreateNewAirlinersJPanel(userProcessContainer, travelAgency);
         userProcessContainer.add("CreateNewAirlinersJPanel", panel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        CardLayout layout1 = (CardLayout) userProcessContainer.getLayout();
+        layout1.next(userProcessContainer);
 
     }//GEN-LAST:event_createJBtnActionPerformed
 
     private void searchAirlineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAirlineBtnActionPerformed
         String airlinerName = searchAirlineTxtField.getText();
-        if(airlinerName.trim().length()==0){
-            JOptionPane.showMessageDialog(null, "Please enter all the details");
+        if (airlinerName.trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please enter Airliner Name");
             return;
         }
-        
+        Airline result = travelAgency.getAirLineDir().searchAirline(airlinerName);
+        if (result == null) {
+            JOptionPane.showMessageDialog(null, "Airliner Name entered is Invalid");
+            return;
+        } else {
+            ArrayList<Airline> airLineValues = new ArrayList();
+            ArrayList<Airline> listOfAirlines = travelAgency.getAirLineDir().getAirlineDir();
+            int count = 0;
+            for (int i = 0; i < listOfAirlines.size(); i++) {
+                if (listOfAirlines.get(i).getName().equals(airlinerName)) {
+                    airLineValues.add(count, listOfAirlines.get(i));
+                    count++;
+                }
+            }
+            populateJTable1(airLineValues);
+        }
+
     }//GEN-LAST:event_searchAirlineBtnActionPerformed
+
+    public void populateJTable1(ArrayList<Airline> populateArrayList) {
+        DefaultTableModel tabMod = (DefaultTableModel) searchAirlTable.getModel();
+        tabMod.setRowCount(0);
+        for (Airline ad : populateArrayList) {
+            Object row[] = new Object[4];
+            row[0] = ad;
+            row[0] = ad.getAirlinerId();
+            row[0] = ad.getAirLineAddr();
+            row[0] = ad.getTotalFlightperDay();
+            tabMod.addRow(row);
+        }
+    }
 
     private void mngflightBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mngflightBtnActionPerformed
         // TODO add your handling code here:
-        ManageFlightWorkAreaJPanel panel = new ManageFlightWorkAreaJPanel(userProcessContainer);
-        userProcessContainer.add("ManageFlightWorkAreaJPanel", panel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-
+        int selectedRow = airlineJTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select Any Row");
+            return;
+        } else {
+            Airline airline = (Airline) airlineJTable.getValueAt(selectedRow, 0);
+            ManageFlightWorkAreaJPanel panel = new ManageFlightWorkAreaJPanel(userProcessContainer,travelAgency, airline);
+            userProcessContainer.add("ManageFlightWorkAreaJPanel", panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        }
     }//GEN-LAST:event_mngflightBtnActionPerformed
 
     private void updateAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateAirlinerBtnActionPerformed
         int selectedRow = airlineJTable.getSelectedRow();
-        if(selectedRow<0){
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please Select Any Row");
             return;
-        }else{
+        } else {
             Airline airline = (Airline) airlineJTable.getValueAt(selectedRow, 0);
-            UpdateAirlineJPanel panel = new UpdateAirlineJPanel(userProcessContainer,airline);
-            userProcessContainer.add("ViewAccountJPanel",panel);
+            UpdateAirlineJPanel panel = new UpdateAirlineJPanel(userProcessContainer, airline);
+            userProcessContainer.add("UpdateAirlineJPanel", panel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
         }

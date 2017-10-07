@@ -31,4 +31,13 @@ public class AirlineDir {
     public void deleteDetails(Airline airline){
         airlineDir.remove(airline);
     }
+    
+    public Airline searchAirline(String airlineName){
+        for(Airline airline: airlineDir){
+            if(airline.getName().equals(airlineName)){
+                return airline;
+            }
+        }
+        return null;
+    }
 }

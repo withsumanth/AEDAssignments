@@ -76,5 +76,9 @@ public class Flight {
         this.noOfSeatBooked = noOfSeatBooked;
     }
     
+    @Override
+    public String toString(){
+        return serNo;
+    }
     
 }
