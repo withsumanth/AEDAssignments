@@ -6,6 +6,9 @@
 package Interface;
 
 import Business.TravelAgency;
+import Interface.ManageAirlines.ManageAirlinersWorkAreaJPanel;
+import Interface.ManageCustomers.ManageCustomersWorkAreaJPanel;
+import Interface.ManageTravelAgency.ManageTravelAgencyWorkAreaJPanel;
 import java.awt.CardLayout;
 
 /**
@@ -37,7 +40,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         mngTravelAgenybtn = new javax.swing.JButton();
         mngAirlineBtn = new javax.swing.JButton();
         ManageCustomers = new javax.swing.JButton();
-        cardSequencePanel = new javax.swing.JPanel();
+        userProcessContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,8 +54,18 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         });
 
         mngAirlineBtn.setText("Manage Airlines");
+        mngAirlineBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mngAirlineBtnActionPerformed(evt);
+            }
+        });
 
         ManageCustomers.setText("Manage Customers");
+        ManageCustomers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManageCustomersActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -76,8 +89,8 @@ public class TravelAgencyMain extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(jPanel1);
 
-        cardSequencePanel.setLayout(new java.awt.CardLayout());
-        jSplitPane1.setRightComponent(cardSequencePanel);
+        userProcessContainer.setLayout(new java.awt.CardLayout());
+        jSplitPane1.setRightComponent(userProcessContainer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,8 +107,25 @@ public class TravelAgencyMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mngTravelAgenybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mngTravelAgenybtnActionPerformed
-       
+        ManageTravelAgencyWorkAreaJPanel panel = new ManageTravelAgencyWorkAreaJPanel(userProcessContainer,travelAgency);
+        userProcessContainer.add("ManageTravelAgencyWorkAreaJPanel", panel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);       
     }//GEN-LAST:event_mngTravelAgenybtnActionPerformed
+
+    private void mngAirlineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mngAirlineBtnActionPerformed
+        ManageAirlinersWorkAreaJPanel panel = new ManageAirlinersWorkAreaJPanel(userProcessContainer,travelAgency);
+        userProcessContainer.add("ManageAirlinersWorkAreaJPanel", panel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_mngAirlineBtnActionPerformed
+
+    private void ManageCustomersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCustomersActionPerformed
+        ManageCustomersWorkAreaJPanel panel = new ManageCustomersWorkAreaJPanel(userProcessContainer,travelAgency);
+        userProcessContainer.add("ManageCustomersWorkAreaJPanel", panel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_ManageCustomersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,10 +165,10 @@ public class TravelAgencyMain extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ManageCustomers;
-    private javax.swing.JPanel cardSequencePanel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton mngAirlineBtn;
     private javax.swing.JButton mngTravelAgenybtn;
+    private javax.swing.JPanel userProcessContainer;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,8 +11,25 @@ package Business;
  */
 public class Airline {
     String name;
-    int noOfFlights;
     int airlinerId;
+    String airLineAddr;
+    int totalFlightperDay;
+
+    public String getAirLineAddr() {
+        return airLineAddr;
+    }
+
+    public void setAirLineAddr(String airLineAddr) {
+        this.airLineAddr = airLineAddr;
+    }
+
+    public int getTotalFlightperDay() {
+        return totalFlightperDay;
+    }
+
+    public void setTotalFlightperDay(int totalFlightperDay) {
+        this.totalFlightperDay = totalFlightperDay;
+    }
 
     public String getName() {
         return name;
@@ -22,19 +39,16 @@ public class Airline {
         this.name = name;
     }
 
-    public int getNoOfFlights() {
-        return noOfFlights;
-    }
-
-    public void setNoOfFlights(int noOfFlights) {
-        this.noOfFlights = noOfFlights;
-    }
-
     public int getAirlinerId() {
         return airlinerId;
     }
 
     public void setAirlinerId(int airlinerId) {
         this.airlinerId = airlinerId;
+    }
+    
+    @Override
+    public String toString(){
+        return name;
     }
 }
