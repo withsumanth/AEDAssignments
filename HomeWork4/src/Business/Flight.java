@@ -12,13 +12,22 @@ import java.util.Date;
  * @author Sumanth
  */
 public class Flight {
-    String serNo;
-    String name;
-    Date departure;
-    String origin;
-    String destination;
-    String timeOfDay;
-    String arrivalTime;
+    private String serNo;
+    private String name;
+    private Date departure;
+    private String origin;
+    private String destination;
+    private String timeOfDay;
+    private String arrivalTime;
+    public Seat seat;
+    
+    public Seat getSeat() {
+        return seat;
+    }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
+    }
 
     public String getArrivalTime() {
         return arrivalTime;
@@ -27,7 +36,6 @@ public class Flight {
     public void setArrivalTime(String arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
-    int noOfSeatBooked = 0;
 
     public String getSerNo() {
         return serNo;
@@ -77,14 +85,6 @@ public class Flight {
         this.timeOfDay = timeOfDay;
     }
 
-    public int getNoOfSeatBooked() {
-        return noOfSeatBooked;
-    }
-
-    public void setNoOfSeatBooked(int noOfSeatBooked) {
-        this.noOfSeatBooked = noOfSeatBooked;
-    }
-    
     @Override
     public String toString(){
         return serNo;

@@ -6,6 +6,7 @@
 package Interface.ManageAirlines;
 
 import Business.Airline;
+import Business.Seat;
 import Business.TravelAgency;
 import java.awt.CardLayout;
 import java.awt.List;
@@ -25,7 +26,7 @@ public class ManageAirlinersWorkAreaJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private TravelAgency travelAgency;
-
+    
     public ManageAirlinersWorkAreaJPanel(JPanel userProcessContainer, TravelAgency travelAgency) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -305,6 +306,8 @@ public class ManageAirlinersWorkAreaJPanel extends javax.swing.JPanel {
                 Airline airline = (Airline) airlineJTable.getValueAt(selectedRow,0);
                 travelAgency.getAirLineDir().deleteDetails(airline);
                 populateJTableForAirline();
+                DefaultTableModel tabMod = (DefaultTableModel) searchAirlTable.getModel();
+                tabMod.setRowCount(0);
             }
         }else{
             JOptionPane.showMessageDialog(null, "Please Select Any Row","Warning",JOptionPane.WARNING_MESSAGE);

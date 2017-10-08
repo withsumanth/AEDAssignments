@@ -12,16 +12,16 @@ import java.util.Date;
  * @author Sumanth
  */
 public class Customer {
-    String name;
-    int age;
-    int phNo;
-    String addr;
-    String fliSerNo;
-    String fliName;
-    Date fliDeparture;
-    String fliOrigin;
-    String fliDestination;
-    String dliTimeOfDay;
+    private String name;
+    private int age;
+    private int phNo;
+    private String addr;
+    private String fliSerNo;
+    private String fliName;
+    private Date fliDeparture;
+    private String fliOrigin;
+    private String fliDestination;
+    private String dliTimeOfDay;
 
     public String getName() {
         return name;

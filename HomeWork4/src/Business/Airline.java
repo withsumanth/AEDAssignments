@@ -10,10 +10,10 @@ package Business;
  * @author Sumanth
  */
 public class Airline {
-    String name;
-    int airlinerId;
-    String airLineAddr;
-    int totalFlightperDay;
+    private String name;
+    private int airlinerId;
+    private String airLineAddr;
+    private int totalFlightperDay;
 
     public String getAirLineAddr() {
         return airLineAddr;
