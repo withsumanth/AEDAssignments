@@ -107,10 +107,10 @@ public class TravelAgencyMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mngTravelAgenybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mngTravelAgenybtnActionPerformed
-        /*ManageTravelAgencyWorkAreaJPanel panel = new ManageTravelAgencyWorkAreaJPanel(userProcessContainer,travelAgency);
+        ManageTravelAgencyWorkAreaJPanel panel = new ManageTravelAgencyWorkAreaJPanel(userProcessContainer,travelAgency);
         userProcessContainer.add("ManageTravelAgencyWorkAreaJPanel", panel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);   */    
+        layout.next(userProcessContainer);    
     }//GEN-LAST:event_mngTravelAgenybtnActionPerformed
 
     private void mngAirlineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mngAirlineBtnActionPerformed

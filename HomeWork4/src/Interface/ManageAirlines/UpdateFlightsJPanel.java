@@ -6,7 +6,6 @@
 package Interface.ManageAirlines;
 
 import Business.Flight;
-import Business.TravelAgency;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.Date;
@@ -40,6 +39,7 @@ public class UpdateFlightsJPanel extends javax.swing.JPanel {
             originTxt.setText(flight.getOrigin());
             destTxt.setText(flight.getDestination());
             timeOfTravelBox.setSelectedItem(flight.getTimeOfDay());
+            arrivalTimeBox.setSelectedItem(flight.getArrivalTime());
         }
     /**
      * This method is called from within the constructor to initialize the form.
