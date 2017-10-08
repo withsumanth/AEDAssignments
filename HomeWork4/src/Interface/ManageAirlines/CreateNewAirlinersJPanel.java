@@ -157,7 +157,6 @@ public class CreateNewAirlinersJPanel extends javax.swing.JPanel{
     }//GEN-LAST:event_createAirlineBtnActionPerformed
 
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
-        Airline airline = travelAgency.getAirLineDir().addDetails();
         String airName = airLineNameTxt.getText();
         String airId = airLineIdTxt.getText();
         String airAddr = airLineAddrTxt.getText();
@@ -167,23 +166,26 @@ public class CreateNewAirlinersJPanel extends javax.swing.JPanel{
         if(airName.trim().length()== 0 || airId.trim().length() == 0 || airAddr.trim().length()== 0 ||airFlight.trim().length()== 0){
             JOptionPane.showMessageDialog(null, "Please enter all the details");
             return;
-        }
-        try{
+        }else{
+            try{
             id = Integer.parseInt(airId);
-        }catch(NumberFormatException e){
+        }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Please enter integer value for Airline Id");
             return;
         }
         try{
             noOfFlight = Integer.parseInt(airFlight);
-        }catch(NumberFormatException e){
+        }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Please enter integer value for Number of Flight per day");
             return;
         }
+        Airline airline = travelAgency.getAirLineDir().addDetails();
         airline.setName(airName);
         airline.setAirlinerId(id);
         airline.setAirLineAddr(airAddr);
         airline.setTotalFlightperDay(noOfFlight);
+        JOptionPane.showMessageDialog(null, "Airliner created Successfully");
+        }
     }//GEN-LAST:event_createBtnActionPerformed
 
 

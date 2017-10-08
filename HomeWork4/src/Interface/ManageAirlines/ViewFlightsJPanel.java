@@ -26,6 +26,7 @@ public class ViewFlightsJPanel extends javax.swing.JPanel {
     TravelAgency travelAgency;
     Airline airline;
     ViewFlightsJPanel(JPanel userProcessContainer, TravelAgency travelAgency,Airline airline) {
+        initComponents();
         this.userProcessContainer = userProcessContainer;
         this.travelAgency = travelAgency;
         populateViewFlightTable();
@@ -62,6 +63,7 @@ public class ViewFlightsJPanel extends javax.swing.JPanel {
         backBtn = new javax.swing.JButton();
         viewFlightDetBtn = new javax.swing.JButton();
         flightNameTxt = new javax.swing.JTextField();
+        deleteFightBtn = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("View Flights");
@@ -101,53 +103,60 @@ public class ViewFlightsJPanel extends javax.swing.JPanel {
         });
 
         flightNameTxt.setEditable(false);
-        flightNameTxt.setText("jTextField1");
+        flightNameTxt.setEnabled(false);
+
+        deleteFightBtn.setText("Delete");
+        deleteFightBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteFightBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addComponent(flightNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(310, 310, 310)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(267, Short.MAX_VALUE)
-                .addComponent(viewFlightDetBtn)
-                .addGap(176, 176, 176))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 104, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(111, 111, 111)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(12, 12, 12)
-                            .addComponent(jLabel2))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(backBtn))
-                    .addGap(0, 105, Short.MAX_VALUE)))
+                .addContainerGap(275, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(51, 51, 51)
+                        .addComponent(flightNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(280, 280, 280))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(backBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(viewFlightDetBtn)
+                        .addGap(49, 49, 49)
+                        .addComponent(deleteFightBtn)
+                        .addGap(199, 199, 199))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(144, 144, 144))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(flightNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
-                .addComponent(viewFlightDetBtn)
-                .addGap(107, 107, 107))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 38, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addGap(18, 18, 18)
-                    .addComponent(jLabel2)
-                    .addGap(18, 18, 18)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(89, 89, 89)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(89, 89, 89)
+                        .addComponent(flightNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backBtn)
-                    .addGap(0, 39, Short.MAX_VALUE)))
+                    .addComponent(viewFlightDetBtn)
+                    .addComponent(deleteFightBtn))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -164,17 +173,33 @@ public class ViewFlightsJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please Select Any Row");
             return;
         } else {
-            Airline airline = (Airline) airlineJTable.getValueAt(selectedRow, 0);
-            ManageFlightWorkAreaJPanel panel = new ManageFlightWorkAreaJPanel(userProcessContainer,travelAgency, airline);
-            userProcessContainer.add("ManageFlightWorkAreaJPanel", panel);
+            Flight flight = (Flight) flightJTable.getValueAt(selectedRow, 0);
+            UpdateFlightsJPanel panel = new UpdateFlightsJPanel(userProcessContainer, flight);
+            userProcessContainer.add("UpdateFlightsJPanel", panel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
         }
     }//GEN-LAST:event_viewFlightDetBtnActionPerformed
 
+    private void deleteFightBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteFightBtnActionPerformed
+        int selectedRow = flightJTable.getSelectedRow();
+        if(selectedRow>=0){
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null,"Would you like to delete the account details", "Warning", dialogButton);
+            if(dialogResult == JOptionPane.YES_OPTION){
+                Flight flight = (Flight) flightJTable.getValueAt(selectedRow,0);
+                travelAgency.getFlightDir().deleteDetails(flight);
+                populateViewFlightTable();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Please Select Any Row","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_deleteFightBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
+    private javax.swing.JButton deleteFightBtn;
     private javax.swing.JTable flightJTable;
     private javax.swing.JTextField flightNameTxt;
     private javax.swing.JLabel jLabel1;

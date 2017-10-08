@@ -18,6 +18,15 @@ public class Flight {
     String origin;
     String destination;
     String timeOfDay;
+    String arrivalTime;
+
+    public String getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(String arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
     int noOfSeatBooked = 0;
 
     public String getSerNo() {

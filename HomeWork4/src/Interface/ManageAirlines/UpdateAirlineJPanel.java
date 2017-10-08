@@ -26,7 +26,17 @@ public class UpdateAirlineJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.airline = airline;
+        populateAirlineDetails();
+        btnSave.setEnabled(false);
+        btnUpdate.setEnabled(true);
     }
+    
+    private void populateAirlineDetails(){
+            airLineNameTxt.setText(airline.getName());
+            airLineIdTxt.setText(String.valueOf(airline.getAirlinerId()));
+            airLineAddrTxt.setText(airline.getAirLineAddr());
+            airLineFlightsTxt.setText(String.valueOf(airline.getTotalFlightperDay()));
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,24 +56,33 @@ public class UpdateAirlineJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         airLineFlightsTxt = new javax.swing.JTextField();
-        updateBtn = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         createAirlineBtn = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Update Airliners");
+
+        airLineNameTxt.setEnabled(false);
 
         jLabel2.setText("Airline Name");
 
         jLabel3.setText("Airline Id");
 
+        airLineIdTxt.setEnabled(false);
+
+        airLineAddrTxt.setEnabled(false);
+
         jLabel4.setText("Airliners Address");
 
         jLabel5.setText("Number of Flights per day");
 
-        updateBtn.setText("Update");
-        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+        airLineFlightsTxt.setEnabled(false);
+
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBtnActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
 
@@ -71,6 +90,13 @@ public class UpdateAirlineJPanel extends javax.swing.JPanel {
         createAirlineBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createAirlineBtnActionPerformed(evt);
+            }
+        });
+
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
             }
         });
 
@@ -88,7 +114,9 @@ public class UpdateAirlineJPanel extends javax.swing.JPanel {
                         .addGap(80, 80, 80)
                         .addComponent(createAirlineBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(updateBtn))
+                        .addComponent(btnSave)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdate))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addContainerGap()
@@ -137,12 +165,34 @@ public class UpdateAirlineJPanel extends javax.swing.JPanel {
                             .addComponent(airLineFlightsTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addGap(18, 18, 18)
-                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        btnSave.setEnabled(true);
+        btnUpdate.setEnabled(false);
+        airLineNameTxt.setEnabled(true);
+        airLineIdTxt.setEnabled(true);
+        airLineAddrTxt.setEnabled(true);
+        airLineFlightsTxt.setEnabled(true);
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void createAirlineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAirlineBtnActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ManageAirlinersWorkAreaJPanel manageAccountJPanel = (ManageAirlinersWorkAreaJPanel) component;
+        manageAccountJPanel.populateJTableForAirline();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_createAirlineBtnActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         String airName = airLineNameTxt.getText();
         String airId = airLineIdTxt.getText();
         String airAddr = airLineAddrTxt.getText();
@@ -169,18 +219,14 @@ public class UpdateAirlineJPanel extends javax.swing.JPanel {
         airline.setAirlinerId(id);
         airline.setAirLineAddr(airAddr);
         airline.setTotalFlightperDay(noOfFlight);
-    }//GEN-LAST:event_updateBtnActionPerformed
-
-    private void createAirlineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAirlineBtnActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        ManageAirlinersWorkAreaJPanel manageAccountJPanel = (ManageAirlinersWorkAreaJPanel) component;
-        manageAccountJPanel.populateJTableForAirline();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_createAirlineBtnActionPerformed
+        btnSave.setEnabled(false);
+        btnUpdate.setEnabled(true);
+        JOptionPane.showMessageDialog(null, "Airline Details updated successfully");
+        airLineNameTxt.setEnabled(false);
+        airLineIdTxt.setEnabled(false);
+        airLineAddrTxt.setEnabled(false);
+        airLineFlightsTxt.setEnabled(false);
+    }//GEN-LAST:event_btnSaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -188,12 +234,13 @@ public class UpdateAirlineJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField airLineFlightsTxt;
     private javax.swing.JTextField airLineIdTxt;
     private javax.swing.JTextField airLineNameTxt;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton createAirlineBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }
