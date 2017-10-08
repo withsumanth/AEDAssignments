@@ -5,8 +5,13 @@
  */
 package Interface.ManageTravelAgency;
 
+import Business.Flight;
 import Business.TravelAgency;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,13 +22,14 @@ public class ManageTravelAgencyWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageTravelAgencyWorkAreaJPanel
      */
-
-    public ManageTravelAgencyWorkAreaJPanel(JPanel userProcessContainer) {
-        initComponents();
-    }
-
+    private ArrayList<Flight> modArrList;
+    private JPanel userProcessContainer;
+    private TravelAgency travelAgency;
+    
     public ManageTravelAgencyWorkAreaJPanel(JPanel userProcessContainer, TravelAgency travelAgency) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.travelAgency = travelAgency;
     }
 
     /**
@@ -39,11 +45,11 @@ public class ManageTravelAgencyWorkAreaJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        searchTravAgTable = new javax.swing.JTable();
+        searchTravAgeTable = new javax.swing.JTable();
         searchBtn = new javax.swing.JButton();
         destTxtField = new javax.swing.JTextField();
         srcTxtField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        viewSearchDetBtn = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Manage Travel Agency");
@@ -52,12 +58,12 @@ public class ManageTravelAgencyWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Destination");
 
-        searchTravAgTable.setModel(new javax.swing.table.DefaultTableModel(
+        searchTravAgeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                " Airliner Name", "Serial No", "Origin", "Destination"
+                "Serial No", " Airliner Name", "Origin", "Destination"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -68,7 +74,7 @@ public class ManageTravelAgencyWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(searchTravAgTable);
+        jScrollPane1.setViewportView(searchTravAgeTable);
 
         searchBtn.setText("Search");
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -77,12 +83,21 @@ public class ManageTravelAgencyWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("View");
+        viewSearchDetBtn.setText("View");
+        viewSearchDetBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewSearchDetBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(279, 279, 279))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -94,19 +109,13 @@ public class ManageTravelAgencyWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(213, 213, 213)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(destTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(80, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(279, 279, 279))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(destTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36))))
+                            .addComponent(viewSearchDetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(80, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(247, 247, 247)
@@ -132,34 +141,77 @@ public class ManageTravelAgencyWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addComponent(viewSearchDetBtn)
+                .addContainerGap(84, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(104, 104, 104)
                     .addComponent(srcTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(384, Short.MAX_VALUE)))
+                    .addContainerGap(415, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         String origin = srcTxtField.getText();
         String destination = destTxtField.getText();
+        modArrList = new ArrayList();
         if(origin.trim().length()==0 || destination.trim().length() == 0){
-            
+            JOptionPane.showMessageDialog(null, "Please Enter Source and Destination Values for Search");
+            return;
+        }else{
+            ArrayList<Flight> listOfPlanes= travelAgency.getFlightDir().getFlightDir();
+            int count = 0;
+            for(Flight flight: listOfPlanes){
+                if(flight.getOrigin().equals(origin) && flight.getDestination().equals(destination)){
+                    modArrList.add(count, flight);
+                    count++;
+                }
+            }
+            if(modArrList.size()==0){
+             JOptionPane.showMessageDialog(null, "There are no results for search");
+             return;
+            }else{
+                populateJTable(modArrList);
+            }
         }
     }//GEN-LAST:event_searchBtnActionPerformed
 
+    private void viewSearchDetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSearchDetBtnActionPerformed
+        int selectedRow = searchTravAgeTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select Any Row");
+            return;
+        } else {
+            Flight flight = (Flight) searchTravAgeTable.getValueAt(selectedRow, 0);
+            ViewSearchDetailsJPanel panel = new ViewSearchDetailsJPanel(userProcessContainer, flight);
+            userProcessContainer.add("ViewSearchDetailsJPanel", panel);
+            CardLayout layout1 = (CardLayout) userProcessContainer.getLayout();
+            layout1.next(userProcessContainer);
+        }
+    }//GEN-LAST:event_viewSearchDetBtnActionPerformed
+
+    public void populateJTable(ArrayList<Flight> modArrList){
+        DefaultTableModel tabMod = (DefaultTableModel) searchTravAgeTable.getModel();
+        tabMod.setRowCount(0);
+        for (Flight ad : modArrList) {
+            Object row[] = new Object[4];
+            row[0] = ad;
+            row[1] = ad.getName();
+            row[2] = ad.getOrigin();
+            row[3] = ad.getDestination();
+            tabMod.addRow(row);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField destTxtField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton searchBtn;
-    private javax.swing.JTable searchTravAgTable;
+    private javax.swing.JTable searchTravAgeTable;
     private javax.swing.JTextField srcTxtField;
+    private javax.swing.JButton viewSearchDetBtn;
     // End of variables declaration//GEN-END:variables
 }

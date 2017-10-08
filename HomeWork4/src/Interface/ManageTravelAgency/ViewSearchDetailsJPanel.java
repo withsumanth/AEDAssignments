@@ -3,36 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface.ManageAirlines;
+package Interface.ManageTravelAgency;
 
 import Business.Flight;
+import Business.TravelAgency;
 import java.awt.CardLayout;
-import java.awt.Component;
-import java.util.Date;
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
  *
  * @author Sumanth
  */
-public class UpdateFlightsJPanel extends javax.swing.JPanel {
+public class ViewSearchDetailsJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form UpdateFlightsJPanel
+     * Creates new form ViewSearchDetailsJPanel
      */
-    private JPanel userProcessContainer;
-    private Flight flight;
-    UpdateFlightsJPanel(JPanel userProcessContainer, Flight flight) {
-        initComponents();
-        this.userProcessContainer = userProcessContainer;
-        this.flight = flight;
-        populateFlightDetails();
-        btnSave.setEnabled(false);
-        btnUpdate.setEnabled(true);
+    JPanel userProcessContainer; 
+    Flight flight;
+    ViewSearchDetailsJPanel(JPanel userProcessContainer,  Flight flight) {
+         initComponents();
+         this.userProcessContainer = userProcessContainer;
+         this.flight = flight;
+         populateAllDetails();
     }
     
-    private void populateFlightDetails(){
+    public void populateAllDetails(){
             airlinerTxt.setText(flight.getName());
             serNoTxt.setText(flight.getSerNo());
             dateOfDeparture.setDate(flight.getDeparture());
@@ -40,7 +37,8 @@ public class UpdateFlightsJPanel extends javax.swing.JPanel {
             destTxt.setText(flight.getDestination());
             timeOfTravelBox.setSelectedItem(flight.getTimeOfDay());
             arrivalTimeBox.setSelectedItem(flight.getArrivalTime());
-        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,31 +48,49 @@ public class UpdateFlightsJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        backBtn = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        serNoTxt = new javax.swing.JTextField();
         timeOfTravelBox = new javax.swing.JComboBox<>();
+        destTxt = new javax.swing.JTextField();
+        arrivalTimeBox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         dateOfDeparture = new com.toedter.calendar.JDateChooser();
         airlinerTxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         originTxt = new javax.swing.JTextField();
-        backBtn = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        serNoTxt = new javax.swing.JTextField();
-        destTxt = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        btnUpdate = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
-        arrivalTimeBox = new javax.swing.JComboBox<>();
-        jLabel9 = new javax.swing.JLabel();
+
+        backBtn.setText("<<back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Destination");
 
         jLabel2.setText("Airliners");
+
+        serNoTxt.setEnabled(false);
 
         timeOfTravelBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Morning", "Afternoon", "Evening" }));
         timeOfTravelBox.setEnabled(false);
 
+        destTxt.setEnabled(false);
+
+        arrivalTimeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Morning", "Afternoon", "Evening" }));
+        arrivalTimeBox.setEnabled(false);
+
         jLabel4.setText("Serial Number");
+
+        jLabel8.setText("Departure Time");
+
+        jLabel9.setText("Arrival Time");
 
         jLabel5.setText("Date of Departure");
 
@@ -89,40 +105,6 @@ public class UpdateFlightsJPanel extends javax.swing.JPanel {
         jLabel6.setText("Origin");
 
         originTxt.setEnabled(false);
-
-        backBtn.setText("<<back");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setText("Destination");
-
-        serNoTxt.setEnabled(false);
-
-        destTxt.setEnabled(false);
-
-        jLabel8.setText("Departure Time");
-
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-
-        btnSave.setText("Save");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-
-        arrivalTimeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Morning", "Afternoon", "Evening" }));
-        arrivalTimeBox.setEnabled(false);
-
-        jLabel9.setText("Arrival Time");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -149,33 +131,27 @@ public class UpdateFlightsJPanel extends javax.swing.JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel7)
                                     .addGap(37, 37, 37)
-                                    .addComponent(destTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(destTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(timeOfTravelBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel5))
+                                .addGap(119, 119, 119))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(261, 261, 261)
+                                .addComponent(backBtn)
+                                .addGap(190, 190, 190)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(91, 91, 91)
                                         .addComponent(arrivalTimeBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel9)
-                                        .addGap(119, 119, 119))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(timeOfTravelBox, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel8))
-                                .addGap(119, 119, 119))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(backBtn))))
+                                        .addGap(119, 119, 119))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(421, 421, 421)
                         .addComponent(dateOfDeparture, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,83 +185,40 @@ public class UpdateFlightsJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(destTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addGap(14, 14, 14))
-                    .addComponent(timeOfTravelBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(32, 32, 32))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(14, 14, 14))
-                    .addComponent(arrivalTimeBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addComponent(backBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave)
-                    .addComponent(btnUpdate))
-                .addGap(64, 64, 64))
+                        .addComponent(timeOfTravelBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(backBtn)
+                        .addGap(93, 93, 93))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(14, 14, 14))
+                            .addComponent(arrivalTimeBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(76, 76, 76))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        ViewFlightsJPanel panel = (ViewFlightsJPanel) component;
-        panel.populateViewFlightTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backBtnActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        btnSave.setEnabled(true);
-        btnUpdate.setEnabled(false);
-        serNoTxt.setEnabled(true);
-        dateOfDeparture.setEnabled(true);
-        originTxt.setEnabled(true);
-        destTxt.setEnabled(true);
-        timeOfTravelBox.setEnabled(true);
-        arrivalTimeBox.setEnabled(true);
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        String serNo = serNoTxt.getText();
-        Date dateOfDep = dateOfDeparture.getDate();
-        String origin = originTxt.getText();
-        String destination = destTxt.getText();
-        if(serNo.trim().length()==0 || dateOfDep== null || origin.trim().length()==0 || destination.trim().length()==0 ){
-            JOptionPane.showMessageDialog(null, "Please Enter all the fields");
-            return;
-        }
-        flight.setDeparture(dateOfDep);
-        flight.setDestination(destination);
-        flight.setOrigin(origin);
-        flight.setSerNo(serNo);
-        flight.setTimeOfDay((String) timeOfTravelBox.getSelectedItem());
-        flight.setArrivalTime((String) arrivalTimeBox.getSelectedItem());
-        btnSave.setEnabled(false);
-        btnUpdate.setEnabled(true);
-        JOptionPane.showMessageDialog(null, "Flight Details updated successfully");
-        serNoTxt.setEnabled(false);
-        dateOfDeparture.setEnabled(false);
-        originTxt.setEnabled(false);
-        destTxt.setEnabled(false);
-        timeOfTravelBox.setEnabled(false);
-        arrivalTimeBox.setEnabled(false);
-    }//GEN-LAST:event_btnSaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField airlinerTxt;
     private javax.swing.JComboBox<String> arrivalTimeBox;
     private javax.swing.JButton backBtn;
-    private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnUpdate;
     private com.toedter.calendar.JDateChooser dateOfDeparture;
     private javax.swing.JTextField destTxt;
     private javax.swing.JLabel jLabel1;
