@@ -5,6 +5,7 @@
  */
 package Interface.ManageCustomers;
 
+import Business.TravelAgency;
 import javax.swing.JPanel;
 
 /**
@@ -16,12 +17,16 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageCustomersWorkAreaJPanel
      */
-    public ManageCustomersWorkAreaJPanel() {
+    JPanel userProcessContainer;
+    TravelAgency travelAgency;
+    public ManageCustomersWorkAreaJPanel(JPanel userProcessContainer, TravelAgency travelAgency) {
         initComponents();
-    }
-
-    public ManageCustomersWorkAreaJPanel(JPanel userProcessContainer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.userProcessContainer = userProcessContainer;
+        this.travelAgency = travelAgency;
+        searchAirlinePan.setVisible(true);
+        searchSrcDestPan.setVisible(false);
+        searchPrefPanel.setVisible(false);
+        searchDepPan.setVisible(false);
     }
 
     /**
@@ -33,19 +38,367 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        searchListBox = new javax.swing.JComboBox<>();
+        searchBtn = new javax.swing.JButton();
+        searchAirlinePan = new javax.swing.JPanel();
+        searchAirlineTxt = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        searchSrcDestPan = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        searchSourceTxt = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        searchDestTxt = new javax.swing.JTextField();
+        searchPrefPanel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        searchPreTimTxt = new javax.swing.JComboBox<>();
+        searchDepPan = new javax.swing.JPanel();
+        searchDateTxt = new com.toedter.calendar.JDateChooser();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        bestFlightSearchBtn = new javax.swing.JButton();
+        bookFlightBtn = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+
+        searchListBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Airline Name", "Source and Destination", "Preferred Time", "Date of Departure" }));
+        searchListBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                searchListBoxItemStateChanged(evt);
+            }
+        });
+        searchListBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchListBoxActionPerformed(evt);
+            }
+        });
+
+        searchBtn.setText("Search");
+
+        searchAirlineTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchAirlineTxtActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Airline Name");
+
+        javax.swing.GroupLayout searchAirlinePanLayout = new javax.swing.GroupLayout(searchAirlinePan);
+        searchAirlinePan.setLayout(searchAirlinePanLayout);
+        searchAirlinePanLayout.setHorizontalGroup(
+            searchAirlinePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchAirlinePanLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(searchAirlineTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
+        );
+        searchAirlinePanLayout.setVerticalGroup(
+            searchAirlinePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchAirlinePanLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(searchAirlinePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchAirlineTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jLabel2.setText("Source");
+
+        searchSourceTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchSourceTxtActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Destination");
+
+        searchDestTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchDestTxtActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout searchSrcDestPanLayout = new javax.swing.GroupLayout(searchSrcDestPan);
+        searchSrcDestPan.setLayout(searchSrcDestPanLayout);
+        searchSrcDestPanLayout.setHorizontalGroup(
+            searchSrcDestPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchSrcDestPanLayout.createSequentialGroup()
+                .addContainerGap(68, Short.MAX_VALUE)
+                .addGroup(searchSrcDestPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(searchSrcDestPanLayout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(86, 86, 86)
+                        .addComponent(searchDestTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(searchSrcDestPanLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(searchSourceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(88, 88, 88))
+        );
+        searchSrcDestPanLayout.setVerticalGroup(
+            searchSrcDestPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchSrcDestPanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(searchSrcDestPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchSourceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(searchSrcDestPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchDestTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        jLabel3.setText("         Preferred Time");
+
+        searchPreTimTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Morning", "Afternoon", "Evening" }));
+
+        javax.swing.GroupLayout searchPrefPanelLayout = new javax.swing.GroupLayout(searchPrefPanel);
+        searchPrefPanel.setLayout(searchPrefPanelLayout);
+        searchPrefPanelLayout.setHorizontalGroup(
+            searchPrefPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchPrefPanelLayout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addGap(75, 75, 75)
+                .addComponent(searchPreTimTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83))
+        );
+        searchPrefPanelLayout.setVerticalGroup(
+            searchPrefPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchPrefPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(searchPrefPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchPreTimTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        jLabel4.setText("Date of Departure");
+
+        javax.swing.GroupLayout searchDepPanLayout = new javax.swing.GroupLayout(searchDepPan);
+        searchDepPan.setLayout(searchDepPanLayout);
+        searchDepPanLayout.setHorizontalGroup(
+            searchDepPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchDepPanLayout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(427, Short.MAX_VALUE))
+            .addGroup(searchDepPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(searchDepPanLayout.createSequentialGroup()
+                    .addGap(278, 278, 278)
+                    .addComponent(searchDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(78, Short.MAX_VALUE)))
+        );
+        searchDepPanLayout.setVerticalGroup(
+            searchDepPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchDepPanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(searchDepPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(searchDepPanLayout.createSequentialGroup()
+                    .addGap(27, 27, 27)
+                    .addComponent(searchDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(19, Short.MAX_VALUE)))
+        );
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Airline Name", "Flight Number", "Source", "Destination", "Time of Day", "Date of Departure", "Number of Seats Available", "Cost of Seat"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Airline Name", "Flight Number", "Source", "Destination", "Time of Day", "Date of Departure", "Number of Seats Available", "Cost of Seat"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTable2);
+
+        bestFlightSearchBtn.setText("Search for Best Flights");
+
+        bookFlightBtn.setText("Book Flight");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Manage Customer Work Area");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(searchListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(104, 104, 104)
+                        .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(searchAirlinePan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(searchDepPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(searchSrcDestPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(searchPrefPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(367, 367, 367)
+                        .addComponent(bestFlightSearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(382, 382, 382)
+                        .addComponent(bookFlightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(1451, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(searchListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchAirlinePan, javax.swing.GroupLayout.PREFERRED_SIZE, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchSrcDestPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchPrefPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(searchDepPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bestFlightSearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bookFlightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(372, 372, 372))
+        );
+
+        jScrollPane1.setViewportView(jPanel1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 8, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void searchSourceTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchSourceTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchSourceTxtActionPerformed
+
+    private void searchDestTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchDestTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchDestTxtActionPerformed
+
+    private void searchAirlineTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAirlineTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchAirlineTxtActionPerformed
+
+    private void searchListBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_searchListBoxItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchListBoxItemStateChanged
+
+    private void searchListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchListBoxActionPerformed
+        if (searchListBox.getSelectedItem().equals("Airline Name")) {
+            searchAirlinePan.setVisible(true);
+            searchSrcDestPan.setVisible(false);
+            searchPrefPanel.setVisible(false);
+            searchDepPan.setVisible(false);
+        }else if(searchListBox.getSelectedItem().equals("Source and Destination")){
+            searchAirlinePan.setVisible(false);
+            searchSrcDestPan.setVisible(true);
+            searchPrefPanel.setVisible(false);
+            searchDepPan.setVisible(false);
+        }else if(searchListBox.getSelectedItem().equals("Preferred Time")){
+            searchAirlinePan.setVisible(false);
+            searchSrcDestPan.setVisible(false);
+            searchPrefPanel.setVisible(true);
+            searchDepPan.setVisible(false);
+        }else if(searchListBox.getSelectedItem().equals("Date of Departure")){
+            searchAirlinePan.setVisible(false);
+            searchSrcDestPan.setVisible(false);
+            searchPrefPanel.setVisible(false);
+            searchDepPan.setVisible(true);
+        }
+    }//GEN-LAST:event_searchListBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bestFlightSearchBtn;
+    private javax.swing.JButton bookFlightBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JPanel searchAirlinePan;
+    private javax.swing.JTextField searchAirlineTxt;
+    private javax.swing.JButton searchBtn;
+    private com.toedter.calendar.JDateChooser searchDateTxt;
+    private javax.swing.JPanel searchDepPan;
+    private javax.swing.JTextField searchDestTxt;
+    private javax.swing.JComboBox<String> searchListBox;
+    private javax.swing.JComboBox<String> searchPreTimTxt;
+    private javax.swing.JPanel searchPrefPanel;
+    private javax.swing.JTextField searchSourceTxt;
+    private javax.swing.JPanel searchSrcDestPan;
     // End of variables declaration//GEN-END:variables
 }
