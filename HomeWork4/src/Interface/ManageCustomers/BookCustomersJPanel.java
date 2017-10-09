@@ -5,6 +5,15 @@
  */
 package Interface.ManageCustomers;
 
+import Business.Customer;
+import Business.Flight;
+import Business.Seat;
+import Business.TravelAgency;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Sumanth
@@ -14,8 +23,14 @@ public class BookCustomersJPanel extends javax.swing.JPanel {
     /**
      * Creates new form BookCustomersJPanel
      */
-    public BookCustomersJPanel() {
+    JPanel userProcessContainer; 
+    TravelAgency travelAgency; 
+    Flight airline;
+    BookCustomersJPanel(JPanel userProcessContainer, TravelAgency travelAgency, Flight airline) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.travelAgency = travelAgency;
+        this.airline = airline;
     }
 
     /**
@@ -27,19 +42,167 @@ public class BookCustomersJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        custNameTxt = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        custIdTxt = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        noOfSeatsTxt = new javax.swing.JTextField();
+        bookBtn = new javax.swing.JButton();
+        backBtnMngFlight = new javax.swing.JButton();
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Book Tickets");
+
+        jLabel2.setText("Customer UserName");
+
+        jLabel3.setText("Customer User Id");
+
+        jLabel4.setText("Number of Seats to be Booked");
+
+        bookBtn.setText("Book");
+        bookBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookBtnActionPerformed(evt);
+            }
+        });
+
+        backBtnMngFlight.setText("<<back");
+        backBtnMngFlight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnMngFlightActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(95, 95, 95)
+                        .addComponent(custNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(custIdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(3, 3, 3)
+                            .addComponent(noOfSeatsTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(223, 223, 223))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(backBtnMngFlight)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                .addComponent(bookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(316, 316, 316))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(backBtnMngFlight)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(custNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(custIdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(noOfSeatsTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
+                        .addComponent(bookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backBtnMngFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnMngFlightActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backBtnMngFlightActionPerformed
+
+    private void bookBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookBtnActionPerformed
+        Seat sFli = new Seat();
+        Seat sCust = new Seat();
+        int noOfSeatsAvailable = airline.getSeat().getTotalNoOfSeats();
+        String custName = custNameTxt.getText();
+        String custId = custIdTxt.getText();
+        String enteredSeats = noOfSeatsTxt.getText();
+        int idCust;
+        int seatsEntered;
+        if(custName.trim().length() == 0 || custId.trim().length() == 0 || enteredSeats.trim().length() ==0){
+            JOptionPane.showMessageDialog(null, "Please enter all the fields");
+            return;
+        }
+        try{
+            seatsEntered = Integer.parseInt(enteredSeats);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Please enter integer value for seats");
+            return;
+        }
+        try{
+            idCust = Integer.parseInt(custId);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Please enter integer value for Customer Id");
+            return;
+        }
+        if(seatsEntered<=0){
+            JOptionPane.showMessageDialog(null, "Please enter number of seats greater than 0");
+            return;
+        }
+        if(noOfSeatsAvailable<=0){
+            JOptionPane.showMessageDialog(null, "All seats in the flights are booked");
+            return;
+        }
+        if(noOfSeatsAvailable < seatsEntered){
+            JOptionPane.showMessageDialog(null, "Please enter number of seats less than "+noOfSeatsAvailable);
+            return;
+        }
+        int totalNumberOfSeatsAvailable =  airline.getSeat().getTotalNoOfSeats() - seatsEntered;
+        sFli.setTotalNoOfSeats(totalNumberOfSeatsAvailable);
+        sFli.setCostOfSeat(airline.getSeat().getCostOfSeat());
+        airline.setSeat(sFli);
+        Customer customer = travelAgency.getCusomerDir().addDetails();
+        customer.setFliName(airline.getName());
+        customer.setFliSerNo(airline.getSerNo());
+        customer.setUserName(custName);
+        customer.setId(idCust);
+        sCust.setCostOfSeat(airline.getSeat().getCostOfSeat());
+        sCust.setTotalNoOfSeats(seatsEntered);
+        customer.setSeat(sCust);
+        JOptionPane.showMessageDialog(null, "Successfully Booked seat");
+    }//GEN-LAST:event_bookBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backBtnMngFlight;
+    private javax.swing.JButton bookBtn;
+    private javax.swing.JTextField custIdTxt;
+    private javax.swing.JTextField custNameTxt;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField noOfSeatsTxt;
     // End of variables declaration//GEN-END:variables
 }

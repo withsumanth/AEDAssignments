@@ -72,14 +72,16 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="336" max="-2" attributes="0"/>
                               <Component id="bestFlightSearchBtn" min="-2" pref="240" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="381" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="bookFlightBtn" min="-2" pref="179" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="780" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="381" max="-2" attributes="0"/>
+                              <Component id="bookBestAvaBtn" min="-2" pref="202" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="1784" max="32767" attributes="0"/>
@@ -106,11 +108,14 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" pref="103" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="bestFlightSearchBtn" min="-2" pref="45" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="bestFlightSearchBtn" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="bookFlightBtn" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane3" min="-2" pref="69" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="bookFlightBtn" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="bookBestAvaBtn" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="378" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -429,10 +434,13 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bestFlightSearchBtnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="bookFlightBtn">
+            <Component class="javax.swing.JButton" name="bookBestAvaBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Book Flight"/>
+                <Property name="text" type="java.lang.String" value="Book for best Available Flight"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bookBestAvaBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
@@ -521,6 +529,14 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="bookFlightBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Book Flight"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bookFlightBtnActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

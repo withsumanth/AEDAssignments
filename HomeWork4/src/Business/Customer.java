@@ -12,47 +12,34 @@ import java.util.Date;
  * @author Sumanth
  */
 public class Customer {
-    private String name;
-    private int age;
-    private int phNo;
-    private String addr;
+    private String userName;
+    private int id;
     private String fliSerNo;
     private String fliName;
-    private Date fliDeparture;
-    private String fliOrigin;
-    private String fliDestination;
-    private String dliTimeOfDay;
+    Seat seat;
 
-    public String getName() {
-        return name;
+    public Seat getSeat() {
+        return seat;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSeat(Seat seat) {
+        this.seat = seat;
     }
 
-    public int getAge() {
-        return age;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public int getPhNo() {
-        return phNo;
+    public int getId() {
+        return id;
     }
 
-    public void setPhNo(int phNo) {
-        this.phNo = phNo;
-    }
-
-    public String getAddr() {
-        return addr;
-    }
-
-    public void setAddr(String addr) {
-        this.addr = addr;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFliSerNo() {
@@ -69,37 +56,5 @@ public class Customer {
 
     public void setFliName(String fliName) {
         this.fliName = fliName;
-    }
-
-    public Date getFliDeparture() {
-        return fliDeparture;
-    }
-
-    public void setFliDeparture(Date fliDeparture) {
-        this.fliDeparture = fliDeparture;
-    }
-
-    public String getFliOrigin() {
-        return fliOrigin;
-    }
-
-    public void setFliOrigin(String fliOrigin) {
-        this.fliOrigin = fliOrigin;
-    }
-
-    public String getFliDestination() {
-        return fliDestination;
-    }
-
-    public void setFliDestination(String fliDestination) {
-        this.fliDestination = fliDestination;
-    }
-
-    public String getDliTimeOfDay() {
-        return dliTimeOfDay;
-    }
-
-    public void setDliTimeOfDay(String dliTimeOfDay) {
-        this.dliTimeOfDay = dliTimeOfDay;
     }
 }

@@ -7,6 +7,7 @@ package Interface.ManageCustomers;
 
 import Business.Flight;
 import Business.TravelAgency;
+import java.awt.CardLayout;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -67,10 +68,11 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         bestFlightTable = new javax.swing.JTable();
         bestFlightSearchBtn = new javax.swing.JButton();
-        bookFlightBtn = new javax.swing.JButton();
+        bookBestAvaBtn = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         searchJTable = new javax.swing.JTable();
+        bookFlightBtn = new javax.swing.JButton();
 
         searchListBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Airline Name", "Source and Destination", "Arrival Time", "Date of Departure" }));
         searchListBox.addItemListener(new java.awt.event.ItemListener() {
@@ -246,7 +248,12 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        bookFlightBtn.setText("Book Flight");
+        bookBestAvaBtn.setText("Book for best Available Flight");
+        bookBestAvaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookBestAvaBtnActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -269,6 +276,13 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane4.setViewportView(searchJTable);
+
+        bookFlightBtn.setText("Book Flight");
+        bookFlightBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookFlightBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -300,13 +314,15 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(336, 336, 336)
-                        .addComponent(bestFlightSearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(381, 381, 381)
+                        .addComponent(bestFlightSearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(bookFlightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(381, 381, 381)
+                        .addComponent(bookBestAvaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(1784, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -328,11 +344,13 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(bestFlightSearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bestFlightSearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bookFlightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
-                .addComponent(bookFlightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bookBestAvaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(378, 378, 378))
         );
 
@@ -464,6 +482,42 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_bestFlightSearchBtnActionPerformed
 
+    private void bookBestAvaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookBestAvaBtnActionPerformed
+        int selectedRow = bestFlightTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select Any Row");
+            return;
+        } else {
+            Flight airline = (Flight) bestFlightTable.getValueAt(selectedRow, 0);
+            BookCustomersJPanel panel = new BookCustomersJPanel(userProcessContainer,travelAgency, airline);
+            userProcessContainer.add("BookCustomersJPanel", panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+            DefaultTableModel tabMod = (DefaultTableModel) searchJTable.getModel();
+            DefaultTableModel secTabMod = (DefaultTableModel) bestFlightTable.getModel();
+            tabMod.setRowCount(0);
+            secTabMod.setRowCount(0);
+        }
+    }//GEN-LAST:event_bookBestAvaBtnActionPerformed
+
+    private void bookFlightBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookFlightBtnActionPerformed
+        int selectedRow = searchJTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select Any Row");
+            return;
+        } else {
+            Flight airline = (Flight) searchJTable.getValueAt(selectedRow, 0);
+            BookCustomersJPanel panel = new BookCustomersJPanel(userProcessContainer,travelAgency, airline);
+            userProcessContainer.add("BookCustomersJPanel", panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+            DefaultTableModel tabMod = (DefaultTableModel) searchJTable.getModel();
+            DefaultTableModel secTabMod = (DefaultTableModel) bestFlightTable.getModel();
+            tabMod.setRowCount(0);
+            secTabMod.setRowCount(0);
+        }
+    }//GEN-LAST:event_bookFlightBtnActionPerformed
+
     public void populateJTable(ArrayList<Flight> modArrList, JTable table ){
         DefaultTableModel tabMod = (DefaultTableModel) table.getModel();
         tabMod.setRowCount(0);
@@ -485,6 +539,7 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bestFlightSearchBtn;
     private javax.swing.JTable bestFlightTable;
+    private javax.swing.JButton bookBestAvaBtn;
     private javax.swing.JButton bookFlightBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
