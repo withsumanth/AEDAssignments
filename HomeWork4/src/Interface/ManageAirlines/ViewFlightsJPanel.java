@@ -37,12 +37,11 @@ public class ViewFlightsJPanel extends javax.swing.JPanel {
         DefaultTableModel tabMod = (DefaultTableModel) flightJTable.getModel();
         tabMod.setRowCount(0);
         for (Flight details : travelAgency.getFlightDir().getFlightDir()) {
-            Object row[] = new Object[5];
+            Object row[] = new Object[4];
             row[0] = details;
             row[1] = details.getDeparture();
             row[2] = details.getOrigin();
             row[3] = details.getDestination();
-            row[4] = details.getTimeOfDay();
             tabMod.addRow(row);
         }
     }
@@ -75,11 +74,11 @@ public class ViewFlightsJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Serial Number", "Time of Day"
+                "Serial Number", "Date of Departure", "Source", "Destination"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -121,7 +120,7 @@ public class ViewFlightsJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(275, Short.MAX_VALUE)
+                .addContainerGap(76, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -136,8 +135,8 @@ public class ViewFlightsJPanel extends javax.swing.JPanel {
                         .addComponent(deleteFightBtn)
                         .addGap(199, 199, 199))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(144, 144, 144))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

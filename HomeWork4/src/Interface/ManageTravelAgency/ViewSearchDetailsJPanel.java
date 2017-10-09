@@ -101,7 +101,7 @@ public class ViewSearchDetailsJPanel extends javax.swing.JPanel {
         jLabel5.setText("Date of Departure");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("View and Flight");
+        jLabel1.setText("View Flight Details");
 
         dateOfDeparture.setEnabled(false);
 
