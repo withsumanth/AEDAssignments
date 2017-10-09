@@ -5,8 +5,15 @@
  */
 package Interface.ManageCustomers;
 
+import Business.Flight;
 import Business.TravelAgency;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Comparator;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +26,7 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     TravelAgency travelAgency;
+    ArrayList<Flight> modArrList;
     public ManageCustomersWorkAreaJPanel(JPanel userProcessContainer, TravelAgency travelAgency) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -56,15 +64,15 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
         searchDepPan = new javax.swing.JPanel();
         searchDateTxt = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        bestFlightTable = new javax.swing.JTable();
         bestFlightSearchBtn = new javax.swing.JButton();
         bookFlightBtn = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        searchJTable = new javax.swing.JTable();
 
-        searchListBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Airline Name", "Source and Destination", "Preferred Time", "Date of Departure" }));
+        searchListBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Airline Name", "Source and Destination", "Arrival Time", "Date of Departure" }));
         searchListBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 searchListBoxItemStateChanged(evt);
@@ -77,6 +85,11 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
         searchAirlineTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,7 +167,7 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jLabel3.setText("         Preferred Time");
+        jLabel3.setText("      Arrival Time");
 
         searchPreTimTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Morning", "Afternoon", "Evening" }));
 
@@ -208,49 +221,54 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
                     .addContainerGap(19, Short.MAX_VALUE)))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        bestFlightTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Airline Name", "Flight Number", "Source", "Destination", "Time of Day", "Date of Departure", "Number of Seats Available", "Cost of Seat"
+                "Flight Number", "Airplane Name", "Source", "Destination", "Arrival Time", "Departure Time", "Date of Departure", "Number of Seats Available", "Cost of Seat"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Airline Name", "Flight Number", "Source", "Destination", "Time of Day", "Date of Departure", "Number of Seats Available", "Cost of Seat"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(bestFlightTable);
 
         bestFlightSearchBtn.setText("Search for Best Flights");
+        bestFlightSearchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bestFlightSearchBtnActionPerformed(evt);
+            }
+        });
 
         bookFlightBtn.setText("Book Flight");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Manage Customer Work Area");
+
+        searchJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Flight Number", "Airplane Name", "Source", "Destination", "Arrival Time", "Departure Time", "Date of Departure", "Number of Seats Available", "Cost of Seat"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(searchJTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -261,7 +279,7 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(139, 139, 139)
                         .addComponent(searchListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(104, 104, 104)
+                        .addGap(100, 100, 100)
                         .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(102, 102, 102)
@@ -278,27 +296,28 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(153, 153, 153)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(367, 367, 367)
+                        .addGap(336, 336, 336)
                         .addComponent(bestFlightSearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(382, 382, 382)
-                        .addComponent(bookFlightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(1451, Short.MAX_VALUE))
+                        .addGap(381, 381, 381)
+                        .addComponent(bookFlightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(1784, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(searchListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addComponent(searchAirlinePan, javax.swing.GroupLayout.PREFERRED_SIZE, 63, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(searchSrcDestPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -306,15 +325,15 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(searchPrefPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(searchDepPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bestFlightSearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
                 .addComponent(bookFlightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(372, 372, 372))
+                .addGap(378, 378, 378))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -350,6 +369,10 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_searchListBoxItemStateChanged
 
     private void searchListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchListBoxActionPerformed
+        DefaultTableModel tabMod = (DefaultTableModel) searchJTable.getModel();
+        DefaultTableModel secTabMod = (DefaultTableModel) bestFlightTable.getModel();
+        tabMod.setRowCount(0);
+        secTabMod.setRowCount(0);
         if (searchListBox.getSelectedItem().equals("Airline Name")) {
             searchAirlinePan.setVisible(true);
             searchSrcDestPan.setVisible(false);
@@ -360,7 +383,7 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
             searchSrcDestPan.setVisible(true);
             searchPrefPanel.setVisible(false);
             searchDepPan.setVisible(false);
-        }else if(searchListBox.getSelectedItem().equals("Preferred Time")){
+        }else if(searchListBox.getSelectedItem().equals("Arrival Time")){
             searchAirlinePan.setVisible(false);
             searchSrcDestPan.setVisible(false);
             searchPrefPanel.setVisible(true);
@@ -373,9 +396,95 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_searchListBoxActionPerformed
 
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        DefaultTableModel secTabMod = (DefaultTableModel) bestFlightTable.getModel();
+        secTabMod.setRowCount(0);
+        modArrList = new ArrayList();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        ArrayList<Flight> flightList = travelAgency.getFlightDir().getFlightDir();
+        if (searchListBox.getSelectedItem().equals("Airline Name")) {
+            if(searchAirlineTxt.getText().trim().length()==0){
+                JOptionPane.showMessageDialog(null, "Please enter Airline Name");
+                return;
+            }else{
+                for(Flight flight:flightList){
+                    if(flight.getName().equals(searchAirlineTxt.getText())){
+                        modArrList.add(flight);
+                    }
+                }
+            }
+        }else if(searchListBox.getSelectedItem().equals("Source and Destination")){
+            if(searchSourceTxt.getText().trim().length()==0 || searchDestTxt.getText().trim().length()==0 ){
+                JOptionPane.showMessageDialog(null, "Please enter Source and Destination");
+                return;
+            }else{
+                for(Flight flight:flightList){
+                    if(flight.getOrigin().equals(searchSourceTxt.getText()) && flight.getDestination().equals(searchDestTxt.getText())){
+                        modArrList.add(flight);
+                    }
+                }
+            }
+        }else if(searchListBox.getSelectedItem().equals("Arrival Time")){
+            for(Flight flight:flightList){
+                    if(flight.getArrivalTime().equals((String)searchPreTimTxt.getSelectedItem())){
+                        modArrList.add(flight);
+                    }
+                }
+        }else if(searchListBox.getSelectedItem().equals("Date of Departure")){
+            if(searchDateTxt.getDate()==null ){
+                JOptionPane.showMessageDialog(null, "Please select Date of Departure");
+                return;
+            }else{
+                for(Flight flight:flightList){
+                    if(formatter.format(flight.getDeparture()).equals(formatter.format(searchDateTxt.getDate()))){
+                        modArrList.add(flight);
+                    }
+                }
+            }
+        }
+        if(modArrList.size()==0){
+             JOptionPane.showMessageDialog(null, "There are no results for search");
+             return;
+            }else{
+                populateJTable(modArrList,searchJTable);
+            }
+    }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void bestFlightSearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bestFlightSearchBtnActionPerformed
+        int noOfRows = searchJTable.getRowCount();
+        if(noOfRows==0){
+            JOptionPane.showMessageDialog(null, "Please search and get results inorder to get best flight");
+             return;
+        }else{
+            ArrayList<Flight> flightDetails=  modArrList;
+            flightDetails.sort(Comparator.comparing((Flight p)->p.getSeat().getCostOfSeat()));
+            ArrayList<Flight> sortedList = new ArrayList();
+            sortedList.add(flightDetails.get(0));
+            populateJTable(sortedList,bestFlightTable);
+        }
+    }//GEN-LAST:event_bestFlightSearchBtnActionPerformed
+
+    public void populateJTable(ArrayList<Flight> modArrList, JTable table ){
+        DefaultTableModel tabMod = (DefaultTableModel) table.getModel();
+        tabMod.setRowCount(0);
+        for (Flight details : modArrList) {
+            Object row[] = new Object[9];
+            row[0] = details;
+            row[1] = details.getName();
+            row[2] = details.getOrigin();
+            row[3] = details.getDestination();
+            row[4] = details.getArrivalTime();
+            row[5] = details.getTimeOfDay();
+            row[6] = details.getDeparture();
+            row[7] = details.getSeat().getTotalNoOfSeats();
+            row[8] = details.getSeat().getCostOfSeat();
+            tabMod.addRow(row);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bestFlightSearchBtn;
+    private javax.swing.JTable bestFlightTable;
     private javax.swing.JButton bookFlightBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -385,16 +494,15 @@ public class ManageCustomersWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JPanel searchAirlinePan;
     private javax.swing.JTextField searchAirlineTxt;
     private javax.swing.JButton searchBtn;
     private com.toedter.calendar.JDateChooser searchDateTxt;
     private javax.swing.JPanel searchDepPan;
     private javax.swing.JTextField searchDestTxt;
+    private javax.swing.JTable searchJTable;
     private javax.swing.JComboBox<String> searchListBox;
     private javax.swing.JComboBox<String> searchPreTimTxt;
     private javax.swing.JPanel searchPrefPanel;
