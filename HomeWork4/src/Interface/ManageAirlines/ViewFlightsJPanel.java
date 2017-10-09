@@ -9,6 +9,7 @@ import Business.Airline;
 import Business.Flight;
 import Business.TravelAgency;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +30,7 @@ public class ViewFlightsJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.travelAgency = travelAgency;
+        this.airline = airline;
         populateViewFlightTable();
         flightNameTxt.setText(airline.getName());
     }
@@ -36,7 +38,13 @@ public class ViewFlightsJPanel extends javax.swing.JPanel {
     public void populateViewFlightTable(){
         DefaultTableModel tabMod = (DefaultTableModel) flightJTable.getModel();
         tabMod.setRowCount(0);
-        for (Flight details : travelAgency.getFlightDir().getFlightDir()) {
+        ArrayList<Flight> flight = new ArrayList();
+        for(Flight aa:travelAgency.getFlightDir().getFlightDir()){
+            if(aa.getName().equals(airline.getName())){
+                flight.add(aa);
+            }
+        }
+        for (Flight details : flight) {
             Object row[] = new Object[4];
             row[0] = details;
             row[1] = details.getDeparture();
