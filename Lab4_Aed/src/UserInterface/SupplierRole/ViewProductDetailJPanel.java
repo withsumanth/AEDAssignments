@@ -107,11 +107,16 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         userProcessContainer.remove(this);
         Component[] componentArray1 = userProcessContainer.getComponents();
-        Component component1 = componentArray1[componentArray1.length - 1];
-        ManageProductCatalogJPanel ms =  (ManageProductCatalogJPanel) component1;
-        ms.refreshTable();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        for(Component c:componentArray1){
+            if(c.getClass().getSimpleName().equals("ManageProductCatalogJPanel")){
+                Component component1 = c;
+                ManageProductCatalogJPanel ms =  (ManageProductCatalogJPanel) component1;
+                ms.refreshTable();
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.previous(userProcessContainer);
+                break;
+            }
+        }
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
