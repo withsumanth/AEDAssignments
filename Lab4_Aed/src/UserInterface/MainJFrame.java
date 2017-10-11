@@ -2,6 +2,7 @@ package UserInterface;
 
 import Business.SupplierDirectory;
 import UserInterface.AdminstrativeRole.AdminWorkAreaJPanel;
+import UserInterface.SupplierRole.LoginSupplier;
 import java.awt.CardLayout;
 
 /**
@@ -103,7 +104,10 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdminActionPerformed
 
     private void btnSupplierManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplierManagerActionPerformed
-
+        LoginSupplier panel = new LoginSupplier(userProcessContainer,supDir);
+        userProcessContainer.add("LoginSupplier",panel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnSupplierManagerActionPerformed
 
     private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed

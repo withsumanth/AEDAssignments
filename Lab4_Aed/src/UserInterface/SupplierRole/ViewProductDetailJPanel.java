@@ -1,13 +1,25 @@
 package UserInterface.SupplierRole;
 
+import Business.Product;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Mihir Mehta / Hechen Gao
  */
 public class ViewProductDetailJPanel extends javax.swing.JPanel {
 
-    public ViewProductDetailJPanel() {
+    JPanel userProcessContainer;
+    Product product;
+    ViewProductDetailJPanel(JPanel userProcessContainer, Product product) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.product=product;
+        txtName.setText(product.getProdName());
+        txtId.setText(String.valueOf(product.getModNo()));
+        txtPrice.setText(String.valueOf(product.getPrice()));
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -87,15 +99,24 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-
+        txtName.setEditable(true);
+        txtPrice.setEditable(true);
+        btnSave.setEnabled(true);
 }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+        userProcessContainer.remove(this);
+        Component[] componentArray1 = userProcessContainer.getComponents();
+        Component component1 = componentArray1[componentArray1.length - 1];
+        ManageProductCatalogJPanel ms =  (ManageProductCatalogJPanel) component1;
+        ms.refreshTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-
+        product.setPrice(Integer.parseInt(txtPrice.getText()));
+        product.setProdName(txtName.getText());
     }//GEN-LAST:event_btnSaveActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables

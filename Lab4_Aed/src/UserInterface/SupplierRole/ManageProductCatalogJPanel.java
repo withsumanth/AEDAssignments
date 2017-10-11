@@ -1,19 +1,42 @@
 package UserInterface.SupplierRole;
 
+import Business.Product;
+import Business.Supplier;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author Rushabh
  */
 public class ManageProductCatalogJPanel extends javax.swing.JPanel {
-
     
-  
-    /** Creates new form ManageProductCatalogJPanel */
-    public ManageProductCatalogJPanel() {
+    JPanel userProcessContainer;
+    Supplier supplier;
+    ManageProductCatalogJPanel(JPanel userProcessContainer, Supplier supplier) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.supplier = supplier;
+        txtName.setText(supplier.getSuppName());
+        refreshTable();
     }
-
+    public void refreshTable() {
+       int rowCount = productCatalog.getRowCount();
+        DefaultTableModel model = (DefaultTableModel) productCatalog.getModel();
+        for(int i=rowCount-1 ;i>=0; i--){
+            model.removeRow(i);
+        }
+        for(Product p:supplier.getProdCatalog().getProdCatalog()){
+            Object[] row = new Object[3];
+            row[0] = p;
+            row[1] = p.getModNo();
+            row[2] = p.getPrice();
+            model.addRow(row);
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -106,23 +129,48 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 190, -1));
     }// </editor-fold>//GEN-END:initComponents
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-
+        int row = productCatalog.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null, "Please select any Row");
+            return;
+        }
+        Product product = (Product) productCatalog.getValueAt(row, 0);
+        ViewProductDetailJPanel panel = new ViewProductDetailJPanel(userProcessContainer,product);
+        userProcessContainer.add("ViewProductDetailJPanel",panel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-       
+        CreateNewProductJPanel panel = new CreateNewProductJPanel(userProcessContainer,supplier);
+        userProcessContainer.add("CreateNewProductJPanel",panel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-
+        SearchForProductJPanel panel = new SearchForProductJPanel(userProcessContainer,supplier);
+        userProcessContainer.add("SearchForProductJPanel",panel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-
+        int row = productCatalog.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null, "Please select any Row");
+            return;
+        }
+        Product product = (Product) productCatalog.getValueAt(row, 0);
+        supplier.getProdCatalog().deleteProduct(product);
+        refreshTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

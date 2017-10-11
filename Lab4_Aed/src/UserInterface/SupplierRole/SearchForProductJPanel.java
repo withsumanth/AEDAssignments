@@ -1,13 +1,22 @@
 package UserInterface.SupplierRole;
 
+import Business.Product;
+import Business.Supplier;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Mihir Mehta / Hechen Gao
  */
 public class SearchForProductJPanel extends javax.swing.JPanel {
 
-    public SearchForProductJPanel() {
+    JPanel userProcessContainer;
+    Supplier supplier;
+    SearchForProductJPanel(JPanel userProcessContainer, Supplier supplier) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.supplier=supplier;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -52,11 +61,18 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-
+       int prdId =  Integer.parseInt(txtId.getText());
+       Product product = supplier.getProdCatalog().searchProduct(prdId);
+       ViewProductDetailJPanel pan = new ViewProductDetailJPanel(userProcessContainer,product);
+       userProcessContainer.add("ViewProductDetailJPanel",pan);
+       CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+       layout.next(userProcessContainer);
 }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
    

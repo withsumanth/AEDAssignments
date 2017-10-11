@@ -1,15 +1,41 @@
 package UserInterface.AdminstrativeRole;
 
+import Business.Product;
+import Business.Supplier;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Mihir Mehta / Hechen Gao
  */
 public class ViewSupplier extends javax.swing.JPanel {
 
-    public ViewSupplier() {
+    JPanel userProcessContainer;
+    Supplier supplier;
+    ViewSupplier(JPanel userProcessContainer, Supplier supplier) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.supplier = supplier;
+        supplierName.setText(supplier.getSuppName());
+        refreshTable();
     }
 
+     private void refreshTable() {
+       int rowCount = productCatalog.getRowCount();
+        DefaultTableModel model = (DefaultTableModel) productCatalog.getModel();
+        for(int i=rowCount-1 ;i>=0; i--){
+            model.removeRow(i);
+        }
+        for(Product p:supplier.getProdCatalog().getProdCatalog()){
+            Object[] row = new Object[3];
+            row[0] = p.getProdName();
+            row[1] = p.getModNo();
+            row[2] = p.getPrice();
+            model.addRow(row);
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -78,7 +104,9 @@ public class ViewSupplier extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-      
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -87,4 +115,5 @@ public class ViewSupplier extends javax.swing.JPanel {
     private javax.swing.JTable productCatalog;
     private javax.swing.JLabel supplierName;
     // End of variables declaration//GEN-END:variables
+
 }

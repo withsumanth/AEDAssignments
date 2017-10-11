@@ -1,5 +1,12 @@
 package UserInterface.AdminstrativeRole;
 
+import Business.Supplier;
+import Business.SupplierDirectory;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 
 /**
  *
@@ -7,8 +14,12 @@ package UserInterface.AdminstrativeRole;
  */
 public class AddSupplier extends javax.swing.JPanel {
 
-    public AddSupplier() {
+    JPanel userProcessContainer;
+    SupplierDirectory supDir;
+    AddSupplier(JPanel userProcessContainer, SupplierDirectory supDir) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.supDir=supDir;
     }
 
     /** This method is called from within the constructor to
@@ -84,11 +95,20 @@ public class AddSupplier extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-
+        String supplierEntered = txtName.getText();
+        Supplier supplier = supDir.addSupp();
+        supplier.setSuppName(supplierEntered);
+        JOptionPane.showMessageDialog(null, "Supplier Added Successfully");
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length-1];
+        ManageSuppliers ms =  (ManageSuppliers)component;
+        ms.populateTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
 

@@ -1,5 +1,12 @@
 package UserInterface.SupplierRole;
 
+import Business.Product;
+import Business.Supplier;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 
 /**
  *
@@ -7,8 +14,12 @@ package UserInterface.SupplierRole;
  */
 public class CreateNewProductJPanel extends javax.swing.JPanel {
 
-    public CreateNewProductJPanel(){
+    JPanel userProcessContainer;
+    Supplier supplier;
+    CreateNewProductJPanel(JPanel userProcessContainer, Supplier supplier) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.supplier=supplier;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -71,11 +82,20 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 210, -1));
     }// </editor-fold>//GEN-END:initComponents
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-
+       Product prod = supplier.getProdCatalog().addProduct();
+       prod.setProdName(txtName.getText());
+       prod.setPrice(Integer.parseInt(txtPrice.getText()));
+        JOptionPane.showMessageDialog(null, "Product created Successfully");
 }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length-1];
+        ManageProductCatalogJPanel ms =  (ManageProductCatalogJPanel)component;
+        ms.refreshTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables

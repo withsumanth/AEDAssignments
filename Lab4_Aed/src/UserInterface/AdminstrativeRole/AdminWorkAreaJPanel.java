@@ -19,8 +19,8 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     SupplierDirectory supDir;
     public AdminWorkAreaJPanel(JPanel userProcessContainer, SupplierDirectory supDir) {
         initComponents();
-        supDir = this.supDir;
-        userProcessContainer = this.userProcessContainer;
+        this.supDir = supDir;
+        this.userProcessContainer = userProcessContainer;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

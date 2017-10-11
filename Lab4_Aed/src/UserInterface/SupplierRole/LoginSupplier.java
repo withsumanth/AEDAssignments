@@ -1,13 +1,26 @@
 package UserInterface.SupplierRole;
 
+import Business.Supplier;
+import Business.SupplierDirectory;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Mihir Mehta / Hechen Gao
  */
 public class LoginSupplier extends javax.swing.JPanel {
     
-    public LoginSupplier() {
+    JPanel userProcessContainer;
+    SupplierDirectory supDir;
+    public LoginSupplier(JPanel userProcessContainer, SupplierDirectory supDir) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.supDir = supDir;
+        supplierComboBox.removeAllItems();
+        for(Supplier s:supDir.getSuppDir()){
+            supplierComboBox.addItem(s);
+        }
     }
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -51,7 +64,11 @@ public class LoginSupplier extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
-
+        Supplier supplier = (Supplier) supplierComboBox.getSelectedItem();
+        SupplierWorkAreaJPanel panel = new SupplierWorkAreaJPanel(userProcessContainer,supplier);
+        userProcessContainer.add("SupplierWorkAreaJPanel",panel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnFindActionPerformed
 
     private void supplierComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplierComboBoxActionPerformed

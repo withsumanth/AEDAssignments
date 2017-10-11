@@ -2,6 +2,8 @@ package UserInterface.AdminstrativeRole;
 
 import Business.Supplier;
 import Business.SupplierDirectory;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,6 +19,7 @@ public class ManageSuppliers extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.supDir = supDir;
+        populateTable();
     }
   
     @SuppressWarnings("unchecked")
@@ -125,19 +128,40 @@ public class ManageSuppliers extends javax.swing.JPanel {
         }
     }
     private void btnAddSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSupplierActionPerformed
-
+        AddSupplier panel  = new AddSupplier(userProcessContainer,supDir);
+        userProcessContainer.add("AddSupplier",panel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnAddSupplierActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-
+        int row = supplierTable.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null, "Please select any Row");
+            return;
+        }
+        Supplier s = (Supplier) supplierTable.getValueAt(row, 0);
+        ViewSupplier panel  = new ViewSupplier(userProcessContainer,s);
+        userProcessContainer.add("ViewSupplier",panel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-
+        int row = supplierTable.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null, "Please select any Row");
+            return;
+        }
+        Supplier s = (Supplier) supplierTable.getValueAt(row, 0);
+        supDir.removeSupp(s);
+        populateTable();
     }//GEN-LAST:event_btnRemoveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
 

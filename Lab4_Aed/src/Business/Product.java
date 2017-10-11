@@ -43,4 +43,9 @@ public class Product {
     public void setModNo(int modNo) {
         this.modNo = modNo;
     }
+    
+    @Override
+    public String toString(){
+        return prodName;
+    }
 }
