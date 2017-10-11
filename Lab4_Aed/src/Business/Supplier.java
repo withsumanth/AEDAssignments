@@ -28,5 +28,10 @@ public class Supplier {
     public ProductCatalog getProdCatalog() {
         return prodCatalog;
     }
+    
+    @Override
+    public String toString(){
+        return suppName;
+    }
 
 }

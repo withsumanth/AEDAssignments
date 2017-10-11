@@ -1,5 +1,9 @@
 package UserInterface;
 
+import Business.SupplierDirectory;
+import UserInterface.AdminstrativeRole.AdminWorkAreaJPanel;
+import java.awt.CardLayout;
+
 /**
  *
  * @author Mihir Mehta / Hechen Gao
@@ -7,8 +11,10 @@ package UserInterface;
 public class MainJFrame extends javax.swing.JFrame {
     
     /** Creates new form MainJFrame */
+    private SupplierDirectory supDir;
     public MainJFrame() {
         initComponents();
+        supDir = new SupplierDirectory();
     }
 
     /** This method is called from within the constructor to
@@ -32,6 +38,8 @@ public class MainJFrame extends javax.swing.JFrame {
         jSplitPane1.setDividerLocation(150);
 
         btnAdmin.setText("Administrator");
+        btnAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAdmin.setRequestFocusEnabled(false);
         btnAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdminActionPerformed(evt);
@@ -88,7 +96,10 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
-
+        AdminWorkAreaJPanel panel = new AdminWorkAreaJPanel(userProcessContainer,supDir);
+        userProcessContainer.add("AdminWorkAreaJPanel",panel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnAdminActionPerformed
 
     private void btnSupplierManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplierManagerActionPerformed

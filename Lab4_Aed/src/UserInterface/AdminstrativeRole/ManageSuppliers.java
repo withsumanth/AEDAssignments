@@ -1,13 +1,22 @@
 package UserInterface.AdminstrativeRole;
 
+import Business.Supplier;
+import Business.SupplierDirectory;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Mihir Mehta / Hechen Gao
  */
 public class ManageSuppliers extends javax.swing.JPanel {
 
-    public ManageSuppliers() {
+    JPanel userProcessContainer;
+    SupplierDirectory supDir;
+    ManageSuppliers(JPanel userProcessContainer, SupplierDirectory supDir) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.supDir = supDir;
     }
   
     @SuppressWarnings("unchecked")
@@ -103,6 +112,18 @@ public class ManageSuppliers extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void populateTable(){
+        int rowCount = supplierTable.getRowCount();
+        DefaultTableModel model = (DefaultTableModel) supplierTable.getModel();
+        for(int i=rowCount-1 ;i>=0; i--){
+            model.removeRow(i);
+        }
+        for(Supplier s:supDir.getSuppDir()){
+            Object[] row = new Object[1];
+            row[0] = s;
+            model.addRow(row);
+        }
+    }
     private void btnAddSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSupplierActionPerformed
 
     }//GEN-LAST:event_btnAddSupplierActionPerformed
