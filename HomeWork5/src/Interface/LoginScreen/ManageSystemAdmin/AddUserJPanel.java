@@ -122,7 +122,7 @@ public class AddUserJPanel extends javax.swing.JPanel {
         }
         String passwordEncrypt = business.getEncryption().encrypt(password);
         String confirmPassEncrypt = business.getEncryption().encrypt(confirmPass);
-        if(!password.equals(confirmPassEncrypt)){
+        if(!passwordEncrypt.equals(confirmPassEncrypt)){
             JOptionPane.showMessageDialog(null, "Confirm Password did not match");
             return;
         }
@@ -132,6 +132,10 @@ public class AddUserJPanel extends javax.swing.JPanel {
         userAdd.setPassword(passwordEncrypt);
         userAdd.setAccountStatus("Active");
         userAdd.setRole((String) roleCombo.getSelectedItem());
+        userNameTxt.setText("");
+        passwordTxt.setText("");
+        confirmPassTxt.setText("");        
+        JOptionPane.showMessageDialog(null, "User Created Successfully");
     }//GEN-LAST:event_saveUserBtnActionPerformed
 
 

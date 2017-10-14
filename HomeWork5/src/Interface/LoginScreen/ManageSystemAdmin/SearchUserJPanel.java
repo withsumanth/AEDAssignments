@@ -121,7 +121,7 @@ public class SearchUserJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) userAccJTable.getModel();
         dtm.setRowCount(0);
         for (Users u : userList) {
-            Object[] row = new Object[2];
+            Object[] row = new Object[4];
             row[0] = u;
             row[1] = u.getRole();
             row[2] = u.getAccountStatus();
