@@ -21,12 +21,15 @@ public class ConfigureABusiness {
         Person p = business.getPersonDirectory().addPerson();
         p.setfName("Sumanth");
         p.setlName("hg");
+        Person p1 = business.getPersonDirectory().addPerson();
+        p1.setfName("vikram");
+        p1.setlName("hg");
         Person findPerson = business.getPersonDirectory().findPersonByLastName("hg");
         if(findPerson!=null){
             Users user = business.getUserAccountDirectory().addUser();
             user.setPerson(findPerson);
-            user.setUserName("sumanth");
-            user.setPassword("password");
+            user.setUserName("s");
+            user.setPassword("1");
             user.setAccountStatus("Active");
             user.setRole("System Admin");
         }

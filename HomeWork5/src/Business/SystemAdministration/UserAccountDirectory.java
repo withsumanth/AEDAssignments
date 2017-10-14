@@ -28,6 +28,16 @@ public class UserAccountDirectory {
         return user;
     }
     
+    public ArrayList<Users> searchUser(String userNameGiven){
+       ArrayList<Users> searchedUsers = new ArrayList();
+       for(Users u:userAccountDirectory){
+           if(u.getUserName().equals(userNameGiven)){
+               searchedUsers.add(u);
+           }
+       }
+       return searchedUsers;
+    }
+    
     public Users isValidUser(String userName, String password){
         for(Users u:userAccountDirectory){
             if(u.getUserName().equals(userName) && u.getPassword().equals(password) && u.getAccountStatus().equals("Active")){

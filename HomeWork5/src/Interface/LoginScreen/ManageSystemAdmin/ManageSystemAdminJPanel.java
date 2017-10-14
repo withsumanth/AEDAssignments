@@ -7,7 +7,13 @@ package Interface.LoginScreen.ManageSystemAdmin;
 
 import Business.Business;
 import Business.SystemAdministration.Users;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 /**
  *
@@ -23,6 +29,21 @@ public class ManageSystemAdminJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.business = business;
         this.user = user;
+        populateJTable();
+    }
+    
+    public void populateJTable(){
+        DefaultTableModel dtm = (DefaultTableModel) userAccJTable.getModel();
+        dtm.setRowCount(0);
+        for (Users u : business.getUserAccountDirectory().getUserAccountDirectory()) {
+            Object[] row = new Object[5];
+            row[0] = u;
+            row[1] = "******";
+            row[2] = u.getRole();
+            row[3] = u.getAccountStatus();
+            row[4] = u.getPerson();
+            dtm.addRow(row);
+        }
     }
 
     /**
@@ -34,19 +55,102 @@ public class ManageSystemAdminJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 722, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 532, Short.MAX_VALUE)
-        );
+        jScrollPane1 = new javax.swing.JScrollPane();
+        userAccJTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        findUserBtn = new javax.swing.JButton();
+        updateUserBtn = new javax.swing.JButton();
+        addUserBtn = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        userAccJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "UserName", "Password", "Account Role", "Account Status", "Person"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        userAccJTable.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(userAccJTable);
+        userAccJTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (userAccJTable.getColumnModel().getColumnCount() > 0) {
+            userAccJTable.getColumnModel().getColumn(1).setCellEditor(null);
+            userAccJTable.getColumnModel().getColumn(1).setCellRenderer(null);
+        }
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 680, 119));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("                            Manage User Account Directory");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 410, 60));
+
+        findUserBtn.setText("Find User Account >>");
+        findUserBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findUserBtnActionPerformed(evt);
+            }
+        });
+        add(findUserBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 160, 40));
+
+        updateUserBtn.setText("Update User Account >>");
+        add(updateUserBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 360, 160, 40));
+
+        addUserBtn.setText("New User Account >>");
+        addUserBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addUserBtnActionPerformed(evt);
+            }
+        });
+        add(addUserBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 290, 160, 40));
+
+        backBtn.setText("<< Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backBtnActionPerformed
+
+    private void findUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findUserBtnActionPerformed
+        SearchUserJPanel panel = new SearchUserJPanel(userProcessContainer,business);
+        userProcessContainer.add("SearchUserJPanel", panel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer); 
+    }//GEN-LAST:event_findUserBtnActionPerformed
+
+    private void addUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserBtnActionPerformed
+        AddUserJPanel panel = new AddUserJPanel(userProcessContainer,business);
+        userProcessContainer.add("AddUserJPanel", panel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer); 
+    }//GEN-LAST:event_addUserBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addUserBtn;
+    private javax.swing.JButton backBtn;
+    private javax.swing.JButton findUserBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton updateUserBtn;
+    private javax.swing.JTable userAccJTable;
     // End of variables declaration//GEN-END:variables
 }
