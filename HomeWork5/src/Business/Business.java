@@ -15,10 +15,20 @@ import Business.SystemAdministration.UserAccountDirectory;
 public class Business {
     UserAccountDirectory userAccountDirectory;
     PersonDirectory personDirectory;
+    PasswordEncryption encryption;
     
     public Business() {
         userAccountDirectory = new UserAccountDirectory();
         personDirectory = new PersonDirectory();
+        encryption = new PasswordEncryption();
+    }
+
+    public PasswordEncryption getEncryption() {
+        return encryption;
+    }
+
+    public void setEncryption(PasswordEncryption encryption) {
+        this.encryption = encryption;
     }
 
     public UserAccountDirectory getUserAccountDirectory() {

@@ -16,7 +16,6 @@ import sun.misc.BASE64Encoder;
 public class PasswordEncryption {
     private PasswordEncryption instance;
 
-
   public String encrypt(String plaintext)
   {
     MessageDigest md = null;

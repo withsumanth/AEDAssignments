@@ -6,6 +6,7 @@
 package Business.SystemAdministration;
 
 import Business.HumanResources.PersonDirectory.Person;
+import Business.PasswordEncryption;
 
 /**
  *
@@ -16,7 +17,16 @@ public class Users {
     private String password;
     private String accountStatus;
     private String role;
+    PasswordEncryption encryption;
     Person person;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = encryption.encrypt(password);
+    }
 
     public String getUserName() {
         return userName;
@@ -24,14 +34,6 @@ public class Users {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getAccountStatus() {
