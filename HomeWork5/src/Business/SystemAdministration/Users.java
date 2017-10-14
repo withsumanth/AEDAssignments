@@ -13,12 +13,16 @@ import Business.PasswordEncryption;
  * @author Sumanth
  */
 public class Users {
-    private String userName;
+    private String userName ;
     private String password;
     private String accountStatus;
     private String role;
     PasswordEncryption encryption;
     Person person;
+    
+    public Users(){
+        encryption = new PasswordEncryption();
+    }
 
     public String getPassword() {
         return password;

@@ -5,6 +5,11 @@
  */
 package Interface;
 
+import Business.Business;
+import Business.ConfigureABusiness;
+import Interface.LoginScreen.LoginScreenJPanel;
+import java.awt.CardLayout;
+
 /**
  *
  * @author Sumanth
@@ -14,8 +19,12 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    ConfigureABusiness configure;
+    Business business;
     public MainJFrame() {
         initComponents();
+        configure = new ConfigureABusiness();
+        business = configure.ConfigureABusiness();
     }
 
     /**
@@ -35,6 +44,11 @@ public class MainJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         ManageUserAccount.setText("Manage Account");
+        ManageUserAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManageUserAccountActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -52,17 +66,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(jPanel1);
 
-        javax.swing.GroupLayout userProcessContainerLayout = new javax.swing.GroupLayout(userProcessContainer);
-        userProcessContainer.setLayout(userProcessContainerLayout);
-        userProcessContainerLayout.setHorizontalGroup(
-            userProcessContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 571, Short.MAX_VALUE)
-        );
-        userProcessContainerLayout.setVerticalGroup(
-            userProcessContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 535, Short.MAX_VALUE)
-        );
-
+        userProcessContainer.setLayout(new java.awt.CardLayout());
         jSplitPane1.setRightComponent(userProcessContainer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -80,6 +84,13 @@ public class MainJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ManageUserAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageUserAccountActionPerformed
+        LoginScreenJPanel panel = new LoginScreenJPanel(userProcessContainer,business);
+        userProcessContainer.add("LoginScreenJPanel", panel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);    
+    }//GEN-LAST:event_ManageUserAccountActionPerformed
 
     /**
      * @param args the command line arguments

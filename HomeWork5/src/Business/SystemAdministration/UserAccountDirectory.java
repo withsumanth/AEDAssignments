@@ -27,4 +27,13 @@ public class UserAccountDirectory {
         userAccountDirectory.add(user);
         return user;
     }
+    
+    public Users isValidUser(String userName, String password){
+        for(Users u:userAccountDirectory){
+            if(u.getUserName().equals(userName) && u.getPassword().equals(password) && u.getAccountStatus().equals("Active")){
+                return u;
+            }
+        }
+        return null;
+    }
 }

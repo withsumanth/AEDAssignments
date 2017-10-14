@@ -16,7 +16,7 @@ import Business.SystemAdministration.Users;
 public class ConfigureABusiness {
     Business business ;
     
-    public Business InitializeUsers(){
+    public  Business ConfigureABusiness(){
         business = new Business();
         Person p = business.getPersonDirectory().addPerson();
         p.setfName("Sumanth");
@@ -27,6 +27,8 @@ public class ConfigureABusiness {
             user.setPerson(findPerson);
             user.setUserName("sumanth");
             user.setPassword("password");
+            user.setAccountStatus("Active");
+            user.setRole("System Admin");
         }
         return business;
     }

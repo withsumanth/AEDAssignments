@@ -28,4 +28,8 @@ public class Person {
     public void setlName(String lName) {
         this.lName = lName;
     }
+    
+    public String toString(){
+        return fName+" "+lName;
+    }
 }
