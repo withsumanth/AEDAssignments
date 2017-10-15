@@ -25,7 +25,7 @@ public class ConfigureABusiness {
         if(findPerson1!=null){
             Users user = business.getUserAccountDirectory().addUser();
             user.setUserName("s");
-            user.setPassword("1");
+            user.setPassword(business.getEncryption().encrypt("1"));
             user.setAccountStatus("Active");
             user.setRole("System Admin");
             findPerson1.setUser(user);
@@ -35,7 +35,7 @@ public class ConfigureABusiness {
         p2.setlName("hg");
         Users user2 = business.getUserAccountDirectory().addUser();
             user2.setUserName("sumanth");
-            user2.setPassword("1");
+            user2.setPassword(business.getEncryption().encrypt("1"));
             user2.setAccountStatus("Active");
             user2.setRole("System Admin");
             p2.setUser(user2);
@@ -46,7 +46,7 @@ public class ConfigureABusiness {
         if(findPerson2!=null){
             Users user = business.getUserAccountDirectory().addUser();
             user.setUserName("h");
-            user.setPassword("2");
+            user.setPassword(business.getEncryption().encrypt("2"));
             user.setAccountStatus("Active");
             user.setRole("HR Admin");
             findPerson2.setUser(user);

@@ -40,7 +40,7 @@ public class UserAccountDirectory {
     
     public Users isValidUser(String userName, String password){
         for(Users u:userAccountDirectory){
-            if(u.getUserName().equals(userName) && u.getPassword().equals(password) && u.getAccountStatus().equals("Active")){
+            if(u.getUserName().equals(userName) && u.getPassword().toString().equals(password.toString()) && u.getAccountStatus().equals("Active")){
                 return u;
             }
         }

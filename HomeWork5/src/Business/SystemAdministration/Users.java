@@ -28,7 +28,7 @@ public class Users {
     }
 
     public void setPassword(String password) {
-        this.password = encryption.encrypt(password);
+        this.password = password;
     }
 
     public String getUserName() {

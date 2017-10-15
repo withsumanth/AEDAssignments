@@ -128,11 +128,18 @@ public class AddUserJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter all the fields");
             return;
         }
-        String passwordEncrypt = business.getEncryption().encrypt(password);
-        String confirmPassEncrypt = business.getEncryption().encrypt(confirmPass);
+        String passwordEncrypt = business.getEncryption().encrypt(password).toString();
+        String confirmPassEncrypt = business.getEncryption().encrypt(confirmPass).toString();
         if(!passwordEncrypt.equals(confirmPassEncrypt)){
             JOptionPane.showMessageDialog(null, "Confirm Password did not match");
             return;
+        }
+        ArrayList<Users> userList = business.getUserAccountDirectory().getUserAccountDirectory();
+        for(Users u:userList){
+            if(u.getUserName().equals(newUserName)){
+                JOptionPane.showMessageDialog(null, "UserName already exists. Please enter different username");
+                return;
+            }
         }
         Person personAdd = business.getPersonDirectory().addPerson();
         Users userAdd = business.getUserAccountDirectory().addUser();

@@ -107,7 +107,7 @@ public class LoginScreenJPanel extends javax.swing.JPanel {
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         String userNameValue =  userNameTxt.getText();
-        String passwordValue = passwordTxt.getText();
+        String passwordValue = passwordTxt.getText().toString();
         if(userNameValue.trim().length()==0 || passwordValue.trim().length()==0){
             JOptionPane.showMessageDialog(null, "Please enter UserName and Password");
             return;

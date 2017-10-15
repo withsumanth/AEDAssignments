@@ -39,12 +39,14 @@ public class ManageSystemAdminJPanel extends javax.swing.JPanel {
         dtm.setRowCount(0);
         for (Person u : business.getPersonDirectory().getPersonDirectory()) {
             Object[] row = new Object[5];
-            row[4] = u.getUser();
-            row[1] = u.getUser().getPassword();
-            row[2] = u.getUser().getRole();
-            row[3] = u.getUser().getAccountStatus();
-            row[0] = u;
-            dtm.addRow(row);
+            if(u.getUser()!=null){
+                row[4] = u.getUser();
+                row[1] = u.getUser().getPassword();
+                row[2] = u.getUser().getRole();
+                row[3] = u.getUser().getAccountStatus();
+                row[0] = u;
+                dtm.addRow(row);
+            }
         }
     }
 
