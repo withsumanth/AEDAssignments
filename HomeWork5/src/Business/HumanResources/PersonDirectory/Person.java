@@ -5,6 +5,8 @@
  */
 package Business.HumanResources.PersonDirectory;
 
+import Business.SystemAdministration.Users;
+
 /**
  *
  * @author Sumanth
@@ -12,6 +14,15 @@ package Business.HumanResources.PersonDirectory;
 public class Person {
     private String fName;
     private String lName;
+    Users user;
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
 
     public String getfName() {
         return fName;

@@ -6,8 +6,15 @@
 package Interface.LoginScreen.ManageHrAdmin;
 
 import Business.Business;
+import Business.HumanResources.PersonDirectory.Person;
 import Business.SystemAdministration.Users;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,9 +27,33 @@ public class ManageHrAdminJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     Business business;
-    Users user;
-    public ManageHrAdminJPanel(JPanel userProcessContainer, Business business, Users u) {
-        
+    Users currentUser;
+    public ManageHrAdminJPanel(JPanel userProcessContainer, Business business, Users currentUser) {
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.business = business;
+        this.currentUser = currentUser;
+        populateJTable();
+    }
+    
+    public void populateJTable(){
+        DefaultTableModel dtm = (DefaultTableModel) personAccJTable.getModel();
+        dtm.setRowCount(0);
+        personAccJTable.getColumnModel().getColumn(0).setMinWidth(0);
+        personAccJTable.getColumnModel().getColumn(0).setMaxWidth(0);
+        personAccJTable.getColumnModel().getColumn(0).setWidth(0);
+        for (Person u : business.getPersonDirectory().getPersonDirectory()) {
+            Object[] row = new Object[5];
+            row[0] = u;
+            row[1] = u.getfName();
+            row[2] = u.getlName();
+            if(u.getUser()==null){
+                row[3] = "---";
+            }else{
+                row[3] = u.getUser().getUserName();
+            }
+            dtm.addRow(row);
+        }
     }
 
     /**
@@ -34,19 +65,114 @@ public class ManageHrAdminJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jScrollPane1 = new javax.swing.JScrollPane();
+        personAccJTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        findPersonBtn = new javax.swing.JButton();
+        updatePersonBtn = new javax.swing.JButton();
+        addPersonBtn = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        personAccJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "FullName", "FirstName", "LastName", "Username"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(personAccJTable);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 680, 119));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("                            Manage Person Directory");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 410, 60));
+
+        findPersonBtn.setText("Find Person >>");
+        findPersonBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findPersonBtnActionPerformed(evt);
+            }
+        });
+        add(findPersonBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 160, 40));
+
+        updatePersonBtn.setText("Update Person >>");
+        updatePersonBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePersonBtnActionPerformed(evt);
+            }
+        });
+        add(updatePersonBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 360, 160, 40));
+
+        addPersonBtn.setText("New Person >>");
+        addPersonBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPersonBtnActionPerformed(evt);
+            }
+        });
+        add(addPersonBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 290, 160, 40));
+
+        backBtn.setText("<< Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void findPersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findPersonBtnActionPerformed
+        SearchPersonJPanel panel = new SearchPersonJPanel(userProcessContainer,business);
+        userProcessContainer.add("SearchPersonJPanel", panel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_findPersonBtnActionPerformed
+
+    private void updatePersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePersonBtnActionPerformed
+        int selectedRow = personAccJTable.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null, "Please Select any Row");
+            return;
+        }
+        Person person = (Person) personAccJTable.getValueAt(selectedRow, 0);
+        UpdatePersonJPanel panel = new UpdatePersonJPanel(userProcessContainer,business,person,currentUser);
+        userProcessContainer.add("UpdatePersonJPanel", panel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_updatePersonBtnActionPerformed
+
+    private void addPersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPersonBtnActionPerformed
+        AddPersonJPanel panel = new AddPersonJPanel(userProcessContainer,business);
+        userProcessContainer.add("AddPersonJPanel", panel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_addPersonBtnActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addPersonBtn;
+    private javax.swing.JButton backBtn;
+    private javax.swing.JButton findPersonBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable personAccJTable;
+    private javax.swing.JButton updatePersonBtn;
     // End of variables declaration//GEN-END:variables
 }

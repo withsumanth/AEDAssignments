@@ -10,6 +10,9 @@ import Business.HumanResources.PersonDirectory.Person;
 import Business.SystemAdministration.Users;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -28,7 +31,12 @@ public class AddUserJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.business = business;
+        List<String> listForCombo = new ArrayList();
         for(Person p:business.getPersonDirectory().getPersonDirectory()){
+            listForCombo.add(p.toString());
+        }
+        listForCombo = listForCombo.stream().distinct().collect(Collectors.toList());
+        for(String p:listForCombo){
             addUserCombo.addItem(p);
         }
     }
@@ -126,12 +134,17 @@ public class AddUserJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Confirm Password did not match");
             return;
         }
+        Person personAdd = business.getPersonDirectory().addPerson();
         Users userAdd = business.getUserAccountDirectory().addUser();
-        userAdd.setPerson((Person) addUserCombo.getSelectedItem());
+        String getName = (String) addUserCombo.getSelectedItem().toString();
+        String[] splitNames = getName.split("\\s+");
+        personAdd.setfName(splitNames[0]);
+        personAdd.setlName(splitNames[1]);
         userAdd.setUserName(newUserName);
         userAdd.setPassword(passwordEncrypt);
         userAdd.setAccountStatus("Active");
         userAdd.setRole((String) roleCombo.getSelectedItem());
+        personAdd.setUser(userAdd);
         userNameTxt.setText("");
         passwordTxt.setText("");
         confirmPassTxt.setText("");        

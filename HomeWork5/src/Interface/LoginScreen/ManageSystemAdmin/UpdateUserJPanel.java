@@ -5,6 +5,14 @@
  */
 package Interface.LoginScreen.ManageSystemAdmin;
 
+import Business.Business;
+import Business.HumanResources.PersonDirectory.Person;
+import Business.SystemAdministration.Users;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Sumanth
@@ -14,8 +22,30 @@ public class UpdateUserJPanel extends javax.swing.JPanel {
     /**
      * Creates new form UpdateUserJPanel
      */
-    public UpdateUserJPanel() {
+    JPanel userProcessContainer;
+    Business business;
+    Person person;
+    Users currentUser;
+    UpdateUserJPanel(JPanel userProcessContainer, Business business, Person person,Users currentUser) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.business=business;
+        this.person=person;
+        this.currentUser = currentUser;
+        setAllValues();
+    }
+    
+    public void setAllValues(){
+        String status = person.getUser().getAccountStatus();
+        if(status.equals("Active")){
+            activeBtn.setSelected(true);
+        }else if(status.equals("Disabled")){
+            disabledBtn.setSelected(true);
+        }
+        personTxt.setText(person.toString());
+        userNameTxt.setText(person.getUser().getUserName());
+        passwordTxt.setText(person.getUser().getPassword());
+        roleTxt.setText(person.getUser().getRole());
     }
 
     /**
@@ -26,22 +56,23 @@ public class UpdateUserJPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        statusBtn = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        userNameTxt = new javax.swing.JTextField();
+        personTxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        passwordTxt = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        saveUserBtn = new javax.swing.JButton();
+        updateUserBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
-        userNameTxt1 = new javax.swing.JTextField();
-        passwordTxt1 = new javax.swing.JPasswordField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        roleTxt = new javax.swing.JTextField();
+        passwordTxt = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        saveBtn = new javax.swing.JButton();
+        activeBtn = new javax.swing.JRadioButton();
+        disabledBtn = new javax.swing.JRadioButton();
+        userNameTxt = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -50,26 +81,27 @@ public class UpdateUserJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("UserName:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 120, 40));
-        add(userNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 140, 40));
+
+        personTxt.setEnabled(false);
+        add(personTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 140, 40));
 
         jLabel6.setText("Password:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 110, 40));
-        add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 140, 40));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("                            Add User Account Directory");
+        jLabel1.setText("                            Update User Account Directory");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 410, 60));
 
-        jLabel2.setText("Select Role");
+        jLabel2.setText("Role");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 120, 40));
 
-        saveUserBtn.setText("Update");
-        saveUserBtn.addActionListener(new java.awt.event.ActionListener() {
+        updateUserBtn.setText("Update");
+        updateUserBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveUserBtnActionPerformed(evt);
+                updateUserBtnActionPerformed(evt);
             }
         });
-        add(saveUserBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, 80, 30));
+        add(updateUserBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, 80, 30));
 
         backBtn.setText("<< Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -78,53 +110,45 @@ public class UpdateUserJPanel extends javax.swing.JPanel {
             }
         });
         add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
-        add(userNameTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 140, 40));
-        add(passwordTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 140, 40));
 
-        statusBtn.add(jRadioButton1);
-        jRadioButton1.setText("Active");
+        roleTxt.setEnabled(false);
+        add(roleTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 140, 40));
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, statusBtn, org.jdesktop.beansbinding.ObjectProperty.create(), jRadioButton1, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
+        passwordTxt.setEnabled(false);
+        add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 140, 40));
 
-        add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, -1, -1));
+        jLabel5.setText("Account Status");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 160, 40));
 
-        statusBtn.add(jRadioButton2);
-        jRadioButton2.setText("Disabled");
+        saveBtn.setText("Save");
+        saveBtn.setEnabled(false);
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
+        add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 70, 30));
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, statusBtn, org.jdesktop.beansbinding.ObjectProperty.create(), jRadioButton2, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
+        buttonGroup1.add(activeBtn);
+        activeBtn.setText("Active");
+        activeBtn.setEnabled(false);
+        add(activeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, -1));
 
-        add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, -1, -1));
+        buttonGroup1.add(disabledBtn);
+        disabledBtn.setText("Disabled");
+        disabledBtn.setEnabled(false);
+        add(disabledBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, -1, -1));
 
-        bindingGroup.bind();
+        userNameTxt.setEnabled(false);
+        add(userNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 140, 40));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void saveUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveUserBtnActionPerformed
-        String newUserName = userNameTxt.getText();
-        String password = passwordTxt.getText();
-        String confirmPass = confirmPassTxt.getText();
-        if(newUserName.trim().length() == 0 || password.trim().length() == 0 || confirmPass.trim().length() == 0 ){
-            JOptionPane.showMessageDialog(null, "Please enter all the fields");
-            return;
-        }
-        String passwordEncrypt = business.getEncryption().encrypt(password);
-        String confirmPassEncrypt = business.getEncryption().encrypt(confirmPass);
-        if(!passwordEncrypt.equals(confirmPassEncrypt)){
-            JOptionPane.showMessageDialog(null, "Confirm Password did not match");
-            return;
-        }
-        Users userAdd = business.getUserAccountDirectory().addUser();
-        userAdd.setPerson((Person) addUserCombo.getSelectedItem());
-        userAdd.setUserName(newUserName);
-        userAdd.setPassword(passwordEncrypt);
-        userAdd.setAccountStatus("Active");
-        userAdd.setRole((String) roleCombo.getSelectedItem());
-        userNameTxt.setText("");
-        passwordTxt.setText("");
-        confirmPassTxt.setText("");
-        JOptionPane.showMessageDialog(null, "User Created Successfully");
-    }//GEN-LAST:event_saveUserBtnActionPerformed
+    private void updateUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateUserBtnActionPerformed
+        activeBtn.setEnabled(true);
+        disabledBtn.setEnabled(true);
+        saveBtn.setEnabled(true);
+        updateUserBtn.setEnabled(false);
+    }//GEN-LAST:event_updateUserBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         userProcessContainer.remove(this);
@@ -136,22 +160,41 @@ public class UpdateUserJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backBtnActionPerformed
 
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        activeBtn.setEnabled(false);
+        disabledBtn.setEnabled(false);
+        saveBtn.setEnabled(false);
+        updateUserBtn.setEnabled(true);
+        if(currentUser.getUserName().equals(person.getUser().getUserName())){
+            activeBtn.setSelected(true);
+            JOptionPane.showMessageDialog(null, "User cannot disable his own account");
+            return;
+        }
+        if(activeBtn.isSelected()){
+            person.getUser().setAccountStatus("Active");
+        }else if(disabledBtn.isSelected()){
+            person.getUser().setAccountStatus("Disabled");
+        }
+        JOptionPane.showMessageDialog(null, "User Account Updated Successfully");
+    }//GEN-LAST:event_saveBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton activeBtn;
     private javax.swing.JButton backBtn;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton disabledBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JPasswordField passwordTxt;
-    private javax.swing.JPasswordField passwordTxt1;
-    private javax.swing.JButton saveUserBtn;
-    private javax.swing.ButtonGroup statusBtn;
+    private javax.swing.JTextField personTxt;
+    private javax.swing.JTextField roleTxt;
+    private javax.swing.JButton saveBtn;
+    private javax.swing.JButton updateUserBtn;
     private javax.swing.JTextField userNameTxt;
-    private javax.swing.JTextField userNameTxt1;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,7 @@
 package Interface.LoginScreen.ManageSystemAdmin;
 
 import Business.Business;
+import Business.HumanResources.PersonDirectory.Person;
 import Business.SystemAdministration.Users;
 import java.awt.CardLayout;
 import java.util.ArrayList;
@@ -62,9 +63,7 @@ public class SearchUserJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        userAccJTable.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(userAccJTable);
-        userAccJTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 620, 119));
 
@@ -108,7 +107,13 @@ public class SearchUserJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "UserName entered is Invalid");
             return;
         }
-        populateSearchTable(userList);
+        ArrayList<Person> personList = new ArrayList();
+        for(Person p:business.getPersonDirectory().getPersonDirectory()){
+            if(p.getUser().getUserName().equals(searchValue)){
+                personList.add(p);
+            }
+        }
+        populateSearchTable(personList);
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -117,15 +122,15 @@ public class SearchUserJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backBtnActionPerformed
     
-    public void populateSearchTable(ArrayList<Users> userList){
+    public void populateSearchTable(ArrayList<Person> userList){
         DefaultTableModel dtm = (DefaultTableModel) userAccJTable.getModel();
         dtm.setRowCount(0);
-        for (Users u : userList) {
+        for (Person u : userList) {
             Object[] row = new Object[4];
-            row[0] = u;
-            row[1] = u.getRole();
-            row[2] = u.getAccountStatus();
-            row[3] = u.getPerson();
+            row[0] = u.getUser().getUserName();
+            row[1] = u.getUser().getRole();
+            row[2] = u.getUser().getAccountStatus();
+            row[3] = u;
             dtm.addRow(row);
         }
     }

@@ -6,10 +6,12 @@
 package Interface.LoginScreen.ManageSystemAdmin;
 
 import Business.Business;
+import Business.HumanResources.PersonDirectory.Person;
 import Business.SystemAdministration.Users;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.DefaultCellEditor;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.table.DefaultTableModel;
@@ -23,25 +25,25 @@ public class ManageSystemAdminJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     Business business;
-    Users user;
-    public ManageSystemAdminJPanel(JPanel userProcessContainer, Business business, Users user) {
+    Users currentUser;
+    public ManageSystemAdminJPanel(JPanel userProcessContainer, Business business, Users currentUser) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.business = business;
-        this.user = user;
+        this.currentUser = currentUser;
         populateJTable();
     }
     
     public void populateJTable(){
         DefaultTableModel dtm = (DefaultTableModel) userAccJTable.getModel();
         dtm.setRowCount(0);
-        for (Users u : business.getUserAccountDirectory().getUserAccountDirectory()) {
+        for (Person u : business.getPersonDirectory().getPersonDirectory()) {
             Object[] row = new Object[5];
+            row[4] = u.getUser();
+            row[1] = u.getUser().getPassword();
+            row[2] = u.getUser().getRole();
+            row[3] = u.getUser().getAccountStatus();
             row[0] = u;
-            row[1] = "******";
-            row[2] = u.getRole();
-            row[3] = u.getAccountStatus();
-            row[4] = u.getPerson();
             dtm.addRow(row);
         }
     }
@@ -70,24 +72,18 @@ public class ManageSystemAdminJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "UserName", "Password", "Account Role", "Account Status", "Person"
+                "Person", "Password", "Account Role", "Account Status", "Username"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        userAccJTable.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(userAccJTable);
-        userAccJTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (userAccJTable.getColumnModel().getColumnCount() > 0) {
-            userAccJTable.getColumnModel().getColumn(1).setCellEditor(null);
-            userAccJTable.getColumnModel().getColumn(1).setCellRenderer(null);
-        }
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 680, 119));
 
@@ -104,6 +100,11 @@ public class ManageSystemAdminJPanel extends javax.swing.JPanel {
         add(findUserBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 160, 40));
 
         updateUserBtn.setText("Update User Account >>");
+        updateUserBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateUserBtnActionPerformed(evt);
+            }
+        });
         add(updateUserBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 360, 160, 40));
 
         addUserBtn.setText("New User Account >>");
@@ -142,6 +143,19 @@ public class ManageSystemAdminJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer); 
     }//GEN-LAST:event_addUserBtnActionPerformed
+
+    private void updateUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateUserBtnActionPerformed
+        int selectedRow = userAccJTable.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null, "Please Select any Row");
+            return;
+        }
+        Person person = (Person) userAccJTable.getValueAt(selectedRow, 0);
+        UpdateUserJPanel panel = new UpdateUserJPanel(userProcessContainer,business,person,currentUser);
+        userProcessContainer.add("UpdateUserJPanel", panel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_updateUserBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

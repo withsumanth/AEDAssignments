@@ -6,6 +6,7 @@
 package Interface.LoginScreen.ManageSystemAdmin;
 
 import Business.Business;
+import Business.HumanResources.PersonDirectory.Person;
 import Business.SystemAdministration.Users;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -26,7 +27,12 @@ public class ManageSystemAdminWorkArea extends javax.swing.JPanel {
         this.business = business;
         this.user = user;
         userNameTxt.setText(user.getUserName());
-        nameTxt.setText(user.getPerson().toString());
+        for(Person p:business.getPersonDirectory().getPersonDirectory()){
+            if(p.getUser().getUserName().equals(user.getUserName())){
+                nameTxt.setText(p.toString());
+                break;
+            }
+        }
         roleTxt.setText(user.getRole());
     }
 

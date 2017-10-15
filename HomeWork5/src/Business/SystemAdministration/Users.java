@@ -18,7 +18,6 @@ public class Users {
     private String accountStatus;
     private String role;
     PasswordEncryption encryption;
-    Person person;
     
     public Users(){
         encryption = new PasswordEncryption();
@@ -56,14 +55,6 @@ public class Users {
         this.role = role;
     }
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-    
     @Override
     public String toString(){
         return userName;

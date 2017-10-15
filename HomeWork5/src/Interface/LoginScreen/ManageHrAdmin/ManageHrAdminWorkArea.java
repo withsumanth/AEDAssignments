@@ -6,7 +6,9 @@
 package Interface.LoginScreen.ManageHrAdmin;
 
 import Business.Business;
+import Business.HumanResources.PersonDirectory.Person;
 import Business.SystemAdministration.Users;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -20,12 +22,20 @@ public class ManageHrAdminWorkArea extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     Business business;
-    Users user;
-    public ManageHrAdminWorkArea(JPanel userProcessContainer, Business business, Users user) {
+    Users foundUser;
+    public ManageHrAdminWorkArea(JPanel userProcessContainer, Business business, Users foundUser) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.business = business;
-        this.user = user;
+        this.foundUser = foundUser;
+        userNameTxt.setText(foundUser.getUserName());
+        for(Person p:business.getPersonDirectory().getPersonDirectory()){
+            if(p.getUser().getUserName().equals(foundUser.getUserName())){
+                nameTxt.setText(p.toString());
+                break;
+            }
+        }
+        roleTxt.setText(foundUser.getRole());
     }
 
     /**
@@ -37,19 +47,85 @@ public class ManageHrAdminWorkArea extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jLabel1 = new javax.swing.JLabel();
+        userNameTxt = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        nameTxt = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        roleTxt = new javax.swing.JTextField();
+        mngPersonAccBtn = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("UserName:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 80, 40));
+
+        userNameTxt.setEnabled(false);
+        userNameTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNameTxtActionPerformed(evt);
+            }
+        });
+        add(userNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 150, 50));
+
+        jLabel2.setText("Name:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 80, 40));
+
+        nameTxt.setEnabled(false);
+        nameTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameTxtActionPerformed(evt);
+            }
+        });
+        add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 150, 50));
+
+        jLabel3.setText("Role:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 80, 40));
+
+        roleTxt.setEnabled(false);
+        roleTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roleTxtActionPerformed(evt);
+            }
+        });
+        add(roleTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 150, 50));
+
+        mngPersonAccBtn.setText("Manage Person Directory >>");
+        mngPersonAccBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mngPersonAccBtnActionPerformed(evt);
+            }
+        });
+        add(mngPersonAccBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 230, 80));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void userNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userNameTxtActionPerformed
+
+    private void nameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameTxtActionPerformed
+
+    private void roleTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_roleTxtActionPerformed
+
+    private void mngPersonAccBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mngPersonAccBtnActionPerformed
+        ManageHrAdminJPanel panel = new ManageHrAdminJPanel(userProcessContainer,business,foundUser);
+        userProcessContainer.add("ManageSystemAdminJPanel", panel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_mngPersonAccBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton mngPersonAccBtn;
+    private javax.swing.JTextField nameTxt;
+    private javax.swing.JTextField roleTxt;
+    private javax.swing.JTextField userNameTxt;
     // End of variables declaration//GEN-END:variables
 }
