@@ -177,7 +177,7 @@ public class ManageSystemAdminJPanel extends javax.swing.JPanel {
         }
         Person person = (Person) userAccJTable.getValueAt(selectedRow, 0);
         if(person.getUser().getUserName().equals(currentUser.getUserName())){
-              JOptionPane.showMessageDialog(null, "Person cannot delete his own details");
+              JOptionPane.showMessageDialog(null, "User cannot delete his own details");
               return;
         }
         int dialogButton = JOptionPane.YES_NO_OPTION;

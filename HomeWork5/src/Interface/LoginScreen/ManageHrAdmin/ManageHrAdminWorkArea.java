@@ -58,6 +58,7 @@ public class ManageHrAdminWorkArea extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         roleTxt = new javax.swing.JTextField();
         mngPersonAccBtn = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -101,6 +102,10 @@ public class ManageHrAdminWorkArea extends javax.swing.JPanel {
             }
         });
         add(mngPersonAccBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 230, 80));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setText("HR Admin Work Area");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 260, 60));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameTxtActionPerformed
@@ -127,6 +132,7 @@ public class ManageHrAdminWorkArea extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton mngPersonAccBtn;
     private javax.swing.JTextField nameTxt;
     private javax.swing.JTextField roleTxt;
