@@ -30,14 +30,39 @@ public class SearchPersonJPanel extends javax.swing.JPanel {
     private void populateSearchTable(ArrayList<Person> personList) {
         DefaultTableModel dtm = (DefaultTableModel) searchPersonJTable.getModel();
         dtm.setRowCount(0);
-        for (Person u : personList) {
-            Object[] row = new Object[3];
-            row[0] = u.getfName();
-            row[1] = u.getlName();
-            if(u.getUser()==null){
-                row[2] = "---";
+        searchPersonJTable.getColumnModel().getColumn(0).setMinWidth(0);
+        searchPersonJTable.getColumnModel().getColumn(0).setMaxWidth(0);
+        searchPersonJTable.getColumnModel().getColumn(0).setWidth(0);
+        ArrayList<Person> tempPersonDetails = new ArrayList();
+        ArrayList<Person> getAllPersonDetails = personList;
+        for(int i = 0;i<getAllPersonDetails.size();i++){
+            if(getAllPersonDetails.get(i).getUser()!=null){
+                tempPersonDetails.add(getAllPersonDetails.get(i));
             }else{
-                row[2] = u.getUser().getUserName();
+                boolean check = false;
+                for(int j=i+1;j<getAllPersonDetails.size();j++){
+                    if(getAllPersonDetails.get(i).getfName().equals(getAllPersonDetails.get(j).getfName()) && getAllPersonDetails.get(i).getlName().equals(getAllPersonDetails.get(j).getlName())){
+                        if(getAllPersonDetails.get(j).getUser()!=null){
+                            //tempPersonDetails.add(getAllPersonDetails.get(j));
+                            check = true;
+                            break;
+                        }
+                    }
+                }
+                if(!check){
+                        tempPersonDetails.add(getAllPersonDetails.get(i));
+                    }
+            }
+        }
+        for (Person u : tempPersonDetails) {
+            Object[] row = new Object[5];
+            row[0] = u;
+            row[1] = u.getfName();
+            row[2] = u.getlName();
+            if(u.getUser()==null){
+                row[3] = "---";
+            }else{
+                row[3] = u.getUser().getUserName();
             }
             dtm.addRow(row);
         }
@@ -93,11 +118,11 @@ public class SearchPersonJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "FirstName", "LastName", "Username"
+                "Full Name", "FirstName", "LastName", "Username"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

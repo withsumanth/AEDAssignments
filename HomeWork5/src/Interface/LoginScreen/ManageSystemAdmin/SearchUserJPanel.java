@@ -109,8 +109,10 @@ public class SearchUserJPanel extends javax.swing.JPanel {
         }
         ArrayList<Person> personList = new ArrayList();
         for(Person p:business.getPersonDirectory().getPersonDirectory()){
-            if(p.getUser().getUserName().equals(searchValue)){
+            if(p.getUser()!=null){
+                if(p.getUser().getUserName().equals(searchValue)){
                 personList.add(p);
+            }
             }
         }
         populateSearchTable(personList);

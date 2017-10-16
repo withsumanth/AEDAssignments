@@ -186,6 +186,7 @@ public class ManageSystemAdminJPanel extends javax.swing.JPanel {
             int dialogResult = JOptionPane.showConfirmDialog(null,"Would you like to delete Selected User details", "Warning", dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
             business.getPersonDirectory().deletePerson(person);
+            business.getUserAccountDirectory().deletePerson(person.getUser());
             populateJTable();
             JOptionPane.showMessageDialog(null, "User details deleted successfully");
         }
