@@ -149,7 +149,7 @@ public class SearchPersonJPanel extends javax.swing.JPanel {
             return;
         }
         if (!(Pattern.matches("^[a-zA-Z]+$", fNameTxt.getText())) || !(Pattern.matches("^[a-zA-Z]+$", lNameTxt.getText()))) {
-    JOptionPane.showMessageDialog(null, "Please enter a valid characterfor first name and last name");
+    JOptionPane.showMessageDialog(null, "Please enter a valid character for first name and last name");
     return;
 }
         ArrayList<Person> userList = new ArrayList();
