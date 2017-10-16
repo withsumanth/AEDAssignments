@@ -9,6 +9,7 @@ import Business.Business;
 import Business.HumanResources.PersonDirectory.Person;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -147,6 +148,10 @@ public class SearchPersonJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter First Name and Last Name");
             return;
         }
+        if (!(Pattern.matches("^[a-zA-Z]+$", fNameTxt.getText())) || !(Pattern.matches("^[a-zA-Z]+$", lNameTxt.getText()))) {
+    JOptionPane.showMessageDialog(null, "Please enter a valid characterfor first name and last name");
+    return;
+}
         ArrayList<Person> userList = new ArrayList();
         for(Person p:business.getPersonDirectory().getPersonDirectory()){
             if(p.getfName().equals(fName) && p.getlName().equals(lName)){

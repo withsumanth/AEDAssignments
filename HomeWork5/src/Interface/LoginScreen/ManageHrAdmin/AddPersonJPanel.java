@@ -9,6 +9,7 @@ import Business.Business;
 import Business.HumanResources.PersonDirectory.Person;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -94,6 +95,10 @@ public class AddPersonJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter all the fields");
             return;
         }
+        if (!(Pattern.matches("^[a-zA-Z]+$", fNameTxt.getText())) || !(Pattern.matches("^[a-zA-Z]+$", lNameTxt.getText()))) {
+    JOptionPane.showMessageDialog(null, "Please enter a valid characterfor first name and last name");
+    return;
+}
         Person person = business.getPersonDirectory().addPerson();
         person.setfName(fName);
         person.setlName(lName);
