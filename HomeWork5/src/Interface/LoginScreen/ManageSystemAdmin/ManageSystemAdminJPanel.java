@@ -10,6 +10,7 @@ import Business.HumanResources.PersonDirectory.Person;
 import Business.SystemAdministration.Users;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.ArrayList;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -66,6 +67,7 @@ public class ManageSystemAdminJPanel extends javax.swing.JPanel {
         updateUserBtn = new javax.swing.JButton();
         addUserBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
+        deleteUser = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -124,6 +126,14 @@ public class ManageSystemAdminJPanel extends javax.swing.JPanel {
             }
         });
         add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
+
+        deleteUser.setText("Delete User Details");
+        deleteUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteUserActionPerformed(evt);
+            }
+        });
+        add(deleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 293, 160, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -159,10 +169,33 @@ public class ManageSystemAdminJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_updateUserBtnActionPerformed
 
+    private void deleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteUserActionPerformed
+        int selectedRow = userAccJTable.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null, "Please Select any Row");
+            return;
+        }
+        Person person = (Person) userAccJTable.getValueAt(selectedRow, 0);
+        if(person.getUser().getUserName().equals(currentUser.getUserName())){
+              JOptionPane.showMessageDialog(null, "Person cannot delete his own details");
+              return;
+        }
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        ArrayList<Person> personList= new ArrayList();
+            personList = business.getPersonDirectory().getPersonDirectory();
+            int dialogResult = JOptionPane.showConfirmDialog(null,"Would you like to delete Selected User details", "Warning", dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            business.getPersonDirectory().deletePerson(person);
+            populateJTable();
+            JOptionPane.showMessageDialog(null, "User details deleted successfully");
+        }
+    }//GEN-LAST:event_deleteUserActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addUserBtn;
     private javax.swing.JButton backBtn;
+    private javax.swing.JButton deleteUser;
     private javax.swing.JButton findUserBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

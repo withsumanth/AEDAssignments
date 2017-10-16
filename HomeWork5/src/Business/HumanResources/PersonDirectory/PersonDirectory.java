@@ -41,4 +41,7 @@ public class PersonDirectory {
         return person;
     }
     
+    public void deletePerson(Person p){
+        personDirectory.remove(p);
+    }
 }

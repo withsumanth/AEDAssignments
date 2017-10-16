@@ -23,6 +23,7 @@ public class ManageHrAdminWorkArea extends javax.swing.JPanel {
     JPanel userProcessContainer;
     Business business;
     Users foundUser;
+    Person foundPerson;
     public ManageHrAdminWorkArea(JPanel userProcessContainer, Business business, Users foundUser) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -32,6 +33,7 @@ public class ManageHrAdminWorkArea extends javax.swing.JPanel {
         for(Person p:business.getPersonDirectory().getPersonDirectory()){
             if(p.getUser().getUserName().equals(foundUser.getUserName())){
                 nameTxt.setText(p.toString());
+                foundPerson =p;
                 break;
             }
         }
@@ -112,7 +114,7 @@ public class ManageHrAdminWorkArea extends javax.swing.JPanel {
     }//GEN-LAST:event_roleTxtActionPerformed
 
     private void mngPersonAccBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mngPersonAccBtnActionPerformed
-        ManageHrAdminJPanel panel = new ManageHrAdminJPanel(userProcessContainer,business,foundUser);
+        ManageHrAdminJPanel panel = new ManageHrAdminJPanel(userProcessContainer,business,foundPerson,foundUser);
         userProcessContainer.add("ManageSystemAdminJPanel", panel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
