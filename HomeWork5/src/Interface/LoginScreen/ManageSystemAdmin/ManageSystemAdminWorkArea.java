@@ -28,9 +28,11 @@ public class ManageSystemAdminWorkArea extends javax.swing.JPanel {
         this.user = user;
         userNameTxt.setText(user.getUserName());
         for(Person p:business.getPersonDirectory().getPersonDirectory()){
+            if(p.getUser()!=null){
             if(p.getUser().getUserName().equals(user.getUserName())){
                 nameTxt.setText(p.toString());
                 break;
+            }
             }
         }
         roleTxt.setText(user.getRole());

@@ -31,11 +31,13 @@ public class ManageHrAdminWorkArea extends javax.swing.JPanel {
         this.foundUser = foundUser;
         userNameTxt.setText(foundUser.getUserName());
         for(Person p:business.getPersonDirectory().getPersonDirectory()){
-            if(p.getUser().getUserName().equals(foundUser.getUserName())){
+            if(p.getUser()!=null){
+                if(p.getUser().getUserName().equals(foundUser.getUserName())){
                 nameTxt.setText(p.toString());
                 foundPerson =p;
                 break;
             }
+           }
         }
         roleTxt.setText(foundUser.getRole());
     }

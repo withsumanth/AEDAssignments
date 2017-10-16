@@ -44,7 +44,28 @@ public class ManageHrAdminJPanel extends javax.swing.JPanel {
         personAccJTable.getColumnModel().getColumn(0).setMinWidth(0);
         personAccJTable.getColumnModel().getColumn(0).setMaxWidth(0);
         personAccJTable.getColumnModel().getColumn(0).setWidth(0);
-        for (Person u : business.getPersonDirectory().getPersonDirectory()) {
+        ArrayList<Person> tempPersonDetails = new ArrayList();
+        ArrayList<Person> getAllPersonDetails = business.getPersonDirectory().getPersonDirectory();
+        for(int i = 0;i<getAllPersonDetails.size();i++){
+            if(getAllPersonDetails.get(i).getUser()!=null){
+                tempPersonDetails.add(getAllPersonDetails.get(i));
+            }else{
+                boolean check = false;
+                for(int j=i+1;j<getAllPersonDetails.size();j++){
+                    if(getAllPersonDetails.get(i).getfName().equals(getAllPersonDetails.get(j).getfName()) && getAllPersonDetails.get(i).getlName().equals(getAllPersonDetails.get(j).getlName())){
+                        if(getAllPersonDetails.get(j).getUser()!=null){
+                            //tempPersonDetails.add(getAllPersonDetails.get(j));
+                            check = true;
+                            break;
+                        }
+                    }
+                }
+                if(!check){
+                        tempPersonDetails.add(getAllPersonDetails.get(i));
+                    }
+            }
+        }
+        for (Person u : tempPersonDetails) {
             Object[] row = new Object[5];
             row[0] = u;
             row[1] = u.getfName();
