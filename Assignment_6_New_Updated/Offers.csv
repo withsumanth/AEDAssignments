@@ -1,0 +1,13 @@
+Feature,Offer Price
+White Color ,Floor
+Red Color ,Ceil
+High end Processor,Ceil
+Low end Processor,Floor
+High Power Consumption,Target Price
+Low Power Consumption,Actual Price
+Colored Xerox,Target Price
+Black and White Xerox,Actual Price
+256GB Hard Disk Memory,Actual Price
+512GB Hard Disk Memory,Target Price
+256MB Ram Size,Floor
+1GB Ram Size,Ceil

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/MarketDirectory.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/SupplierRole/CreateNewProduct.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/AdminLogin/UpdateSupplierJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/AdminLogin.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/ConfigureABusiness.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/OrderList.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/SupplierRole/SearchForProductJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/AdminLogin/UpdateSalesPersonJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/Product.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/SalesPerson.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/SupplierRole/ManageProductCatalogJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/AdminLogin/ManageSalesPerson.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/Order.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/SupplierRole/ViewProductDetailJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/Customer.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/SupplierRole/SupplierWorkAreaJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/AdminLogin/Revenue/SalesPersonAboveBelowTargJpanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/SalesPerson/ViewSalesPerson.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/AdminLogin/AdminWorkAreaJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/MarketOfferCatalogue.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/SalesPerson/MarketAreaJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/AdminLogin/Revenue/ProductSalesRevenueJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/MasterOrderCatalog.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/Business.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/AdminLogin/AdminJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/SupplierDirectory.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/Main/MainJFrame.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/AdminLogin/Revenue/TopThreeSalesJpanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/SalesPerson/SalesPersonWorkAreaJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/SalesPerson/ViewOrderItemDetailJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/AdminLogin/Revenue/TopTenSalesPerJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/SalesPerson/ViewProductDetailJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/SalesPerson/BrowseProducts.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/MarketOffer.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/SalesPerson/AddSalesPerson.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/AdminLogin/ManageSupplierJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/AdminLogin/ManageRevenueJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/ProductCatalog.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/PasswordEncryption.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/Supplier.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/AdminLoginDirectory.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/AdminLogin/Revenue/TotalRevenueJPanel.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Business/SalesPersonDirectory.java</file>
+            <file>file:/D:/Java_Neu_Netbeans/Assignment_6_Gp/assin_6/Assignment_6_New_Updated/src/Interface/SupplierRole/SearchResultJPanel.java</file>
+        </group>
+    </open-files>
+</project-private>
