@@ -5,6 +5,9 @@
  */
 package Business.Role;
 
+import Business.Business;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
 /**

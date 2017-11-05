@@ -4,6 +4,9 @@
  */
 package UserInterface.LabAssistantRole;
 
+import Business.Business;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,6 +24,10 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
      */
     public LabAssistantWorkAreaJPanel() {
         initComponents();
+    }
+
+    public LabAssistantWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organiztion, Business business) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

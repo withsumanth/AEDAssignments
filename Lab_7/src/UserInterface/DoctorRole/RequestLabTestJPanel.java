@@ -4,6 +4,11 @@
  */
 package UserInterface.DoctorRole;
 
+import Business.Business;
+import Business.Organization.LabOrganization;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.LabTestWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -13,14 +18,22 @@ import javax.swing.JPanel;
  *
  * @author raunak
  */
-public class RequestLabTestJPanel extends javax.swing.JPanel {
 
+public class RequestLabTestJPanel extends javax.swing.JPanel {
+     private JPanel userProcessContainer;
+    private Business business;
+    private UserAccount userAccount;
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestLabTestJPanel() {
+    public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount account, Business business) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.business = business;
+        this.userAccount = account;
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,11 +73,36 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
-       
+       String message = messageJTextField.getText();
+       if(message.equals("") || message.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter something to send.");
+            return;
+        }
+        LabTestWorkRequest req = new LabTestWorkRequest();
+        req.setMessage(message);
+        req.setSender(userAccount);
+        req.setStatus("Sent");
+        Organization org = null;
+        for(Organization o:business.getOrganizationDirectory().getOrganizationList()){
+            if(o instanceof LabOrganization){
+                org = o;
+                break;
+            }
+        }
+        if(org!=null){
+            org.getWorkQueue().getWorkRequestList().add(req);
+        }
+        JOptionPane.showMessageDialog(null, "Request message sent");
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        DoctorWorkAreaJPanel dwjp = (DoctorWorkAreaJPanel) component;
+        dwjp.populateRequestTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
