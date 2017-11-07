@@ -7,7 +7,6 @@ package UserInterface.LabAssistantRole;
 import Business.WorkQueue.LabTestWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -26,7 +25,6 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.request = request;
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,20 +91,19 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        LabAssistantWorkAreaJPanel lwjp = (LabAssistantWorkAreaJPanel) component;
-        lwjp.populateTable();
+        LabAssistantWorkAreaJPanel dwjp = (LabAssistantWorkAreaJPanel) component;
+        dwjp.populateTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
         request.setTestResult(resultJTextField.getText());
-        request.setMessage("Completed");
-        JOptionPane.showMessageDialog(null, "Message processed");
+        request.setStatus("Completed");
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
