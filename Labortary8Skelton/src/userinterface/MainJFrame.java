@@ -128,6 +128,48 @@ public class MainJFrame extends javax.swing.JFrame {
         // Get Password
         char[] passwordCharArray = passwordField.getPassword();
         String password = String.valueOf(passwordCharArray);
+        
+        //Step 1 : Check in the system user account directory if there is user
+        UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
+        
+        Enterprise inEnterprise = null;
+        Organization inOrganization = null;
+        
+        if(userAccount==null){
+            //Step 2 check each enterprise
+            for(Network network: system.getNetworkList()){
+                for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterPriseList()){
+                    userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
+                    if(userAccount==null){
+                        for(Organization organization: enterprise.getOrganizationDirectory().getOrganizationList()){
+                            userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
+                            if(userAccount!=null){
+                                inEnterprise = enterprise;
+                                inOrganization = organization;
+                                break;
+                            }
+                        }
+                    }else{
+                        inEnterprise = enterprise;
+                        break;
+                    }
+                    if(inOrganization!=null){
+                        break;
+                    }
+                }
+                if(inEnterprise!=null){
+                    break;
+                }
+            }
+        }
+        if(userAccount == null){
+            JOptionPane.showMessageDialog(null, "Invalid Username/Password");
+            return;
+        }else{
+            CardLayout layout = (CardLayout) container.getLayout();
+            container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system));
+            layout.next(container);
+        }
 
          loginJButton.setEnabled(false);
         logoutJButton.setEnabled(true);

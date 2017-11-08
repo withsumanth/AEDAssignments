@@ -30,6 +30,7 @@ public class EnterpriseDirectory {
         Enterprise enterprise = null;
         if(type==Enterprise.EnterPriseType.Hospital){
             enterprise = new HospitalEnterprise(name);
+            enterPriseList.add(enterprise);
         }
         return enterprise;
     }
