@@ -7,7 +7,7 @@ package Interface.SalesPerson;
 
 /**
  *
- * @author JAI JINENDRA
+ * @author Sumanth
  */
 public class ViewSalesPerson extends javax.swing.JPanel {
 

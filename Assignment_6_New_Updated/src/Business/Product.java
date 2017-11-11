@@ -7,7 +7,7 @@ package Business;
 
 /**
  *
- * @author JAI JINENDRA
+ * @author Sumanth
  */
 public class Product {
     //test

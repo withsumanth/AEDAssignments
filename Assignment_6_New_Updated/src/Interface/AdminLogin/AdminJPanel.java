@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author JAI JINENDRA
+ * @author Sumanth
  */
 public class AdminJPanel extends javax.swing.JPanel {
 

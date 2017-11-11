@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author JAI JINENDRA
+ * @author Sumanth
  */
 public class SupplierDirectory {
     private static int supplierId=0;

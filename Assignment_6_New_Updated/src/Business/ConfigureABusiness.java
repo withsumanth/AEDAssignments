@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  *
- * @author JAI JINENDRA
+ * @author Sumanth
  */
 public class ConfigureABusiness {
 

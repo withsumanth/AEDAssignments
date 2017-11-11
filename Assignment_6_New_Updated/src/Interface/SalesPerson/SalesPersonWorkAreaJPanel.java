@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author JAI JINENDRA
+ * @author Sumanth
  */
 public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
 
