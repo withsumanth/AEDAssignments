@@ -4,11 +4,14 @@
  */
 package Business.Organization;
 
+import Business.Disease.DiseaseCatalog;
 import Business.Employee.EmployeeDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
 import Business.Inventory.Inventory;
+import Business.Supplier.SupplierDirectory;
+import Business.Vaccine.VaccineCatalog;
 import java.util.ArrayList;
 
 /**
@@ -22,8 +25,11 @@ public abstract class Organization {
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
+    private SupplierDirectory supplierDirectory;
     private int organizationID;
     private static int counter;
+    private VaccineCatalog vaccineCatalog;
+    private DiseaseCatalog diseaseCatalog;
 
     public enum Type{
         Admin("Admin Organization"), Clinic("Clinic Organization"), Supplier("Supplier Organization"), Inventory("Inventory Organization");
@@ -41,6 +47,7 @@ public abstract class Organization {
         inventory = new Inventory();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
+        supplierDirectory = new SupplierDirectory();
         organizationID = counter;
         ++counter;
     }
@@ -81,6 +88,30 @@ public abstract class Organization {
 
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
+    }
+
+    public SupplierDirectory getSupplierDirectory() {
+        return supplierDirectory;
+    }
+
+    public void setSupplierDirectory(SupplierDirectory supplierDirectory) {
+        this.supplierDirectory = supplierDirectory;
+    }
+
+    public VaccineCatalog getVaccineCatalog() {
+        return vaccineCatalog;
+    }
+
+    public void setVaccineCatalog(VaccineCatalog vaccineCatalog) {
+        this.vaccineCatalog = vaccineCatalog;
+    }
+
+    public DiseaseCatalog getDiseaseCatalog() {
+        return diseaseCatalog;
+    }
+
+    public void setDiseaseCatalog(DiseaseCatalog diseaseCatalog) {
+        this.diseaseCatalog = diseaseCatalog;
     }
     
 

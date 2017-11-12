@@ -32,4 +32,8 @@ public class DiseaseCatalog {
         return v;
     }
     
+    public void removeDisease(Disease d){
+        diseaseCatalog.remove(d);
+    }
+    
 }

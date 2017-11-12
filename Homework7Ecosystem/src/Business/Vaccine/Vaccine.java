@@ -19,4 +19,9 @@ public class Vaccine {
     public void setvName(String vName) {
         this.vName = vName;
     }
+    
+    @Override
+    public String toString(){
+        return vName;
+    }
 }

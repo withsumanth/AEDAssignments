@@ -5,29 +5,18 @@
  */
 package Business.Supplier;
 
-import Business.Inventory.Inventory;
-
 /**
  *
  * @author Sumanth
  */
 public class Supplier {
-    Supplier name;
-    Inventory inventory;
+    String name;
 
-    public Inventory getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
-    }
-
-    public Supplier getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Supplier name) {
+    public void setName(String name) {
         this.name = name;
     }
 }

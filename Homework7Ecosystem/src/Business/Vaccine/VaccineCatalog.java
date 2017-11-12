@@ -31,4 +31,8 @@ public class VaccineCatalog {
         vaccineCatalog.add(v);
         return v;
     }
+    
+    public void deleteVaccine(Vaccine vaccine){
+        vaccineCatalog.remove(vaccine);
+    }
 }
