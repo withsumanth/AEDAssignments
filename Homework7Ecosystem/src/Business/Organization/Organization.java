@@ -8,6 +8,7 @@ import Business.Employee.EmployeeDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
+import Business.Inventory.Inventory;
 import java.util.ArrayList;
 
 /**
@@ -17,14 +18,15 @@ import java.util.ArrayList;
 public abstract class Organization {
 
     private String name;
+    private Inventory inventory;
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private int organizationID;
     private static int counter;
-    
+
     public enum Type{
-        Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization");
+        Admin("Admin Organization"), Clinic("Clinic Organization"), Supplier("Supplier Organization"), Inventory("Inventory Organization");
         private String value;
         private Type(String value) {
             this.value = value;
@@ -36,7 +38,7 @@ public abstract class Organization {
 
     public Organization(String name) {
         this.name = name;
-        workQueue = new WorkQueue();
+        inventory = new Inventory();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         organizationID = counter;
@@ -72,6 +74,15 @@ public abstract class Organization {
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
     }
+    
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+    
 
     @Override
     public String toString() {

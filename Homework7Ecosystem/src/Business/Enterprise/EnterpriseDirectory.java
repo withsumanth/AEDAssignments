@@ -28,8 +28,14 @@ public class EnterpriseDirectory {
     
     public Enterprise createAndAddEnterPrise(String name, Enterprise.EnterPriseType type){
         Enterprise enterprise = null;
-        if(type==Enterprise.EnterPriseType.Hospital){
-            enterprise = new HospitalEnterprise(name);
+        if(type==Enterprise.EnterPriseType.Provider){
+            enterprise = new ProviderEnterprise(name);
+            enterPriseList.add(enterprise);
+        }else if(type==Enterprise.EnterPriseType.Distributor){
+            enterprise = new DistributorEnterprise(name);
+            enterPriseList.add(enterprise);
+        }else if(type==Enterprise.EnterPriseType.CDC){
+            enterprise = new CdcEnterprise(name);
             enterPriseList.add(enterprise);
         }
         return enterprise;

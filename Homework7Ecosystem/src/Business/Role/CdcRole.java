@@ -1,25 +1,25 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Organization.ClinicOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import UserInterface.LabAssistantRole.LabAssistantWorkAreaJPanel;
+import UserInterface.DoctorRole.DoctorWorkAreaJPanel;
 import javax.swing.JPanel;
 
 /**
  *
  * @author Sumanth
  */
-public class LabAssistantRole extends Role {
-
+public class CdcRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new LabAssistantWorkAreaJPanel(userProcessContainer, account, organization, business);
+        return new DoctorWorkAreaJPanel(userProcessContainer, account, (ClinicOrganization)organization, enterprise);
     }
-    
 }

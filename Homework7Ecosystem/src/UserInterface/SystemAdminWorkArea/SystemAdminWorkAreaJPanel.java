@@ -93,6 +93,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageNetworkJButton = new javax.swing.JButton();
         manageEnterpriseJButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        mngVaccineCatalog = new javax.swing.JButton();
+        mngVaccineCatalog1 = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -115,10 +117,10 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Selected Node");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 90, 27));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 90, 27));
 
         selectedNodeJLabel.setText("<view_selected_node>");
-        jPanel2.add(selectedNodeJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, -1, -1));
+        jPanel2.add(selectedNodeJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, -1, -1));
 
         manageNetworkJButton.setText("Manage Network");
         manageNetworkJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +128,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageNetworkJButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(manageNetworkJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 150, 30));
+        jPanel2.add(manageNetworkJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 170, 30));
 
         manageEnterpriseJButton.setText("Manage Enterprise");
         manageEnterpriseJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -134,15 +136,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageEnterpriseJButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(manageEnterpriseJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 140, 30));
+        jPanel2.add(manageEnterpriseJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 180, 30));
 
-        jButton1.setText(" Manage Enterprise Admin");
+        jButton1.setText("Manage User Accounts");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, -1, 30));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 180, 30));
+
+        mngVaccineCatalog.setText("Manage Disease Catalog");
+        jPanel2.add(mngVaccineCatalog, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 180, 30));
+
+        mngVaccineCatalog1.setText("Manage Vaccine Catalog");
+        jPanel2.add(mngVaccineCatalog1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 180, 30));
 
         jSplitPane.setRightComponent(jPanel2);
 
@@ -188,6 +196,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTree jTree;
     private javax.swing.JButton manageEnterpriseJButton;
     private javax.swing.JButton manageNetworkJButton;
+    private javax.swing.JButton mngVaccineCatalog;
+    private javax.swing.JButton mngVaccineCatalog1;
     private javax.swing.JLabel selectedNodeJLabel;
     // End of variables declaration//GEN-END:variables
 }
