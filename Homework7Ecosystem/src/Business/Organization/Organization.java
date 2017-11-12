@@ -32,7 +32,7 @@ public abstract class Organization {
     private DiseaseCatalog diseaseCatalog;
 
     public enum Type{
-        Admin("Admin Organization"), Clinic("Clinic Organization"), Supplier("Supplier Organization"), Inventory("Inventory Organization");
+        Admin("Admin Organization"), Clinic("Clinic Organization"), Supplier("Supplier Organization"), Inventory("Inventory Organization"),Dealer("Dealer Organization");
         private String value;
         private Type(String value) {
             this.value = value;
@@ -48,6 +48,8 @@ public abstract class Organization {
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         supplierDirectory = new SupplierDirectory();
+        vaccineCatalog = new VaccineCatalog();
+        diseaseCatalog = new DiseaseCatalog();
         organizationID = counter;
         ++counter;
     }

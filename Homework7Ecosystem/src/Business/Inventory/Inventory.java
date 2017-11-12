@@ -4,22 +4,24 @@
  * and open the template in the editor.
  */
 package Business.Inventory;
+import Business.Employee.Employee;
 
 /**
  *
  * @author Sumanth
  */
 public class Inventory {
-    private String name;
+    Employee employee;
     private int quantity;
 
-    public String getName() {
-        return name;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
+
 
     public int getQuantity() {
         return quantity;

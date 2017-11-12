@@ -4,6 +4,8 @@
  */
 package UserInterface.AdministrativeRole;
 
+import Business.Enterprise.Enterprise;
+import Business.Enterprise.Enterprise.EnterPriseType;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
@@ -19,40 +21,45 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
     private OrganizationDirectory directory;
     private JPanel userProcessContainer;
-    
+    private Enterprise enterprise;
+
     /**
      * Creates new form ManageOrganizationJPanel
      */
-    public ManageOrganizationJPanel(JPanel userProcessContainer,OrganizationDirectory directory) {
+    public ManageOrganizationJPanel(JPanel userProcessContainer, OrganizationDirectory directory, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.directory = directory;
-        
+        this.enterprise = enterprise;
         populateTable();
         populateCombo();
     }
-    
-    private void populateCombo(){
+
+    private void populateCombo() {
         organizationJComboBox.removeAllItems();
-        for (Type type : Organization.Type.values()){
-            if (!type.getValue().equals(Type.Admin.getValue()))
-                organizationJComboBox.addItem(type);
+        for (Type type : Organization.Type.values()) {
+            if (enterprise.getEnterPriseType().equals(EnterPriseType.Distributor)) {
+                if (type.getValue().equals(Type.Dealer.getValue()) || type.getValue().equals(Type.Inventory.getValue())) {
+                    organizationJComboBox.addItem(type);
+                }
+            }
         }
     }
 
-    private void populateTable(){
+    private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-        
+
         model.setRowCount(0);
-        
-        for (Organization organization : directory.getOrganizationList()){
+
+        for (Organization organization : directory.getOrganizationList()) {
             Object[] row = new Object[2];
             row[0] = organization.getOrganizationID();
             row[1] = organization.getName();
-            
+
             model.addRow(row);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -96,8 +103,10 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(organizationJTable);
-        organizationJTable.getColumnModel().getColumn(0).setResizable(false);
-        organizationJTable.getColumnModel().getColumn(1).setResizable(false);
+        if (organizationJTable.getColumnModel().getColumnCount() > 0) {
+            organizationJTable.getColumnModel().getColumn(0).setResizable(false);
+            organizationJTable.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         addJButton.setText("Add Organization");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +116,11 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         });
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        organizationJComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                organizationJComboBoxItemStateChanged(evt);
+            }
+        });
 
         jLabel1.setText("Organization Type ");
 
@@ -168,6 +182,9 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
+
+    private void organizationJComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_organizationJComboBoxItemStateChanged
+    }//GEN-LAST:event_organizationJComboBoxItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;

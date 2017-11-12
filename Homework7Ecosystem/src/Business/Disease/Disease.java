@@ -19,4 +19,9 @@ public class Disease {
     public void setdName(String dName) {
         this.dName = dName;
     }
+    
+    @Override
+    public String toString(){
+        return dName;
+    }
 }

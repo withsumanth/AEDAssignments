@@ -33,7 +33,7 @@ public abstract class Enterprise extends Organization{
         Distributor("Distributor"),
         Provider("Provider"),
         CDC("CDC"),
-        Clinic("Clinic");
+        Hospital("Hospital");
         private String value;
         
         private EnterPriseType(String value){

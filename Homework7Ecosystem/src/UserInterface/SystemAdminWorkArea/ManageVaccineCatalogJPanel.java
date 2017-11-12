@@ -8,6 +8,7 @@ package userinterface.SystemAdminWorkArea;
 import Business.EcoSystem;
 import Business.Vaccine.Vaccine;
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -53,6 +54,7 @@ public class ManageVaccineCatalogJPanel extends javax.swing.JPanel {
         delBtn = new javax.swing.JButton();
         addBtn = new javax.swing.JButton();
         updBtn = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -91,6 +93,14 @@ public class ManageVaccineCatalogJPanel extends javax.swing.JPanel {
             }
         });
         add(updBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 150, 120, -1));
+
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
@@ -128,9 +138,16 @@ public class ManageVaccineCatalogJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_delBtnActionPerformed
 
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
+    private javax.swing.JButton backJButton;
     private javax.swing.JButton delBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton updBtn;

@@ -37,6 +37,9 @@ public class EnterpriseDirectory {
         }else if(type==Enterprise.EnterPriseType.CDC){
             enterprise = new CdcEnterprise(name);
             enterPriseList.add(enterprise);
+        }else if(type==Enterprise.EnterPriseType.Hospital){
+            enterprise = new HospitalEnterprise(name);
+            enterPriseList.add(enterprise);
         }
         return enterprise;
     }

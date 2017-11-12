@@ -113,7 +113,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageNetworkJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(manageNetworkJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 100, 155, -1));
+        jPanel1.add(manageNetworkJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 100, 170, -1));
 
         manageAdminJButton.setText("Manage Enterprise Admin");
         manageAdminJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +121,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageAdminJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(manageAdminJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 200, -1, -1));
+        jPanel1.add(manageAdminJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 200, 170, -1));
 
         manageEnterpriseJButton.setText("Manage Enterprise");
         manageEnterpriseJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +129,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageEnterpriseJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(manageEnterpriseJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 149, 155, -1));
+        jPanel1.add(manageEnterpriseJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 149, 170, -1));
 
         jLabel1.setText("Selected Node:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 36, -1, -1));
@@ -143,7 +143,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 mngVaccineButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(mngVaccineButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 241, 155, -1));
+        jPanel1.add(mngVaccineButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 241, 170, -1));
 
         mngDiseaseButton.setText("Manage Disease Catalog");
         mngDiseaseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +151,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 mngDiseaseButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(mngDiseaseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 290, 155, -1));
+        jPanel1.add(mngDiseaseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 290, 170, -1));
 
         jSplitPane1.setRightComponent(jPanel1);
 

@@ -54,6 +54,9 @@ public class ManageDiseaseCatalog extends javax.swing.JPanel {
         delBtn = new javax.swing.JButton();
         addBtn = new javax.swing.JButton();
         updBtn = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         vaccineJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -65,12 +68,15 @@ public class ManageDiseaseCatalog extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(vaccineJTable);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 73, -1, 96));
+
         delBtn.setText("Delete Disease");
         delBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delBtnActionPerformed(evt);
             }
         });
+        add(delBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 204, 110, -1));
 
         addBtn.setText("Add Disease");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +84,7 @@ public class ManageDiseaseCatalog extends javax.swing.JPanel {
                 addBtnActionPerformed(evt);
             }
         });
+        add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 204, 110, -1));
 
         updBtn.setText("Update Disease");
         updBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -85,40 +92,15 @@ public class ManageDiseaseCatalog extends javax.swing.JPanel {
                 updBtnActionPerformed(evt);
             }
         });
+        add(updBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 204, 120, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 459, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(50, 50, 50)
-                            .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(36, 36, 36)
-                            .addComponent(updBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(33, 33, 33)
-                            .addComponent(delBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(35, 35, 35)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(addBtn)
-                        .addComponent(updBtn)
-                        .addComponent(delBtn))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed
@@ -156,9 +138,16 @@ public class ManageDiseaseCatalog extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_updBtnActionPerformed
 
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
+    private javax.swing.JButton backJButton;
     private javax.swing.JButton delBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton updBtn;

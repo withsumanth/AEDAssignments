@@ -5,6 +5,7 @@
 package UserInterface.AdministrativeRole;
 
 import Business.Employee.Employee;
+import Business.Inventory.Inventory;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
@@ -27,7 +28,6 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDir = organizationDir;
-        
         populateOrganizationComboBox();
         populateOrganizationEmpComboBox();
     }
@@ -107,8 +107,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(organizationJTable);
-        organizationJTable.getColumnModel().getColumn(0).setResizable(false);
-        organizationJTable.getColumnModel().getColumn(1).setResizable(false);
+        if (organizationJTable.getColumnModel().getColumnCount() > 0) {
+            organizationJTable.getColumnModel().getColumn(0).setResizable(false);
+            organizationJTable.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         addJButton.setText("Create Employee");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -136,6 +138,11 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         jLabel2.setText("Name");
 
         organizationEmpJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        organizationEmpJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                organizationEmpJComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Organization");
 
@@ -196,11 +203,15 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
-        
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
         String name = nameJTextField.getText();
-        
+        if(organization.equals(Organization.Type.Inventory)){
+            Inventory inventory = new Inventory();
+            inventory.setQuantity(0);
+            organization.setInventory(inventory);
+        }
         organization.getEmployeeDirectory().createEmployee(name);
+        
         
     }//GEN-LAST:event_addJButtonActionPerformed
 
@@ -217,6 +228,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             populateTable(organization);
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
+
+    private void organizationEmpJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationEmpJComboBoxActionPerformed
+        
+    }//GEN-LAST:event_organizationEmpJComboBoxActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
