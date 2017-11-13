@@ -4,6 +4,9 @@
  */
 package Business.Employee;
 
+import Business.Disease.Disease;
+import Business.Vaccine.Vaccine;
+
 /**
  *
  * @author Sumanth
@@ -11,8 +14,26 @@ package Business.Employee;
 public class Employee {
     
     private String name;
+    private Disease disease;
+    private Vaccine vaccine;
     private int id;
     private static int count = 1;
+
+    public Disease getDisease() {
+        return disease;
+    }
+
+    public void setDisease(Disease disease) {
+        this.disease = disease;
+    }
+
+    public Vaccine getVaccine() {
+        return vaccine;
+    }
+
+    public void setVaccine(Vaccine vaccine) {
+        this.vaccine = vaccine;
+    }
 
     public Employee() {
         id = count;

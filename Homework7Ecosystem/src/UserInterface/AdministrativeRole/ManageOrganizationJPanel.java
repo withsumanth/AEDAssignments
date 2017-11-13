@@ -42,6 +42,14 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 if (type.getValue().equals(Type.Dealer.getValue()) || type.getValue().equals(Type.Inventory.getValue())) {
                     organizationJComboBox.addItem(type);
                 }
+            }else if (enterprise.getEnterPriseType().equals(EnterPriseType.Hospital)) {
+                if (type.getValue().equals(Type.Clinic.getValue())) {
+                    organizationJComboBox.addItem(type);
+                }
+            }else if (enterprise.getEnterPriseType().equals(EnterPriseType.Provider)) {
+                if (type.getValue().equals(Type.Supplier.getValue()) || type.getValue().equals(Type.Inventory.getValue())) {
+                    organizationJComboBox.addItem(type);
+                }
             }
         }
     }
@@ -143,8 +151,8 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(32, 32, 32)
-                .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(334, 334, 334))
+                .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(233, 233, 233))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addComponent(backJButton)

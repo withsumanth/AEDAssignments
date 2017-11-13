@@ -5,6 +5,7 @@
  */
 package Business.Inventory;
 import Business.Employee.Employee;
+import Business.Enterprise.Enterprise;
 
 /**
  *
@@ -13,6 +14,15 @@ import Business.Employee.Employee;
 public class Inventory {
     Employee employee;
     private int quantity;
+    Enterprise.EnterPriseType type;
+
+    public Enterprise.EnterPriseType getType() {
+        return type;
+    }
+
+    public void setType(Enterprise.EnterPriseType type) {
+        this.type = type;
+    }
 
     public Employee getEmployee() {
         return employee;

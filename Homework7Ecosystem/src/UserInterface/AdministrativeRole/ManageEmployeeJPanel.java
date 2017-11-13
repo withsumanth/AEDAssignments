@@ -4,11 +4,16 @@
  */
 package UserInterface.AdministrativeRole;
 
+import Business.Disease.Disease;
+import Business.EcoSystem;
 import Business.Employee.Employee;
+import Business.Enterprise.Enterprise;
 import Business.Inventory.Inventory;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.Vaccine.Vaccine;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,46 +25,113 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
     private OrganizationDirectory organizationDir;
     private JPanel userProcessContainer;
-    
+    Enterprise enterprise;
+    EcoSystem system;
+
     /**
      * Creates new form ManageOrganizationJPanel
      */
-    public ManageEmployeeJPanel(JPanel userProcessContainer,OrganizationDirectory organizationDir) {
+    public ManageEmployeeJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDir, Enterprise enterprise,EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDir = organizationDir;
+        this.enterprise = enterprise;
+        this.system = system;
         populateOrganizationComboBox();
         populateOrganizationEmpComboBox();
     }
-    
-    public void populateOrganizationComboBox(){
-        organizationJComboBox.removeAllItems();
-        
-        for (Organization organization : organizationDir.getOrganizationList()){
-            organizationJComboBox.addItem(organization);
-        }
-    }
-    
-    public void populateOrganizationEmpComboBox(){
-        organizationEmpJComboBox.removeAllItems();
-        
-        for (Organization organization : organizationDir.getOrganizationList()){
-            organizationEmpJComboBox.addItem(organization);
+
+    public void populateVaccineCombo() {
+        vaccineCatalogBox.removeAllItems();
+        for (Vaccine v : system.getVaccineCatalog().getVaccineCatalog()) {
+            vaccineCatalogBox.addItem(v);
         }
     }
 
-    private void populateTable(Organization organization){
+    public void populateDiseaseCombo() {
+        diseaseCatalogCombo.removeAllItems();
+        for (Disease v : system.getDiseaseCatalog().getDiseaseCatalog()) {
+            diseaseCatalogCombo.addItem(v);
+        }
+    }
+
+    public void populateOrganizationComboBox() {
+        organizationJComboBox.removeAllItems();
+        ArrayList<Organization> organization = organizationDir.getOrganizationList();
+        for (int i = 0; i < organization.size(); i++) {
+            if (enterprise.getEnterPriseType().equals(Enterprise.EnterPriseType.Distributor)) {
+                if (organization.get(i).toString().equals(Organization.Type.Dealer.getValue()) || organization.get(i).toString().equals(Organization.Type.Inventory.getValue())) {
+                    if (i == 0) {
+                        if (organization.get(i).toString().equals(Organization.Type.Inventory.getValue())) {
+                            diseaseLabel.setVisible(true);
+                            vaccineLabel.setVisible(true);
+                            vaccineCatalogBox.setVisible(true);
+                            diseaseCatalogCombo.setVisible(true);
+                            populateVaccineCombo();
+                            populateDiseaseCombo();
+
+                        } else {
+                            diseaseLabel.setVisible(false);
+                            vaccineLabel.setVisible(false);
+                            vaccineCatalogBox.setVisible(false);
+                            diseaseCatalogCombo.setVisible(false);
+                        }
+                    }
+                    organizationJComboBox.addItem(organization.get(i));
+                }
+            }else if (enterprise.getEnterPriseType().equals(Enterprise.EnterPriseType.Hospital)) {
+                if (organization.get(i).toString().equals(Organization.Type.Clinic.getValue())){
+                    organizationJComboBox.addItem(organization.get(i));
+                }
+            }else if (enterprise.getEnterPriseType().equals(Enterprise.EnterPriseType.Provider)) {
+                if (organization.get(i).toString().equals(Organization.Type.Clinic.getValue()) || organization.get(i).toString().equals(Organization.Type.Inventory.getValue())) {
+                    if (i == 0) {
+                        if (organization.get(i).toString().equals(Organization.Type.Inventory.getValue())) {
+                            diseaseLabel.setVisible(true);
+                            vaccineLabel.setVisible(true);
+                            vaccineCatalogBox.setVisible(true);
+                            diseaseCatalogCombo.setVisible(true);
+                            populateVaccineCombo();
+                            populateDiseaseCombo();
+
+                        } else {
+                            diseaseLabel.setVisible(false);
+                            vaccineLabel.setVisible(false);
+                            vaccineCatalogBox.setVisible(false);
+                            diseaseCatalogCombo.setVisible(false);
+                        }
+                    }
+                    organizationJComboBox.addItem(organization.get(i));
+                }
+            }
+        }
+    }
+
+    public void populateOrganizationEmpComboBox() {
+        organizationEmpJComboBox.removeAllItems();
+
+        for (Organization organization : organizationDir.getOrganizationList()) {
+            if (enterprise.getEnterPriseType().equals(Enterprise.EnterPriseType.Distributor)) {
+                if (organization.toString().equals(Organization.Type.Dealer.getValue()) || organization.toString().equals(Organization.Type.Inventory.getValue())) {
+                    organizationEmpJComboBox.addItem(organization);
+                }
+            }
+        }
+    }
+
+    private void populateTable(Organization organization) {
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-        
+
         model.setRowCount(0);
-        
-        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
+
+        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
             Object[] row = new Object[2];
             row[0] = employee.getId();
             row[1] = employee.getName();
             model.addRow(row);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,10 +147,16 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         organizationJComboBox = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        vaccineLabel = new javax.swing.JLabel();
         nameJTextField = new javax.swing.JTextField();
         organizationEmpJComboBox = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
+        vaccineCatalogBox = new javax.swing.JComboBox();
+        diseaseCatalogCombo = new javax.swing.JComboBox();
+        jLabel4 = new javax.swing.JLabel();
+        diseaseLabel = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,12 +190,15 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             organizationJTable.getColumnModel().getColumn(1).setResizable(false);
         }
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 60, 480, 92));
+
         addJButton.setText("Create Employee");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addJButtonActionPerformed(evt);
             }
         });
+        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 450, -1, -1));
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -125,8 +206,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 organizationJComboBoxActionPerformed(evt);
             }
         });
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 34, 216, -1));
 
         jLabel1.setText("Organization");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 37, -1, -1));
 
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -134,8 +217,11 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
 
-        jLabel2.setText("Name");
+        vaccineLabel.setText("Vaccine Catalog");
+        add(vaccineLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 350, 110, -1));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 126, -1));
 
         organizationEmpJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationEmpJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -143,76 +229,47 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 organizationEmpJComboBoxActionPerformed(evt);
             }
         });
+        add(organizationEmpJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 202, -1));
 
         jLabel3.setText("Organization");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(backJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(addJButton)
-                .addGap(175, 175, 175))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(jLabel1)
-                        .addGap(32, 32, 32)
-                        .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(296, 296, 296)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(organizationEmpJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(184, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(organizationEmpJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addJButton)
-                    .addComponent(backJButton))
-                .addGap(48, 48, 48))
-        );
+        vaccineCatalogBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vaccineCatalogBoxActionPerformed(evt);
+            }
+        });
+        add(vaccineCatalogBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 202, -1));
+
+        diseaseCatalogCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                diseaseCatalogComboActionPerformed(evt);
+            }
+        });
+        add(diseaseCatalogCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 202, -1));
+
+        jLabel4.setText("Name");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 260, 50, -1));
+
+        diseaseLabel.setText("Disease Catalog");
+        add(diseaseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(277, 310, 110, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
         String name = nameJTextField.getText();
-        if(organization.equals(Organization.Type.Inventory)){
+        if (organization.equals(Organization.Type.Inventory)) {
             Inventory inventory = new Inventory();
             inventory.setQuantity(0);
             organization.setInventory(inventory);
+        }else if(organization.equals(Organization.Type.Clinic)){
+            
         }
-        organization.getEmployeeDirectory().createEmployee(name);
-        
-        
+        Employee emp = organization.getEmployeeDirectory().createEmployee(name);
+        Vaccine v = (Vaccine) vaccineCatalogBox.getSelectedItem();
+        Disease d = (Disease) diseaseCatalogCombo.getSelectedItem();
+        emp.setVaccine(v);
+        emp.setDisease(d);
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -224,25 +281,52 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        if (organization != null){
+        if (organization != null) {
             populateTable(organization);
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 
     private void organizationEmpJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationEmpJComboBoxActionPerformed
-        
+        Organization org = (Organization) organizationEmpJComboBox.getSelectedItem();
+        if (org != null) {
+            if (!org.toString().equals(Organization.Type.Inventory.getValue())) {
+                diseaseLabel.setVisible(true);
+                vaccineLabel.setVisible(true);
+                vaccineCatalogBox.setVisible(true);
+                diseaseCatalogCombo.setVisible(true);
+                populateVaccineCombo();
+                populateDiseaseCombo();
+            } else {
+                diseaseLabel.setVisible(false);
+                vaccineLabel.setVisible(false);
+                vaccineCatalogBox.setVisible(false);
+                diseaseCatalogCombo.setVisible(false);
+            }
+        }
     }//GEN-LAST:event_organizationEmpJComboBoxActionPerformed
+
+    private void vaccineCatalogBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vaccineCatalogBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vaccineCatalogBoxActionPerformed
+
+    private void diseaseCatalogComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diseaseCatalogComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_diseaseCatalogComboActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
     private javax.swing.JButton backJButton;
+    private javax.swing.JComboBox diseaseCatalogCombo;
+    private javax.swing.JLabel diseaseLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox organizationEmpJComboBox;
     private javax.swing.JComboBox organizationJComboBox;
     private javax.swing.JTable organizationJTable;
+    private javax.swing.JComboBox vaccineCatalogBox;
+    private javax.swing.JLabel vaccineLabel;
     // End of variables declaration//GEN-END:variables
 }
