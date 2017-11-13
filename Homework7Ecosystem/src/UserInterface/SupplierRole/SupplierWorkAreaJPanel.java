@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserInterface.LabAssistantRole;
+package UserInterface.SupplierRole;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import Business.Organization.SupplierOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
@@ -18,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Sumanth
  */
-public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
+public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private EcoSystem business;
@@ -28,7 +29,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public LabAssistantWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
+    public SupplierWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -37,6 +38,10 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
         this.labOrganization = (SupplierOrganization)organization;
         
         populateTable();
+    }
+
+    public SupplierWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, SupplierOrganization supplierOrganization, Enterprise enterprise) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public void populateTable(){

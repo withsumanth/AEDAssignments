@@ -86,7 +86,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                     organizationJComboBox.addItem(organization.get(i));
                 }
             }else if (enterprise.getEnterPriseType().equals(Enterprise.EnterPriseType.Provider)) {
-                if (organization.get(i).toString().equals(Organization.Type.Clinic.getValue()) || organization.get(i).toString().equals(Organization.Type.Inventory.getValue())) {
+                if (organization.get(i).toString().equals(Organization.Type.Supplier.getValue()) || organization.get(i).toString().equals(Organization.Type.Inventory.getValue())) {
                     if (i == 0) {
                         if (organization.get(i).toString().equals(Organization.Type.Inventory.getValue())) {
                             diseaseLabel.setVisible(true);
@@ -115,6 +115,14 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         for (Organization organization : organizationDir.getOrganizationList()) {
             if (enterprise.getEnterPriseType().equals(Enterprise.EnterPriseType.Distributor)) {
                 if (organization.toString().equals(Organization.Type.Dealer.getValue()) || organization.toString().equals(Organization.Type.Inventory.getValue())) {
+                    organizationEmpJComboBox.addItem(organization);
+                }
+            }else if(enterprise.getEnterPriseType().equals(Enterprise.EnterPriseType.Provider)){
+                if (organization.toString().equals(Organization.Type.Supplier.getValue()) || organization.toString().equals(Organization.Type.Inventory.getValue())) {
+                    organizationEmpJComboBox.addItem(organization);
+                }
+            }else if(enterprise.getEnterPriseType().equals(Enterprise.EnterPriseType.Hospital)){
+                if (organization.toString().equals(Organization.Type.Clinic.getValue())) {
                     organizationEmpJComboBox.addItem(organization);
                 }
             }
@@ -285,6 +293,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             emp.setVaccine(v);
             emp.setDisease(d);
         }
+        Organization o = (Organization) organizationJComboBox.getSelectedItem();
+        if (organization != null) {
+            populateTable(o);
+        }
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -304,7 +316,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     private void organizationEmpJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationEmpJComboBoxActionPerformed
         Organization org = (Organization) organizationEmpJComboBox.getSelectedItem();
         if (org != null) {
-            if (!org.toString().equals(Organization.Type.Inventory.getValue()) || !org.toString().equals(Organization.Type.Clinic.getValue())) {
+            if (!org.toString().equals(Organization.Type.Inventory.getValue()) && !org.toString().equals(Organization.Type.Clinic.getValue())) {
                 diseaseLabel.setVisible(true);
                 vaccineLabel.setVisible(true);
                 vaccineCatalogBox.setVisible(true);

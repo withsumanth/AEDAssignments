@@ -2,11 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserInterface.DoctorRole;
+package UserInterface.DistributorRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.ClinicOrganization;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -18,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Sumanth
  */
-public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
+public class DistributorWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private ClinicOrganization organization;
@@ -27,7 +28,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ClinicOrganization organization, Enterprise enterprise) {
+    public DistributorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ClinicOrganization organization, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -36,6 +37,10 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         valueLabel.setText(enterprise.getName());
         populateRequestTable();
+    }
+
+    public DistributorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public void populateRequestTable(){

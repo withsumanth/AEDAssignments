@@ -10,7 +10,8 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.ClinicOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import UserInterface.DoctorRole.DoctorWorkAreaJPanel;
+import UserInterface.CDCRole.CdcWorkAreaJPanel;
+import UserInterface.DistributorRole.DistributorWorkAreaJPanel;
 import javax.swing.JPanel;
 
 /**
@@ -20,6 +21,6 @@ import javax.swing.JPanel;
 public class CdcRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new DoctorWorkAreaJPanel(userProcessContainer, account, (ClinicOrganization)organization, enterprise);
+        return new CdcWorkAreaJPanel(userProcessContainer, account, enterprise);
     }
 }

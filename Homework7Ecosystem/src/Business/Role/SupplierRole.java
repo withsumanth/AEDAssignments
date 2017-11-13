@@ -9,8 +9,10 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.ClinicOrganization;
 import Business.Organization.Organization;
+import Business.Organization.SupplierOrganization;
 import Business.UserAccount.UserAccount;
-import UserInterface.DoctorRole.DoctorWorkAreaJPanel;
+import UserInterface.DistributorRole.DistributorWorkAreaJPanel;
+import UserInterface.SupplierRole.SupplierWorkAreaJPanel;
 import javax.swing.JPanel;
 
 /**
@@ -20,6 +22,6 @@ import javax.swing.JPanel;
 public class SupplierRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new DoctorWorkAreaJPanel(userProcessContainer, account, (ClinicOrganization)organization, enterprise);
+        return new SupplierWorkAreaJPanel(userProcessContainer, account, (SupplierOrganization)organization, enterprise);
     }
 }

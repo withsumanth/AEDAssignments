@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserInterface.DoctorRole;
+package UserInterface.DistributorRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
@@ -111,7 +111,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        DoctorWorkAreaJPanel dwjp = (DoctorWorkAreaJPanel) component;
+        DistributorWorkAreaJPanel dwjp = (DistributorWorkAreaJPanel) component;
         dwjp.populateRequestTable();
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
