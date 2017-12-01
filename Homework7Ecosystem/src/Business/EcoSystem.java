@@ -32,6 +32,19 @@ public class EcoSystem extends Organization{
         networkList.add(network);
         return network;
     }
+    
+    public Network searchNetwork(String name){
+        for(Network n:networkList){
+            if(n.getName().equals(name)){
+                return n;
+            }
+        }
+        return null;
+    }
+    
+    public void deleteNetwork(Network ntw){
+        networkList.remove(ntw);
+    }
 
     private EcoSystem(){
         super(null);

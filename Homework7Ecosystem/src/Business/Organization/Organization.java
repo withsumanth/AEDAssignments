@@ -32,7 +32,7 @@ public abstract class Organization {
     private DiseaseCatalog diseaseCatalog;
 
     public enum Type{
-        Admin("Admin Organization"), Clinic("Clinic Organization"), Supplier("Supplier Organization"), Inventory("Inventory Organization"),Dealer("Dealer Organization");
+        Admin("Admin Organization"), Clinic("Clinic Organization"), Supplier("Supplier Organization"), InventoryDistributor("Inventory Distributor Organization"),InventorySupplier("Inventory Supplier Organization"),Dealer("Dealer Organization");
         private String value;
         private Type(String value) {
             this.value = value;

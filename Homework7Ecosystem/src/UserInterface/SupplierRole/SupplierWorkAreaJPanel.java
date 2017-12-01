@@ -9,9 +9,11 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.SupplierOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.LabTestWorkRequest;
+import Business.WorkQueue.MessageWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,41 +24,48 @@ import javax.swing.table.DefaultTableModel;
 public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-    private EcoSystem business;
-    private UserAccount userAccount;
-    private SupplierOrganization labOrganization;
+    private Organization organization;
+    private Enterprise enterprise;
+    private UserAccount account;
+    private ArrayList<Organization> orgListHosp;
+    private ArrayList<Organization> orgListSupp;
+    private ArrayList<Organization> orgListDist;
     
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public SupplierWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
+    public SupplierWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, UserAccount account, Organization organization, ArrayList<Organization> orgListHosp, ArrayList<Organization> orgListSupp,ArrayList<Organization> orgListDist) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.userAccount = account;
-        this.business = business;
-        this.labOrganization = (SupplierOrganization)organization;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.account = account;
+        this.orgListHosp = orgListHosp;
+        this.orgListSupp = orgListSupp;
+        this.orgListDist = orgListDist;
+        enterPrText.setText(enterprise.getName());
+        orgText.setText(organization.getName());
+        empNameTxt.setText(account.getEmployee().getName());
         
-        populateTable();
+        populateRequestTable();
     }
 
-    public SupplierWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, SupplierOrganization supplierOrganization, Enterprise enterprise) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    public void populateTable(){
-        DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
-        
+    public void populateRequestTable(){
+        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
         model.setRowCount(0);
-        
-        for(WorkRequest request : labOrganization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request;
-            row[1] = request.getSender().getEmployee().getName();
-            row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[3] = request.getStatus();
-            
-            model.addRow(row);
+        for (Organization o : orgListHosp) {
+            for (UserAccount acc : o.getUserAccountDirectory().getUserAccountList()) {
+                for (WorkRequest request : acc.getWorkQueue().getWorkRequestList()) {
+                    Object[] row = new Object[6];
+                    row[0] = acc;
+                    row[1] = request;
+                    row[2] = request.getSender().getEmployee().getName();
+                    row[3] = request.getStatus();
+                    row[4] = request.getInventory().getVaccine();
+                    model.addRow(row);
+                }
+            }
         }
     }
 
@@ -69,30 +78,69 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        requestTestJButton = new javax.swing.JButton();
+        refreshTestJButton = new javax.swing.JButton();
+        enterpriseLabel1 = new javax.swing.JLabel();
+        empNameTxt = new javax.swing.JLabel();
+        enterpriseLabel2 = new javax.swing.JLabel();
+        enterPrText = new javax.swing.JLabel();
+        enterpriseLabel3 = new javax.swing.JLabel();
+        orgText = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
-        assignJButton = new javax.swing.JButton();
-        processJButton = new javax.swing.JButton();
-        refreshJButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        requestTestJButton.setText("Check Inventory");
+        requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requestTestJButtonActionPerformed(evt);
+            }
+        });
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 340, 180, 40));
+
+        refreshTestJButton.setText("Refresh");
+        refreshTestJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshTestJButtonActionPerformed(evt);
+            }
+        });
+        add(refreshTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, -1, -1));
+
+        enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel1.setText("Employee Name:");
+        add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+
+        empNameTxt.setText("<Value>");
+        add(empNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 230, 20));
+
+        enterpriseLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel2.setText("EnterPrise :");
+        add(enterpriseLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
+
+        enterPrText.setText("<value>");
+        add(enterPrText, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 260, 20));
+
+        enterpriseLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel3.setText("Organization:");
+        add(enterpriseLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 50, 130, -1));
+
+        orgText.setText("<value>");
+        add(orgText, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 300, 20));
+
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Status"
+                "User who raised request", "Message", "Sender", "Status", "Vaccine"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -104,83 +152,43 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(workRequestJTable);
-        if (workRequestJTable.getColumnModel().getColumnCount() > 0) {
-            workRequestJTable.getColumnModel().getColumn(0).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(1).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(2).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(3).setResizable(false);
-        }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 58, 375, 96));
-
-        assignJButton.setText("Assign to me");
-        assignJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignJButtonActionPerformed(evt);
-            }
-        });
-        add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 215, -1, -1));
-
-        processJButton.setText("Process");
-        processJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                processJButtonActionPerformed(evt);
-            }
-        });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 215, -1, -1));
-
-        refreshJButton.setText("Refresh");
-        refreshJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshJButtonActionPerformed(evt);
-            }
-        });
-        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 26, -1, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 760, 130));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
-
+    private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
         int selectedRow = workRequestJTable.getSelectedRow();
-        
-        if (selectedRow < 0){
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select Any Row");
             return;
         }
-        
-        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-        request.setReceiver(userAccount);
-        request.setStatus("Pending");
-        populateTable();
-        
-    }//GEN-LAST:event_assignJButtonActionPerformed
-
-    private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
-        
-        int selectedRow = workRequestJTable.getSelectedRow();
-        
-        if (selectedRow < 0){
+        UserAccount acc = (UserAccount) workRequestJTable.getValueAt(selectedRow, 0);
+        WorkRequest req = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 1);
+        if (req.getStatus().equals("Sent to Provider")) {
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            userProcessContainer.add("SupplierCheckJPanel", new SupplierCheckJPanel(userProcessContainer, acc, req, orgListSupp, account,orgListDist));
+            layout.next(userProcessContainer);
+        }else{
+            JOptionPane.showMessageDialog(null, "Request has already been sent/Not Approved");
             return;
         }
-        
-        LabTestWorkRequest request = (LabTestWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-     
-        request.setStatus("Processing");
-        
-        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request);
-        userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-        
-    }//GEN-LAST:event_processJButtonActionPerformed
+    }//GEN-LAST:event_requestTestJButtonActionPerformed
 
-    private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
-        populateTable();
-    }//GEN-LAST:event_refreshJButtonActionPerformed
+    private void refreshTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTestJButtonActionPerformed
+
+        populateRequestTable();
+    }//GEN-LAST:event_refreshTestJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton assignJButton;
+    private javax.swing.JLabel empNameTxt;
+    private javax.swing.JLabel enterPrText;
+    private javax.swing.JLabel enterpriseLabel1;
+    private javax.swing.JLabel enterpriseLabel2;
+    private javax.swing.JLabel enterpriseLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton processJButton;
-    private javax.swing.JButton refreshJButton;
+    private javax.swing.JLabel orgText;
+    private javax.swing.JButton refreshTestJButton;
+    private javax.swing.JButton requestTestJButton;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }

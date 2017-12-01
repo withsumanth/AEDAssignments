@@ -7,19 +7,22 @@ package Business.Organization;
 
 import Business.Role.DistributorRole;
 import Business.Role.Role;
+import Business.Role.SupplierRole;
 import java.util.ArrayList;
 
 /**
  *
  * @author Sumanth
  */
-public class InventoryOrganization extends Organization{
-    public InventoryOrganization() {
-        super(Organization.Type.Inventory.getValue());
+public class InventorySupplierOrganization extends Organization{
+    public InventorySupplierOrganization() {
+        super(Organization.Type.InventorySupplier.getValue());
     }
     
     @Override
     public ArrayList<Role> getSupportedRole() {
-        return null;
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new SupplierRole());
+        return roles;
     }
 }

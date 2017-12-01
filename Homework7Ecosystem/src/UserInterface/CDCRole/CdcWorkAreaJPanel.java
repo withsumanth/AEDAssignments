@@ -6,8 +6,14 @@
 package UserInterface.CDCRole;
 
 import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.MessageWorkRequest;
+import Business.WorkQueue.WorkRequest;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,11 +27,57 @@ public class CdcWorkAreaJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     UserAccount account;
     Enterprise enterprise;
-    public CdcWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise) {
+    ArrayList<Organization> orgList;
+    
+    public CdcWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, ArrayList<Organization> orgList) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.enterprise = enterprise;
+        this.orgList = orgList;
+        enterPrText.setText(enterprise.getName());
+        populateTable();
+    }
+    
+    void populateTable() {
+        
+        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+        model.setRowCount(0);
+        for (Organization o : orgList) {
+            for (UserAccount acc : o.getUserAccountDirectory().getUserAccountList()) {
+                for (WorkRequest request : acc.getWorkQueue().getWorkRequestList()) {
+                    Object[] row = new Object[5];
+                    row[0] = acc;
+                    row[1] = request;
+                    row[2] = request.getSender().getEmployee().getName();
+                    row[3] = account;
+                    row[4] = request.getStatus();
+                    model.addRow(row);
+                }
+            }
+        }
+    }
+    
+    void populateTableAfter(String msg) {
+        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+        model.setRowCount(0);
+        for (Organization o : orgList) {
+            for (UserAccount acc : o.getUserAccountDirectory().getUserAccountList()) {
+                for (WorkRequest request : acc.getWorkQueue().getWorkRequestList()) {
+                    Object[] row = new Object[5];
+                    row[0] = acc;
+                    row[1] = request;
+                    row[2] = request.getSender().getEmployee().getName();
+                    if (msg.equals("Initial")) {
+                        row[3] = request.getReceiver();
+                    } else {
+                        row[3] = acc;
+                    }
+                    row[4] = request.getStatus();
+                    model.addRow(row);
+                }
+            }
+        }
     }
 
     /**
@@ -37,19 +89,88 @@ public class CdcWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jScrollPane1 = new javax.swing.JScrollPane();
+        workRequestJTable = new javax.swing.JTable();
+        enterpriseLabel1 = new javax.swing.JLabel();
+        enterPrText = new javax.swing.JLabel();
+        approveBtn = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "User who raised request", "Message", "Sender", "Receiver", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(workRequestJTable);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 730, 130));
+
+        enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel1.setText("EnterPrise :");
+        add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+
+        enterPrText.setText("<value>");
+        add(enterPrText, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 120, 20));
+
+        approveBtn.setText("Approve");
+        approveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                approveBtnActionPerformed(evt);
+            }
+        });
+        add(approveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 140, 40));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void approveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_approveBtnActionPerformed
+        int selectedRow = workRequestJTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select Any Row");
+            return;
+        }
+        String status = (String) workRequestJTable.getValueAt(selectedRow, 4);
+        WorkRequest r = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 1);
+        if (status.equals("Sent to CDC")) {
+            r.setStatus("Sent to Distributor");
+            r.setSender(account);
+            r.setReceiver(null);
+            populateTableAfter("Initial");
+        } else if (status.equals("Sent from Distributor to CDC")) {
+            r.setStatus("Approved and Sent to Clinic");
+            r.setSender(account);
+            r.setReceiver(null);
+            ((MessageWorkRequest) r).setTestResult("Completed");
+            populateTableAfter("Final");
+        } else {
+            JOptionPane.showMessageDialog(null, "Already approved");
+            return;
+        }
+    }//GEN-LAST:event_approveBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton approveBtn;
+    private javax.swing.JLabel enterPrText;
+    private javax.swing.JLabel enterpriseLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }

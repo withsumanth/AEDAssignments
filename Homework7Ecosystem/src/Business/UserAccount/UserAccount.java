@@ -5,6 +5,9 @@
 package Business.UserAccount;
 
 import Business.Employee.Employee;
+import Business.Enterprise.Enterprise;
+import Business.Inventory.Inventory;
+import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.Supplier.Supplier;
 import Business.WorkQueue.WorkQueue;
@@ -21,6 +24,33 @@ public class UserAccount {
     private Supplier supplier;
     private Role role;
     private WorkQueue workQueue;
+    private Enterprise enterprise;
+    private Inventory inventory;
+    Organization organization;
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public Enterprise getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
+    }
 
     public UserAccount() {
         workQueue = new WorkQueue();

@@ -5,6 +5,7 @@
  */
 package Business.Enterprise;
 
+import Business.Role.CdcRole;
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -19,6 +20,8 @@ public class CdcEnterprise extends Enterprise{
 
     @Override
     public ArrayList<Role> getSupportedRole() {
-        return null;
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new CdcRole());
+        return roles;
     }
 }

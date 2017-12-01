@@ -10,8 +10,10 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Inventory.Inventory;
 import Business.Organization.ClinicOrganization;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.Vaccine.Vaccine;
+import Business.WorkQueue.WorkRequest;
 import UserInterface.AdministrativeRole.ManageUserAccountJPanel;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -32,7 +34,7 @@ public class ClinicWorkAreaJPanel extends javax.swing.JPanel {
     Enterprise enterprise;
     EcoSystem system;
 
-    public ClinicWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ClinicOrganization clinicOrganization, Enterprise enterprise,EcoSystem system) {
+    public ClinicWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ClinicOrganization clinicOrganization, Enterprise enterprise, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
@@ -45,7 +47,7 @@ public class ClinicWorkAreaJPanel extends javax.swing.JPanel {
         populateVaccineCombo();
         populateDiseaseCombo();
     }
-    
+
     public void populateVaccineCombo() {
         vaccineCombo.removeAllItems();
         for (Vaccine v : system.getVaccineCatalog().getVaccineCatalog()) {
@@ -95,12 +97,22 @@ public class ClinicWorkAreaJPanel extends javax.swing.JPanel {
                 checkBtnActionPerformed(evt);
             }
         });
-        add(checkBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 170, 50));
+        add(checkBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, 170, 50));
 
         diseaseCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        diseaseCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                diseaseComboActionPerformed(evt);
+            }
+        });
         add(diseaseCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 180, 30));
 
         vaccineCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        vaccineCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vaccineComboActionPerformed(evt);
+            }
+        });
         add(vaccineCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 180, 30));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -127,18 +139,50 @@ public class ClinicWorkAreaJPanel extends javax.swing.JPanel {
 
     private void checkBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBtnActionPerformed
         Inventory inv = clinicOrganization.getInventory();
-        if(inv.getQuantity()==0){
+        Vaccine v = (Vaccine) vaccineCombo.getSelectedItem();
+        Disease d = (Disease) diseaseCombo.getSelectedItem();
+        int quantity = 0;
+        for (WorkRequest request : account.getWorkQueue().getWorkRequestList()) {
+            if (request.getInventory().getVaccine().equals(v)) {
+                if (request.getStatus().equals("Approved and Sent to Clinic")) {
+                    if (request.getInventory().getQuantity() > 0) {
+                        quantity = request.getInventory().getQuantity();
+                         break;
+                    }
+                }
+            }
+        }
+        if (quantity <= 0) {
             int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog(null,"There is no stock in the inventory. Please request CDC ", "Warning", dialogButton);
-            if(dialogResult == JOptionPane.YES_OPTION){
-                ClinicInventoryJPanel muajp = new ClinicInventoryJPanel(userProcessContainer, account,  clinicOrganization,  enterprise, system);
-        userProcessContainer.add("ClinicInventoryJPanel", muajp);
-
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+            int dialogResult = JOptionPane.showConfirmDialog(null, "There is no stock in the inventory. Please request CDC ", "Warning", dialogButton);
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                //Inventory newInv = new Inventory();
+                //newInv.setVaccine(v);
+                //newInv.setDisease(d);
+                ClinicInventoryJPanel muajp = new ClinicInventoryJPanel(userProcessContainer, account, clinicOrganization, enterprise, system, v, d);
+                userProcessContainer.add("ClinicInventoryJPanel", muajp);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            }
+        } else {
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Stock is available in inventory. Do you want to proceed with entering quantity?", "Warning", dialogButton);
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                ClinicInventoryJPanel muajp = new ClinicInventoryJPanel(userProcessContainer, account, clinicOrganization, enterprise, system, v, d);
+                userProcessContainer.add("ClinicInventoryJPanel", muajp);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+                //stockPanel.setVisible(true);
+                //quantTxt.setText(String.valueOf(inv.getQuantity()));
             }
         }
     }//GEN-LAST:event_checkBtnActionPerformed
+
+    private void diseaseComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diseaseComboActionPerformed
+    }//GEN-LAST:event_diseaseComboActionPerformed
+
+    private void vaccineComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vaccineComboActionPerformed
+    }//GEN-LAST:event_vaccineComboActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,17 +4,37 @@
  * and open the template in the editor.
  */
 package Business.Inventory;
+import Business.Disease.Disease;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
+import Business.Vaccine.Vaccine;
 
 /**
  *
  * @author Sumanth
  */
 public class Inventory {
-    Employee employee;
+    private Employee employee;
     private int quantity;
-    Enterprise.EnterPriseType type;
+    private Vaccine vaccine;
+    private Disease disease;
+    private Enterprise.EnterPriseType type;
+
+    public Disease getDisease() {
+        return disease;
+    }
+
+    public void setDisease(Disease disease) {
+        this.disease = disease;
+    }
+
+    public Vaccine getVaccine() {
+        return vaccine;
+    }
+
+    public void setVaccine(Vaccine vaccine) {
+        this.vaccine = vaccine;
+    }
 
     public Enterprise.EnterPriseType getType() {
         return type;

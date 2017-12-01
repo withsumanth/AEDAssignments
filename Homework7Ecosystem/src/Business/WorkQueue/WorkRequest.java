@@ -4,6 +4,8 @@
  */
 package Business.WorkQueue;
 
+import Business.Inventory.Inventory;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.util.Date;
 
@@ -19,6 +21,24 @@ public abstract class WorkRequest {
     private String status;
     private Date requestDate;
     private Date resolveDate;
+    private Organization organization;
+    private Inventory inventory;
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
+    }
     
     public WorkRequest(){
         requestDate = new Date();
@@ -70,5 +90,10 @@ public abstract class WorkRequest {
 
     public void setResolveDate(Date resolveDate) {
         this.resolveDate = resolveDate;
+    }
+    
+    @Override
+    public String toString(){
+        return message;
     }
 }

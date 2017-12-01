@@ -35,8 +35,11 @@ public class OrganizationDirectory {
         }else if (type.getValue().equals(Type.Dealer.getValue())){
             organization = new DealerOrganization();
             organizationList.add(organization);
-        }else if (type.getValue().equals(Type.Inventory.getValue())){
-            organization = new InventoryOrganization();
+        }else if (type.getValue().equals(Type.InventorySupplier.getValue())){
+            organization = new InventorySupplierOrganization();
+            organizationList.add(organization);
+        }else if (type.getValue().equals(Type.InventoryDistributor.getValue())){
+            organization = new InventoryDistributorOrganization();
             organizationList.add(organization);
         }
         return organization;
